@@ -1,0 +1,35 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Student>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Dashboard";
+}
+<head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+</head>
+<table>
+    <tr>
+<td>
+    <div class="jumbotron">
+        <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
+        <h1 style="color:darkgoldenrod; font-size:large; ">Dashboard</h1>
+    </div>
+    </td>
+    </tr>
+    <tr>
+        <td align="center" style="padding-left:100px;">
+            <div style="width:500px; text-align:center;">
+               
+                @Html.Grid(Model).Columns(columns =>
+   {
+       columns.Add(c => c.StudentID).Titled("StudentId").Filterable(true);
+       columns.Add(c => c.FirstName).Titled("First Name").Filterable(true);
+       columns.Add(c => c.MiddleName).Titled("Middle Name").Filterable(true);
+       columns.Add(c => c.LastName).Titled("Last Name");
+   }).WithPaging(3).Sortable(true)
+            </div>
+        </td>
+    </tr>
+</table>
+

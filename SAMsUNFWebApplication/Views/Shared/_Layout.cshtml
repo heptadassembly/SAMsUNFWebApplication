@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title-Student Action Management System</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Layout.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+
+<body>
+
+    <table style="width:1000px;">
+
+        <tr>
+            <td>
+
+                <div class="navbar navbar-inverse navbar-fixed-top" style='background-color:blue;'>
+                    <div class="container">
+                        <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
+                        @*<div class="navbar-header">
+
+                            <button type="button" class="navbar-toggle" , data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("Login", "Login", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Dashboard", "Dashboard", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Create Incident", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Update Incident", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Search For Incident", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                            @Html.ActionLink("Reports", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>*@
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+        <tr>
+            <td width="20%" valign="top">
+                @Html.Partial("_SideMenu")
+
+                
+            </td>
+            
+            <td  width="80%" valign="top">
+                <div class="container body-content">
+                    @RenderBody()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                    <footer>
+                        <p style="align-items:center;">&copy; @DateTime.Now.Year - Heptad Assembly Test Project</p>
+                    </footer>
+            </td>
+        </tr>
+    </table>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
