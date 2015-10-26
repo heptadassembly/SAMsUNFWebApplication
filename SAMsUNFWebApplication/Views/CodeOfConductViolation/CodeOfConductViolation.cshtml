@@ -1,0 +1,36 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CodeOfConductViolation>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "CodeOfConductViolation";
+}
+<head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+</head>
+<table>
+    <tr>
+<td>
+    <div class="jumbotron">
+        <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
+        <h1 style="color:darkgoldenrod; font-size:large; ">Code Of Conduct Violation</h1>
+    </div>
+    </td>
+    </tr>
+    <tr>
+        <td align="center" style="padding-left:100px;">
+            <div style="width:500px; text-align:center;">
+               
+                @Html.Grid(Model).Columns(columns =>
+   {
+       columns.Add(c => c.code_of_conduct_violation_id).Titled("Code of Conduct Violation ID").Filterable(true);
+       columns.Add(c => c.short_code).Titled("Short Code").Filterable(true);
+       columns.Add(c => c.name).Titled("Name").Filterable(true);
+       columns.Add(c => c.create_user).Titled("Created By").Filterable(true);
+       columns.Add(c => c.create_dt).Titled("Create Date").Filterable(true);
+   }).WithPaging(3).Sortable(true)
+            </div>
+        </td>
+    </tr>
+</table>
+
