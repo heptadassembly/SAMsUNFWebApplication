@@ -16,3 +16,6 @@ textarea {
     max-width: 280px;
 }
 
+.grid-cell { 
+    text-align:left;
+}
