@@ -118,6 +118,7 @@
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
