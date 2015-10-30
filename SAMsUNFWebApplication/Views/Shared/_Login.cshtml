@@ -1,0 +1,12 @@
+﻿@model  SAMsUNFWebApplication.Models.Profile
+    @using (Html.BeginForm("Login", "Login"))
+            {
+        <div style="text-align:right;">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label>User Id:</label> @Html.TextBoxFor(m => m.UserID)
+            @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+            <label>Password:</label> @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            <input id="submit" type="submit" value="Login"  />
+        </div>
+    }
