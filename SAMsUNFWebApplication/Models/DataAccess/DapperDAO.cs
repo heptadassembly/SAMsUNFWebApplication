@@ -32,8 +32,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
     }
-
-}
+    
     public class StudentRepository
     {
         private MySqlConnection _openConnection;
@@ -46,9 +45,31 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
 
         public async Task<IEnumerable<Student>> GetStudents()
-    {
-        // Read the user by their username in the database. 
-        IEnumerable <Student> result= await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  student");
-        return result;
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  student");
+            return result;
+        }
+
+
     }
-} 
+
+    public class CodeOfConductViolationRepository
+    {
+        private MySqlConnection _openConnection;
+
+
+        public CodeOfConductViolationRepository(MySqlConnection openConnection)
+        {
+            this._openConnection = openConnection;
+        }
+
+
+        public async Task<IEnumerable<CodeOfConductViolation>> GetCodeOfConductViolations()
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<CodeOfConductViolation> result = await this._openConnection.QueryAsync<CodeOfConductViolation>(@" SELECT * FROM  code_of_conduct_violation");
+            return result;
+        }
+    }
+}
