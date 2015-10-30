@@ -22,7 +22,7 @@ namespace SAMsUNFWebApplication.Controllers
         public async System.Threading.Tasks.Task<ActionResult> Login(Profile model, string actionRequest)
         {
 
-            if (model.UserID != null && model.UserID.Length > 0 && model.Password != null && model.Password.Length > 0)
+            if (model.user_name != null && model.user_name.Length > 0 && model.password != null && model.password.Length > 0)
             {
                 //  model = new KIPPDemoDAO().LoginValidation(model.UserID, model.Password);
 
@@ -31,7 +31,7 @@ namespace SAMsUNFWebApplication.Controllers
                 {
                     await connection.OpenAsync();
 
-                    model = await new UserRepository(connection).LoginValidation(model.UserID, model.Password);
+                    model = await new UserRepository(connection).LoginValidation(model.user_name, model.password);
 
              
                 }

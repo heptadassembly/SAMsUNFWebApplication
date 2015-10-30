@@ -25,8 +25,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             // Read the user by their username in the database. 
             var results = await this._openConnection.QueryAsync<Profile>(@" SELECT * FROM  profile 
-                     WHERE UserID = @UserID AND Password = @password",
-                    new { UserID = userID, Password = password });
+                     WHERE user_name = @UserID AND password = @Password",
+                    new { UserID  = userID, Password = password });
 
             var result = results.FirstOrDefault();
             return result;

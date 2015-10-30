@@ -13,11 +13,11 @@
             {
                         <div style="text-align:right;">
                             @Html.ValidationSummary(true,"",new { @class = "text-danger" })
-                            <label>User Id:</label> @Html.TextBoxFor(m => m.UserID)
-                            @Html.ValidationMessageFor(m => m.UserID, "", new { @class = "text-danger" })
+                            <label>User Id:</label> @Html.TextBoxFor(m => m.user_name)
+                            @Html.ValidationMessageFor(m => m.user_name, "", new { @class = "text-danger" })
                             <br />
-                            <label>Password:</label> @Html.PasswordFor(m => m.Password)
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            <label>Password:</label> @Html.PasswordFor(m => m.password)
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
                             <br />
                             <input id="submit" type="submit" value="Login" />
                         </div>
