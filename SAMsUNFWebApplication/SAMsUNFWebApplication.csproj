@@ -115,6 +115,7 @@
     <Content Include="Content\Images\LandingPicture.png" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\TrainingVideos\Assem2.avi" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
@@ -147,6 +148,7 @@
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
+    <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,6 +173,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Shared\_SideMenu.cshtml" />
     <Content Include="Views\CodeOfConductViolation\CodeOfConductViolation.cshtml" />
+    <Content Include="Views\Training\Training.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
