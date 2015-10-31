@@ -7,28 +7,34 @@
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-    
+
 </head>
 <table>
     <tr>
-<td>
-    <div class="jumbotron">
-        <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
-        <h1 style="color:darkgoldenrod; font-size:large; ">Dashboard</h1>
-    </div>
-    </td>
+        <td>
+            <div class="jumbotron">
+                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
+                <h1 style="color:darkgoldenrod; font-size:large; ">Dashboard</h1>
+            </div>
+        </td>
     </tr>
     <tr>
-        <td align="center" style="padding-left:100px;">
-            <div style="width:500px; text-align:center;">
-               
+        <td align="left">
+            <div style="width:500px; text-align:left;">
+
                 @Html.Grid(Model).Columns(columns =>
-   {
-       columns.Add(c => c.StudentID).Titled("StudentId").Filterable(true);
-       columns.Add(c => c.FirstName).Titled("First Name").Filterable(true);
-       columns.Add(c => c.MiddleName).Titled("Middle Name").Filterable(true);
-       columns.Add(c => c.LastName).Titled("Last Name");
-   }).WithPaging(3).Sortable(true)
+           {
+               columns.Add(c => c.student_id).Titled("StudentId").Filterable(true);
+               columns.Add(c => c.first_name).Titled("First Name").Filterable(true);
+               columns.Add(c => c.last_name).Titled("Last Name").Filterable(true);
+               columns.Add(c => c.grade_id).Titled("Grade").Filterable(true);
+               columns.Add(c => c.homeroom_id).Titled("Homeroom").Filterable(true);
+               columns.Add(c => c.is_deleted).Titled("deleted?").Filterable(true); ;
+               columns.Add(c => c.school_year_id).Titled("School year").Filterable(true); ;
+               columns.Add(c => c.create_user).Titled("Submitted By").Filterable(true); ;
+               columns.Add(c => c.last_update_user).Titled("Updated By").Filterable(true); ;
+               columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
+           }).WithPaging(3).Sortable(true)
             </div>
         </td>
     </tr>
