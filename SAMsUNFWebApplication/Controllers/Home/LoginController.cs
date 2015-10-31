@@ -24,9 +24,6 @@ namespace SAMsUNFWebApplication.Controllers
 
             if (model.user_name != null && model.user_name.Length > 0 && model.password != null && model.password.Length > 0)
             {
-                //  model = new KIPPDemoDAO().LoginValidation(model.UserID, model.Password);
-
-
                 using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
                 {
                     await connection.OpenAsync();
