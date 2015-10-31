@@ -23,10 +23,11 @@
     </tr>
     <tr>
         <td align="center" style="padding-left:100px;">
+            
             <div style="width:500px; text-align:center;">
-               
+               @Html.ActionLink("Add New Code of Conduct Violation", "Create", "Home")
 
-                @Html.ActionLink("Add New Code of Conduct Violation", "Create", "Home");
+                
 
                 @Html.Grid(Model).Columns(columns =>
            {
