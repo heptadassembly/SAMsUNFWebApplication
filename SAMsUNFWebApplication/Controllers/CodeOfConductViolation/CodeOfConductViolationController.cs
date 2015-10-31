@@ -7,6 +7,7 @@ using SAMsUNFWebApplication.Models;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using SAMsUNFWebApplication.Models.DataAccess;
+using Dapper;
 
 namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
 {
@@ -25,7 +26,7 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
                 var result = await new CodeOfConductViolationRepository(connection).GetCodeOfConductViolations();
                 return View(result);
             }
-
+  
         }
 
     }
