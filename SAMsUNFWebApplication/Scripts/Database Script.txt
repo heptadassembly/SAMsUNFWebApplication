@@ -1,31 +1,30 @@
 ﻿drop database samsjacksonville;
-
 create database samsjacksonville;
 use samsjacksonville;
 
 -- Drop Table Expressions
-drop table student;
-drop view vw_student;
-drop table grade;
-drop view vw_grade;
-drop table code_of_conduct_violation;
-drop view vw_code_of_conduct_violation;
-drop table remedial_action;
-drop view vw_remedial_action;
-drop table profile;
-drop view vw_profile;
-drop table contact;
-drop view vw_contact;
-drop table homeroom;
-drop view vw_homeroom;
-drop table school;
-drop view vw_school;
-drop table content_course;
-drop view vw_content_course;
-drop table school_year;
+drop view if exists vw_student;
+drop table if exists student;
+drop view if exists vw_grade;
+drop table if exists grade;
+drop view if exists vw_code_of_conduct_violation;
+drop table if exists code_of_conduct_violation;
+drop view if exists vw_remedial_action;
+drop table if exists remedial_action;
+drop view if exists vw_profile;
+drop table if exists profile;
+drop view if exists vw_contact;
+drop table if exists contact;
+drop view if exists vw_homeroom;
+drop table if exists homeroom;
+drop view if exists vw_school;
+drop table if exists school;
+drop view if exists vw_content_course;
+drop table if exists content_course;
+drop table if exists school_year;
 
 -- Create Table School Year
-create table school_year
+create table if not exists school_year
 (
 	school_year_id int unique not null,
     is_current bit,
@@ -46,7 +45,7 @@ insert into school_year values (20192020, 0, 'kdavidson', now(), 'kdavidson', no
 insert into school_year values (20202021, 0, 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table Grade
-create table grade
+create table if not exists grade
 (
 	grade_id varchar(3) not null unique,
     grade_text varchar(50),
@@ -57,6 +56,8 @@ create table grade
     is_deleted bit default 0,
     primary key (grade_id)
 );
+
+create index _gradeidx on grade(grade_id);
 
 insert into grade values ('NA', 'Not Applicable', 'kdavidson', now(), 'kdavidson', now(), 0);
 insert into grade values ('VPK', 'Pre-Kindergarten', 'kdavidson', now(), 'kdavidson', now(), 0);
@@ -75,7 +76,7 @@ insert into grade values ('11', 'Eleventh', 'kdavidson', now(), 'kdavidson', now
 insert into grade values ('12', 'Twelfth', 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table Contact
-create table contact
+create table if not exists contact
 (
 	contact_id int unique auto_increment not null,
     name varchar(100),
@@ -90,6 +91,8 @@ create table contact
     foreign key (school_year_id) references school_year(school_year_id)
 );
 
+create index _contactidx on contact(contact_id, school_year_id);
+
 -- Insert Statement for Contact
 insert into contact values (-1, 'Unknown', 'kdavidson@kippjacksonville.com', 20152016, 'kdavidson', now(), 'kdavidson', now(), 0);
 insert into contact values (1, 'Samantha Jones', 'sjones@kippjacksonville.com', 20152016, 'kdavidson', now(), 'kdavidson', now(), 0);
@@ -97,7 +100,7 @@ insert into contact values (2, 'Warren Buck', 'wbuck@kippjacksonville.com', 2015
 insert into contact values (3, 'Kimberly Davidson', 'kdavidson@kippjacksonville.com', 20152016, 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table Profile
-create table profile
+create table if not exists profile
 (
 	profile_id int not null unique auto_increment,
     contact_id int not null,
@@ -114,12 +117,14 @@ create table profile
     foreign key (school_year_id) references school_year(school_year_id)
 );
 
+create index _profileidx on profile(profile_id, school_year_id);
+
 -- Insert Statement for Profile
 insert into profile values (1, 3, 'kdavidson', 'password', 20152016, 'kdavidson', now(), 'kdavidson', now(), 0);
 insert into profile values (2, 2, 'wbuck', 'password', 20152016, 'wbuck', now(), 'kdavidson', now(), 0);
 
 -- Create Table School
-create table school
+create table if not exists school
 (
 	school_id int not null auto_increment unique,
     name varchar(200),
@@ -138,7 +143,7 @@ insert into school values (2, 'KIPP:IMPACT', 'wbuck', now(), 'kdavidson', now(),
 insert into school values (3, 'KIPP:Elementary', 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table HomeRoom
-create table homeroom
+create table if not exists homeroom
 (
 	homeroom_id int not null unique auto_increment,
     name varchar(200),
@@ -161,7 +166,7 @@ insert into homeroom values (2, 'Harvard', 2, 20152016, 'wbuck', now(), 'kdavids
 insert into homeroom values (3, 'Penn State', 3, 20152016, 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table Student
-create table student
+create table if not exists student
 (
 	student_id int not null unique auto_increment,
     first_name varchar(20),
@@ -188,7 +193,7 @@ insert into student values (3, 'Kayla', 'Kelly', 20152016, 2, '4', 'kdavidson', 
 insert into student values (4, 'Evelyn', 'Sheppard', 20152016, 1, '3', 'kdavidson', now(), 'kdavidson', now(), 0);
 
 -- Create Table Content Course
-create table content_course
+create table if not exists content_course
 (
 	content_course_id int not null unique auto_increment,
     name varchar(200),
@@ -207,7 +212,7 @@ insert into content_course values (2, 'Writing', 'kdavidson', now(), 'kdavidson'
 insert into content_course values (3, 'Geometry', 'kdavidson', now(), 'kdavidson', now(), 0);
  
 -- Create Table Code of Conduct Violation
-create table code_of_conduct_violation
+create table if not exists code_of_conduct_violation
 (
 	code_of_conduct_violation_id varchar(5) unique not null ,
 	short_code varchar(3),
@@ -221,6 +226,8 @@ create table code_of_conduct_violation
     primary key (code_of_conduct_violation_id),
     foreign key (school_year_id) references school_year(school_year_id)
 );
+
+create index _cocidx on code_of_conduct_violation(code_of_conduct_violation_id, school_year_id);
 
 -- Insert Statements for Code of Conduct Violations
 insert into code_of_conduct_violation values ('OTHR', 'NA', 'Other', 'kdavidson', now(), 'kavidson', now(), 0, 20152016);
@@ -310,7 +317,7 @@ insert into code_of_conduct_violation values ('4.15', 'HOM','Homicide/Murder/Man
 insert into code_of_conduct_violation values ('4.16', 'VAN','Vandalism','kdavidson',now(), 'kdavidson', now(), 0, 20152016);
 
 -- Create Table for Remedial Action
-create table remedial_action
+create table if not exists remedial_action
 (
 	remedial_action_id int not null unique auto_increment,
     name varchar(200),
@@ -351,6 +358,9 @@ insert into remedial_action values (22, 'OSS - Long Term',20152016,'kdavidson',n
 insert into remedial_action values (23, 'Mentor/Tutor Assigned',20152016,'kdavidson',now(), 'kdavidson', now(),0);
 insert into remedial_action values (24, 'Lesson Related to the Offense',20152016,'kdavidson',now(), 'kdavidson', now(),0);
 insert into remedial_action values (25, 'Arrested',20152016,'kdavidson',now(), 'kdavidson', now(),0);
+
+create index _remedialidx on remedial_action(remedial_action_id, school_year_id);
+
 
 -- Create Table Office Visit Log
 -- Insert Statement for Office Visit Log
@@ -420,37 +430,3 @@ as
 	select c.*
     from content_course c
 );
-
-/*
--- Check Table Expressions
-select count(*) from  grade;
-select count(*) from  vw_grade;
-
-select count(*) from  code_of_conduct_violation;
-select count(*) from  vw_code_of_conduct_violation;
-
-select count(*) from  remedial_action;
-select count(*) from  vw_remedial_action;
-
-select count(*) from  student;
-select count(*) from  vw_student;
-
-select count(*) from  profile;
-select count(*) from  vw_profile;
-
-select count(*) from  homeroom;
-select count(*) from  vw_homeroom;
-
-select count(*) from  school;
-select count(*) from  vw_school;
-
-select count(*) from  contact;
-select count(*) from  vw_contact;
-
-select count(*) from  content_course;
-select count(*) from  vw_content_course;
-
-select count(*) from  vw_content_course;
-
-select count(*) from  school_year;
-*/
