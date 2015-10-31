@@ -29,5 +29,22 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
   
         }
 
+        public System.Web.Mvc.RedirectResult CreateCodeOfConductViolation(string TxtId, string TxtCode, string TxtName)
+        {
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                var result = new CodeOfConductViolationRepository(connection).CreateCodeOfConductViolation(TxtId, TxtCode, TxtName);
+                if (result == "success")
+                {
+                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                }
+            }
+        }
+
     }
 }

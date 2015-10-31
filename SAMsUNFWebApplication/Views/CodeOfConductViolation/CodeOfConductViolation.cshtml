@@ -23,14 +23,18 @@
     </tr>
     <tr>
         <td align="center" style="padding-left:100px;">
+            
             <div style="width:500px; text-align:center;">
-               
+               @Html.ActionLink("Add New Code of Conduct Violation", "Create", "Home")
+
+                
+
                 @Html.Grid(Model).Columns(columns =>
-   {
-       columns.Add(c => c.code_of_conduct_violation_id).Titled("ID").SetWidth(15);
-       columns.Add(c => c.short_code).Titled("Code").SetWidth(5);
-       columns.Add(c => c.name).Titled("Code Description").SetWidth(350).Sanitized(true);
-   }).WithPaging(10).Sortable(true).Filterable(true)
+           {
+               columns.Add(c => c.code_of_conduct_violation_id).Titled("ID").SetWidth(15);
+               columns.Add(c => c.short_code).Titled("Code").SetWidth(5);
+               columns.Add(c => c.name).Titled("Code Description").SetWidth(350).Sanitized(true);
+           }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
     </tr>
