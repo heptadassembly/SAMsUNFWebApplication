@@ -24,7 +24,7 @@ namespace SAMsUNFWebApplication.Controllers.Dashboard
 
        
 
-
+  
 
         public ActionResult ExportToExcel(Student model)
         {
@@ -58,7 +58,7 @@ namespace SAMsUNFWebApplication.Controllers.Dashboard
         public async System.Threading.Tasks.Task<ActionResult> Dashboard()
         {
 
-
+            Session["Students"] = null;
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
