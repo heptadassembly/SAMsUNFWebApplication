@@ -115,7 +115,6 @@
     <Content Include="Content\Images\LandingPicture.png" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\TrainingVideos\Assem2.avi" />
     <Content Include="Content\ui-grid.css" />
     <Content Include="Content\ui-grid.min.css" />
     <Content Include="Content\ui-grid.svg" />
