@@ -31,8 +31,8 @@
                columns.Add(c => c.homeroom_id).Titled("Homeroom").Filterable(true);
                columns.Add(c => c.is_deleted).Titled("deleted?").Filterable(true); ;
                columns.Add(c => c.school_year_id).Titled("School year").Filterable(true); ;
-               columns.Add(c => c.create_user).Titled("Submitted By").Filterable(true); ;
-               columns.Add(c => c.last_update_user).Titled("Updated By").Filterable(true); ;
+               columns.Add(c => c.create_contact_id).Titled("Submitted By").Filterable(true); ;
+               columns.Add(c => c.last_update_contact_id).Titled("Updated By").Filterable(true); ;
                columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
            }).WithPaging(3).Sortable(true)
             </div>

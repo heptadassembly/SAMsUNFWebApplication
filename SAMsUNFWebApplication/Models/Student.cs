@@ -13,9 +13,9 @@ namespace SAMsUNFWebApplication.Models
         public int school_year_id { get; set; }
         public int homeroom_id { get; set; }
         public string grade_id { get; set; }
-        public string create_user { get; set; }
+        public int create_contact_id { get; set; }
         public DateTime create_dt { get; set; }
-        public string last_update_user { get; set; }
+        public int last_update_contact_id { get; set; }
         public DateTime last_update_dt { get; set; }
         public Boolean is_deleted { get; set; }
     }
