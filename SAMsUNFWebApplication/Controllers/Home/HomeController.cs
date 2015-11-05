@@ -23,7 +23,7 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
-        public ActionResult Create()
+        public ActionResult CreateCOCV()
         {
             return View();
         }
