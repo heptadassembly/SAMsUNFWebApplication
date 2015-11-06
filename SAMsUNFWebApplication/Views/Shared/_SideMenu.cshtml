@@ -1,46 +1,56 @@
-﻿<table width:"100%" style="background-color:blue; font-size:x-large;vertical-align:top;">
+﻿<link href="@Url.Content("~/Content/accordion.css")" type="text/css" rel="stylesheet" />
+<script src="~/Scripts/accordion.js" type="text/javascript"></script>
 
-    <tr>
-        <td>
-            @*Click on Login -> Control -> View -> Call*@
-            @Html.ActionLink("Login", "Login", "Login")
-        </td>
+<div id="accordian">
+    <ul>
+        <li>
+            <h3>Dashboard</h3>
+            <ul>
+                <li>@Html.ActionLink("Office Visit by Time", "Dashboard", "Dashboard")</li>
+                <li>@Html.ActionLink("Office Visit by Contact", "Dashboard", "Dashboard")</li>
+                <li>@Html.ActionLink("Office Visit by Student", "Dashboard", "Dashboard")</li>
+                <li>@Html.ActionLink("Office Visit by Homeroom", "Dashboard", "Dashboard")</li>
+            </ul>
+        </li>
+    
+        <!-- we will keep this LI open by default -->
+        <!--<li class="active"> -->
+        <li>
+            <h3>Office Visit</h3>
+            <ul>
+                <li><a href="#">@Html.ActionLink("Add Office Visit", "Index", "Home")</a></li>
+            </ul>
+        </li>
 
-    </tr>
-
-    <tr>
-        <td>
-
-            @Html.ActionLink("Dashboard", "Dashboard", "Dashboard")
-        </td>
-
-
-    </tr>
-
-    <tr>
-        <td>
-
-            @Html.ActionLink("Office Visit", "Index", "Home")
-        </td>
-
-    </tr>
-
-    <tr>
-        <td>
-
-            @Html.ActionLink("Maintenance", "CodeOfConductViolation", "CodeOfConductViolation")
-        </td>
-
-
-    </tr>
-
-    <tr>
-        <td>
-
-            @Html.ActionLink("Training", "Training", "Training")
-        </td>
-
-
-    </tr>
-
-</table>
+        <li>
+            <h3>Admin Management</h3>
+            <ul>
+                <li>@Html.ActionLink("Student", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("School", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("School Year", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Grade", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Homeroom", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Contact", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Profile", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Office Visit", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Code of Conduct", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Remedial Action", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Settings", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Training</h3>
+            <ul>
+                <li>@Html.ActionLink("Administrator Training", "Training", "Training")</li>
+                <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
+            </ul>
+        </li>
+        <li>
+            <h3><span class="icon-logout"></span>Settings</h3>
+            <ul>
+                <li>@Html.ActionLink("Login", "Login", "Login")</li>
+                <li>@Html.ActionLink("Logout", "Login", "Login")</li>
+            </ul>
+        </li>
+    </ul>
+</div>
