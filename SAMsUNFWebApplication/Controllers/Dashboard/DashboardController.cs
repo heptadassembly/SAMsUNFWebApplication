@@ -7,12 +7,12 @@ using SAMsUNFWebApplication.Models;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using SAMsUNFWebApplication.Models.DataAccess;
+using System.Net.Http;
+using System.Net;
+using System.Threading.Tasks;
 using System.IO;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Text;
-
-namespace SAMsUNFWebApplication.Controllers.Dashboard
+using System.Net.Http.Headers;
+namespace SAMsUNFWebApplication.Utilities.Dashboard
 {
     public class DashboardController : Controller
     {
@@ -22,39 +22,37 @@ namespace SAMsUNFWebApplication.Controllers.Dashboard
             return View();
         }
 
-       
 
-  
-
-        public ActionResult ExportToExcel(Student model)
+        public void ExportToExcel()
         {
-            GridView gv = new GridView();
-            gv.DataSource = Session["Students"];
-            gv.DataBind();
-
+           
+           //Get the Session data  
+           List<Student> students = (List<Student>)Session["Students"];
+           
+            //Genarate the excel data
+           Byte[] fileBytes =  Utilities.ExcelGenerator.GenerateXLS(students);
+           
+            //Clear the response
+            Response.Clear();
             Response.ClearContent();
-            Response.AddHeader("content-disposition", "attachment;filename=test.xlsx");
+            Response.ClearHeaders();
+            Response.Cookies.Clear();
 
-            Response.ContentType = "application/vnd.ms-excel";
+            //  Build a proper repsonse header so no warning occurs on download
+            Response.Cache.SetCacheability(HttpCacheability.Private);
+            Response.CacheControl = "private";
+            Response.Charset = System.Text.UTF8Encoding.UTF8.WebName;
+            Response.ContentEncoding = System.Text.UTF8Encoding.UTF8;
+            Response.AppendHeader("Content-Length", fileBytes.Length.ToString());
+            Response.AppendHeader("Pragma", "cache");
+            Response.AppendHeader("Expires", "60");
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" +"\"Student" + DateTime.Now.ToString("MMddyyyyhhmmss") + ".xlsx\""); 
+            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
-            gv.RenderControl(htw);
-
-            byte[] byteArray = Encoding.ASCII.GetBytes(sw.ToString());
-
-            MemoryStream s = new MemoryStream(byteArray);
-
-            StreamReader sr = new StreamReader(s, Encoding.ASCII);
-
-
-
-            Response.Write(sr.ReadToEnd());
-
-            Response.End();
-            return new JavaScriptResult();
+            //Write it back to the client for downloading
+            Response.BinaryWrite(fileBytes);
+            Response.End();           
         }
-
         public async System.Threading.Tasks.Task<ActionResult> Dashboard()
         {
 
