@@ -1,0 +1,33 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVContacts>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Contact";
+}
+
+<h2>Contact</h2>
+<head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css") rel=" stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+</head>
+<table>
+    <tr>
+        <td>
+            <div class="jumbotron">
+                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
+                <h1 style="color:darkgoldenrod; font-size:large; ">CSV Contacts</h1>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="padding-left:100px;">
+            @Html.ActionLink("Import Contacts", "ImportContact", "Contact")
+            @Html.ActionLink("Import Students", "ImportStudent", "Contact")
+        </td>
+    </tr>
+</table>
+

@@ -171,6 +171,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\Contact\ContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
@@ -179,6 +180,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\CSVContacts.cs" />
+    <Compile Include="Models\CSVStudent.cs" />
     <Compile Include="Models\DataAccess\DapperDAO.cs" />
     <Compile Include="Models\CodeOfConductViolation.cs" />
     <Compile Include="Models\Student.cs" />
@@ -203,6 +207,10 @@
     <Content Include="Views\CodeOfConductViolation\CodeOfConductViolation.cshtml" />
     <Content Include="Views\Training\Training.cshtml" />
     <Content Include="Views\Home\CreateCOCV.cshtml" />
+    <Content Include="upload\contacts.csv" />
+    <Content Include="upload\students.csv" />
+    <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Contact\ImportStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
