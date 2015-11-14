@@ -1,7 +1,7 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVStudent>
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVContacts>
 @using GridMvc.Html
 @{
-    ViewBag.Title = "ImportStudent";
+    ViewBag.Title = "ImportContact";
 }
 <head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
@@ -38,8 +38,8 @@
             @<b>
                 @Html.ActionLink("Edit", "Index")
             </b>);
-               columns.Add(c => c.first_name).Titled("ID").SetWidth(15);
-               columns.Add(c => c.last_name).Titled("Duval Code").SetWidth(15);
+               columns.Add(c => c.name).Titled("ID").SetWidth(15);
+               columns.Add(c => c.email_address).Titled("Duval Code").SetWidth(15);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>

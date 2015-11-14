@@ -181,8 +181,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\CSVContacts.cs" />
-    <Compile Include="Models\CSVStudent.cs" />
+    <Compile Include="CSVModels\CSVContacts.cs" />
+    <Compile Include="CSVModels\CSVStudent.cs" />
     <Compile Include="Models\DataAccess\DapperDAO.cs" />
     <Compile Include="Models\CodeOfConductViolation.cs" />
     <Compile Include="Models\Student.cs" />
@@ -211,6 +211,7 @@
     <Content Include="upload\students.csv" />
     <Content Include="Views\Contact\Contact.cshtml" />
     <Content Include="Views\Contact\ImportStudent.cshtml" />
+    <Content Include="Views\Contact\ImportContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -219,7 +220,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

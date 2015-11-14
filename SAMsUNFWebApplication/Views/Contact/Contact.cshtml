@@ -13,6 +13,26 @@
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+
+    <script type="text/javascript">
+        function chgAction() {
+            var form = document.form1;
+
+            console.log('chgAction()');
+            console.log(form.recipient.selectedIndex);
+
+            switch (form.recipient.selectedIndex) {
+                case 1:
+                    form.action = "/Contact/ImportStudent";
+                    break;
+                case 2:
+                    form.action = "/Contact/ImportContact";
+                    break;
+            }
+        }
+
+    </script>
+
 </head>
 <table>
     <tr>
@@ -25,8 +45,20 @@
     </tr>
     <tr>
         <td align="center" style="padding-left:100px;">
-            @Html.ActionLink("Import Contacts", "ImportContact", "Contact")
-            @Html.ActionLink("Import Students", "ImportStudent", "Contact")
+            <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
+
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+
+                Please choose a dept:<br />
+                <select name="recipient" id="recipient" size="1" onChange="chgAction()">
+                    <option value="" selected="selected">Select</option>
+                    <option value="ImportStudent?file">Import Student</option>
+                    <option value="ImportContact">Import Contact</option>
+                </select>
+
+                <input type="submit">
+            </form>
         </td>
     </tr>
 </table>
