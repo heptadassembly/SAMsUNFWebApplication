@@ -35,6 +35,9 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
-        
-   }
+        public ActionResult OfficeVisit()
+        {
+            return View();
+        }
+    }
 }
