@@ -171,6 +171,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\Contact\ContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
@@ -181,8 +182,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="CSVModels\CSVContacts.cs" />
-    <Compile Include="CSVModels\CSVStudent.cs" />
+    <Compile Include="Models\CSVContacts.cs" />
+    <Compile Include="Models\CSVStudent.cs" />
     <Compile Include="Models\DataAccess\DapperDAO.cs" />
     <Compile Include="Models\CodeOfConductViolation.cs" />
     <Compile Include="Models\DataAccess\OfficeVisitRepository.cs" />
@@ -225,7 +226,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="Controllers\Contact\" />
+    <Folder Include="CSVModels\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

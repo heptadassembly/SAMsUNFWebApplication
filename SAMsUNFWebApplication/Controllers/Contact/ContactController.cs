@@ -34,6 +34,7 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                     using (var sr = new StreamReader(path))
                     {
                         var reader = new CsvReader(sr);
+                        reader.Configuration.Delimiter = ",";
                         var records = reader.GetRecords<CSVContacts>().ToList();
 
                         return View(records);
@@ -65,6 +66,8 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                     using (var sr = new StreamReader(path))
                     {
                         var reader = new CsvReader(sr);
+                        reader.Configuration.Delimiter = "\t";
+                        reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVStudent>().ToList();
 
                         return View(records);
