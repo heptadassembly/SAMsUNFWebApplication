@@ -39,11 +39,11 @@
                 @Html.ActionLink("Edit", "Index")
             </b>);
                columns.Add(c => c.StudentID).Titled("ID").SetWidth(15);
-               columns.Add(c => c.Last).Titled("Duval Code").SetWidth(15);
-               columns.Add(c => c.First).Titled("Duval Code").SetWidth(15);
-               columns.Add(c => c.School).Titled("Duval Code").SetWidth(15);
-               columns.Add(c => c.Grade).Titled("Duval Code").SetWidth(15);
-               columns.Add(c => c.Gender).Titled("Duval Code").SetWidth(15);
+               columns.Add(c => c.First).Titled("First Name").SetWidth(15);
+               columns.Add(c => c.Last).Titled("Last Name").SetWidth(15);
+               columns.Add(c => c.School).Titled("School").SetWidth(15);
+               columns.Add(c => c.Grade).Titled("Grade").SetWidth(15);
+               columns.Add(c => c.Gender).Titled("Gender").SetWidth(15);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>

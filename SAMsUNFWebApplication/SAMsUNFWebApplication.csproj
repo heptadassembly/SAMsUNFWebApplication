@@ -182,11 +182,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\CSVContacts.cs" />
-    <Compile Include="Models\CSVStudent.cs" />
+    <Compile Include="Models\DataAccess\CodeOfConductViolationRepository.cs" />
+    <Compile Include="Models\DataAccess\ContactRepository.cs" />
     <Compile Include="Models\DataAccess\DapperDAO.cs" />
     <Compile Include="Models\CodeOfConductViolation.cs" />
     <Compile Include="Models\DataAccess\OfficeVisitRepository.cs" />
+    <Compile Include="Models\DataAccess\StudentRepository.cs" />
     <Compile Include="Models\OfficeVisit.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />

@@ -9,29 +9,23 @@ using SAMsUNFWebApplication.Models;
 using System.Web;
 using System.Configuration;
 
-
 namespace SAMsUNFWebApplication.Models.DataAccess
 {
-
-    public class UserRepository
+    public class StudentRepository
     {
         private MySqlConnection _openConnection;
 
 
-        public UserRepository(MySqlConnection openConnection)
+        public StudentRepository(MySqlConnection openConnection)
         {
             this._openConnection = openConnection;
         }
 
 
-        public async Task<Profile> LoginValidation(string userID, string password)
+        public async Task<IEnumerable<Student>> GetStudents()
         {
             // Read the user by their username in the database. 
-            var results = await this._openConnection.QueryAsync<Profile>(@" SELECT * FROM  profile 
-                     WHERE user_name = @UserID AND password = @Password",
-                    new { UserID  = userID, Password = password });
-
-            var result = results.FirstOrDefault();
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  student");
             return result;
         }
 
