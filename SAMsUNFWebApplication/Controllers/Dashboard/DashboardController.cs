@@ -66,5 +66,10 @@ namespace SAMsUNFWebApplication.Utilities.Dashboard
             }
 
         }
+
+        public ActionResult addOfficeVisit()
+        {
+            return View();
+        }
     }
 }
