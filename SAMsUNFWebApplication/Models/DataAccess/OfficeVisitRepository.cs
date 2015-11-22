@@ -48,7 +48,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             try
             {
                 this._openConnection.Execute(queryString, new {
-                    officeVisit.student_id,
+                    officeVisit.student_nbr,
                     officeVisit.total_visits,
                     officeVisit.content_course_id,
                     officeVisit.sent_by_contact_id,
@@ -56,7 +56,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                     officeVisit.arrival_dt,
                     officeVisit.handled_by_contact_id,
                     officeVisit.nap,
-                    officeVisit.comment,
+                    officeVisit.comments,
                     officeVisit.last_update_contact_id
                 });
             }
@@ -86,7 +86,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                     officeVisit.arrival_dt,
                     officeVisit.handled_by_contact_id,
                     officeVisit.nap,
-                    officeVisit.comment,
+                    officeVisit.comments,
                     officeVisit.last_update_contact_id
                 });
             }

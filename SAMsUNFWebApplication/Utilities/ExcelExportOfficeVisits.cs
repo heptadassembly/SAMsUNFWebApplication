@@ -44,20 +44,20 @@ namespace SAMsUNFWebApplication.Utilities
                 //Get Data
                 for (int i = 0; i < datasource.Count(); i++)
                 {
-                    ws.Cells[i + 2, 1].Value = datasource.ElementAt(i).student_id;
+                    ws.Cells[i + 2, 1].Value = datasource.ElementAt(i).student_nbr;
                     ws.Cells[i + 2, 2].Value = datasource.ElementAt(i).student_name;
                     ws.Cells[i + 2, 3].Value = datasource.ElementAt(i).total_visits;
                     ws.Cells[i + 2, 4].Value = datasource.ElementAt(i).office_visit_dt.ToShortDateString();
                     ws.Cells[i + 2, 5].Value = datasource.ElementAt(i).school_name;
                     ws.Cells[i + 2, 6].Value = datasource.ElementAt(i).grade_value;
-                    ws.Cells[i + 2, 7].Value = datasource.ElementAt(i).homeroom_name;
+                    ws.Cells[i + 2, 7].Value = datasource.ElementAt(i).homeroom;
                     ws.Cells[i + 2, 8].Value = datasource.ElementAt(i).content_course_name;
                     ws.Cells[i + 2, 9].Value = datasource.ElementAt(i).sent_by_contact_name;
                     ws.Cells[i + 2, 10].Value = datasource.ElementAt(i).offenses;
                     ws.Cells[i + 2, 11].Value = datasource.ElementAt(i).arrival_dt.ToShortTimeString();
                     ws.Cells[i + 2, 12].Value = datasource.ElementAt(i).handled_by_contact_name;
                     ws.Cells[i + 2, 13].Value = datasource.ElementAt(i).consequences;
-                    ws.Cells[i + 2, 14].Value = datasource.ElementAt(i).comment;
+                    ws.Cells[i + 2, 14].Value = datasource.ElementAt(i).comments;
 
                 }
 
