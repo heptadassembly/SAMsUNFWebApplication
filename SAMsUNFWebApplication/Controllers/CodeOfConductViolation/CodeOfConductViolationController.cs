@@ -15,21 +15,15 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
     public class CodeOfConductViolationController : Controller
     {
         // GET: CodeOfConductViolation
-
-
         public async System.Threading.Tasks.Task<ActionResult> CodeOfConductViolation()
         {
-
-
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
                 var result = await new CodeOfConductViolationRepository(connection).GetCodeOfConductViolations();
                 return View(result);
             }
-  
         }
-
         public System.Web.Mvc.RedirectResult CreateCodeOfConductViolation(string TxtId, string TxtCode, string TxtName)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
@@ -46,8 +40,5 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
                 }
             }
         }
-
-
-
     }
 }

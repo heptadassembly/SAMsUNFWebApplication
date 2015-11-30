@@ -20,6 +20,17 @@ namespace SAMsUNFWebApplication.Models
         public int last_update_contact_id { get; set; }
         public DateTime last_update_dt { get; set; }
         public Boolean is_deleted { get; set; }
+        public string student_name
+        {
+            get {
+                if (last_name != null)
+                {
+                    return last_name + ", " + first_name;
+                }
+
+                return null;
+            }
+        }
     }
 
     public class CSVStudent

@@ -56,5 +56,14 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
             Response.End();
         }
 
+
+        public  ActionResult AddOfficeVisit()
+        {
+
+            return View("AddOfficeVisit");
+            
+        }
     }
+    
+
 }

@@ -24,6 +24,7 @@ namespace SAMsUNFWebApplication.Models
         public string last_update_contact_name { get; set; }
         public DateTime last_update_dt { get; set; }
         public bool is_deleted { get; set; }
+        public string name { get; set; }
     }
 
     public class CSVContacts

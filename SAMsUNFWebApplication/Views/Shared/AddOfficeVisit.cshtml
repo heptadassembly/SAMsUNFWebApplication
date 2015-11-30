@@ -1,0 +1,43 @@
+﻿@model  SAMsUNFWebApplication.Models.OfficeVisitCollection
+@{
+    ViewBag.Title = "AddStudent";
+ }
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+
+<div>
+@using (Html.BeginForm("Add", "AddOfficeVisit"))
+{
+    @Html.Label("Select A Student:")
+    @Html.DropDownListFor(m => m.AllStudents,
+                    new SelectList(Model.AllStudents,
+                                   "student_id", "student_name",
+                                   Model.AllStudents.First().student_name))
+    <br />
+    @Html.Label("Select A Reporter:")
+    @Html.DropDownListFor(m => m.AllContacts,
+                    new SelectList(Model.AllContacts,
+                                   "contact_id", "name",
+                                   Model.AllContacts.First().name))
+    <br />
+    @Html.Label("Select Location:")
+
+    @Html.DropDownListFor(m => m.AllLocations,
+                    new SelectList(Model.AllLocations,
+                                   "content_course_id", "name",
+                                   Model.AllLocations.First().content_course_id))
+    <br />
+    @Html.Label("Select Violation:")
+    @Html.DropDownListFor(m => m.AllCodeViolations,
+                    new SelectList(Model.AllCodeViolations,
+                                   "code_of_conduct_violation_id", "name",
+                                   Model.AllCodeViolations.First().code_of_conduct_violation_id))
+    <br />
+      <input id="submit" type="submit" value="Add Student"  style="padding-left:20px;"/>  
+    <input id="submit" type="submit" value="Cancel" />
+}
+</div>

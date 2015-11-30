@@ -43,7 +43,13 @@
                columns.Add(c => c.comments).Titled("Comment").Filterable(true);
            }).WithPaging(5).Sortable(true)
             </div>
+           </td>
+    </tr>
+    <tr>
+        <td align="center">
             @Html.ActionLink("Export To Excel", "ExportToExcel")
+            @Html.ActionLink("Add Office Visit","AddOfficeVisit","AddOfficeVisit")
+            
         </td>
     </tr>
 </table>

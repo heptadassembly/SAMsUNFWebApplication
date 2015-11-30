@@ -11,23 +11,24 @@ using System.Configuration;
 
 namespace SAMsUNFWebApplication.Models.DataAccess
 {
-    public class ContactRepository
+    public class ContentCourseRepository
     {
-
         private MySqlConnection _openConnection;
 
 
-        public ContactRepository(MySqlConnection openConnection)
+        public ContentCourseRepository(MySqlConnection openConnection)
         {
             this._openConnection = openConnection;
         }
 
-        public async Task<IEnumerable<Contact>> GetContacts()
+
+        public async Task<IEnumerable<ContentCourse>> GetContentCourses()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Contact> result = await this._openConnection.QueryAsync<Contact>(@" SELECT * FROM  vw_contact");
+            IEnumerable<ContentCourse> result = await this._openConnection.QueryAsync<ContentCourse>(@" SELECT * FROM  vw_content_course");
             return result;
         }
+
 
     }
 }

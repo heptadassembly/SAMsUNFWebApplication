@@ -176,19 +176,23 @@
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
+    <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ContentCourse.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DataAccess\CodeOfConductViolationRepository.cs" />
     <Compile Include="Models\DataAccess\ContactRepository.cs" />
     <Compile Include="Models\DataAccess\DapperDAO.cs" />
     <Compile Include="Models\CodeOfConductViolation.cs" />
     <Compile Include="Models\DataAccess\OfficeVisitRepository.cs" />
+    <Compile Include="Models\DataAccess\ContentCourseRepository.cs" />
     <Compile Include="Models\DataAccess\StudentRepository.cs" />
     <Compile Include="Models\OfficeVisit.cs" />
+    <Compile Include="Models\OfficeVisitCollection.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -218,6 +222,7 @@
     <Content Include="Views\Contact\ImportStudent.cshtml" />
     <Content Include="Views\Contact\ImportContact.cshtml" />
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
+    <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

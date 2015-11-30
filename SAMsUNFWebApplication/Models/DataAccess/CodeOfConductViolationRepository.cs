@@ -25,7 +25,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<CodeOfConductViolation>> GetCodeOfConductViolations()
         {
             // Read the user by their username in the database. 
-            IEnumerable<CodeOfConductViolation> result = await this._openConnection.QueryAsync<CodeOfConductViolation>(@" SELECT * FROM  code_of_conduct_violation");
+            IEnumerable<CodeOfConductViolation> result = await this._openConnection.QueryAsync<CodeOfConductViolation>(@" SELECT * FROM  vw_code_of_conduct_violation");
             return result;
         }
 
