@@ -182,6 +182,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
+    <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
+    <Compile Include="Models\RemedialAction.cs" />
     <Compile Include="Models\ContentCourse.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\DataAccess\CodeOfConductViolationRepository.cs" />
@@ -193,6 +196,7 @@
     <Compile Include="Models\DataAccess\StudentRepository.cs" />
     <Compile Include="Models\OfficeVisit.cs" />
     <Compile Include="Models\OfficeVisitCollection.cs" />
+    <Compile Include="Models\HomeRoom.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

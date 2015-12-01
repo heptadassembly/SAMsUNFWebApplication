@@ -10,34 +10,61 @@
 </head>
 
 <div>
-@using (Html.BeginForm("Add", "AddOfficeVisit"))
+@using (Html.BeginForm("AddVisit", "AddOfficeVisit"))
 {
     @Html.Label("Select A Student:")
-    @Html.DropDownListFor(m => m.AllStudents,
-                    new SelectList(Model.AllStudents,
+    @Html.DropDownListFor(m => m.officeVisit.student_id,
+                    new SelectList(Model.allStudents,
                                    "student_id", "student_name",
-                                   Model.AllStudents.First().student_name))
+                                   Model.allStudents.First().student_name))
     <br />
+    @Html.Label("Select A Home Room:")
+    @Html.DropDownListFor(m => m.allHomeRooms,
+                    new SelectList(Model.allHomeRooms,
+                                   "homeroom_id", "name",
+                                   Model.allHomeRooms.First().name))
+    <br />
+
     @Html.Label("Select A Reporter:")
-    @Html.DropDownListFor(m => m.AllContacts,
-                    new SelectList(Model.AllContacts,
+    @Html.DropDownListFor(m => m.allReporters,
+                    new SelectList(Model.allReporters,
                                    "contact_id", "name",
-                                   Model.AllContacts.First().name))
+                                   Model.allReporters.First().name))
     <br />
     @Html.Label("Select Location:")
 
-    @Html.DropDownListFor(m => m.AllLocations,
-                    new SelectList(Model.AllLocations,
+    @Html.DropDownListFor(m => m.allLocations,
+                    new SelectList(Model.allLocations,
                                    "content_course_id", "name",
-                                   Model.AllLocations.First().content_course_id))
+                                   Model.allLocations.First().name))
     <br />
     @Html.Label("Select Violation:")
-    @Html.DropDownListFor(m => m.AllCodeViolations,
-                    new SelectList(Model.AllCodeViolations,
+    @Html.DropDownListFor(m => m.allCodeViolations,
+                    new SelectList(Model.allCodeViolations,
                                    "code_of_conduct_violation_id", "name",
-                                   Model.AllCodeViolations.First().code_of_conduct_violation_id))
+                                   Model.allCodeViolations.First().name))
     <br />
-      <input id="submit" type="submit" value="Add Student"  style="padding-left:20px;"/>  
+    @Html.Label("Select Remedial Action:")
+    @Html.DropDownListFor(m => m.allRemedials,
+                    new SelectList(Model.allRemedials,
+                                   "remedial_action_id", "name",
+                                   Model.allRemedials.First().name))
+    <br />
+    @Html.Label("Nap?")
+    @Html.CheckBoxFor(m=>m.officeVisit.nap)
+    <br />
+    @Html.Label("Comments;")
+    @Html.TextAreaFor(m => m.officeVisit.comments,5,55,null)
+    <br />
+    <br />
+
+    @Html.Label("Handled By:")
+    @Html.DropDownListFor(m => m.allHandledBys,
+                    new SelectList(Model.allHandledBys,
+                                   "contact_id", "name",
+                                   Model.allHandledBys.First().name))
+
+    <input id="submit" type="submit" value="Add Visit"  style="padding-left:20px;"/>  
     <input id="submit" type="submit" value="Cancel" />
 }
 </div>

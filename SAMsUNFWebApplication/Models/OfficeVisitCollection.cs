@@ -6,13 +6,15 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Models
 {
-    public class OfficeVisitCollection
+    public class OfficeVisitCollection:OfficeVisit
     {
-
-        public IEnumerable<Student> AllStudents { get; set; }
-        public IEnumerable<Contact> AllContacts { get; set; }
-        public IEnumerable<ContentCourse> AllLocations { get; set; }
-        public IEnumerable<CodeOfConductViolation> AllCodeViolations { get; set; }
-
+        public OfficeVisit officeVisit { get; set; }
+        public IEnumerable<Student> allStudents { get; set; }
+        public IEnumerable<Contact> allReporters { get; set; }
+        public IEnumerable<Contact> allHandledBys { get; set; }
+        public IEnumerable<ContentCourse> allLocations { get; set; }
+        public IEnumerable<CodeOfConductViolation> allCodeViolations { get; set; }
+        public IEnumerable<RemedialAction> allRemedials { get; set; }
+        public IEnumerable<HomeRoom> allHomeRooms { get; set; }
     }
 }
