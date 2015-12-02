@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CsvHelper;
 using SAMsUNFWebApplication.Models;
+using MySql.Data.MySqlClient;
+using System.Configuration;
+using SAMsUNFWebApplication.Models.DataAccess;
 using System.IO;
+using CsvHelper;
 
 namespace SAMsUNFWebApplication.Controllers.Contact
 {
@@ -34,8 +37,10 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                     using (var sr = new StreamReader(path))
                     {
                         var reader = new CsvReader(sr);
-                        reader.Configuration.Delimiter = ",";
+                        reader.Configuration.Delimiter = "\t";
+                        reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVContacts>().ToList();
+
 
                         return View(records);
                     }
@@ -49,6 +54,14 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             return View();
 
         }
+
+
+        [HttpGet]
+        public ActionResult ImportStudent()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult ImportStudent(HttpPostedFileBase file)
         {
@@ -70,6 +83,13 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVStudent>().ToList();
 
+
+                        //move data to the database etl.student
+                        //then run the stored procedure that copies data from etl.student to samsjacksonville.student
+                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
+                        StudentRepository snm = new StudentRepository(connection);
+                        snm.ImportStudents(records);
+
                         return View(records);
                     }
                 }
@@ -82,6 +102,9 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             return View();
 
         }
-        
+
+
     }
+
+
 }

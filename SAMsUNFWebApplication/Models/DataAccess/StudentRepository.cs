@@ -29,6 +29,25 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
+        public bool ImportStudents(List<CSVStudent> csvStudent)
+        {
+            bool success = false;
+
+            var queryString = @"INSERT INTO etl.student values(@StudentID ,@Last,@First,@Grade,@School,@Gender)";
+
+            try
+            {
+                this._openConnection.Execute(queryString, csvStudent);
+                var newString = @"CALL samsjacksonville.import_student();";
+                this._openConnection.Execute(newString);
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            return success;
+        }
 
     }
 }
