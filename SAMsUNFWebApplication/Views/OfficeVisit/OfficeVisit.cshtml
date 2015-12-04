@@ -27,13 +27,13 @@
                 
                 @Html.Grid(Model).Columns(columns =>
            {
-               columns.Add(c => c.student_nbr).Titled("StudentNumber").Filterable(true);
+               columns.Add(c => c.student_number).Titled("StudentNumber").Filterable(true);
                columns.Add(c => c.student_name).Titled("Name").Filterable(true);
                columns.Add(c => c.total_visits).Titled("Visit").Filterable(true);
                columns.Add(c => c.office_visit_dt).Titled("Date").Filterable(true);
                columns.Add(c => c.school_name).Titled("School").Filterable(true);
                columns.Add(c => c.grade_value).Titled("Grade").Filterable(true);
-               columns.Add(c => c.homeroom).Titled("Homeroom").Filterable(true);
+               columns.Add(c => c.homeroom_name).Titled("Homeroom").Filterable(true);
                columns.Add(c => c.content_course_name).Titled("Content").Filterable(true);
                columns.Add(c => c.sent_by_contact_name).Titled("SentBy").Filterable(true);
                columns.Add(c => c.offenses).Titled("Offenses").Filterable(true);

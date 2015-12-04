@@ -21,15 +21,15 @@
     @Html.Label("Select A Home Room:")
     @Html.DropDownListFor(m => m.allHomeRooms,
                     new SelectList(Model.allHomeRooms,
-                                   "homeroom_id", "name",
-                                   Model.allHomeRooms.First().name))
+                                   "homeroom_id", "homeroom_name",
+                                   "select"))
     <br />
 
     @Html.Label("Select A Reporter:")
     @Html.DropDownListFor(m => m.allReporters,
                     new SelectList(Model.allReporters,
-                                   "contact_id", "name",
-                                   Model.allReporters.First().name))
+                                   "contact_id", "contact_name",
+                                   Model.allReporters.First().contact_name))
     <br />
     @Html.Label("Select Location:")
 
@@ -61,8 +61,8 @@
     @Html.Label("Handled By:")
     @Html.DropDownListFor(m => m.allHandledBys,
                     new SelectList(Model.allHandledBys,
-                                   "contact_id", "name",
-                                   Model.allHandledBys.First().name))
+                                   "contact_id", "contact_name",
+                                   Model.allHandledBys.First().contact_name))
 
     <input id="submit" type="submit" value="Add Visit"  style="padding-left:20px;"/>  
     <input id="submit" type="submit" value="Cancel" />

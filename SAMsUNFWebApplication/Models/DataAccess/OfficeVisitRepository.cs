@@ -48,7 +48,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             try
             {
                 this._openConnection.Execute(queryString, new {
-                    officeVisit.student_nbr,
+                    officeVisit.student_number,
                     officeVisit.total_visits,
                     officeVisit.content_course_id,
                     officeVisit.sent_by_contact_id,
