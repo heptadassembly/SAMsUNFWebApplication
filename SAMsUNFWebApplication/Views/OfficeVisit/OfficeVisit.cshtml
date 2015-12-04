@@ -12,19 +12,15 @@
 </head>
 <table>
     <tr>
-        <td>
-            <div class="jumbotron">
-                <h1 style="color:#FEDC11; font-size:larger;">Student Action Managegment System (SAMs)</h1>
-                <h1 style="color:#FEDC11; font-size:large; ">Office Visits</h1>
-            </div>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>        
+                <h3 style="color:#255694; font-size:x-large; ">Office Visits</h3>
         </td>
     </tr>
     <tr>
         <td align="left">
-            <div style="width:500px; text-align:left;font-size:xx-small;">
-
+            <div style="width:500px; text-align:left;font-size:xx-small; ">
                 <!--https://stick2basic.wordpress.com/2013/04/10/how-to-set-webgrid-style-in-mvc/-->
-                
+          
                 @Html.Grid(Model).Columns(columns =>
            {
                columns.Add(c => c.student_number).Titled("StudentNumber").Filterable(true);
@@ -48,8 +44,9 @@
     <tr>
         <td align="center">
             @Html.ActionLink("Export To Excel", "ExportToExcel")
-            @Html.ActionLink("Add Office Visit","AddOfficeVisit","AddOfficeVisit")
-            
+        </td>
+        <td>
+            @Html.ActionLink("Add Office Visit", "AddOfficeVisit", "AddOfficeVisit")
         </td>
     </tr>
 </table>

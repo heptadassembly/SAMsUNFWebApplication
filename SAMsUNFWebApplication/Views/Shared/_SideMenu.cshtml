@@ -4,18 +4,14 @@
 <div id="accordian">
     <ul>
         <li>
+            <h3>@Html.ActionLink("Login", "Login", "Login", null, new { @style = "color:white" })</h3>
+        </li>
+        <li>
             <h3>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard", null, new { @style = "color:white" })</h3>
         </li>
-    
-        <!-- we will keep this LI open by default -->
-        <!--<li class="active"> -->
         <li>
             <h3>@Html.ActionLink("Office Visit", "OfficeVisit", "OfficeVisit", null, new { @style = "color:white" })</h3>
-            <ul>
-                <li><a href="#">@Html.ActionLink("Add Office Visit", "Index", "Home")</a></li>
-            </ul>
         </li>
-
         <li>
             <h3>Admin Management</h3>
             <ul>
@@ -37,13 +33,6 @@
             <ul>
                 <li>@Html.ActionLink("Administrator Training", "Training", "Training")</li>
                 <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
-            </ul>
-        </li>
-        <li>
-            <h3><span class="icon-logout"></span>Settings</h3>
-            <ul>
-                <li>@Html.ActionLink("Login", "Login", "Login")</li>
-                <li>@Html.ActionLink("Logout", "Login", "Login")</li>
             </ul>
         </li>
     </ul>

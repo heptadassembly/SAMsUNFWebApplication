@@ -11,16 +11,13 @@
 </head>
 <table>
     <tr>
-        <td>
-            <div class="jumbotron">
-                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Managegment System (SAMs)</h1>
-                <h1 style="color:darkgoldenrod; font-size:large; ">Dashboard</h1>
-            </div>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 style="color:#255694; font-size:x-large; ">Dashboard</h3>
         </td>
     </tr>
     <tr>
         <td align="left">
-            <div style="width:500px; text-align:left;">
+            <div style="width:500px; text-align:left;font-size:xx-small; ">
 
                 @Html.Grid(Model).Columns(columns =>
            {
@@ -36,6 +33,10 @@
                columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
            }).WithPaging(3).Sortable(true)
             </div>
+        </td>
+        </tr>
+    <tr>
+        <td align="center">
             @Html.ActionLink("Export To Excel", "ExportToExcel")
         </td>
     </tr>

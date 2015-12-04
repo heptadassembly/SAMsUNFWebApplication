@@ -26,9 +26,9 @@
         <tr>
             <td>
 
-                <div class="navbar navbar-inverse navbar-fixed-top" style='background-color:blue;'>
+                <div class="navbar navbar-inverse navbar-fixed-top" style='background-color:#60A2D7;'>
                     <div class="container">
-                        <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
+                        <h1 style="color:#FEDA00; font-size:xx-large;">Student Action Management System (SAMs)</h1>
                         @*<div class="navbar-header">
 
                             <button type="button" class="navbar-toggle" , data-toggle="collapse" data-target=".navbar-collapse">
@@ -45,26 +45,13 @@
                         </div>*@
                     </div>
                 </div>
-
             </td>
         </tr>
-        <span>
+        <tr style="height:400px;">
             <td width="20%" valign="top">
-                <span>
                 @Html.Partial("_SideMenu")
-                    </span>
-                <span>
-                    Actions speak louder than words<br />
-                </span>
-                <span>
-                    <br />
-                    <br />
-                    Area for messages and alerts.  This was put in at
-                    the bequest of Professor Karthik.
-                </span>
-
             </td>
-            
+           
             <td  width="80%" valign="top">
                 <div class="container body-content">
                     @RenderBody()
