@@ -25,7 +25,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<Contact>> GetContacts()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Contact> result = await this._openConnection.QueryAsync<Contact>(@" SELECT * FROM  vw_contact");
+            IEnumerable<Contact> result = await this._openConnection.QueryAsync<Contact>(@" SELECT * FROM  vw_contact where contact_id > 0 order by last_name");
             return result;
         }
 
