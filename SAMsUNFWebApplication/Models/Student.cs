@@ -41,5 +41,16 @@ namespace SAMsUNFWebApplication.Models
         public string Grade { get; set; }
         public string School { get; set; }
         public string Gender { get; set; }
+        public bool Empty
+        {
+            get
+            {
+                return (string.IsNullOrWhiteSpace(First) &&
+                        string.IsNullOrWhiteSpace(Last) &&
+                        string.IsNullOrWhiteSpace(School) &&
+                        string.IsNullOrWhiteSpace(Grade)
+                        );
+                }
+        }
     }
 }
