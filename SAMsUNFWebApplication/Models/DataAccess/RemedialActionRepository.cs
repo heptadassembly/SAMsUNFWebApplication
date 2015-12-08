@@ -24,7 +24,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public async Task<IEnumerable<RemedialAction>> GetRemedialActions()
         {
-            IEnumerable<RemedialAction> result = await this._openConnection.QueryAsync<RemedialAction>(@" SELECT * FROM  vw_remedial_action");
+            IEnumerable<RemedialAction> result = await this._openConnection.QueryAsync<RemedialAction>(@" SELECT * FROM  vw_remedial_action where remedial_action_id > 0 order by name");
             return result;
         }
 

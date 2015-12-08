@@ -25,7 +25,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<ContentCourse>> GetContentCourses()
         {
             // Read the user by their username in the database. 
-            IEnumerable<ContentCourse> result = await this._openConnection.QueryAsync<ContentCourse>(@" SELECT * FROM  vw_content_course");
+            IEnumerable<ContentCourse> result = await this._openConnection.QueryAsync<ContentCourse>(@" SELECT * FROM  vw_content_course where content_course_id > 0 order by name");
             return result;
         }
 
