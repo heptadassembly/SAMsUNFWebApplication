@@ -179,12 +179,15 @@
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
+    <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
+    <Compile Include="Controllers\Student\StudentController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
     <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
+    <Compile Include="Models\DataAccess\SchoolYearRepository.cs" />
     <Compile Include="Models\RemedialAction.cs" />
     <Compile Include="Models\ContentCourse.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Models\OfficeVisit.cs" />
     <Compile Include="Models\OfficeVisitCollection.cs" />
     <Compile Include="Models\HomeRoom.cs" />
+    <Compile Include="Models\SchoolYear.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -228,6 +232,9 @@
     <Content Include="Views\Contact\ImportContact.cshtml" />
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
+    <Content Include="Views\Student\Student.cshtml" />
+    <Content Include="Views\Home\CreateStudent.cshtml" />
+    <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
