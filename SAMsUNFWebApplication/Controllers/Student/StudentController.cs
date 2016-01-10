@@ -10,34 +10,34 @@ using SAMsUNFWebApplication.Models.DataAccess;
 using System.IO;
 using Dapper;
 
-namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
+namespace SAMsUNFWebApplication.Controllers.Student
 {
-    public class CodeOfConductViolationController : Controller
+    public class StudentController : Controller
     {
-        // GET: CodeOfConductViolation
-        public async System.Threading.Tasks.Task<ActionResult> CodeOfConductViolation()
+        // GET: Student
+        public async System.Threading.Tasks.Task<ActionResult> Student()
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
-                var result = await new CodeOfConductViolationRepository(connection).GetCodeOfConductViolations();
+                var result = await new StudentRepository(connection).GetStudents();
                 return View(result);
             }
         }
 
-        public System.Web.Mvc.RedirectResult CreateCodeOfConductViolation(string TxtId, string TxtCode, string TxtName)
+        public System.Web.Mvc.RedirectResult CreateStudent(string TxtId, string TxtLast, string TxtFirst, string TxtGrade, string TxtSchool, string TxtGender)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new CodeOfConductViolationRepository(connection).CreateCodeOfConductViolation(TxtId, TxtCode, TxtName);
-                if (result == "success")
+                var result = new StudentRepository(connection).CreateStudent(TxtId, TxtLast, TxtFirst, TxtGrade, TxtSchool, TxtGender);
+                if (result == true)
                 {
-                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                    return Redirect("Student/Student");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                    return Redirect("Student/Student");
                 }
             }
         }
