@@ -238,7 +238,7 @@
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
-    <Content Include="Views\Shared\AddStudent.cshtml" />
+    <Content Include="Views\Home\AddStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
