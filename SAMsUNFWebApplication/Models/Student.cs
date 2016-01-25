@@ -53,4 +53,11 @@ namespace SAMsUNFWebApplication.Models
                 }
         }
     }
+
+    public class StudentCollection
+    {
+        public Student student { get; set; }
+        public IEnumerable<Student> allStudents { get; set; }
+        public IEnumerable<Grade> allGrades { get; set; }
+    }
 }

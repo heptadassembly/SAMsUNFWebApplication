@@ -180,14 +180,17 @@
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
     <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
+    <Compile Include="Controllers\Student\AddStudentController.cs" />
     <Compile Include="Controllers\Student\StudentController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataAccess\GradeRepository.cs" />
     <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
     <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
     <Compile Include="Models\DataAccess\SchoolYearRepository.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\RemedialAction.cs" />
     <Compile Include="Models\ContentCourse.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -235,6 +238,7 @@
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
+    <Content Include="Views\Shared\AddStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,6 +249,7 @@
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
     <Folder Include="CSVModels\" />
+    <Folder Include="Views\AddStudent\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
