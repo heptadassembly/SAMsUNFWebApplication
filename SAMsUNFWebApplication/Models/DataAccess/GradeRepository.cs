@@ -23,7 +23,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<Grade>> GetGrades()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM vw_grade where student_id > 0");
+            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM vw_grade where grade_id > 0");
             return result;
         }
     }

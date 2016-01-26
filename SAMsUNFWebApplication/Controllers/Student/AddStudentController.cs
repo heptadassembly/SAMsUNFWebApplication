@@ -30,7 +30,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
             return View(coll);
         }
 
-        public ActionResult AddVisit(StudentCollection model, string actionRequest)
+        public ActionResult AddChild(StudentCollection model, string actionRequest)
         {
 
             return RedirectToAction("Student", "Student");

@@ -17,20 +17,22 @@
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("AddStudent", "AddStudent"))
+
+
+                @using (Html.BeginForm("AddChild", "AddStudent"))
                 {
                     
                     @Html.Label("Select Grade:")
-                    @Html.DropDownListFor(m => m.allGrades,
-                    new SelectList(Model.allGrades,
-                                   "grade_id", "grade_value",
-                                   Model.allGrades.First().grade_value))
+                    @Html.DropDownListFor(m => m.allGrades.First().grade_id,
+                    new SelectList(Model.allGrades.AsEnumerable(),
+                                   "grade_id", "grade_value"))
                     <br />
 
                     <input id="submit" type="submit" value="Add" style="padding-left:20px;" />
                     <input id="submit" type="submit" value="Cancel" />
                 }
             </div>
+           
         </td>
     </tr>
 </table>

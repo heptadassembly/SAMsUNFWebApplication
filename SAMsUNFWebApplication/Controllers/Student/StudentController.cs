@@ -17,10 +17,12 @@ namespace SAMsUNFWebApplication.Controllers.Student
         // GET: Student
         public async System.Threading.Tasks.Task<ActionResult> Student()
         {
+            Session["Students"] = null;
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
                 var result = await new StudentRepository(connection).GetStudents();
+                Session["Students"] = result;
                 return View(result);
             }
         }
@@ -40,6 +42,14 @@ namespace SAMsUNFWebApplication.Controllers.Student
                     return Redirect("Student/Student");
                 }
             }
+        }
+
+        [HttpGet]
+        public ActionResult AddStudent()
+        {
+
+            return View("AddStudent");
+
         }
     }
 }

@@ -9,5 +9,7 @@ namespace SAMsUNFWebApplication.Models
     {
         public int grade_id { get; set; }
         public string grade_value { get; set; }
+
+        public string grade_text { get; set; }
     }
 }

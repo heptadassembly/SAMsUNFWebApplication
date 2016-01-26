@@ -174,6 +174,7 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\Contact\ContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
+    <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
@@ -239,6 +240,7 @@
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <Content Include="Views\Home\AddStudent.cshtml" />
+    <Content Include="Views\Grade\Grade.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -248,7 +250,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="CSVModels\" />
     <Folder Include="Views\AddStudent\" />
   </ItemGroup>
   <ItemGroup>
