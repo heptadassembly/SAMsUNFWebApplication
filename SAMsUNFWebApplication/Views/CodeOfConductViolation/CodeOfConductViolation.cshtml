@@ -42,7 +42,7 @@
                 @Html.ActionLink("Edit", "Index")
             </b>);
                     columns.Add(c => c.code_of_conduct_violation_id).Titled("ID").SetWidth(15);
-                    columns.Add(c => c.duval_violation_code).Titled("Duval Code").SetWidth(15);
+                    columns.Add(c => c.duval_violation_code).Titled("Duval Code").SetWidth(20);
                     columns.Add(c => c.short_code).Titled("Code").SetWidth(5);
                     columns.Add(c => c.name).Titled("Code Description").SetWidth(350).Sanitized(true);
                 }).WithPaging(10).Sortable(true).Filterable(true)

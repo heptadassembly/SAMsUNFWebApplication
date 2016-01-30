@@ -5,9 +5,8 @@ using System.Web;
 
 namespace SAMsUNFWebApplication.Models
 {
-    public class Grade
+    public class Gender
     {
-        public int grade_id { get; set; }
-        public string grade_value { get; set; }
+        public string gender { get; set; }
     }
 }

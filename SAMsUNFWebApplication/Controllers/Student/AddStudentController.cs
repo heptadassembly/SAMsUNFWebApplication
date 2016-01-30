@@ -22,9 +22,15 @@ namespace SAMsUNFWebApplication.Controllers.Student
             {
                 await connection.OpenAsync();
 
-                var result = new GradeRepository(connection).GetGrades();
+                var result2 = new GradeRepository(connection).GetGrades();
+                var result3 = new SchoolRepository(connection).GetSchools();
+                var result4 = new GenderRepository(connection).GetGenders();
+                var result5 = new HomeRoomRepository(connection).GetHomeRooms();
 
-                coll.allGrades = (IEnumerable<Models.Grade>)result.Result.ToArray();
+                coll.allGrades = (IEnumerable<Models.Grade>)result2.Result.ToArray();
+                coll.allSchools = (IEnumerable<Models.School>)result3.Result.ToArray();
+                coll.allGenders = (IEnumerable<Models.Gender>)result4.Result.ToArray();
+                coll.allHomeRooms = (IEnumerable<Models.HomeRoom>)result5.Result.ToArray();
             }
 
             return View(coll);

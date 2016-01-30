@@ -187,10 +187,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataAccess\GenderRepository.cs" />
     <Compile Include="Models\DataAccess\GradeRepository.cs" />
     <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
     <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
+    <Compile Include="Models\DataAccess\SchoolRepository.cs" />
     <Compile Include="Models\DataAccess\SchoolYearRepository.cs" />
+    <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\RemedialAction.cs" />
     <Compile Include="Models\ContentCourse.cs" />
@@ -205,6 +208,7 @@
     <Compile Include="Models\OfficeVisit.cs" />
     <Compile Include="Models\OfficeVisitCollection.cs" />
     <Compile Include="Models\HomeRoom.cs" />
+    <Compile Include="Models\School.cs" />
     <Compile Include="Models\SchoolYear.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />
@@ -239,7 +243,7 @@
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
-    <Content Include="Views\Home\AddStudent.cshtml" />
+    <Content Include="Views\Shared\AddStudent.cshtml" />
     <Content Include="Views\Grade\Grade.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

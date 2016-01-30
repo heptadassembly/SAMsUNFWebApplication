@@ -71,5 +71,16 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return success;
         }
 
+        public string AddChild (string TxtID, string TxtFirstName, string TxtLastName, string allSchools, string allGrades, string allGenders, string allHomerooms)
+        {
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO student (school_year_id, student_id_nk, first_name, last_name, school_id, grade_id, gender, homeroom_id) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + TxtID + "','" + TxtFirstName + "','" + TxtLastName + "','" + allSchools + "','" + allGrades + "','" + allGenders + "','" + allHomerooms + "');";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
     }
 }

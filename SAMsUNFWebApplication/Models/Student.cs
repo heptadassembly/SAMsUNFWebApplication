@@ -8,6 +8,7 @@ namespace SAMsUNFWebApplication.Models
     public class Student
     {
         public int student_id { get; set; }
+        public string student_id_nk { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
         public int school_year_id { get; set; }
@@ -57,7 +58,10 @@ namespace SAMsUNFWebApplication.Models
     public class StudentCollection
     {
         public Student student { get; set; }
-        public IEnumerable<Student> allStudents { get; set; }
         public IEnumerable<Grade> allGrades { get; set; }
+        public IEnumerable<School> allSchools { get; set; }
+        public IEnumerable<Gender> allGenders { get; set; }
+        public IEnumerable<HomeRoom> allHomeRooms { get; set; }
+
     }
 }

@@ -11,19 +11,19 @@ using System.Configuration;
 
 namespace SAMsUNFWebApplication.Models.DataAccess
 {
-    public class SchoolYearRepository
+    public class GenderRepository
     {
         private MySqlConnection _openConnection;
 
-        public SchoolYearRepository(MySqlConnection openConnection)
+        public GenderRepository(MySqlConnection openConnection)
         {
             this._openConnection = openConnection;
         }
 
-        public async Task<IEnumerable<SchoolYear>> GetSchoolYear()
+        public async Task<IEnumerable<Gender>> GetGenders()
         {
             // Read the user by their username in the database. 
-            IEnumerable<SchoolYear> result = await this._openConnection.QueryAsync<SchoolYear>(@" SELECT * FROM samsjacksonville.vw_school_year");
+            IEnumerable<Gender> result = await this._openConnection.QueryAsync<Gender>(@" SELECT * FROM samsjacksonville.gender");
             return result;
         }
     }
