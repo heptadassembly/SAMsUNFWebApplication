@@ -145,6 +145,7 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Database Changes\update to import_student to look for duplicates.txt" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -241,7 +242,6 @@
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
     <Content Include="Views\Student\Student.cshtml" />
-    <Content Include="Views\Home\CreateStudent.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <Content Include="Views\Shared\AddStudent.cshtml" />
     <Content Include="Views\Grade\Grade.cshtml" />
