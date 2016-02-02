@@ -21,6 +21,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
             {
                 await connection.OpenAsync();
                 var result = await new StudentRepository(connection).GetStudents();
+                var result2 = await new GradeRepository(connection).GetGrades();
                 return View(result);
             }
         }
@@ -40,6 +41,31 @@ namespace SAMsUNFWebApplication.Controllers.Student
                     return Redirect("Student/Student");
                 }
             }
+        }
+
+        public System.Web.Mvc.RedirectResult AddChild(string TxtID, string TxtFirstName, string TxtLastName, string allSchools, string allGrades, string allGenders, string allHomerooms)
+        {
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                var result = new StudentRepository(connection).AddChild(TxtID, TxtFirstName, TxtLastName, allSchools, allGrades, allGenders, allHomerooms);
+                if (result == "success")
+                {
+                    return Redirect("Student/Student");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("Student/Student");
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult AddStudent()
+        {
+
+            return View("AddStudent");
+
         }
     }
 }
