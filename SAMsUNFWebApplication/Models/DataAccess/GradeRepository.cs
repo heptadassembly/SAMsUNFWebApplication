@@ -23,8 +23,23 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<Grade>> GetGrades()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM vw_grade where grade_id > 0");
+            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM samsjacksonville.vw_grade where grade_id > 0");
             return result;
         }
+
+        public async Task<IEnumerable<Grade>> GetSortedGrades(string grade_id)
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM samsjacksonville.vw_grade order by case when grade_id = " + grade_id + " then -2 else grade_id end");
+            return result;
+        }
+
+        public async Task<IEnumerable<Grade>> GetGrade(string grade_id)
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<Grade> result = await this._openConnection.QueryAsync<Grade>(@" SELECT * FROM samsjacksonville.vw_grade where grade_id = " + grade_id + " Limit 1;");
+            return result;
+        }
+
     }
 }

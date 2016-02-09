@@ -146,6 +146,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Database Changes\Database Changes 2.txt" />
+    <Content Include="Scripts\Database Changes\Homeroom Update - alter table to change the word class to class_room.txt" />
     <Content Include="Scripts\Database Changes\update to import_student to look for duplicates.txt" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
@@ -184,6 +185,7 @@
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
     <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
     <Compile Include="Controllers\Student\AddStudentController.cs" />
+    <Compile Include="Controllers\Student\EditStudentController.cs" />
     <Compile Include="Controllers\Student\StudentController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,6 +248,7 @@
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <Content Include="Views\Shared\AddStudent.cshtml" />
     <Content Include="Views\Grade\Grade.cshtml" />
+    <Content Include="Views\Shared\EditStudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,7 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="Views\AddStudent\" />
+    <Folder Include="Views\EditStudent\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

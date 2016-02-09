@@ -47,9 +47,17 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<Student>> GetStudents()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  vw_student where student_id > 0  order by last_name");
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  samsjacksonville.student where student_id > 0  order by last_name");
             return result;
         }
+
+        public async Task<IEnumerable<Student>> GetStudent(int id)
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@"Select * from samsjacksonville.student where student_id = " + id + ";");
+            return result;
+        }
+           
 
         public bool ImportStudents(List<CSVStudent> csvStudent)
         {

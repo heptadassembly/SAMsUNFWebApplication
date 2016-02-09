@@ -24,7 +24,18 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public async Task<IEnumerable<HomeRoom>> GetHomeRooms()
         {
-            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  vw_homeroom where homeroom_id > 0 order by  homeroom_name");
+            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.vw_homeroom where homeroom_id > 0 order by  homeroom_name");
+            return result;
+        }
+        public async Task<IEnumerable<HomeRoom>> GetHomeRoom(string homeroom_id)
+        {
+            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.homeroom where homeroom_id = " + homeroom_id + ";");
+            return result;
+        }
+
+        public async Task<IEnumerable<HomeRoom>> GetSortedHomeRooms(string homeroom_id)
+        {
+            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.homeroom order by case when homeroom_id = " + homeroom_id + " then -2 else homeroom_id end;");
             return result;
         }
 

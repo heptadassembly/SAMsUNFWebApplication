@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Models
 {
@@ -23,7 +24,7 @@ namespace SAMsUNFWebApplication.Models
         public string gender { get; set; } 
         public int homeroom_id { get; set; }
         [Required]
-        public string grade_id { get; set; }
+        public int grade_id { get; set; }
         public int create_contact_id { get; set; }
         [DataType(DataType.Date)]
         public DateTime create_dt { get; set; }
@@ -78,6 +79,17 @@ namespace SAMsUNFWebApplication.Models
         public IEnumerable<School> allSchools { get; set; }
         public IEnumerable<Gender> allGenders { get; set; }
         public IEnumerable<HomeRoom> allHomeRooms { get; set; }
+
+        public IEnumerable<Student> singleStudent { get; set; }
+        public IEnumerable<Grade> singleGrade { get; set; }
+        public IEnumerable<School> singleSchool { get; set; }
+        public IEnumerable<Gender> singleGender { get; set; }
+        public IEnumerable<HomeRoom> singleHomeRoom { get; set; }
+
+        public SelectList gradeselectlist { get; set; }
+        public SelectList schoolselectlist { get; set; }
+        public SelectList homeroomselectlist { get; set; }
+        public SelectList genderselectlist { get; set; }
 
     }
 }
