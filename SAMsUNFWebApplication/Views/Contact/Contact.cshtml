@@ -4,7 +4,7 @@
     ViewBag.Title = "Contact";
 }
 
-<h2>Contact</h2>
+<h2>Import Data</h2>
 <head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
@@ -44,13 +44,13 @@
         </td>
     </tr>
     <tr>
-        <td align="center" style="padding-left:100px;">
+        <td align="left" style="padding-left:100px;">
             <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
 
                 <label for="file">Filename:</label>
                 <input type="file" name="file" id="file" />
-
-                Please choose a dept:<br />
+                <br />
+                <label>Choose File Type:</label><br />
                 <select name="recipient" id="recipient" size="1" onChange="chgAction()">
                     <option value="" selected="selected">Select</option>
                     <option value="ImportStudent?file">Import Student</option>

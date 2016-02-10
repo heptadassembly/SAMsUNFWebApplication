@@ -15,17 +15,39 @@ namespace SAMsUNFWebApplication.Models.DataAccess
     {
         private MySqlConnection _openConnection;
 
-
         public StudentRepository(MySqlConnection openConnection)
         {
             this._openConnection = openConnection;
         }
 
+        public bool CreateStudent(string TxtId, string TxtLast, string TxtFirst, string TxtGrade, string TxtSchool, string TxtGender)
+        {
+            bool success = false;
+
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO etl.student (studentid, last, first, grade, school, gender) VALUES ('" + TxtId + "','" + TxtLast + "','" + "','" + TxtFirst + "','" + TxtGrade + "','" + TxtSchool + "','" + TxtGender + "');";
+            try
+            { 
+                this._openConnection.Execute(queryString);
+                var newString = @"CALL samsjacksonville.import_student();";
+                this._openConnection.Execute(newString);
+                success = true;
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+
+            return success;
+        }
 
         public async Task<IEnumerable<Student>> GetStudents()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  student where student_id > 0  order by last_name");
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  vw_student where student_id > 0  order by last_name");
             return result;
         }
 
@@ -47,6 +69,17 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                 throw (ex);
             }
             return success;
+        }
+
+        public string AddChild (string TxtID, string TxtFirstName, string TxtLastName, string allSchools, string allGrades, string allGenders, string allHomerooms)
+        {
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO student (school_year_id, student_id_nk, first_name, last_name, school_id, grade_id, gender, homeroom_id) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + TxtID + "','" + TxtFirstName + "','" + TxtLastName + "','" + allSchools + "','" + allGrades + "','" + allGenders + "','" + allHomerooms + "');";
+            _openConnection.Execute(queryString);
+            return "success";
         }
 
     }

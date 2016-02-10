@@ -1,0 +1,61 @@
+﻿@model  SAMsUNFWebApplication.Models.StudentCollection
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 style="color:#255694; font-size:x-large; ">Add A Student</h3>
+            <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (Html.BeginForm("AddChild", "Student", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    @Html.Label("Add Student ID:")
+                    @Html.TextBoxFor(m => m.student.student_id_nk, new { @id = "TxtID", @Name = "TxtID", @required = "required" })
+                    <br/>
+
+                    @Html.Label("Add First Name:")
+                    @Html.TextBoxFor(m => m.student.first_name, new { @id = "TxtFirstName", @Name = "TxtFirstName", @required = "required" })
+                    <br />
+                    @Html.Label("Add Last Name:")
+                    @Html.TextBoxFor(m => m.student.last_name, new { @id = "TxtLastName", @Name = "TxtLastName", @required = "required" })
+                    <br />
+                    @Html.Label("Select A School:")
+                    @Html.DropDownListFor(m => m.allSchools,
+                    new SelectList(Model.allSchools,
+                                   "school_id", "name", new { id = "TxtSchool", @required = "required" }))
+                    <br />
+                    @Html.Label("Select A Grade:")
+                    @Html.DropDownListFor(m => m.allGrades,
+                    new SelectList(Model.allGrades,
+                                   "grade_id", "grade_value", new { id = "TxtGrade", @required = "required" }))
+                    <br />
+                    @Html.Label("Select A Gender:")
+                    @Html.DropDownListFor(m => m.allGenders,
+                    new SelectList(Model.allGenders,
+                                   "gender", "gender", new { id = "TxtGender", @required = "required" }))
+                    <br />
+                    @Html.Label("Select A Home Room:")
+                    @Html.DropDownListFor(m => m.allHomeRooms,
+                    new SelectList(Model.allHomeRooms,
+                                   "homeroom_id", "homeroom_name", new { id = "TxtHomeroom", @required = "required" }))
+                    <br />
+                    <input id="submit" type="submit" value="Add" style="padding-left:20px;" />
+                    <input id="submit" type="submit" value="Cancel" />
+                }
+            </div>
+           
+        </td>
+    </tr>
+</table>

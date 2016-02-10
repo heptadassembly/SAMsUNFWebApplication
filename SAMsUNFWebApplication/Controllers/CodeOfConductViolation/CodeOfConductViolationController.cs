@@ -24,6 +24,7 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
                 return View(result);
             }
         }
+
         public System.Web.Mvc.RedirectResult CreateCodeOfConductViolation(string TxtId, string TxtCode, string TxtName)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))

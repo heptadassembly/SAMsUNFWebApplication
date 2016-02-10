@@ -148,6 +148,8 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Database Changes\Database Changes 2.txt" />
+    <Content Include="Scripts\Database Changes\update to import_student to look for duplicates.txt" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -188,18 +190,28 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\Contact\ContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
+    <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
+    <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
+    <Compile Include="Controllers\Student\AddStudentController.cs" />
+    <Compile Include="Controllers\Student\StudentController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DashboardCollection.cs" />
+    <Compile Include="Models\DataAccess\GenderRepository.cs" />
+    <Compile Include="Models\DataAccess\GradeRepository.cs" />
     <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
     <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
+    <Compile Include="Models\DataAccess\SchoolRepository.cs" />
+    <Compile Include="Models\DataAccess\SchoolYearRepository.cs" />
+    <Compile Include="Models\Gender.cs" />
+    <Compile Include="Models\Grade.cs" />
     <Compile Include="Models\RemedialAction.cs" />
     <Compile Include="Models\ContentCourse.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -213,6 +225,8 @@
     <Compile Include="Models\OfficeVisit.cs" />
     <Compile Include="Models\OfficeVisitCollection.cs" />
     <Compile Include="Models\HomeRoom.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\SchoolYear.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,6 +258,10 @@
     <Content Include="Views\Contact\ImportContact.cshtml" />
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
+    <Content Include="Views\Student\Student.cshtml" />
+    <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
+    <Content Include="Views\Shared\AddStudent.cshtml" />
+    <Content Include="Views\Grade\Grade.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -253,7 +271,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="CSVModels\" />
+    <Folder Include="Views\AddStudent\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
