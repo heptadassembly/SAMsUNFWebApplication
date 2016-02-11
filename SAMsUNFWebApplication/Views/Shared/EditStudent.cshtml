@@ -1,0 +1,132 @@
+﻿@model  SAMsUNFWebApplication.Models.StudentCollection
+@{
+    ViewBag.Title = "EditStudent";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 style="color:#255694; font-size:x-large; ">Edit Student</h3>
+            <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (Html.BeginForm("EditChild", "Student", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.singleStudent.First().student_id_nk,
+                                        new
+                                        {
+                                            @Style = "display: none; border:0px;",
+                                            @id = "STUDENTID",
+                                            @Name = "STUDENTID",
+                                            @Value = Model.singleStudent.First().student_id,
+                                            @readonly = "readonly"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Student ID:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.singleStudent.First().student_id_nk,
+                                        new
+                                        {
+                                            @id = "TxtID",
+                                            @Name = "TxtID",
+                                            @Value = Model.singleStudent.First().student_id_nk,
+                                            @required = "required"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("First Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.singleStudent.First().first_name,
+                                        new
+                                        {
+                                            @id = "TxtFirstName",
+                                            @Name = "TxtFirstName",
+                                            @Value = Model.singleStudent.First().first_name,
+                                            @required = "required"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Last Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.singleStudent.First().last_name,
+                                        new
+                                        {
+                                            @id = "TxtLastName",
+                                            @Name = "TxtLastName",
+                                            @Value = Model.singleStudent.First().last_name,
+                                            @required = "required"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("School:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist);
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Grade:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.gradeselectlist, Model.gradeselectlist);
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Gender:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.genderselectlist, Model.genderselectlist);
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Homeroom:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.homeroomselectlist, Model.homeroomselectlist);
+                                </td>
+                            </tr>
+<tr>
+                        <td colspan="2" align="right">
+                            <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                            <input id="submit" class="btn btn-info" type="submit" value="Cancel" />
+                        </td></tr>
+                                </tbody>
+                    </table>
+                }
+
+            </div>
+
+        </td>
+    </tr>
+</table>

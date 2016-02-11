@@ -47,7 +47,14 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<Student>> GetStudents()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  vw_student where student_id > 0  order by last_name");
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  samsjacksonville.student where student_id > 0  order by last_name");
+            return result;
+        }
+
+        public async Task<IEnumerable<Student>> GetStudent(int id)
+        {
+            // Read the user by their username in the database. 
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@"Select * from samsjacksonville.student where student_id = " + id + ";");
             return result;
         }
 
@@ -82,5 +89,11 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return "success";
         }
 
+        public string EditChild (string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)
+        {
+            var queryString = @"update student set student_id_nk = '" + TxtID + "', first_name = '" + TxtFirstName + "', last_name = '" + TxtLastName + "', school_id = " + schoolselectlist + ", grade_id = " + gradeselectlist + ", gender = '" + genderselectlist + "', homeroom_id = " + homeroomselectlist + " where student_id = " + STUDENTID + ";";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
     }
 }

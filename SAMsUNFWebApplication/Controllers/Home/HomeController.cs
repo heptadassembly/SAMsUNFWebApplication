@@ -49,5 +49,10 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult EditStudent()
+        {
+            return View();
+        }
     }
 }

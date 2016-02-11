@@ -24,12 +24,10 @@
     <tr>
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
+                
                 @Html.ActionLink("Add New Student", "AddStudent", "AddStudent")
             </div>
             <div style="width:500px; text-align:center;">
-
-
-
 
                 @Html.Grid(Model).Columns(columns =>
            {
@@ -39,12 +37,12 @@
             .SetWidth(30)
             .RenderValueAs(d =>
             @<b>
-                @Html.ActionLink("Edit", "Index")
+                @Html.ActionLink("Edit", "EditStudent", "EditStudent", new { @id = d.student_id }, null);
             </b>);
                columns.Add(c => c.student_id).Titled("ID").SetWidth(15);
-               columns.Add(c => c.last_name).Titled("Duval Code").SetWidth(15);
-               columns.Add(c => c.first_name).Titled("Code").SetWidth(5);
-               columns.Add(c => c.gender).Titled("Code Description").SetWidth(350).Sanitized(true);
+               columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15);
+               columns.Add(c => c.first_name).Titled("First Name").SetWidth(5);
+               columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>

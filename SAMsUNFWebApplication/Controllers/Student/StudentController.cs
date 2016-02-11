@@ -67,5 +67,28 @@ namespace SAMsUNFWebApplication.Controllers.Student
             return View("AddStudent");
 
         }
+
+        public System.Web.Mvc.RedirectResult EditChild(string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)
+        {
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                var result = new StudentRepository(connection).EditChild(STUDENTID, TxtID, TxtFirstName, TxtLastName, schoolselectlist, gradeselectlist, genderselectlist, homeroomselectlist);
+                if (result == "success")
+                {
+                    return Redirect("Student/Student");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("Student/Student");
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult EditStudent()
+        {
+            return View("EditStudent");
+        }
     }
 }
