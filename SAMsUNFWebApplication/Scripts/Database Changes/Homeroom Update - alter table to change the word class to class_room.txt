@@ -1,4 +1,0 @@
-﻿use samsjacksonville;
-
-alter table samsjacksonville.homeroom
-change `class` `class_room` varchar(50);
