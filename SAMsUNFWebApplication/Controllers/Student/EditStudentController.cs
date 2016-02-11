@@ -49,7 +49,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
         public ActionResult EditChild(StudentCollection model, string actionRequest)
         {
 
-            return RedirectToAction("EditStudent", "EditStudent");
+            return RedirectToAction("Student", "Student");
         }
     }
 }

@@ -41,5 +41,6 @@ namespace SAMsUNFWebApplication.Controllers.Student
 
             return RedirectToAction("Student", "Student");
         }
+        
     }
 }

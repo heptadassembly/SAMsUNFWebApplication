@@ -38,6 +38,8 @@ namespace SAMsUNFWebApplication.Controllers
                 }
                 else
                 {
+                    //insert session veriable here
+                    //example: List<Student> students = (List<Student>)Session["Students"];
                     return RedirectToAction("Dashboard", "Dashboard");
                 }
             }

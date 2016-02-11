@@ -57,7 +57,6 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@"Select * from samsjacksonville.student where student_id = " + id + ";");
             return result;
         }
-           
 
         public bool ImportStudents(List<CSVStudent> csvStudent)
         {
@@ -90,5 +89,11 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return "success";
         }
 
+        public string EditChild (string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)
+        {
+            var queryString = @"update student set student_id_nk = '" + TxtID + "', first_name = '" + TxtFirstName + "', last_name = '" + TxtLastName + "', school_id = " + schoolselectlist + ", grade_id = " + gradeselectlist + ", gender = '" + genderselectlist + "', homeroom_id = " + homeroomselectlist + " where student_id = " + STUDENTID + ";";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
     }
 }

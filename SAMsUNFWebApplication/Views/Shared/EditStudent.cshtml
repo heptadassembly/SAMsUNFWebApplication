@@ -18,7 +18,7 @@
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("AddChild", "Student", FormMethod.Get))
+                @using (Html.BeginForm("EditChild", "Student", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table>
@@ -118,8 +118,8 @@
                             </tr>
 <tr>
                         <td colspan="2" align="right">
-                            <input id="submit" class="btn btn-primary" type="submit" value="Add" name="action:Save" style="padding-left:20px;" />
-                            <input id="submit" class="btn btn-info" type="submit" value="Cancel" name="action:Cancel" />
+                            <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                            <input id="submit" class="btn btn-info" type="submit" value="Cancel" />
                         </td></tr>
                                 </tbody>
                     </table>
