@@ -25,12 +25,10 @@ namespace SAMsUNFWebApplication.Utilities.Dashboard
 
         public void ExportToExcel()
         {
-           
-           //Get the Session data  
-           List<Student> students = (List<Student>)Session["Students"];
-           
-            //Genarate the excel data
-           Byte[] fileBytes =  Utilities.ExcelGenerator.GenerateXLS(students);
+
+            //Get the Session data  
+            
+            Byte[] fileBytes =  Utilities.DashboardExcelGenerator.GenerateXLS((DashboardCollection)Session["Dashboard"]);
            
             //Clear the response
             Response.Clear();
@@ -46,7 +44,7 @@ namespace SAMsUNFWebApplication.Utilities.Dashboard
             Response.AppendHeader("Content-Length", fileBytes.Length.ToString());
             Response.AppendHeader("Pragma", "cache");
             Response.AppendHeader("Expires", "60");
-            Response.AppendHeader("Content-Disposition", "attachment; filename=" +"\"Student" + DateTime.Now.ToString("MMddyyyyhhmmss") + ".xlsx\""); 
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" +"\"dashboard" + DateTime.Now.ToString("MMddyyyyhhmmss") + ".xlsx\""); 
             Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
             //Write it back to the client for downloading
@@ -55,17 +53,27 @@ namespace SAMsUNFWebApplication.Utilities.Dashboard
         }
         public async System.Threading.Tasks.Task<ActionResult> Dashboard()
         {
+            DashboardCollection coll = new DashboardCollection();
 
-            Session["Students"] = null;
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
-                var result = await new StudentRepository(connection).GetStudents();
-                Session["Students"] = result;         
-                return View(result);
-            }
+                
+                var result = new OfficeVisitRepository(connection).GetOfficeVisitsByHomeroom();
+                var result2 = new OfficeVisitRepository(connection).GetOfficeVisitsByOffenseType();
+                var result3 = new OfficeVisitRepository(connection).GetOfficeVisitsByTeacher();
+                var result4 = new OfficeVisitRepository(connection).GetOfficeVisitsCountByWeek();
 
+                coll.Homerooms = (IEnumerable<OfficeVisitsByHomeroom>)result.Result.ToArray();
+                coll.OffenseTypes = (IEnumerable<OfficeVisitsByOffenseType>)result2.Result.ToArray();
+                coll.Teachers = (IEnumerable<OfficeVisitsByTeacher>)result3.Result.ToArray();
+                coll.ByWeek = (IEnumerable<OfficeVisitsCountsByWeek>)result4.Result.ToArray();
+                Session["Dashboard"] = coll;
+
+                return View(coll);
+            }
         }
+
 
         public ActionResult addOfficeVisit()
         {

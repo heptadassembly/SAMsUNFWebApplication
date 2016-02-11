@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Student>
+﻿@model  SAMsUNFWebApplication.Models.DashboardCollection
 @using GridMvc.Html
 @{
     ViewBag.Title = "Dashboard";
@@ -6,39 +6,65 @@
 <head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />\
 </head>
-<table>
-    <tr>
-        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 style="color:#255694; font-size:x-large; ">Dashboard</h3>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <div style="width:500px; text-align:left;font-size:xx-small; ">
 
-                @Html.Grid(Model).Columns(columns =>
-           {
-               columns.Add(c => c.student_id).Titled("StudentId").Filterable(true);
-               columns.Add(c => c.first_name).Titled("First Name").Filterable(true);
-               columns.Add(c => c.last_name).Titled("Last Name").Filterable(true);
-               columns.Add(c => c.grade_id).Titled("Grade").Filterable(true);
-               columns.Add(c => c.homeroom_id).Titled("Homeroom").Filterable(true);
-               columns.Add(c => c.is_deleted).Titled("deleted?").Filterable(true); ;
-               columns.Add(c => c.school_year_id).Titled("School year").Filterable(true); ;
-               columns.Add(c => c.create_contact_id).Titled("Submitted By").Filterable(true); ;
-               columns.Add(c => c.last_update_contact_id).Titled("Updated By").Filterable(true); ;
-               columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
-           }).WithPaging(3).Sortable(true)
+<table width="900" style="font-size:small">
+    <tr>
+        <td>
+            <div class="container">
+                <div style="float: left; width: 45%;">
+                    <h3 style="color:#255694; font-size:x-large; font-weight:bold; ">Dashboard</h3>
+                    @Html.ActionLink("Export To Excel", "ExportToExcel", null, new { @class = "btn btn-primary btn-large" })
+                </div>
             </div>
         </td>
-        </tr>
+    </tr>
     <tr>
         <td align="center">
-            @Html.ActionLink("Export To Excel", "ExportToExcel")
-        </td>
+            <div class="container">
+                <div  style="float: left; width: 45%;  height:250px; background-color:lightgray;padding:5px; border:outset 2px; overflow-y: scroll;">
+                    <h3 style="color:#255694; font-size:large; ">Homerooms</h3>
+                    @Html.Grid(Model.Homerooms).Columns(columns =>
+      {
+          columns.Add(c => c.school_name).Titled("School Name").Filterable(true);
+          columns.Add(c => c.homeroom_name).Titled("Home Room").Filterable(true);
+          columns.Add(c => c.grade).Titled("Grade").Filterable(true);
+          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+      }).WithPaging(5).Sortable(true)
+                </div>
+                <div style="float: left; width: 45%;  height:250px; background-color:lightskyblue;padding:5px; border:outset 2px;overflow-y: scroll">
+                    <h3 style="color:#255694; font-size:large; ">Teachers</h3>
+                    @Html.Grid(Model.Teachers).Columns(columns =>
+      {
+          columns.Add(c => c.sent_by_contact_name).Titled("Teacher").Filterable(true);
+          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+      }).WithPaging(5).Sortable(true)
+                </div>
+</div>
+     </td>
+        </tr>
+    <tr>
+        <td>
+            <div class="container">
+                <div style="float: left; width: 45%;  height:250px; background-color:lightgreen;padding:5px; border:outset 2px;overflow-y: scroll">
+                    <h3 style="color:#255694; font-size:large; ">Violations</h3>
+                    @Html.Grid(Model.OffenseTypes).Columns(columns =>
+      {
+          columns.Add(c => c.offense_type).Titled("Offense Types").Filterable(true);
+          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+      }).WithPaging(5).Sortable(true)
+                </div>
+                <div style="float: left; width: 45%;  height:250px; background-color:lightgoldenrodyellow;padding:5px; border:outset 2px;overflow-y: scroll">
+                    <h3 style="color:#255694; font-size:large; ">By Week</h3>
+                    @Html.Grid(Model.ByWeek).Columns(columns =>
+               {
+                   columns.Add(c => c.displayDate).Titled("Week Of").Filterable(true);
+                   columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+               }).WithPaging(5).Sortable(true);
+                </div>
+                </div>
+
+</td>
     </tr>
 </table>
-
