@@ -6814,3 +6814,14 @@ td.visible-print {
     display: none !important;
   }
 }
+
+dashboard-grid-lightgray{
+    float: left; 
+    width: 45%;  
+    height:250px; 
+    background-color:lightgray;
+    padding:5px; 
+    border:outset 2px; 
+    overflow-y: scroll;
+}
+
