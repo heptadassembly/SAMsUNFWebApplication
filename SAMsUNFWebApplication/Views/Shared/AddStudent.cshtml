@@ -11,8 +11,7 @@
 <table>
     <tr>
         <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 style="color:#255694; font-size:x-large; ">Add A Student</h3>
-            <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+            <h3 class="h3">Add Student</h3>
         </td>
     </tr>
     <tr>
@@ -22,41 +21,151 @@
                 @using (Html.BeginForm("AddChild", "Student", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
-                    @Html.Label("Add Student ID:")
-                    @Html.TextBoxFor(m => m.student.student_id_nk, new { @id = "TxtID", @Name = "TxtID", @required = "required" })
-                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Student ID:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.student.student_id_nk,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "TxtID",
+                                       @Name = "TxtID",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add First Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.student.first_name,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "TxtFirstName",
+                                       @Name = "TxtFirstName",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Last Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.student.last_name,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "TxtLastName",
+                                       @Name = "TxtLastName",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A School:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.allSchools,
+                                        new SelectList(Model.allSchools, "school_id", "name",
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            @id = "TxtSchool",
+                                            @required = "required"
+                                        }),
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A Grade:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.allGrades,
+                                        new SelectList(Model.allGrades, "grade_id", "grade_value",
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            @id = "TxtGrade",
+                                            @required = "required"
+                                        }),
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A Gender:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.allGenders,
+                                        new SelectList(Model.allGenders, "gender", "gender",
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            @id = "TxtGender",
+                                            @required = "required"
+                                        }),
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A Home Room:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.allHomeRooms,
+                                        new SelectList(Model.allHomeRooms, "homeroom_id", "homeroom_name",
+                                        new
+                                        {
+                                            @class = "form-control",
+                                            @id = "TxtHomeroom",
+                                            @required = "required"
 
-                    @Html.Label("Add First Name:")
-                    @Html.TextBoxFor(m => m.student.first_name, new { @id = "TxtFirstName", @Name = "TxtFirstName", @required = "required" })
-                    <br />
-                    @Html.Label("Add Last Name:")
-                    @Html.TextBoxFor(m => m.student.last_name, new { @id = "TxtLastName", @Name = "TxtLastName", @required = "required" })
-                    <br />
-                    @Html.Label("Select A School:")
-                    @Html.DropDownListFor(m => m.allSchools,
-                    new SelectList(Model.allSchools,
-                                   "school_id", "name", new { id = "TxtSchool", @required = "required" }))
-                    <br />
-                    @Html.Label("Select A Grade:")
-                    @Html.DropDownListFor(m => m.allGrades,
-                    new SelectList(Model.allGrades,
-                                   "grade_id", "grade_value", new { id = "TxtGrade", @required = "required" }))
-                    <br />
-                    @Html.Label("Select A Gender:")
-                    @Html.DropDownListFor(m => m.allGenders,
-                    new SelectList(Model.allGenders,
-                                   "gender", "gender", new { id = "TxtGender", @required = "required" }))
-                    <br />
-                    @Html.Label("Select A Home Room:")
-                    @Html.DropDownListFor(m => m.allHomeRooms,
-                    new SelectList(Model.allHomeRooms,
-                                   "homeroom_id", "homeroom_name", new { id = "TxtHomeroom", @required = "required" }))
-                    <br />
-                    <input id="submit" type="submit" value="Add" style="padding-left:20px;" />
-                    <input id="submit" type="submit" value="Cancel" />
+                                        }),
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 }
             </div>
-           
         </td>
     </tr>
 </table>
