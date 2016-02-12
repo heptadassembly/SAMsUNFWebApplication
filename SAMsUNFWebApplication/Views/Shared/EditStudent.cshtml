@@ -11,8 +11,7 @@
 <table>
     <tr>
         <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 style="color:#255694; font-size:x-large; ">Edit Student</h3>
-            <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+            <h3 class="h3" style="color:#255694; font-size:x-large; ">Edit Student</h3>
         </td>
     </tr>
     <tr>
@@ -21,8 +20,8 @@
                 @using (Html.BeginForm("EditChild", "Student", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
-                    <table>
-                        <thead></thead>
+                    <table class="table">
+                        <thead><tr><td></td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a><td></tr></thead>
                         <tbody>
                             <tr>
                                 <td></td>
@@ -49,7 +48,9 @@
                                             @id = "TxtID",
                                             @Name = "TxtID",
                                             @Value = Model.singleStudent.First().student_id_nk,
-                                            @required = "required"
+                                            @required = "required",
+                                            @class = "form-control",
+                                            @style = "width: 250px;"
                                         })
                                 </td>
                             </tr>
@@ -64,7 +65,9 @@
                                             @id = "TxtFirstName",
                                             @Name = "TxtFirstName",
                                             @Value = Model.singleStudent.First().first_name,
-                                            @required = "required"
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
                                         })
                                 </td>
                             </tr>
@@ -79,7 +82,9 @@
                                             @id = "TxtLastName",
                                             @Name = "TxtLastName",
                                             @Value = Model.singleStudent.First().last_name,
-                                            @required = "required"
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
                                         })
                                 </td>
                             </tr>
@@ -88,7 +93,12 @@
                                     @Html.Label("School:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist);
+                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
+                                   new
+                                   {
+                                       @style = "width: 250px;",
+                                       @class = "form-control"
+                                   })
                                 </td>
                             </tr>
                             <tr>
@@ -96,8 +106,12 @@
                                     @Html.Label("Grade:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.gradeselectlist, Model.gradeselectlist);
-
+                                    @Html.DropDownListFor(m => m.gradeselectlist, Model.gradeselectlist,
+                                   new
+                                   {
+                                       @style = "width: 250px;",
+                                       @class = "form-control"
+                                   })
                                 </td>
                             </tr>
                             <tr>
@@ -105,7 +119,12 @@
                                     @Html.Label("Gender:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.genderselectlist, Model.genderselectlist);
+                                    @Html.DropDownListFor(m => m.genderselectlist, Model.genderselectlist,
+                                   new
+                                   {
+                                       @style = "width: 250px;",
+                                       @class = "form-control"
+                                   })
                                 </td>
                             </tr>
                             <tr>
@@ -113,13 +132,17 @@
                                     @Html.Label("Homeroom:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.homeroomselectlist, Model.homeroomselectlist);
+                                    @Html.DropDownListFor(m => m.homeroomselectlist, Model.homeroomselectlist,
+                                   new
+                                   {
+                                       @style = "width: 250px;",
+                                       @class = "form-control"
+                                   })
                                 </td>
                             </tr>
 <tr>
                         <td colspan="2" align="right">
                             <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
-                            <input id="submit" class="btn btn-info" type="submit" value="Cancel" />
                         </td></tr>
                                 </tbody>
                     </table>
