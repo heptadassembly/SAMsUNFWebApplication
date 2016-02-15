@@ -1,6 +1,6 @@
-﻿@model  SAMsUNFWebApplication.Models.StudentCollection
+﻿@model  SAMsUNFWebApplication.Models.ContactCollection
 @{
-    ViewBag.Title = "AddStudent";
+    ViewBag.Title = "AddContact";
 }
 
 <head>
@@ -17,8 +17,7 @@
     <tr>
         <td>
             <div>
-                <!--AddChild, Student-->
-                @using (Html.BeginForm("AddChild", "Student", FormMethod.Get))
+                @using (Html.BeginForm("AddPerson", "Contact", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -30,10 +29,10 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.Label("Add Student ID:")
+                                    @Html.Label("Add Contact ID:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.student.student_id_nk,
+                                    @Html.TextBoxFor(m => m.contact.contact_id,
                                    new
                                    {
                                        @class = "form-control",
@@ -49,7 +48,7 @@
                                     @Html.Label("Add First Name:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.student.first_name,
+                                    @Html.TextBoxFor(m => m.contact.first_name,
                                    new
                                    {
                                        @class = "form-control",
@@ -65,7 +64,7 @@
                                     @Html.Label("Add Last Name:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.student.last_name,
+                                    @Html.TextBoxFor(m => m.contact.last_name,
                                    new
                                    {
                                        @class = "form-control",
@@ -81,29 +80,28 @@
                                     @Html.Label("Select A School:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.allSchools,
-                                        new SelectList(Model.allSchools, "school_id", "name",
+                                    @Html.DropDownListFor(m => m.allContacts,
+                                        new SelectList(Model.allContacts, "school_id", "name",
                                         new
                                         {
-                                            @class = "form-control",
                                             @id = "TxtSchool",
-                                            @required = "required"
-
+                                            @required = "required",
+                                            @class = "form-control"
                                         }),
                                         new
                                         {
                                             @style = "width: 250px;",
                                             @class = "form-control"
-                                        })
-                                    </td>
+                                        }
+                                        )
                             </tr>
                             <tr>
                                 <td>
                                     @Html.Label("Select A Grade:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.allGrades,
-                                        new SelectList(Model.allGrades, "grade_id", "grade_value",
+                                    @Html.DropDownListFor(m => m.allContacts,
+                                        new SelectList(Model.allContacts, "grade_id", "grade_value",
                                         new
                                         {
                                             @class = "form-control",

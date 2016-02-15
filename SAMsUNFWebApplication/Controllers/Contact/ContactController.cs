@@ -8,103 +8,78 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using SAMsUNFWebApplication.Models.DataAccess;
 using System.IO;
-using CsvHelper;
+using Dapper;
 
-namespace SAMsUNFWebApplication.Controllers.Contact
+namespace SAMsUNFWebApplication.Controllers.Student
 {
     public class ContactController : Controller
     {
-        // GET: Contact
-        public ActionResult Contact()
+        // GET: Student
+        public async System.Threading.Tasks.Task<ActionResult> Contact()
         {
-            return View();
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                await connection.OpenAsync();
+                var result = await new ContactRepository(connection).GetContacts();
+                return View(result);
+            }
         }
 
-        [HttpPost]
-        public ActionResult ImportContact(HttpPostedFileBase file)
+        public System.Web.Mvc.RedirectResult AddContact(string TxtId, string TxtFirst, string TxtLast, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
         {
-            string path = null;
-            List<CSVContacts> ContactsToDisplay = new List<CSVContacts>();
-
-            try
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                if (file.ContentLength > 0)
+                var result = new ContactRepository(connection).AddPerson(TxtId, TxtFirst, TxtLast, TxtPosition, TxtClassRoom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
+                if (result == true)
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    path = AppDomain.CurrentDomain.BaseDirectory + "upload\\" + fileName;
-                    file.SaveAs(path);
-
-                    using (var sr = new StreamReader(path))
-                    {
-                        var reader = new CsvReader(sr);
-                        reader.Configuration.Delimiter = "\t";
-                        reader.Configuration.IgnoreHeaderWhiteSpace = true;
-                        var records = reader.GetRecords<CSVContacts>().ToList();
-
-
-                        return View(records);
-                    }
+                    return Redirect("Contact/Contact");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("Contact/Contact");
                 }
             }
-            catch
-            {
-                return View();
-            }
-
-            return View();
-
         }
-
 
         [HttpGet]
-        public ActionResult ImportStudent()
+        public ActionResult AddContact()
         {
-            return View();
+            return View("AddContact");
         }
 
-        [HttpPost]
-        public ActionResult ImportStudent(HttpPostedFileBase file)
+        public System.Web.Mvc.RedirectResult EditPerson(string TxtID, string TxtFirstName, string TxtLastName, string TxtPosition, string TxtClassroom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
         {
-            string path = null;
-            List<CSVStudent> StudentsToDisplay = new List<CSVStudent>();
-
-            try
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                if (file.ContentLength > 0)
+                var result = new ContactRepository(connection).EditPerson(TxtID, TxtFirstName, TxtLastName, TxtPosition, TxtClassroom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
+                if (result == "success")
                 {
-                    var fileName = Path.GetFileName(file.FileName);
-                    path = AppDomain.CurrentDomain.BaseDirectory + "upload\\" + fileName;
-                    file.SaveAs(path);
-
-                    using (var sr = new StreamReader(path))
-                    {
-                        var reader = new CsvReader(sr);
-                        reader.Configuration.Delimiter = "\t";
-                        reader.Configuration.IgnoreHeaderWhiteSpace = true;
-                        var records = reader.GetRecords<CSVStudent>().ToList();
-
-
-                        //move data to the database etl.student
-                        //then run the stored procedure that copies data from etl.student to samsjacksonville.student
-                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
-                        StudentRepository snm = new StudentRepository(connection);
-                        snm.ImportStudents(records);
-
-                        return View(records);
-                    }
+                    return Redirect("Contact/Contact");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("Contact/Contact");
                 }
             }
-            catch
-            {
-                return View();
-            }
-
-            return View();
-
         }
 
-
+        public System.Web.Mvc.RedirectResult AddPerson(string TxtID, string TxtFirstName, string TxtLastName, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
+        {
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                var result = new ContactRepository(connection).AddPerson(TxtID, TxtFirstName, TxtLastName, TxtPosition, TxtClassRoom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
+                if (result == true)
+                {
+                    return Redirect("Contact/Contact");
+                }
+                else
+                {
+                    //do something else here.
+                    return Redirect("Contact/Contact");
+                }
+            }
+        }
     }
-
-
 }

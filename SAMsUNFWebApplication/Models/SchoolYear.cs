@@ -14,4 +14,10 @@ namespace SAMsUNFWebApplication.Models
         public DateTime create_dt { get; set; }
         public int create_contact_id { get; set; }
     }
+
+    public class SchoolYearCollection
+    {
+        public SchoolYear schoolyear { get; set; }
+        public IEnumerable<SchoolYear> allSchoolYears { get; set; }
+    }
 }

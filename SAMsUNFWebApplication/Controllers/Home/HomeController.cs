@@ -54,5 +54,9 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+        public ActionResult Import()
+        {
+            return View();
+        }
     }
 }

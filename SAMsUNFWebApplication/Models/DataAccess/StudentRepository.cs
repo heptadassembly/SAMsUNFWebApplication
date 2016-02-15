@@ -30,7 +30,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             var queryString = @"INSERT INTO etl.student (studentid, last, first, grade, school, gender) VALUES ('" + TxtId + "','" + TxtLast + "','" + "','" + TxtFirst + "','" + TxtGrade + "','" + TxtSchool + "','" + TxtGender + "');";
             try
-            { 
+            {
                 this._openConnection.Execute(queryString);
                 var newString = @"CALL samsjacksonville.import_student();";
                 this._openConnection.Execute(newString);

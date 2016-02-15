@@ -17,11 +17,30 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
         // GET: SchoolYear
         public async System.Threading.Tasks.Task<ActionResult> SchoolYear()
         {
+            SchoolYearCollection coll = new SchoolYearCollection();
+
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 await connection.OpenAsync();
-                var result = await new SchoolYearRepository(connection).GetSchoolYear();
-                return View(result);
+                var result = new SchoolYearRepository(connection).GetSchoolYears();
+                coll.allSchoolYears = (IEnumerable<Models.SchoolYear>)result.Result.ToArray();
+            }
+            return View(coll);
+        }
+
+        public System.Web.Mvc.RedirectResult SetSchoolYear(string allSchoolYears)
+        {
+            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
+            {
+                var result = new SchoolYearRepository(connection).SetSchoolYear(allSchoolYears);
+                if (result == true)
+                {
+                    return Redirect("SchoolYear");
+                }
+                else
+                {
+                    return Redirect("SchoolYear");
+                }
             }
         }
 

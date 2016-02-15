@@ -1,51 +1,50 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.SchoolYear>
-@using GridMvc.Html
+﻿@model  SAMsUNFWebApplication.Models.SchoolYearCollection
 @{
-    ViewBag.Title = "SchoolYear";
+    ViewBag.Title = "SetSchoolYear";
 }
+
 <head>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
 </head>
 <table>
     <tr>
-        <td>
-            <div class="jumbotron">
-                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
-                <h1 style="color:darkgoldenrod; font-size:large; ">School Year</h1>
-            </div>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 class="h3" style="color:#255694; font-size:x-large; ">Set School Year</h3>
         </td>
     </tr>
     <tr>
-        <td align="center" style="padding-left:100px;">
-            <div style="width:500px; text-align:left;">
-                @Html.ActionLink("Set School Year", "SetSchoolYear", "Home")
+        <td>
+            <div>
+                @using (Html.BeginForm("SetSchoolYear", "SchoolYear", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table class="table">
+                        <thead><tr><td></td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a><td></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.Label("Select Location:")</td><td>
+
+                                    @Html.DropDownListFor(m => m.allSchoolYears,
+                    new SelectList(Model.allSchoolYears,
+                                   "school_year_id", "school_year_id",
+                                   Model.allSchoolYears.First().school_year_id))
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
             </div>
-            <div style="width:500px; text-align:center;">
 
-
-
-
-                @Html.Grid(Model).Columns(columns =>
-           {
-           columns.Add()
-           .Encoded(false)
-           .Sanitized(false)
-           .SetWidth(30)
-           .RenderValueAs(d =>
-        @<b>
-            @Html.ActionLink("Edit", "Index")
-        </b>);
-               columns.Add(c => c.school_year_id).Titled("School Year ID").SetWidth(15);
-               columns.Add(c => c.is_current).Titled("Is Current").SetWidth(15);
-               }).WithPaging(10).Sortable(true).Filterable(true)
-            </div>
         </td>
     </tr>
 </table>
-

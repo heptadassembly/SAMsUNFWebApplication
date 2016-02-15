@@ -153,6 +153,11 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Database Changes\001 database table_view_function scripts 12_6_15.sql" />
     <Content Include="Scripts\Database Changes\002 database test insert statements.sql" />
+    <Content Include="Scripts\Database Changes\006 add schoolyear stored procedure to set is current.sql" />
+    <Content Include="Scripts\Database Changes\007 Contact missing school id value.sql" />
+    <Content Include="Scripts\Database Changes\008 Import Contact Stored Procedure.sql" />
+    <Content Include="Scripts\Database Changes\009 Import Student Stored Procedure.sql" />
+    <Content Include="Scripts\Database Changes\010 Alter Table Contact.sql" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -191,7 +196,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\Contact\AddContactController.cs" />
     <Compile Include="Controllers\Contact\ContactController.cs" />
+    <Compile Include="Controllers\Import\ImportController.cs" />
+    <Compile Include="Controllers\Contact\EditContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
@@ -257,16 +265,18 @@
     <Content Include="Views\Home\CreateCOCV.cshtml" />
     <Content Include="upload\contacts.csv" />
     <Content Include="upload\students.csv" />
-    <Content Include="Views\Contact\Contact.cshtml" />
-    <Content Include="Views\Contact\ImportStudent.cshtml" />
-    <Content Include="Views\Contact\ImportContact.cshtml" />
+    <Content Include="Views\Import\Import.cshtml" />
+    <Content Include="Views\Import\ImportStudents.cshtml" />
+    <Content Include="Views\Import\ImportContacts.cshtml" />
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <Content Include="Views\Shared\AddStudent.cshtml" />
-    <Content Include="Views\Grade\Grade.cshtml" />
     <Content Include="Views\Shared\EditStudent.cshtml" />
+    <Content Include="Views\Shared\EditContact.cshtml" />
+    <Content Include="Views\Shared\AddContact.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -276,7 +286,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="Views\EditStudent\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

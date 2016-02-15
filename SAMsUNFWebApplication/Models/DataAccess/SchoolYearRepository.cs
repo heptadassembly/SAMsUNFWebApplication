@@ -22,9 +22,23 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public async Task<IEnumerable<SchoolYear>> GetSchoolYear()
         {
-            // Read the user by their username in the database. 
-            IEnumerable<SchoolYear> result = await this._openConnection.QueryAsync<SchoolYear>(@" SELECT * FROM samsjacksonville.vw_school_year");
+            //Get the current school year
+            IEnumerable<SchoolYear> result = await this._openConnection.QueryAsync<SchoolYear>(@" SELECT school_year_id, is_current FROM samsjacksonville.school_year where is_current = 1");
             return result;
+        }
+
+        public async Task<IEnumerable<SchoolYear>> GetSchoolYears()
+        {
+            //Get all School Years 
+            IEnumerable<SchoolYear> result = await this._openConnection.QueryAsync<SchoolYear>(@" SELECT school_year_id, is_current FROM samsjacksonville.school_year order by case when is_current = 1 then -2 else school_year_id end");
+            return result;
+        }
+        public bool SetSchoolYear(string allSchoolYears)
+        {
+            //Update selected school year to current 
+            var queryString = @"Call samsjacksonville.update_school_year(" + allSchoolYears + ")";
+            _openConnection.Execute(queryString);
+            return true;
         }
     }
 }

@@ -16,7 +16,7 @@
     <tr>
         <td>
             <div class="jumbotron">
-                <h1 style="color:darkgoldenrod; font-size:large; ">Student</h1>
+                <h1 style="color:darkgoldenrod; font-size:large;" class="col-sm-12">Student</h1>
             </div>
         </td>
     </tr>
@@ -36,9 +36,17 @@
             .SetWidth(30)
             .RenderValueAs(d =>
             @<b>
-                @Html.ActionLink("Edit", "EditStudent", "EditStudent", new { @id = d.student_id }, null)
+                @Html.ActionLink("Edit", "EditStudent", "EditStudent",
+               new
+               {
+                   @id = d.student_id
+               },
+               new
+               {
+                   @class= "btn btn-default"
+               })
             </b>);
-               columns.Add(c => c.student_id).Titled("ID").SetWidth(15);
+               columns.Add(c => c.student_id_nk).Titled("ID").SetWidth(15);
                columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15);
                columns.Add(c => c.first_name).Titled("First Name").SetWidth(5);
                columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true);
