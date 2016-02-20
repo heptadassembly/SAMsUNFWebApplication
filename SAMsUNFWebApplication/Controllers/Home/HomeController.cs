@@ -39,6 +39,14 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+        public ActionResult GetSchool()
+        {
+            return View();
+        }
+        public ActionResult EditSchool()
+        {
+            return View();
+        }
         public ActionResult OfficeVisit()
         {
             return View();
@@ -78,6 +86,7 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+
 
     }
 }

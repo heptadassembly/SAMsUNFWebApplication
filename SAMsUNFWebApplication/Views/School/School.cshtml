@@ -31,15 +31,23 @@
 
 
 
-                @Html.Grid(Model).Columns(columns =>
+@Html.Grid(Model).Columns(columns =>
            {
-               columns.Add()
-            .Encoded(false)
-            .Sanitized(false)
-            .SetWidth(30)
-            .RenderValueAs(d =>
+           columns.Add()
+           .Encoded(false)
+           .Sanitized(false)
+           .SetWidth(30)
+           .RenderValueAs(d =>
             @<b>
-                @Html.ActionLink("Edit", "Index")
+                @Html.ActionLink("Edit", "EditSchool", "EditSchool",
+               new
+               {
+                   @id = d.school_id
+               },
+               new
+               {
+                   @class = "btn btn-default"
+               })
             </b>);
                columns.Add(c => c.name).Titled("Name").SetWidth(15);
            }).WithPaging(10).Sortable(true).Filterable(true)

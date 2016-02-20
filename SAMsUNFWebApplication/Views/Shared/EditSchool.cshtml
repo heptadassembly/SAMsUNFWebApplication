@@ -1,0 +1,72 @@
+﻿@model  SAMsUNFWebApplication.Models.SchoolCollection  
+@{
+    ViewBag.Title = "EditSchool";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 class="h3" style="color:#255694; font-size:x-large; ">Edit Contact</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (Html.BeginForm("EditSchool", "School", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table class="table">
+                        <thead><tr><td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleSchool.First().school_id,
+                                        new
+                                        {
+                                            @Style = "display: none; border:0px;",
+                                            @id = "SchoolID",
+                                            @Name = "SchoolID",
+                                            @Value = Model.singleSchool.First().school_id,
+                                            @readonly = "readonly"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("School Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleSchool.First().name,
+                                        new
+                                        {
+                                            @id = "SchoolName",
+                                            @Name = "SchoolName",
+                                            @Value = Model.singleSchool.First().name,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+

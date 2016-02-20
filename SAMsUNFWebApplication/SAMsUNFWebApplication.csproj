@@ -200,6 +200,7 @@
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
     <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
+    <Compile Include="Controllers\School\EditSchoolController.cs" />
     <Compile Include="Controllers\School\SchoolController.cs" />
     <Compile Include="Controllers\Student\AddStudentController.cs" />
     <Compile Include="Controllers\Student\EditStudentController.cs" />
@@ -272,6 +273,7 @@
     <Content Include="Views\Shared\AddContact.cshtml" />
     <Content Include="Views\Home\CreateSchool.cshtml" />
     <Content Include="Views\School\School.cshtml" />
+    <Content Include="Views\Shared\EditSchool.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -282,6 +284,7 @@
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Views\AddContact\" />
+    <Folder Include="Views\EditSchool\" />
     <Folder Include="Views\HomeRoom\" />
   </ItemGroup>
   <ItemGroup>

@@ -50,5 +50,12 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return "success";
         }
 
+        public string EditSchool(string SchoolID, string SchoolName)
+        {
+            var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "' where school_id = " + SchoolID + ";";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
     }
 }
