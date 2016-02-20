@@ -63,6 +63,9 @@ DROP FUNCTION  if exists samsjacksonville.fn_getSchoolYear;
 DROP PROCEDURE if exists samsjacksonville.import_student;
 DROP PROCEDURE if exists samsjacksonville.update_school_year;
 DROP PROCEDURE if exists samsjacksonville.import_contact;
+DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_contact`;
+DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_homeroom`;
+
 
 -- CREATE TABLE School
 SET FOREIGN_KEY_CHECKS = 0;
@@ -169,7 +172,7 @@ CREATE TABLE if not exists samsjacksonville.homeroom
 (
 	homeroom_id int not null unique auto_increment,
     class_room varchar(50),
-    room_number varchar(10),
+    room_number varchar(20),
     school_id int,
     school_year_id int,
     create_contact_id int default -1,
@@ -582,7 +585,54 @@ BEGIN
 			etl.contact s;
 	END IF;
     SET SQL_SAFE_UPDATES = 1;
-    truncate table etl.contact;
+    
+    call samsjacksonville.import_homeroom();
+    
+	truncate table etl.contact;
+    
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE `import_homeroom`()
+BEGIN
+    declare _count int;
+    declare _schoolyear int;
+    
+    SET SQL_SAFE_UPDATES = 0;
+    set _schoolyear = (select school_year_id from samsjacksonville.vw_school_year limit 1);
+    
+    /*Get all Homerooms*/
+    DROP TEMPORARY TABLE IF EXISTS homerooms;
+    CREATE TEMPORARY TABLE IF NOT EXISTS homerooms AS (SELECT * FROM etl.contact);
+    select * from homerooms;
+    -- drop temporary table if exists homerooms;
+    
+    /*Update table to fix some of the data*/
+    update homerooms
+    set classroom = ''
+    where classroom in ('-', '');
+    
+    /*Remove Duplicates*/
+    delete es
+    from homerooms es
+    inner join samsjacksonville.homeroom s on s.class_room = es.classroom and s.school_year_id = _schoolyear;
+    
+    delete es
+    from homerooms es
+    inner join samsjacksonville.homeroom s on s.class_room = es.room and s.school_year_id = _schoolyear;
+    
+    /*Populate the Homeroom Table*/
+    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+	(select distinct h.classroom, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom not in (''));
+    
+    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+    (select distinct h.room, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom in (''));
+	
+    SET SQL_SAFE_UPDATES = 1;
+    
+    select * from etl.contact;
+    DROP TEMPORARY TABLE IF EXISTS homerooms;
     
 END$$
 DELIMITER ;
