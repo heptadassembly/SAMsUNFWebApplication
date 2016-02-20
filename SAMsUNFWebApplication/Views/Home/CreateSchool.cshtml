@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "CreateSchool";
+}
+
+<h2>Create</h2>
+<a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+<h6>Insert New School:</h6>
+@using (@Html.BeginForm("CreateSchool", "School", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <td>Enter Name of School</td>
+            <td>:</td>
+            <td>@Html.TextBox("SchoolName")</td>
+        </tr>
+        <tr>
+            <td>Save Your Details</td>
+            <td>:</td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}  
