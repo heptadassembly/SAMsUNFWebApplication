@@ -21,7 +21,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
             {
                 await connection.OpenAsync();
                 var result = await new StudentRepository(connection).GetStudents();
-                var result2 = await new GradeRepository(connection).GetGrades();
+                //var result2 = await new GradeRepository(connection).GetGrades();
                 return View(result);
             }
         }
@@ -63,9 +63,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
         [HttpGet]
         public ActionResult AddStudent()
         {
-
             return View("AddStudent");
-
         }
 
         public System.Web.Mvc.RedirectResult EditChild(string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)

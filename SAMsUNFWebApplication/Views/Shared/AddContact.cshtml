@@ -17,7 +17,8 @@
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("AddPerson", "Contact", FormMethod.Get))
+                <!--AddChild, Student-->
+                @using (Html.BeginForm("AddContct", "Contact", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -29,22 +30,6 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.Label("Add Contact ID:")
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(m => m.contact.contact_id,
-                                   new
-                                   {
-                                       @class = "form-control",
-                                       @style = "width: 250px;",
-                                       @id = "TxtID",
-                                       @Name = "TxtID",
-                                       @required = "required"
-                                   })
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
                                     @Html.Label("Add First Name:")
                                 </td>
                                 <td>
@@ -53,8 +38,8 @@
                                    {
                                        @class = "form-control",
                                        @style = "width: 250px;",
-                                       @id = "TxtFirstName",
-                                       @Name = "TxtFirstName",
+                                       @id = "ContactFirstName",
+                                       @Name = "ContactFirstName",
                                        @required = "required"
                                    })
                                 </td>
@@ -69,8 +54,72 @@
                                    {
                                        @class = "form-control",
                                        @style = "width: 250px;",
-                                       @id = "TxtLastName",
-                                       @Name = "TxtLastName",
+                                       @id = "ContactLastName",
+                                       @Name = "ContactLastName",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Position:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.position,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactPosition",
+                                       @Name = "ContactPosition",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Class Room:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.classroom,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactClassRoom",
+                                       @Name = "ContactClassRoom",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Room Number:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.room_number,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactRoomNumber",
+                                       @Name = "ContactRoomNumber",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Room Extension:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.room_extension,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactRoomExtension",
+                                       @Name = "ContactRoomExtension",
                                        @required = "required"
                                    })
                                 </td>
@@ -80,34 +129,7 @@
                                     @Html.Label("Select A School:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.allContacts,
-                                        new SelectList(Model.allContacts, "school_id", "name",
-                                        new
-                                        {
-                                            @id = "TxtSchool",
-                                            @required = "required",
-                                            @class = "form-control"
-                                        }),
-                                        new
-                                        {
-                                            @style = "width: 250px;",
-                                            @class = "form-control"
-                                        }
-                                        )
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.Label("Select A Grade:")
-                                </td>
-                                <td>
-                                    @Html.DropDownListFor(m => m.allContacts,
-                                        new SelectList(Model.allContacts, "grade_id", "grade_value",
-                                        new
-                                        {
-                                            @class = "form-control",
-                                            @id = "TxtGrade",
-                                            @required = "required"
-                                        }),
+                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
                                         new
                                         {
                                             @style = "width: 250px;",
@@ -117,43 +139,34 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("Select A Gender:")
+                                    @Html.Label("Add Email Address:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.allGenders,
-                                        new SelectList(Model.allGenders, "gender", "gender",
-                                        new
-                                        {
-                                            @class = "form-control",
-                                            @id = "TxtGender",
-                                            @required = "required"
-                                        }),
-                                        new
-                                        {
-                                            @style = "width: 250px;",
-                                            @class = "form-control"
-                                        })
+                                    @Html.TextBoxFor(m => m.contact.email_address,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactEmailAddress",
+                                       @Name = "ContactEmailAddress",
+                                       @required = "required"
+                                   })
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("Select A Home Room:")
+                                    @Html.Label("Add Cell Phone:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.allHomeRooms,
-                                        new SelectList(Model.allHomeRooms, "homeroom_id", "homeroom_name",
-                                        new
-                                        {
-                                            @class = "form-control",
-                                            @id = "TxtHomeroom",
-                                            @required = "required"
-
-                                        }),
-                                        new
-                                        {
-                                            @style = "width: 250px;",
-                                            @class = "form-control"
-                                        })
+                                    @Html.TextBoxFor(m => m.contact.cell_phone,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactCellPhone",
+                                       @Name = "ContactCellPhone",
+                                       @required = "required"
+                                   })
                                 </td>
                             </tr>
                             <tr>

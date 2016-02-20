@@ -11,13 +11,13 @@
 <table>
     <tr>
         <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 class="h3" style="color:#255694; font-size:x-large; ">Edit Student</h3>
+            <h3 class="h3" style="color:#255694; font-size:x-large; ">Edit Contact</h3>
         </td>
     </tr>
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("EditPerson", "Contact", FormMethod.Get))
+                @using (Html.BeginForm("EditContct", "Contact", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -30,8 +30,8 @@
                                         new
                                         {
                                             //@Style = "display: none; border:0px;",
-                                            @id = "TxtID",
-                                            @Name = "TxtID",
+                                            @id = "ContactID",
+                                            @Name = "ContactID",
                                             @Value = Model.singleContact.First().contact_id,
                                             @readonly = "readonly"
                                         })
@@ -45,8 +45,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().first_name,
                                         new
                                         {
-                                            @id = "TxtFirstName",
-                                            @Name = "TxtFirstName",
+                                            @id = "ContactFirstName",
+                                            @Name = "ContactFirstName",
                                             @Value = Model.singleContact.First().first_name,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -62,8 +62,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().last_name,
                                         new
                                         {
-                                            @id = "TxtLastName",
-                                            @Name = "TxtLastName",
+                                            @id = "ContactLastName",
+                                            @Name = "ContactLastName",
                                             @Value = Model.singleContact.First().last_name,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -79,8 +79,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().position,
                                         new
                                         {
-                                            @id = "TxtPosition",
-                                            @Name = "TxtPosition",
+                                            @id = "ContactPosition",
+                                            @Name = "ContactPosition",
                                             @Value = Model.singleContact.First().position,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -96,8 +96,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().classroom,
                                         new
                                         {
-                                            @id = "TxtClassroom",
-                                            @Name = "TxtClassroom",
+                                            @id = "ContactClassRoom",
+                                            @Name = "ContactClassRoom",
                                             @Value = Model.singleContact.First().classroom,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -113,8 +113,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().room_number,
                                         new
                                         {
-                                            @id = "TxtRoomNumber",
-                                            @Name = "TxtRoomNumber",
+                                            @id = "ContactRoomNumber",
+                                            @Name = "ContactRoomNumber",
                                             @Value = Model.singleContact.First().room_number,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -130,8 +130,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().room_extension,
                                         new
                                         {
-                                            @id = "TxtRoomExtension",
-                                            @Name = "TxtRoomExtension",
+                                            @id = "ContactRoomExtension",
+                                            @Name = "ContactRoomExtension",
                                             @Value = Model.singleContact.First().room_extension,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -147,8 +147,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().email_address,
                                         new
                                         {
-                                            @id = "TxtEmailAddress",
-                                            @Name = "TxtEmailAddress",
+                                            @id = "ContactEmailAddress",
+                                            @Name = "ContactEmailAddress",
                                             @Value = Model.singleContact.First().email_address,
                                             @required = "required",
                                             @style = "width: 250px;",
@@ -164,8 +164,8 @@
                                     @Html.TextBoxFor(z => z.singleContact.First().cell_phone,
                                         new
                                         {
-                                            @id = "TxtCellPhone",
-                                            @Name = "TxtCellPhone",
+                                            @id = "ContactCellPhone",
+                                            @Name = "ContactCellPhone",
                                             @Value = Model.singleContact.First().cell_phone,
                                             @required = "required",
                                             @style = "width: 250px;",

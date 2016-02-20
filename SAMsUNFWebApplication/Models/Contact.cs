@@ -56,6 +56,7 @@ namespace SAMsUNFWebApplication.Models
         public Contact contact { get; set; }
         public IEnumerable<Contact> allContacts { get; set; }
         public IEnumerable<Contact> singleContact { get; set; }
+        public IEnumerable<School> singleSchool { get; set; }
         public IEnumerable<School> allSchools { get; set; }
         public SelectList schoolselectlist { get; set; }
     }

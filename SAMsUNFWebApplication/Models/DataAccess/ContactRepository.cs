@@ -8,6 +8,7 @@ using Dapper;
 using SAMsUNFWebApplication.Models;
 using System.Web;
 using System.Configuration;
+using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Models.DataAccess
 {
@@ -36,15 +37,6 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-
-        public bool AddPerson(string TxtId, string TxtFirst, string TxtLast, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
-        {
-            //Update selected school year to current 
-            var queryString = @"Insert into samsjacksonville.contact (contact_id, first_name, last_name, position, classroom, room_number, room_extension, school_id, email_address, cell_phone, school_year_id) VALUES (" + TxtId + ",'" + TxtFirst + "','" + TxtLast + "','" + TxtPosition + "','" + TxtClassRoom + "','" + TxtRoomNumber + "','" + TxtRoomExtension + "'," + schoolselectlist + ",'" + TxtEmailAddress + "','" + TxtCellPhone + "', samsjacksonville.fn_getSchoolYear(1));";
-            _openConnection.Execute(queryString);
-            return true;
-        }
-
         public bool ImportContacts(List<CSVContacts> csvContacts)
         {
             bool success = false;
@@ -65,11 +57,26 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return success;
         }
 
-        public string EditPerson(string TxtID, string TxtFirstName, string TxtLastName, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
+        public string EditContct(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
-            var queryString = @"update samsjacksonville.contact set first_name = '" + TxtFirstName + "', last_name = '" + TxtLastName + "', position = '" + TxtPosition + "', classroom = '" + TxtClassRoom + "', room_number = '" + TxtRoomNumber + "', room_extension = '" + TxtRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + TxtEmailAddress + "', cell_phone = '" + TxtCellPhone + "' where contact_id = " + TxtID + ";";
+            var queryString = @"update samsjacksonville.contact set first_name = '" + ContactFirstName + "', last_name = '" + ContactLastName + "', `position` = '" + ContactPosition + "', classroom = '" + ContactClassRoom + "', room_number = '" + ContactRoomNumber + "', room_extension = '" + ContactRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + ContactEmailAddress + "', cell_phone = '" + ContactCellPhone + "' where contact_id = " + ContactID + ";";
             _openConnection.Execute(queryString);
             return "success";
         }
+
+        public string AddContct(string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomeExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
+        {
+            var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
+        public bool CreateContact(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomeExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
+        {
+            var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+            _openConnection.Execute(queryString);
+            return true;
+        }
+
     }
 }

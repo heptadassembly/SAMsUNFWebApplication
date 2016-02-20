@@ -10,7 +10,7 @@ using SAMsUNFWebApplication.Models.DataAccess;
 using System.IO;
 using Dapper;
 
-namespace SAMsUNFWebApplication.Controllers.Student
+namespace SAMsUNFWebApplication.Controllers.Contact
 {
     public class ContactController : Controller
     {
@@ -21,15 +21,16 @@ namespace SAMsUNFWebApplication.Controllers.Student
             {
                 await connection.OpenAsync();
                 var result = await new ContactRepository(connection).GetContacts();
+                //var result2 = await new SchoolRepository(connection).GetSchools();
                 return View(result);
             }
         }
 
-        public System.Web.Mvc.RedirectResult AddContact(string TxtId, string TxtFirst, string TxtLast, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
+        public System.Web.Mvc.RedirectResult CreateContact(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ContactRepository(connection).AddPerson(TxtId, TxtFirst, TxtLast, TxtPosition, TxtClassRoom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
+                var result = new ContactRepository(connection).CreateContact(ContactID, ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
                 if (result == true)
                 {
                     return Redirect("Contact/Contact");
@@ -42,17 +43,11 @@ namespace SAMsUNFWebApplication.Controllers.Student
             }
         }
 
-        [HttpGet]
-        public ActionResult AddContact()
-        {
-            return View("AddContact");
-        }
-
-        public System.Web.Mvc.RedirectResult EditPerson(string TxtID, string TxtFirstName, string TxtLastName, string TxtPosition, string TxtClassroom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
+        public System.Web.Mvc.RedirectResult EditContct(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ContactRepository(connection).EditPerson(TxtID, TxtFirstName, TxtLastName, TxtPosition, TxtClassroom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
+                var result = new ContactRepository(connection).EditContct(ContactID, ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
                 if (result == "success")
                 {
                     return Redirect("Contact/Contact");
@@ -65,12 +60,22 @@ namespace SAMsUNFWebApplication.Controllers.Student
             }
         }
 
-        public System.Web.Mvc.RedirectResult AddPerson(string TxtID, string TxtFirstName, string TxtLastName, string TxtPosition, string TxtClassRoom, string TxtRoomNumber, string TxtRoomExtension, string schoolselectlist, string TxtEmailAddress, string TxtCellPhone)
+        public ActionResult AddContact()
+        {
+            return View("AddContact");
+        }
+
+        public ActionResult EditContact()
+        {
+            return View("EditContact");
+        }
+
+        public System.Web.Mvc.RedirectResult AddContct(string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ContactRepository(connection).AddPerson(TxtID, TxtFirstName, TxtLastName, TxtPosition, TxtClassRoom, TxtRoomNumber, TxtRoomExtension, schoolselectlist, TxtEmailAddress, TxtCellPhone);
-                if (result == true)
+                var result = new ContactRepository(connection).AddContct(ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
+                if (result == "success")
                 {
                     return Redirect("Contact/Contact");
                 }

@@ -10,9 +10,14 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.Contact
 {
-    public class AddContactContoller : Controller
+    public class AddContactController : Controller
     {
-        // GET: AddOfficeVisit
+        // GET: AddContact
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         public async System.Threading.Tasks.Task<ActionResult> AddContact()
         {
 
@@ -22,15 +27,19 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             {
                 await connection.OpenAsync();
 
-                var result2 = new ContactRepository(connection).GetContacts();
+                var result = new GradeRepository(connection).GetGrades();
+                var result2 = new SchoolRepository(connection).GetSchools();
+                var result3 = new HomeRoomRepository(connection).GetHomeRooms();
 
-                coll.allContacts = (IEnumerable<Models.Contact>)result2.Result.ToArray();
+                coll.allSchools = (IEnumerable<Models.School>)result2.Result.ToArray();
+
+                coll.schoolselectlist = new SelectList(result2.Result.ToList(), "school_id", "name", new { @required = "required" });
             }
 
             return View(coll);
         }
 
-        public ActionResult AddPerson(ContactCollection model, string actionRequest)
+        public ActionResult AddContct(ContactCollection model, string actionRequest)
         {
 
             return RedirectToAction("Contact", "Contact");

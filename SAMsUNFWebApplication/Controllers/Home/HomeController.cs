@@ -54,9 +54,26 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+
         public ActionResult Import()
         {
             return View();
         }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult EditContact()
+        {
+            return View();
+        }
+
+        public ActionResult AddContact()
+        {
+            return View();
+        }
+
     }
 }

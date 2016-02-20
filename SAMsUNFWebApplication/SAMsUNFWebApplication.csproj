@@ -189,10 +189,11 @@
     <Compile Include="Constants.cs" />
     <Compile Include="Controllers\Contact\AddContactController.cs" />
     <Compile Include="Controllers\Contact\ContactController.cs" />
+    <Compile Include="Controllers\HomeRoomController.cs" />
     <Compile Include="Controllers\Import\ImportController.cs" />
     <Compile Include="Controllers\Contact\EditContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
-    <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\Grade\GradeController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
@@ -266,8 +267,8 @@
     <Content Include="Views\Shared\AddStudent.cshtml" />
     <Content Include="Views\Shared\EditStudent.cshtml" />
     <Content Include="Views\Shared\EditContact.cshtml" />
-    <Content Include="Views\Shared\AddContact.cshtml" />
     <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Shared\AddContact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -277,6 +278,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Views\AddContact\" />
+    <Folder Include="Views\HomeRoom\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
