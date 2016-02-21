@@ -144,10 +144,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\accordion.css" />
-    <Content Include="Scripts\Database Changes\003 Database Changes 2.sql" />
-    <Content Include="Scripts\Database Changes\004 update to import_student to look for duplicates.sql" />
-    <Content Include="Scripts\Database Changes\005 Homeroom Update - alter table to change the word class to class_room.sql" />
-    <Content Include="Scripts\accordion.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -191,15 +187,23 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\Contact\AddContactController.cs" />
     <Compile Include="Controllers\Contact\ContactController.cs" />
+    <Compile Include="Controllers\HomeRoom\AddHomeRoomController.cs" />
+    <Compile Include="Controllers\HomeRoom\EditHomeRoomController.cs" />
+    <Compile Include="Controllers\HomeRoom\HomeRoomController.cs" />
+    <Compile Include="Controllers\Import\ImportController.cs" />
+    <Compile Include="Controllers\Contact\EditContactController.cs" />
     <Compile Include="Controllers\Dashboard\DashboardController.cs" />
-    <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\Grade\GradeController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Home\LoginController.cs" />
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
     <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
+    <Compile Include="Controllers\School\EditSchoolController.cs" />
+    <Compile Include="Controllers\School\SchoolController.cs" />
     <Compile Include="Controllers\Student\AddStudentController.cs" />
     <Compile Include="Controllers\Student\EditStudentController.cs" />
     <Compile Include="Controllers\Student\StudentController.cs" />
@@ -257,16 +261,24 @@
     <Content Include="Views\Home\CreateCOCV.cshtml" />
     <Content Include="upload\contacts.csv" />
     <Content Include="upload\students.csv" />
-    <Content Include="Views\Contact\Contact.cshtml" />
-    <Content Include="Views\Contact\ImportStudent.cshtml" />
-    <Content Include="Views\Contact\ImportContact.cshtml" />
+    <Content Include="Views\Import\Import.cshtml" />
+    <Content Include="Views\Import\ImportStudents.cshtml" />
+    <Content Include="Views\Import\ImportContacts.cshtml" />
     <Content Include="Views\OfficeVisit\OfficeVisit.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
     <Content Include="Views\Student\Student.cshtml" />
     <Content Include="Views\SchoolYear\SchoolYear.cshtml" />
     <Content Include="Views\Shared\AddStudent.cshtml" />
-    <Content Include="Views\Grade\Grade.cshtml" />
     <Content Include="Views\Shared\EditStudent.cshtml" />
+    <Content Include="Views\Shared\EditContact.cshtml" />
+    <Content Include="Views\Contact\Contact.cshtml" />
+    <Content Include="Views\Shared\AddContact.cshtml" />
+    <Content Include="Views\Home\CreateSchool.cshtml" />
+    <Content Include="Views\School\School.cshtml" />
+    <Content Include="Views\Shared\EditSchool.cshtml" />
+    <Content Include="Views\HomeRoom\Homeroom.cshtml" />
+    <Content Include="Views\Shared\AddHomeRoom.cshtml" />
+    <Content Include="Views\Shared\EditHomeRoom.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -276,7 +288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="Views\EditStudent\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

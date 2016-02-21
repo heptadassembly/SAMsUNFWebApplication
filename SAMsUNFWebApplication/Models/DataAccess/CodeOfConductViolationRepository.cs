@@ -25,7 +25,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<CodeOfConductViolation>> GetCodeOfConductViolations()
         {
             // Read the user by their username in the database. 
-            IEnumerable<CodeOfConductViolation> result = await this._openConnection.QueryAsync<CodeOfConductViolation>(@" SELECT * FROM  vw_code_of_conduct_violation where code_of_conduct_violation_id > 0 order by name");
+            IEnumerable<CodeOfConductViolation> result = await this._openConnection.QueryAsync<CodeOfConductViolation>(@" SELECT * FROM  samsjacksonville.vw_code_of_conduct_violation where code_of_conduct_violation_id > 0 order by name");
             return result;
         }
 
@@ -35,7 +35,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "');";
+            var queryString = @"INSERT INTO samsjacksonville.code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "');";
             _openConnection.Execute(queryString);
             return "success";
         }

@@ -79,7 +79,6 @@ namespace SAMsUNFWebApplication.Models
         public IEnumerable<School> allSchools { get; set; }
         public IEnumerable<Gender> allGenders { get; set; }
         public IEnumerable<HomeRoom> allHomeRooms { get; set; }
-
         public IEnumerable<Student> singleStudent { get; set; }
         public IEnumerable<Grade> singleGrade { get; set; }
         public IEnumerable<School> singleSchool { get; set; }
@@ -90,6 +89,5 @@ namespace SAMsUNFWebApplication.Models
         public SelectList schoolselectlist { get; set; }
         public SelectList homeroomselectlist { get; set; }
         public SelectList genderselectlist { get; set; }
-
     }
 }

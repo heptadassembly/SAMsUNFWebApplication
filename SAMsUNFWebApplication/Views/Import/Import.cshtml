@@ -1,0 +1,65 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVContacts>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Import";
+}
+
+<h2>Import Data</h2>
+<head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+
+    <script type="text/javascript">
+        function chgAction() {
+            var form = document.form1;
+
+            console.log('chgAction()');
+            console.log(form.recipient.selectedIndex);
+
+            switch (form.recipient.selectedIndex) {
+                case 1:
+                    form.action = "/Import/ImportStudents";
+                    break;
+                case 2:
+                    form.action = "/Import/ImportContacts";
+                    break;
+            }
+        }
+
+    </script>
+
+</head>
+<table>
+    <tr>
+        <td>
+            <div class="jumbotron">
+                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
+                <h1 style="color:darkgoldenrod; font-size:large; ">Import Data</h1>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="left" style="padding-left:100px;">
+            <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
+
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" />
+                <br />
+                <label>Choose File Type:</label><br />
+                <select name="recipient" id="recipient" size="1" onChange="chgAction()">
+                    <option value="" selected="selected">--Select--</option>
+                    <option value="ImportStudents?file">Import Students</option>
+                    <option value="ImportContacts?file">Import Contacts</option>
+                </select>
+
+                <input type="submit">
+            </form>
+        </td>
+    </tr>
+</table>
+

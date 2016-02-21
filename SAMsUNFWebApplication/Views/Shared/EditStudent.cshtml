@@ -21,12 +21,12 @@
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
-                        <thead><tr><td></td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a><td></tr></thead>
+                        <thead><tr><td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td></tr></thead>
                         <tbody>
                             <tr>
                                 <td></td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.singleStudent.First().student_id_nk,
+                                    @Html.TextBoxFor(m => m.singleStudent.First().student_id,
                                         new
                                         {
                                             @Style = "display: none; border:0px;",

@@ -1,64 +1,66 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVContacts>
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Contact>
 @using GridMvc.Html
 @{
     ViewBag.Title = "Contact";
 }
-
-<h2>Import Data</h2>
 <head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css") rel=" stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
-
-    <script type="text/javascript">
-        function chgAction() {
-            var form = document.form1;
-
-            console.log('chgAction()');
-            console.log(form.recipient.selectedIndex);
-
-            switch (form.recipient.selectedIndex) {
-                case 1:
-                    form.action = "/Contact/ImportStudent";
-                    break;
-                case 2:
-                    form.action = "/Contact/ImportContact";
-                    break;
-            }
-        }
-
-    </script>
-
 </head>
 <table>
     <tr>
         <td>
             <div class="jumbotron">
-                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
-                <h1 style="color:darkgoldenrod; font-size:large; ">CSV Contacts</h1>
+                <h1 style="color:darkgoldenrod; font-size:large;" class="col-sm-12">Student</h1>
+                <h1 style="color:darkgoldenrod; font-size:large; ">Contact</h1>
             </div>
         </td>
     </tr>
     <tr>
-        <td align="left" style="padding-left:100px;">
-            <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
+        <td align="center" style="padding-left:100px;">
+            <div style="width:500px; text-align:left;">
 
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" />
-                <br />
-                <label>Choose File Type:</label><br />
-                <select name="recipient" id="recipient" size="1" onChange="chgAction()">
-                    <option value="" selected="selected">Select</option>
-                    <option value="ImportStudent?file">Import Student</option>
-                    <option value="ImportContact?file">Import Contact</option>
-                </select>
+                @Html.ActionLink("Add New Contact", "AddContact", "AddContact")
+            </div>
+            <div style="width:500px; text-align:center;">
 
-                <input type="submit">
-            </form>
+                @Html.Grid(Model).Columns(columns =>
+           {
+           columns.Add()
+           .Encoded(false)
+           .Sanitized(false)
+           .SetWidth(30)
+           .RenderValueAs(e =>
+        @<b>
+            @Html.ActionLink("Edit", "EditContact", "EditContact",
+               new
+               {
+                   @id = e.contact_id
+               },
+               new
+               {
+                   @class = "btn btn-default"
+               })
+        </b>);
+               columns.Add(d => d.contact_id).Titled("ID").SetWidth(15);
+               columns.Add(d => d.first_name).Titled("First Name").SetWidth(15);
+               columns.Add(d => d.last_name).Titled("Last Name").SetWidth(5);
+               columns.Add(d => d.position).Titled("Position").SetWidth(20);
+               columns.Add(d => d.classroom).Titled("ClassRoom").SetWidth(10);
+               columns.Add(d => d.room_number).Titled("Room Number").SetWidth(10);
+               columns.Add(d => d.room_extension).Titled("Room Extension").SetWidth(10);
+               columns.Add(d => d.school_id).Titled("School ID").SetWidth(10);
+               columns.Add(d => d.email_address).Titled("Email Address").SetWidth(10);
+               columns.Add(d => d.cell_phone).Titled("Cell PHone").SetWidth(10);
+
+
+           }).WithPaging(10).Sortable(true).Filterable(true)
+            </div>
         </td>
     </tr>
 </table>

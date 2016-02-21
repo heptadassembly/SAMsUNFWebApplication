@@ -35,6 +35,18 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+        public ActionResult CreateSchool()
+        {
+            return View();
+        }
+        public ActionResult GetSchool()
+        {
+            return View();
+        }
+        public ActionResult EditSchool()
+        {
+            return View();
+        }
         public ActionResult OfficeVisit()
         {
             return View();
@@ -54,5 +66,41 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+
+        public ActionResult Import()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
+        public ActionResult EditContact()
+        {
+            return View();
+        }
+
+        public ActionResult AddContact()
+        {
+            return View();
+        }
+
+        public ActionResult HomeRoom()
+        {
+            return View();
+        }
+
+        public ActionResult AddHomeRoom()
+        {
+            return View();
+        }
+        public ActionResult EditHomeRoom()
+        {
+            return View();
+        }
+
+
     }
 }

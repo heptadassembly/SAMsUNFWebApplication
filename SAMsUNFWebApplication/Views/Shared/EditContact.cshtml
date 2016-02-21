@@ -1,0 +1,204 @@
+﻿@model  SAMsUNFWebApplication.Models.ContactCollection
+@{
+    ViewBag.Title = "EditContact";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 class="h3" style="color:#255694; font-size:x-large; ">Edit Contact</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (Html.BeginForm("EditContct", "Contact", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table class="table">
+                        <thead><tr><td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().contact_id,
+                                        new
+                                        {
+                                            @Style = "display: none; border:0px;",
+                                            @id = "ContactID",
+                                            @Name = "ContactID",
+                                            @Value = Model.singleContact.First().contact_id,
+                                            @readonly = "readonly"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("First Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().first_name,
+                                        new
+                                        {
+                                            @id = "ContactFirstName",
+                                            @Name = "ContactFirstName",
+                                            @Value = Model.singleContact.First().first_name,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Last Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().last_name,
+                                        new
+                                        {
+                                            @id = "ContactLastName",
+                                            @Name = "ContactLastName",
+                                            @Value = Model.singleContact.First().last_name,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Position:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().position,
+                                        new
+                                        {
+                                            @id = "ContactPosition",
+                                            @Name = "ContactPosition",
+                                            @Value = Model.singleContact.First().position,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Classroom:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().classroom,
+                                        new
+                                        {
+                                            @id = "ContactClassRoom",
+                                            @Name = "ContactClassRoom",
+                                            @Value = Model.singleContact.First().classroom,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Room Number:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().room_number,
+                                        new
+                                        {
+                                            @id = "ContactRoomNumber",
+                                            @Name = "ContactRoomNumber",
+                                            @Value = Model.singleContact.First().room_number,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Room Extension:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().room_extension,
+                                        new
+                                        {
+                                            @id = "ContactRoomExtension",
+                                            @Name = "ContactRoomExtension",
+                                            @Value = Model.singleContact.First().room_extension,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Email Address:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().email_address,
+                                        new
+                                        {
+                                            @id = "ContactEmailAddress",
+                                            @Name = "ContactEmailAddress",
+                                            @Value = Model.singleContact.First().email_address,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Cell Phone:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(z => z.singleContact.First().cell_phone,
+                                        new
+                                        {
+                                            @id = "ContactCellPhone",
+                                            @Name = "ContactCellPhone",
+                                            @Value = Model.singleContact.First().cell_phone,
+                                            @required = "required",
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("School:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(z => z.schoolselectlist, Model.schoolselectlist,
+                                   new
+                                   {
+                                       @style = "width: 250px;",
+                                       @class = "form-control"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+
+            </div>
+
+        </td>
+    </tr>
+</table>
+
+

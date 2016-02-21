@@ -49,15 +49,23 @@ DROP TABLE if exists samsjacksonville.school;
 DROP TABLE if exists samsjacksonville.content_course;
 DROP TABLE if exists samsjacksonville.contact;
 DROP TABLE if exists samsjacksonville.school_year;
+DROP TABLE if exists samsjacksonville.gender;
 SET FOREIGN_KEY_CHECKS = 1;
 
 /* remove procedures and functions */
 -- select 'creating functions' functions;
-DROP FUNCTION if exists samsjacksonville.fn_getTotalVisits;
-DROP FUNCTION if exists samsjacksonville.fn_getSchoolID;
-DROP FUNCTION if exists samsjacksonville.fn_getGradeID;
-DROP FUNCTION if exists samsjacksonville.fn_get_description_officevisit_remedial_actions;
-DROP FUNCTION if exists samsjacksonville.fn_get_description_officevisit_offenses;
+DROP FUNCTION  if exists samsjacksonville.fn_getTotalVisits;
+DROP FUNCTION  if exists samsjacksonville.fn_getSchoolID;
+DROP FUNCTION  if exists samsjacksonville.fn_getGradeID;
+DROP FUNCTION  if exists samsjacksonville.fn_get_description_officevisit_remedial_actions;
+DROP FUNCTION  if exists samsjacksonville.fn_get_description_officevisit_offenses;
+DROP FUNCTION  if exists samsjacksonville.fn_getSchoolYear;
+DROP PROCEDURE if exists samsjacksonville.import_student;
+DROP PROCEDURE if exists samsjacksonville.update_school_year;
+DROP PROCEDURE if exists samsjacksonville.import_contact;
+DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_contact`;
+DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_homeroom`;
+
 
 -- CREATE TABLE School
 SET FOREIGN_KEY_CHECKS = 0;
@@ -98,11 +106,11 @@ CREATE TABLE if not exists samsjacksonville.contact
     last_name varchar(40),
     position varchar(75),
     classroom varchar(50),
-    room_number varchar(10),
+    room_number varchar(20),
     room_extension varchar(10),
     school_id int,
     email_address varchar(200),
-    cell_phone varchar(10),
+    cell_phone varchar(20),
     school_year_id int,
     create_contact_id  int default -1,
     create_dt datetime default now(),
@@ -163,8 +171,8 @@ create index _profileidx on samsjacksonville.profile(profile_id, school_year_id)
 CREATE TABLE if not exists samsjacksonville.homeroom
 (
 	homeroom_id int not null unique auto_increment,
-    class varchar(50),
-    room_number varchar(10),
+    class_room varchar(50),
+    room_number varchar(20),
     school_id int,
     school_year_id int,
     create_contact_id int default -1,
@@ -265,6 +273,13 @@ CREATE TABLE if not exists samsjacksonville.remedial_action
 
 create index _remedialidx on samsjacksonville.remedial_action(remedial_action_id, school_year_id);
 
+-- CREATE TABLE for UI for Gender Information
+-- select 'creating genders' '';
+
+CREATE TABLE if not exists samsjacksonville.gender
+(
+	gender varchar(20)
+);
 
 -- select 'creating table office visits' '';
 /* ******************BEGIN OFFICE VISIT INSERTION*************************** */
@@ -342,9 +357,19 @@ begin
     return (totalVisits);
 end$$
 
+--drop function samsjacksonville.fn_getSchoolYear;
 delimiter $$
+create function samsjacksonville.fn_getSchoolYear (param INT) RETURNS int(11)
+	DETERMINISTIC
+begin
+	declare schoolYearID int;
+    set schoolYearID = (select school_year_id from vw_school_year limit 1);
+    return (ifnull(schoolYearID, -1));
+end$$
+delimiter;
 
--- drop function samsjacksonville.fn_getSchoolID
+delimiter $$
+-- drop function samsjacksonville.fn_getSchoolID;
 create function samsjacksonville.fn_getSchoolID(Schoolname varchar(50)) returns int deterministic
 begin
 	declare schoolID int;
@@ -394,9 +419,6 @@ begin
 end$$
 DELIMITER ;
 
-
-delimiter ;
-
 DELIMITER $$
 CREATE FUNCTION `fn_get_description_officevisit_offenses`( p_visit_id INT) RETURNS varchar(255) CHARSET utf8
 BEGIN
@@ -426,59 +448,206 @@ where assn.office_visit_id =  p_visit_id
 END$$
 DELIMITER ;
 
-drop procedure if exists `import_student`;
 DELIMITER $$
-CREATE PROCEDURE `import_student`()
+CREATE PROCEDURE `samsjacksonville`.`import_student`()
 BEGIN
-	declare _count int;
-    declare _studentid varchar(40);
+    declare _count int;
     declare _schoolyear int;
-    declare _gradeid int;
-    declare _studentExistsCheck int;
     
-    set _studentExistsCheck = 1;
-    
-    set _count = (select count(*) from etl.student);
-
+    SET SQL_SAFE_UPDATES = 0;
     set _schoolyear = (select school_year_id from samsjacksonville.vw_school_year limit 1);
     
-	select _count, _studentid, _schoolyear;
+    /*Remove Duplicates*/
     
-    select 'Begin Student Import Loop' as '';
+    delete es
+    from etl.student es
+    inner join samsjacksonville.student s on s.student_id_nk = es.studentid and s.school_year_id = _schoolyear;
     
-    while _count > 0 do
+    set _count = 0;
+    set _count = (select count(*) from etl.student);
     
-    /*Get the first student information and attempt to load into the system.*/
-	set _studentid = (select studentId from etl.student where studentid not in (select student_id_nk from samsjacksonville.student) limit 1);
+    select _count, _schoolyear;
     
-    /*check if student already exists in the system*/
-    select count(*) from samsjacksonville.vw_student where student_id_nk = 4;
-    
-    IF _studentExistsCheck > 0 THEN select 'Student already exists.' as '';
-    ELSEIF _studentExistsCheck > 0 THEN 
-		insert into 
-			samsjacksonville.student (student_id_nk, first_name, last_name, school_id, school_year_id, 
-			homeroom_id, grade_id, gender, create_contact_id, create_dt, last_update_contact_id, last_update_dt,
-			is_deleted)
-		select 
-			_studentid, s.first, s.last, samsjacksonville.fn_getSchoolID(s.school), 
-			_schoolyear, -1, samsjacksonville.fn_getGradeID(s.grade),  s.gender, -1, now(), -1, now(), 0
-		from 
-			etl.student s
-		where 
-			s.studentid = _studentid;
-            
-    ELSE select 'Error found - unknown.' as '';
-
+	/*
+    IF n > m THEN SET s = '>';
+    ELSEIF n = m THEN SET s = '=';
+    ELSE SET s = '<';
     END IF;
-	
-    set _count = _count - 1;
-        
-	end while;	
+    */
     
+    IF _count = 0 THEN select 'Error';
+    else
+		insert into
+			samsjacksonville.student
+            (
+				student_id_nk,
+                first_name, 
+                last_name, 
+                school_id, 
+                school_year_id, 
+				homeroom_id, 
+                grade_id, 
+                gender, 
+                create_contact_id, 
+                create_dt, 
+                last_update_contact_id, 
+                last_update_dt,
+				is_deleted
+			)
+		select 
+				s.studentid, 
+                s.`first`, 
+                s.`last`, 
+                samsjacksonville.fn_getSchoolID(s.school), 
+				_schoolyear, 
+                -1, 
+                samsjacksonville.fn_getGradeID(s.grade), 
+                s.gender, 
+                -1, 
+                now(), 
+                -1, 
+                now(), 
+                0
+		from 
+			etl.student s;
+	END IF;
+    SET SQL_SAFE_UPDATES = 1;
     truncate table etl.student;
     
 END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE `import_contact`()
+BEGIN
+    declare _count int;
+    declare _schoolyear int;
+    
+    SET SQL_SAFE_UPDATES = 0;
+    set _schoolyear = (select school_year_id from samsjacksonville.vw_school_year limit 1);
+    
+    /*Remove Duplicates*/
+    
+    delete es
+    from etl.contact es
+    inner join samsjacksonville.contact s on s.first_name = es.firstname and s.last_name = es.lastname and s.`position` = es.`position` and s.school_year_id = _schoolyear;
+    
+    set _count = 0;
+    set _count = (select count(*) from etl.contact);
+    
+    select _count, _schoolyear;
+    
+	/*
+    IF n > m THEN SET s = '>';
+    ELSEIF n = m THEN SET s = '=';
+    ELSE SET s = '<';
+    END IF;
+    */
+    
+    IF _count = 0 THEN select 'Error';
+    else
+		insert into
+			samsjacksonville.contact
+            (
+                first_name,
+                last_name,
+                `position`,
+                classroom, 
+                room_number, 
+				room_extension,
+                email_address,
+                cell_phone,
+                school_id,
+                school_year_id,
+                create_contact_id,
+                create_dt,
+                last_update_contact_id,
+                last_update_dt,
+				is_deleted
+			)
+		select 
+				s.`firstname`, 
+                s.`lastname`, 
+                s.`position`,
+                s.`classroom`,
+                s.`room`,
+                s.`roomextension`,
+                s.`email`,
+                s.`cell`,
+                samsjacksonville.fn_getSchoolID(s.`school`), 
+				_schoolyear, 
+                -1, 
+                now(), 
+                -1, 
+                now(), 
+                0
+		from 
+			etl.contact s;
+	END IF;
+    SET SQL_SAFE_UPDATES = 1;
+    
+    call samsjacksonville.import_homeroom();
+    
+	truncate table etl.contact;
+    
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE `import_homeroom`()
+BEGIN
+    declare _count int;
+    declare _schoolyear int;
+    
+    SET SQL_SAFE_UPDATES = 0;
+    set _schoolyear = (select school_year_id from samsjacksonville.vw_school_year limit 1);
+    
+    /*Get all Homerooms*/
+    DROP TEMPORARY TABLE IF EXISTS homerooms;
+    CREATE TEMPORARY TABLE IF NOT EXISTS homerooms AS (SELECT * FROM etl.contact);
+    select * from homerooms;
+    -- drop temporary table if exists homerooms;
+    
+    /*Update table to fix some of the data*/
+    update homerooms
+    set classroom = ''
+    where classroom in ('-', '');
+    
+    /*Remove Duplicates*/
+    delete es
+    from homerooms es
+    inner join samsjacksonville.homeroom s on s.class_room = es.classroom and s.school_year_id = _schoolyear;
+    
+    delete es
+    from homerooms es
+    inner join samsjacksonville.homeroom s on s.class_room = es.room and s.school_year_id = _schoolyear;
+    
+    /*Populate the Homeroom Table*/
+    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+	(select distinct h.classroom, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom not in (''));
+    
+    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+    (select distinct h.room, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom in (''));
+	
+    SET SQL_SAFE_UPDATES = 1;
+    
+    select * from etl.contact;
+    DROP TEMPORARY TABLE IF EXISTS homerooms;
+    
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE update_school_year(IN schoolyear INT)
+BEGIN
+    UPDATE school_year
+    set is_current = 1 
+    where school_year_id = schoolyear;
+    
+    update school_year
+    set is_current = 0
+    where school_year_id <> schoolyear;
+END $$
 DELIMITER ;
 
 /*Create Views*/
@@ -496,7 +665,7 @@ as (
 		s.homeroom_id,
         s.school_id,
         sch.name,
-        h.class as homeroom_name,
+        h.class_room,
         h.room_number,
 		s.grade_id,
         g.grade_value,
@@ -603,7 +772,7 @@ as
 (
 	select
 		h.homeroom_id,
-		h.class,
+		h.class_room,
         h.room_number,
 		h.school_id,
 		h.school_year_id,
@@ -613,8 +782,7 @@ as
 		h.last_update_contact_id,
         concat(u.first_name, ' ', u.last_name) as last_update_contact_name,
 		h.last_update_dt,
-		h.is_deleted,
-        h.class as 'homeroom_name'
+		h.is_deleted
     from samsjacksonville.homeroom h
     inner join samsjacksonville.school_year sy on 
 		sy.school_year_id = h.school_year_id and 
@@ -675,6 +843,7 @@ as
         c.room_number,
         c.room_extension,
         s.name as school_name,
+		s.school_id,
 		c.email_address,
 		c.cell_phone,
         c.school_year_id,
@@ -790,7 +959,7 @@ as
         ctc.name as content_course_name,
         g.grade_value,
         sch.name as school_name,
-        homeroom.class as homeroom_name,
+        homeroom.class_room,
         homeroom.room_number,
         ov.last_update_contact_id,
         concat(lastupdate.first_name , ' ' , lastupdate.last_name) as last_update_contact_name,

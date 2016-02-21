@@ -1,0 +1,183 @@
+﻿@model  SAMsUNFWebApplication.Models.ContactCollection
+@{
+    ViewBag.Title = "AddContact";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 class="h3">Add Student</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                <!--AddChild, Student-->
+                @using (Html.BeginForm("AddContct", "Contact", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add First Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.first_name,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactFirstName",
+                                       @Name = "ContactFirstName",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Last Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.last_name,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactLastName",
+                                       @Name = "ContactLastName",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Position:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.position,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactPosition",
+                                       @Name = "ContactPosition",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Class Room:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.classroom,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactClassRoom",
+                                       @Name = "ContactClassRoom",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Room Number:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.room_number,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactRoomNumber",
+                                       @Name = "ContactRoomNumber",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Room Extension:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.room_extension,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactRoomExtension",
+                                       @Name = "ContactRoomExtension",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A School:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Email Address:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.email_address,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactEmailAddress",
+                                       @Name = "ContactEmailAddress",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add Cell Phone:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.contact.cell_phone,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "ContactCellPhone",
+                                       @Name = "ContactCellPhone",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>

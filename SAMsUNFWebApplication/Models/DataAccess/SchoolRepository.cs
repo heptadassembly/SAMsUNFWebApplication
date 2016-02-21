@@ -29,7 +29,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         public async Task<IEnumerable<School>> GetSchool(string school_id)
         {
             // Read the user by their username in the database. 
-            IEnumerable<School> result = await this._openConnection.QueryAsync<School>(@" SELECT * FROM school where school_id = " + school_id + ";");
+            IEnumerable<School> result = await this._openConnection.QueryAsync<School>(@" SELECT * FROM samsjacksonville.vw_school where school_id = " + school_id + ";");
             return result;
         }
 
@@ -39,5 +39,23 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             IEnumerable<School> result = await this._openConnection.QueryAsync<School>(@" SELECT * FROM vw_school order by case when school_id = " + school_id + " then -2 else school_id end");
             return result;
         }
+        public string CreateSchool(string SchoolName)
+        {
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO samsjacksonville.school (name) VALUES ('" + SchoolName + "');";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
+        public string EditSchool(string SchoolID, string SchoolName)
+        {
+            var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "' where school_id = " + SchoolID + ";";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
     }
 }

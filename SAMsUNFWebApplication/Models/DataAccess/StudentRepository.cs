@@ -30,7 +30,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             var queryString = @"INSERT INTO etl.student (studentid, last, first, grade, school, gender) VALUES ('" + TxtId + "','" + TxtLast + "','" + "','" + TxtFirst + "','" + TxtGrade + "','" + TxtSchool + "','" + TxtGender + "');";
             try
-            { 
+            {
                 this._openConnection.Execute(queryString);
                 var newString = @"CALL samsjacksonville.import_student();";
                 this._openConnection.Execute(newString);
@@ -51,7 +51,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-        public async Task<IEnumerable<Student>> GetStudent(int id)
+        public async Task<IEnumerable<Student>> GetStudent(string id)
         {
             // Read the user by their username in the database. 
             IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@"Select * from samsjacksonville.student where student_id = " + id + ";");
