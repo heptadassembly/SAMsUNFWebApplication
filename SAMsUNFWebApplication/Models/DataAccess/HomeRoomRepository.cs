@@ -24,12 +24,14 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public async Task<IEnumerable<HomeRoom>> GetHomeRooms()
         {
-            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.vw_homeroom where homeroom_id > 0 order by  homeroom_name");
+            // Read the user by their username in the database. 
+            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM samsjacksonville.vw_homeroom");
             return result;
         }
-        public async Task<IEnumerable<HomeRoom>> GetHomeRoom(string homeroom_id)
+
+        public async Task<IEnumerable<HomeRoom>> GetHomeRoom(string id)
         {
-            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.homeroom where homeroom_id = " + homeroom_id + ";");
+            IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.homeroom where homeroom_id = " + id + ";");
             return result;
         }
 
@@ -37,6 +39,35 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             IEnumerable<HomeRoom> result = await this._openConnection.QueryAsync<HomeRoom>(@" SELECT * FROM  samsjacksonville.homeroom order by case when homeroom_id = " + homeroom_id + " then -2 else homeroom_id end;");
             return result;
+        }
+
+        public string AddHomeRm(string HomeRoomClassRoom, string HomeRoomRoomNumber, string selectschoollist)
+        {
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO samsjacksonville.homeroom (class_room, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
+        public string AddHomeRoom(string HomeRoomClassRoom, string HomeRoomRoomNumber, string selectschoollist)
+        {
+            //To do Items
+            //Get Current Logged on User and put into variable.
+            //Get Current Date/Time and put into variable.
+            //Get Current School Year Selection and put into variable.
+            var queryString = @"INSERT INTO samsjacksonville.homeroom (class_room, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+            _openConnection.Execute(queryString);
+            return "success";
+        }
+
+        public string EditHomeRm(string HomeRoomID, string HomeRoomClassRoom, string HomeRoomRoomNumber, string selectschoollist)
+        {
+            var queryString = @"Update samsjacksonville.homeroom set class_room = '" + HomeRoomClassRoom + "', room_number = '" + HomeRoomRoomNumber + "', school_id = " + selectschoollist + " where homeroom_id = " + HomeRoomID + ";";
+            _openConnection.Execute(queryString);
+            return "success";
         }
 
     }

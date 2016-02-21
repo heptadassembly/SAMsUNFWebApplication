@@ -13,7 +13,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
     public class EditStudentController : Controller
     {
         // GET: AddOfficeVisit
-        public async System.Threading.Tasks.Task<ActionResult> EditStudent(int id)
+        public async System.Threading.Tasks.Task<ActionResult> EditStudent(string id)
         {
 
             StudentCollection coll = new StudentCollection();

@@ -22,7 +22,6 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             {
                 await connection.OpenAsync();
                 var result = new ContactRepository(connection).GetContact(id);
-
                 var result2 = new ContactRepository(connection).GetContacts();
                 var result3 = new SchoolRepository(connection).GetSortedSchools(result.Result.First().school_id.ToString());
 

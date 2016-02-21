@@ -1,0 +1,87 @@
+﻿@model  SAMsUNFWebApplication.Models.HomeRoomCollection
+@{
+    ViewBag.Title = "AddHomeRoom";
+}
+
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 class="h3">Add HomeRoom</h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>  
+                <!--AddChild, Student-->
+                @using (Html.BeginForm("AddHomeRm", "HomeRoom", FormMethod.Get))
+                {
+                    //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add HomeRoom Name:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.homeroom.class_room,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "HomeRoomClassRoom",
+                                       @Name = "HomeRoomClassRoom",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Add HomeRoom Room Number:")
+                                </td>
+                                <td>
+                                    @Html.TextBoxFor(m => m.homeroom.room_number,
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "width: 250px;",
+                                       @id = "HomeRoomRoomNumber",
+                                       @Name = "HomeRoomRoomNumber",
+                                       @required = "required"
+                                   })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.Label("Select A School:")
+                                </td>
+                                <td>
+                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
+                                        new
+                                        {
+                                            @style = "width: 250px;",
+                                            @class = "form-control"
+                                        })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="right">
+                                    <input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>

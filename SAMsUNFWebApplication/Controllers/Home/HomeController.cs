@@ -87,6 +87,20 @@ namespace SAMsUNFWebApplication.Controllers
             return View();
         }
 
+        public ActionResult HomeRoom()
+        {
+            return View();
+        }
+
+        public ActionResult AddHomeRoom()
+        {
+            return View();
+        }
+        public ActionResult EditHomeRoom()
+        {
+            return View();
+        }
+
 
     }
 }

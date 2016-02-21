@@ -51,7 +51,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-        public async Task<IEnumerable<Student>> GetStudent(int id)
+        public async Task<IEnumerable<Student>> GetStudent(string id)
         {
             // Read the user by their username in the database. 
             IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@"Select * from samsjacksonville.student where student_id = " + id + ";");

@@ -30,7 +30,7 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
                 var result6 = new RemedialActionRepository(connection).GetRemedialActions();
 
 
-                coll.allStudents =  (IEnumerable<Models.Student>) result.Result.ToArray();
+                coll.allStudents =  (IEnumerable<Models.Student>)result.Result.ToArray();
                 coll.allReporters = coll.allHandledBys = (IEnumerable<Models.Contact>)result2.Result.ToArray();
                 coll.allLocations = (IEnumerable<Models.ContentCourse>)result3.Result.ToArray();
                 coll.allCodeViolations = (IEnumerable<Models.CodeOfConductViolation>)result4.Result.ToArray();
