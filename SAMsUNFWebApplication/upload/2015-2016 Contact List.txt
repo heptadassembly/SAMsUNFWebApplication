@@ -1,0 +1,91 @@
+lastname	firstname	position	classroom	school	room	roomextension	email	cell
+Alexander	NeQuana	Student Support Specialist	-	Impact	322	322	nalexander@kippjax.org	904-382-4952
+Almond	Erin	KTC-Alumni	-	Regional	114	114	ealmond@kippjax.org	904-382-1299
+Barry	Alyse	Kindergarten	UF	VOICE	132	132	abarry@kippjax.org	904-382-3054
+Bentley	Awildaniz	KG-Co-Teacher	Rollins	KJE	137	137	abentley@kippjax.org	904-600-9574
+Beyer	Kirsten	"3rd Grade, ELA-Dillard"	Cal Berkeley	VOICE	135	135	kbeyer@kippjax.org	904-589-1996
+Black	Brittany	ASL	-	Impact	403	403	bblack@kippjax.org	904-566-1279
+Blanco	Andrew	Spanish	-	Impact	407	407	ablanco@kippjax.org	904-576-6212
+Blythe	Jessica	"3rd Grade, MSSS, Spelman"	Syracuse	VOICE	215	215	jblythe@kippjax.org	904-600-7803
+Brooten	Erin	School Office Coordinator	-	Regional	Front Office	110	ebrooten@kippjax.org	904-600-9593
+Brown	Jennifer	CAO	-	Regional	426G	150	jbrown@kippjax.org	904-233-7358
+Buck	Warren	School Leader	-	Impact	411	411	wbuck@kippjax.org	904-790-0868
+Casals	Mandy	"8th Grade, Math"	Indiana	Impact	315	315	mcasals@kippjax.org	314-795- 8945
+Caswell	Michael	Para	-	VOICE/KJE	226	226	mcaswell@kippjax.org	904-600-9573
+Chauncey	Lauren	Talent & Recruitment	-	Regional	425F	180	lmartin@kippjax.org	904-382-3418
+Christian	Larry	IT	-	Regional	321	321	lchristian@kippjax.org	904-629-1263
+Clayton	Shakeena	KG-CoTeacher	UF	VOICE	132	132	dclayton@kippjax.org	?
+Coffee	Lynneshia	ASL	-	VOICE/KJE	117C	?	lcoffee@kippjax.org	904-535-8607
+Corona	Allyson	KTC-HS Placement	-	Regional	114	114	acorona@kippjax.org	904-233-2027
+Davidson	Kimberly	School Leader	-	VOICE/KJE	117D	140	kdavidson@kippjax.org	904-472-7774
+Dollard	Faith	"7th Grade, Math"	Alcorn	Impact	311	311	fdollard@kippjax.org	904-600-7385
+Duckworth	Travis	"3rd Grade, MSSS, Cal Berkeley"	Dillard	VOICE	229	229	tduckworth@kippjax.org	904-534-8929
+Ferrell	Audrey	"2nd Grade, ELA-Wisconsin"	Maryland	VOICE	212	212	aferrell@kippjax.org	904-576-2950
+Fitzgerald	Elaine	Development	-	Regional	425E	219	efitzgerald@kippjax.org	904-600-9585
+Flores	Michelle	"7th Grade, ELA"	Notre Dame	Impact	313	313	mflores@kippjax.org	904-214-5107
+Fraid	Savannah	Learning Specialist	-	VOICE/KJE	134A	190	sfraid@kippjax.org	904-517-4430
+Galmore	Startrice	Kindergarten	Rollins	KJE	137	137	sgalmore@kippjax.org	904-600-7791
+Gomez	Jamie	"6th Grade, Science"	UCSB	Impact	406	406	jgomez@kippjax.org	904-576-7154
+Grajeda	Edgar	1st Grade-CoTeacher	Alabama	VOICE	124	124	egrajeda@kippjax.org	904-576-5936
+Hall	Victoria	Resident	-	Impact	433	433	vhall@kippjax.org	904-600-9586
+Hammontree	Melissa	ASL	-	VOICE/KJE	223	223	mhammontree@kippjax.org	904-517-4808
+Haroldson	Peter	"6th Grade, Humanities"	NC A&T	Impact	422	422	pharoldson@kippjax.org	904-600-9587
+Harrison	Kirby	Speech-Language Pathologist	-	Regional	228	228	kharrison@kippjax.org	904-566-1500
+Hatcher	Heather	KG-CoTeacher	FSU	VOICE	135	135		?
+Hayes	Quenaria	Para	-	VOICE/KJE	226	226	qhayes@kippjax.org	904-505-0931
+Haynes	Ashlee	Guidance Counselor	-	Impact	411	411	ahaynes@kippjax.org	904-566-1204
+Hensch-White	Melissa	Curriculum-Math	-	Regional	425D	425	mhensch@kippjax.org	904-382-0973
+Henwood	Nicole	Learning Specialist	-	VOICE/KJE	227	227	nhenwood@kippjax.org	904-600-9549
+Herman	Catherine	Student Services Manager	-	Regional	117B	115	cherman@kippjax.org	904-600-9604
+Hoover	Connie	1st Grade	TSU	VOICE	125	125	choover@kippjax.org	904-505-5965
+Horton	Jeffrey	Band	-	Impact	409	409	jhorton@kippjax.org	904-600-7823
+Jackson	Danny	"5th Grade, ELA"	Georgetown	Impact	418	418	djackson@kippjax.org	904-600-9584
+Jemmott	Andrea	Kindergarten	Miami	VOICE	134	134	ajemmott@kippjax.org	904-214-5847
+Jenkins	Angie	Learning Specialist	-	Impact	403	403	ajenkins@kippjax.org	904-352-3455
+Jenkins	Ken'Terra	School Office Coordinator	-	Regional	Front Office	110	kjenkinskipp@gmail.com	904-382-5657
+Jones	Brooke	"2nd Grade, MSSS-Maryland"	Wisconsin	VOICE	213	213	bjones@kippjax.org	904-600-9541
+Katsipoutis	Stella	1st Grade-CoTeacher	UNC	VOICE	126	126	skatsipoutis@kippjax.org	904-203-9013
+Keys	Dominique	"7th Grade, Science, GLC"	UCF	Impact	310	310	dkeys@kippjax.org	904-382-6092
+Kone	Amba	"6th Grade, ELA"	Princeton	Impact	424	424	dkeys@kippjax.org	904-382-6092
+Lawson	Johanna	"5th Grade, Humanities"	Texas	Impact	419	419	jlawson@kippjax.org	904-600-9546
+Lawson	Justin	"8th Grade, Humanities"	BCU	Impact	314	314	justin.lawson@kippjax.org	904-203-9108
+LeBlanc	Alyssa	"2nd Grade, MSSS-Williams"	Howard	VOICE	210	210	aleblanc@kippjax.org	904-566-1104
+Lerch	Jacquelyn	Kindergarten	FSU	VOICE	135	135	jlerch@kippjax.org	904-600-9580
+Littlefield	Elise	KG-CoTeacher	Miami	VOICE	134	134	elittlefield@kippjax.org	904-214-5477
+Logan	Kim	Student Services Manager	-	Regional	116A	118	klogan@kippjax.org	904-535-0762
+Majdanics	Tom	Executive Director	-	Regional	426	426	tmajdanics@kippjax.org	904-738-4145
+Malcolm	Courtney	Kindergarten	FAMU	VOICE	133	133	cmalcolm@kippjax.org	904-203-9721
+Manlove	Abe	ASL	-	VOICE/KJE	115A	122	amanlove@kippjax.org	904-233-5699
+Marron	Alexis	1st Grade-CoTeacher	UGA	VOICE	123	123	amarron@kippjax.org	904-600-7896
+Martin	Veronica	Resident	-	Impact	433	433	vmartin@kippjax.org	904-600-7805
+Mays	Lindsay	"3rd Grade, ELA, Syracuse"	Spelman	VOICE	214	214	lmays@kippjax.org	904-214-2857
+McCray	Laquindra	Interventionist/Technology	-	VOICE	112	112	lmccray@kippjax.org	904-589-5260
+Mello	Fiorella	1st Grade	Alabama	VOICE	124	124	fmello@kippjax.org	904-600-9566
+Miller	Cohl	Art	Ohio State	VOICE/KJE	113	113	cmiller@kippjax.org	904-600-7538
+Mostella	Shavonne	1st Grade	UNC	VOICE	126	126	smostella@kippjax.org	904-566-1186
+Mulligan	Miles	Data	-	Regional	425H	241	mmulligan@kippjax.org	904-234-8470
+Neal	Wendy	"6th Grade, Math, GLC"	Michigan	Impact	423	423	wneal@kippjax.org	904-600-9538
+Obradovic	Rade	"8th Grade, Science"	UNF	Impact	323	323	robradovic@kippjax.org	904-525-4053
+Olivera	Jasmira	KG-Para	Jacksonville University	KJE	136	136	jolivera@kippjax.org	904-600-9600
+Parton	Samantha	"5th Grade, Science, GLC"	Stanford	Impact	420	420	sparton@kippjax.org	904-600-9557
+Payton	Ted	"7th Grade, Humanities, Coach"	UVA	Impact	312	312	tpayton@kippjax.org	904-566-1289
+Penkala	Katie	ASL	-	Impact	318	318	kpenkala@kippjax.org	904-382-1411
+Regina	Newkirk	"5th Grade, Math"	Morehouse	Impact	419	419	rnewkirk@kippjax.org	904-517-3964
+Rich	Julia	"8th Grade, ELA"	Clemson	Impact	324	324	jrich@kippjax.org	904-600-7482
+Riddley	Clayton	Music	-	VOICE/KJE	224	224	criddley@kippjax.org	904-600-9570
+Rossley	Zach	COO	-	Regional	428	428	zrossley@kippjax.org	757-784-1663
+Roye	Leighton	Student Services Manager	-	Regional	321	321	lroye@kippjax.org	904-517-4760
+Salazar	Jonathan	Learning Specialist	-	VOICE/KJE	226	226	jsalazar@kippjax.org	904-600-9579
+Shuler	Laveenya	School Office Manager	-	Regional	Front Office	112	lshuler@kippjax.org	904-600-9613
+Seide	Stephanie	KG-Para	FAMU	VOICE	133	133	sseide@kippjax.org	904-600-7331
+Smith	Joycelyn	Guidance Counselor	-	VOICE/KJE	225	225	jsmith@kippjax.org	904-600-9571
+Stukes	Vaughn	School Operations Coordinator	-	Regional	321	321	vstukes@kippjax.org	904-589-4254
+Swearingen	Jennifer	Kindergarten	Jacksonville University	KJE	136	136	jswearingen@kippjax.org	904-517-7603
+Tweedie	Theresa	"2nd Grade, ELA-Howard"	Williams	VOICE	211	211	ttweedie@kippjax.org	904-600-9588
+Varkanis	George	Physical Education	-	VOICE/KJE	Gym (507)	-	gvarkanis@kippjax.org	904-382-1323
+Von Leue	Kory	ASL	-	VOICE/KJE	218	218	kvonleue@kippjax.org	904-566-1000
+White	Kedra	1st Grade-CoTeacher	TSU	VOICE	125	125	kwhite@kippjax.org	904-600-7965
+Wilkinson	De-Shazo	Physical Education	-	Impact	Gym (507)	-	dwilkinson@kippjax.org	904-600-9548
+Yaros	Ann	"Learning Specialist, Math"	-	Impact	404	404	ayaros@kippjax.org	904-517-7139
+Yates	Jennifer	"Learning Specialist, Math, Coach"	-	Impact	325	325	jyates@kippjax.org	904-600-9619
+Young	Leeanna	"Learning Specialist, Reading"	-	Impact	325	325	lyoung@kippjax.org	904-535-3262
