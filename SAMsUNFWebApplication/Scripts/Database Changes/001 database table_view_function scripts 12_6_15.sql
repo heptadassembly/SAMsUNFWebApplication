@@ -50,6 +50,10 @@ DROP TABLE if exists samsjacksonville.content_course;
 DROP TABLE if exists samsjacksonville.contact;
 DROP TABLE if exists samsjacksonville.school_year;
 DROP TABLE if exists samsjacksonville.gender;
+
+DROP TABLE if exists etl.contact;
+DROP TABLE if exists etl.student;
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 /* remove procedures and functions */
@@ -280,6 +284,29 @@ CREATE TABLE if not exists samsjacksonville.gender
 (
 	gender varchar(20)
 );
+
+CREATE TABLE if not exists etl.contact
+(
+	lastname varchar(800),
+	firstname varchar(800),
+	`position` varchar(800),
+	classroom varchar(800),
+	school varchar(800),
+	room varchar(800),
+	roomextension varchar(800),
+	email varchar(800),
+	cell varchar(800)
+);
+
+CREATE TABLE if not exists etl.student
+(
+	studentid varchar(800),
+	last varchar(800),
+	first varchar(800),
+	grade varchar(800),
+	school varchar(800),
+	gender varchar(800)
+)
 
 -- select 'creating table office visits' '';
 /* ******************BEGIN OFFICE VISIT INSERTION*************************** */
