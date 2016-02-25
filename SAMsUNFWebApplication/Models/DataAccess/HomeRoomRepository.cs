@@ -47,7 +47,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO samsjacksonville.homeroom (class_room, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+            var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
             _openConnection.Execute(queryString);
             return "success";
         }
@@ -58,14 +58,14 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO samsjacksonville.homeroom (class_room, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+            var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
             _openConnection.Execute(queryString);
             return "success";
         }
 
         public string EditHomeRm(string HomeRoomID, string HomeRoomClassRoom, string HomeRoomRoomNumber, string selectschoollist)
         {
-            var queryString = @"Update samsjacksonville.homeroom set class_room = '" + HomeRoomClassRoom + "', room_number = '" + HomeRoomRoomNumber + "', school_id = " + selectschoollist + " where homeroom_id = " + HomeRoomID + ";";
+            var queryString = @"Update samsjacksonville.homeroom set homeroom_name = '" + HomeRoomClassRoom + "', room_number = '" + HomeRoomRoomNumber + "', school_id = " + selectschoollist + " where homeroom_id = " + HomeRoomID + ";";
             _openConnection.Execute(queryString);
             return "success";
         }

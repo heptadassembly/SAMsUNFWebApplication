@@ -100,6 +100,28 @@ namespace SAMsUNFWebApplication.Controllers
         {
             return View();
         }
+        public ActionResult Profile()
+        {
+            return View();
+        }
+
+        public ActionResult AddProfile()
+        {
+            return View();
+        }
+        public ActionResult EditProfile()
+        {
+            return View();
+        }
+       
+        public ActionResult RemedialAction()
+        {
+            return View();
+        }
+        public ActionResult CreateRemedialAction()
+        {
+            return View();
+        }
 
 
     }

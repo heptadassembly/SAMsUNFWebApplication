@@ -1,7 +1,7 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Student>
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.RemedialAction>
 @using GridMvc.Html
 @{
-    ViewBag.Title = "Student";
+    ViewBag.Title = "RemedialAction";
 }
 
 <head>
@@ -13,16 +13,16 @@
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Student</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Remedial Action</h1>
         </td>
     </tr>
     <tr>
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
-
-                @Html.ActionLink("Add New Student", "AddStudent", "AddStudent")
+                @Html.ActionLink("Add New Remedial Action", "CreateRemedialAction", "Home")
             </div>
             <div style="width:500px; text-align:center;">
+
 
                 @Html.Grid(Model).Columns(columns =>
            {
@@ -32,25 +32,19 @@
            .SetWidth(30)
            .RenderValueAs(d =>
         @<b>
-            @Html.ActionLink("Edit", "EditStudent", "EditStudent",
+            @Html.ActionLink("Edit", "EditRemedialAction", "EditRemedialAction",
                new
                {
-                   @id = d.student_id
+                   @id = d.remedial_action_id
                },
                new
                {
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(c => c.student_id_nk).Titled("ID").SetWidth(15);
-               columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15);
-               columns.Add(c => c.first_name).Titled("First Name").SetWidth(5);
-               columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true);
+               columns.Add(c => c.name).Titled("Name").SetWidth(15);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
     </tr>
 </table>
-
-
-

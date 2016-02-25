@@ -8,22 +8,22 @@
         <tr>
             <td>
                 <div style="text-align:left;">
-                    <h2>Login please</h2>
-                    @using (Html.BeginForm("Login", "Login"))
+                <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Login</h1>
+        @using (Html.BeginForm("Login", "Login"))
             {
-                        <div style="text-align:right;">
-                            @Html.ValidationSummary(true,"",new { @class = "text-danger" })
-                            <label>User Id:</label> @Html.TextBoxFor(m => m.user_name)
-                            @Html.ValidationMessageFor(m => m.user_name, "", new { @class = "text-danger" })
-                            <br />
-                            <label>Password:</label> @Html.PasswordFor(m => m.password)
-                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
-                            <br />
-                            <input id="submit" type="submit" value="Login" />
-                        </div>
-                      
-                    }
-                </div>
+            <div style="text-align:right;">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <label>User Id:</label> @Html.TextBoxFor(m => m.user_name)
+                @Html.ValidationMessageFor(m => m.user_name, "", new { @class = "text-danger" })
+                <br />
+                <label>Password:</label> @Html.PasswordFor(m => m.password)
+                @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                <br />
+                <input id="submit" type="submit" value="Login" />
+            </div>
+
+        }
+</div>
             </td>
             <td style="padding-left:50px;">
                 <div>

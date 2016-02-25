@@ -201,6 +201,11 @@
     <Compile Include="Controllers\CodeOfConductViolation\CodeOfConductViolationController.cs" />
     <Compile Include="Controllers\OfficeVisit\AddOfficeVisitController.cs" />
     <Compile Include="Controllers\OfficeVisit\OfficeVisitController.cs" />
+    <Compile Include="Controllers\Profile\AddProfileController.cs" />
+    <Compile Include="Controllers\Profile\EditProfileController.cs" />
+    <Compile Include="Controllers\Profile\ProfileController.cs" />
+    <Compile Include="Controllers\RemedialAction\EditRemedialActionController.cs" />
+    <Compile Include="Controllers\RemedialAction\RemedialActionController.cs" />
     <Compile Include="Controllers\SchoolYear\SchoolYearController.cs" />
     <Compile Include="Controllers\School\EditSchoolController.cs" />
     <Compile Include="Controllers\School\SchoolController.cs" />
@@ -214,6 +219,7 @@
     <Compile Include="Models\DashboardCollection.cs" />
     <Compile Include="Models\DataAccess\GenderRepository.cs" />
     <Compile Include="Models\DataAccess\GradeRepository.cs" />
+    <Compile Include="Models\DataAccess\ProfileRepository.cs" />
     <Compile Include="Models\DataAccess\RemedialActionRepository.cs" />
     <Compile Include="Models\DataAccess\HomeRoomRepository.cs" />
     <Compile Include="Models\DataAccess\SchoolRepository.cs" />
@@ -279,6 +285,12 @@
     <Content Include="Views\HomeRoom\Homeroom.cshtml" />
     <Content Include="Views\Shared\AddHomeRoom.cshtml" />
     <Content Include="Views\Shared\EditHomeRoom.cshtml" />
+    <Content Include="Views\Profile\Profile.cshtml" />
+    <Content Include="Views\Shared\AddProfile.cshtml" />
+    <Content Include="Views\Shared\EditProfile.cshtml" />
+    <Content Include="Views\RemedialAction\RemedialAction.cshtml" />
+    <Content Include="Views\Shared\EditRemedialAction.cshtml" />
+    <Content Include="Views\Home\CreateRemedialAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -288,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
+    <Folder Include="Views\AddProfile\" />
+    <Folder Include="Views\AddRemedialAction\" />
+    <Folder Include="Views\EditRemedialAction\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

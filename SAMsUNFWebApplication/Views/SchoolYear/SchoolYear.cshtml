@@ -10,8 +10,8 @@
 </head>
 <table>
     <tr>
-        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 class="h3" style="color:#255694; font-size:x-large; ">Set School Year</h3>
+        <td>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">School Year</h1>
         </td>
     </tr>
     <tr>
@@ -26,7 +26,9 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    @Html.Label("Select Location:")</td><td>
+                                    @Html.Label("Select Location:")
+                                </td>
+                                <td>
 
                                     @Html.DropDownListFor(m => m.allSchoolYears,
                     new SelectList(Model.allSchoolYears,

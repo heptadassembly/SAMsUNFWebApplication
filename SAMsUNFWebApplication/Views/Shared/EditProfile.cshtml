@@ -1,6 +1,6 @@
-﻿@model  SAMsUNFWebApplication.Models.HomeRoomCollection
+﻿@model  SAMsUNFWebApplication.Models.ProfileCollection
 @{
-    ViewBag.Title = "EditHomeRoom";
+    ViewBag.Title = "EditProfile";
 }
 
 <head>
@@ -11,13 +11,13 @@
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit a Homeroom</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit a Profile</h1>
         </td>
     </tr>
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("EditHomeRm", "HomeRoom", FormMethod.Get))
+                @using (Html.BeginForm("EditProfl", "Profile", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -26,28 +26,28 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleHomeRoom.First().homeroom_id,
+                                    @Html.TextBoxFor(z => z.singleProfile.First().profile_id,
                                         new
                                         {
                                             @Style = "display: none; border:0px;",
-                                            @id = "HomeRoomID",
-                                            @Name = "HomeRoomID",
-                                            @Value = Model.singleHomeRoom.First().homeroom_id,
+                                            @id = "ProfileID",
+                                            @Name = "ProfileID",
+                                            @Value = Model.singleProfile.First().profile_id,
                                             @readonly = "readonly"
                                         })
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("HomeRoom Class Room:")
+                                    @Html.Label("User Name:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleHomeRoom.First().class_room,
+                                    @Html.TextBoxFor(z => z.singleProfile.First().user_name,
                                         new
                                         {
-                                            @id = "HomeRoomClassRoom",
-                                            @Name = "HomeRoomClassRoom",
-                                            @Value = Model.singleHomeRoom.First().class_room,
+                                            @id = "ProfileUserName",
+                                            @Name = "ProfileUserName",
+                                            @Value = Model.singleProfile.First().user_name,
                                             @required = "required",
                                             @style = "width: 250px;",
                                             @class = "form-control"
@@ -56,15 +56,15 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("HomeRoom Room Number:")
+                                    @Html.Label("Password:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleHomeRoom.First().room_number,
+                                    @Html.TextBoxFor(z => z.singleProfile.First().password,
                                         new
                                         {
-                                            @id = "HomeRoomRoomNumber",
-                                            @Name = "HomeRoomRoomNumber",
-                                            @Value = Model.singleHomeRoom.First().room_number,
+                                            @id = "ProfilePassword",
+                                            @Name = "ProfilePassword",
+                                            @Value = Model.singleProfile.First().password,
                                             @required = "required",
                                             @style = "width: 250px;",
                                             @class = "form-control"
@@ -73,10 +73,10 @@
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("School:")
+                                    @Html.Label("Contact:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
+                                    @Html.DropDownListFor(z => z.profilecontactselectlist, Model.profilecontactselectlist,
                                    new
                                    {
                                        @style = "width: 250px;",

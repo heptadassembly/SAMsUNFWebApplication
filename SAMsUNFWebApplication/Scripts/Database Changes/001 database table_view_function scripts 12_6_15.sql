@@ -175,7 +175,7 @@ create index _profileidx on samsjacksonville.profile(profile_id, school_year_id)
 CREATE TABLE if not exists samsjacksonville.homeroom
 (
 	homeroom_id int not null unique auto_increment,
-    class_room varchar(50),
+    homeroom_name varchar(50),
     room_number varchar(20),
     school_id int,
     school_year_id int,
@@ -643,17 +643,17 @@ BEGIN
     /*Remove Duplicates*/
     delete es
     from homerooms es
-    inner join samsjacksonville.homeroom s on s.class_room = es.classroom and s.school_year_id = _schoolyear;
+    inner join samsjacksonville.homeroom s on s.homeroom_name = es.classroom and s.school_year_id = _schoolyear;
     
     delete es
     from homerooms es
-    inner join samsjacksonville.homeroom s on s.class_room = es.room and s.school_year_id = _schoolyear;
+    inner join samsjacksonville.homeroom s on s.homeroom_name = es.room and s.school_year_id = _schoolyear;
     
     /*Populate the Homeroom Table*/
-    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+    insert into samsjacksonville.homeroom (homeroom_name, room_number, school_year_id, school_id)
 	(select distinct h.classroom, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom not in (''));
     
-    insert into samsjacksonville.homeroom (class_room, room_number, school_year_id, school_id)
+    insert into samsjacksonville.homeroom (homeroom_name, room_number, school_year_id, school_id)
     (select distinct h.room, h.room, _schoolyear, samsjacksonville.fn_getSchoolID(h.school) from homerooms h where h.classroom in (''));
 	
     SET SQL_SAFE_UPDATES = 1;
@@ -692,7 +692,7 @@ as (
 		s.homeroom_id,
         s.school_id,
         sch.name,
-        h.class_room,
+        h.homeroom_name,
         h.room_number,
 		s.grade_id,
         g.grade_value,
@@ -799,7 +799,7 @@ as
 (
 	select
 		h.homeroom_id,
-		h.class_room,
+		h.homeroom_name,
         h.room_number,
 		h.school_id,
 		h.school_year_id,
@@ -826,36 +826,37 @@ as
 );
 
 -- select 'creating view profile' '';
-create view samsjacksonville.vw_profile
-as
-(
-	select
-		p.profile_id,
-		p.contact_id,
-		p.user_name,
-		p.password,
-		p.school_year_id,
-		p.create_contact_id,
-        concat(c.first_name, ' ', c.last_name) as create_contact_name,
-		p.create_dt,
-		p.last_update_contact_id,
-        concat(u.first_name, ' ', u.last_name) as last_update_contact_name,
-		p.last_update_dt,
-		p.is_deleted 
-    from samsjacksonville.profile p
-    inner join samsjacksonville.school_year sy on 
-		sy.school_year_id = p.school_year_id and 
-		sy.is_current = 1
-	inner join samsjacksonville.contact c on
-		c.contact_id = p.create_contact_id
-	inner join samsjacksonville.contact u on
-		u.contact_id = p.last_update_contact_id
-	where
-		p.is_deleted = 0 and
-        sy.is_deleted = 0 and
-        c.is_deleted = 0 and
-        u.is_deleted = 0
-);
+CREATE VIEW `samsjacksonville`.`vw_profile` 
+AS
+ (
+	 SELECT 
+			`p`.`profile_id` AS `profile_id`,
+			`p`.`contact_id` AS `contact_id`,
+			`p`.`user_name` AS `user_name`,
+			`cc`.`first_name`,
+			`cc`.`last_name`,
+			`p`.`password` AS `password`,
+			`p`.`school_year_id` AS `school_year_id`,
+			`p`.`create_contact_id` AS `create_contact_id`,
+			CONCAT(`c`.`first_name`, ' ', `c`.`last_name`) AS `create_contact_name`,
+			`p`.`create_dt` AS `create_dt`,
+			`p`.`last_update_contact_id` AS `last_update_contact_id`,
+			CONCAT(`u`.`first_name`, ' ', `u`.`last_name`) AS `last_update_contact_name`,
+			`p`.`last_update_dt` AS `last_update_dt`,
+			`p`.`is_deleted` AS `is_deleted`
+		FROM
+			`samsjacksonville`.`profile` `p`
+			JOIN `samsjacksonville`.`school_year` `sy` ON `sy`.`school_year_id` = `p`.`school_year_id`
+				AND `sy`.`is_current` = 1
+			JOIN `samsjacksonville`.`contact` `cc` ON `cc`.`contact_id` = `p`.`contact_id`
+			JOIN `samsjacksonville`.`contact` `c` ON `c`.`contact_id` = `p`.`create_contact_id`
+			JOIN `samsjacksonville`.`contact` `u` ON `u`.`contact_id` = `p`.`last_update_contact_id`
+		WHERE
+			`p`.`is_deleted` = 0
+				AND `sy`.`is_deleted` = 0
+				AND `c`.`is_deleted` = 0
+				AND `u`.`is_deleted` = 0
+)
 
 -- select 'creating view contact' '';
 create view samsjacksonville.vw_contact
@@ -986,7 +987,7 @@ as
         ctc.name as content_course_name,
         g.grade_value,
         sch.name as school_name,
-        homeroom.class_room,
+        homeroom.homeroom_name,
         homeroom.room_number,
         ov.last_update_contact_id,
         concat(lastupdate.first_name , ' ' , lastupdate.last_name) as last_update_contact_name,
@@ -1034,4 +1035,80 @@ from samsjacksonville.office_visit_remedial_action_assn ovr
 
 inner join remedial_action ra
       on ovr.remedial_action_id = ra.remedial_action_id  
+);
+
+drop view if exists vw_office_visits_by_homeroom;
+drop view if exists vw_office_visits_by_offense_type;
+drop view if exists vw_office_visits_by_teacher;
+drop view if exists vw_office_visits_by_weekly_count;
+
+create view vw_office_visits_by_homeroom
+as 
+(
+    select
+        sch.name as 'school_name',
+        h.class_room as 'homeroom_name' ,
+        g.grade_value as 'grade',
+		count(ov.office_visit_id) as total_visits
+		from office_visit ov
+    inner join school_year sy on  sy.is_current = 1
+    inner join student s on s.student_id = ov.student_id
+    and s.school_year_id  = sy.school_year_id
+	inner join homeroom h on h.homeroom_id = ov.homeroom_id
+    inner join school sch on sch.school_id = h.school_id 
+    inner join grade g on g.grade_id = s.grade_id 
+    inner join content_course cc on cc.content_course_id = ov.content_course_id 
+    left join contact  sentby on sentby.contact_id  = ov.sent_by_contact_id
+    left join contact handledby on handledby.contact_id  = ov.handled_by_contact_id
+    inner join contact updatedby on updatedby.contact_id  = ov.last_update_contact_id
+    Group by g.grade_value,Sch.name, h.class_room
+    order by total_visits desc
+);
+
+create view vw_office_visits_by_teacher
+as 
+(
+    select
+        concat(sentby.first_name , ' ' , sentby.last_name) as 'sent_by_contact_name',
+		count(ov.office_visit_id) as total_visits
+		from office_visit ov
+    inner join school_year sy on  sy.is_current = 1
+    inner join student s on s.student_id = ov.student_id
+    and s.school_year_id  = sy.school_year_id
+	inner join homeroom h on h.homeroom_id = s.homeroom_id
+    inner join school sch on sch.school_id = h.school_id 
+    inner join grade g on g.grade_id = s.grade_id 
+    inner join content_course cc on cc.content_course_id = ov.content_course_id 
+    left join contact  sentby on sentby.contact_id  = ov.sent_by_contact_id
+    left join contact handledby on handledby.contact_id  = ov.handled_by_contact_id
+    inner join contact updatedby on updatedby.contact_id  = ov.last_update_contact_id
+    Group  by sentby.last_name,sentby.first_name
+    order by total_visits desc
+);
+
+create view vw_office_visits_by_offense_type
+as 
+(
+ select
+        
+     	cc.name as 'offense_type',
+        count(ov.office_visit_id) as total_visits
+	   
+		from office_visit ov
+		inner join school_year sy on  sy.is_current = 1
+        inner join office_visit_offense_assn ovoa on ovoa.office_visit_id = ov.office_visit_id
+	    inner join code_of_conduct_violation cc on  cc.code_of_conduct_violation_id = ovoa.code_of_conduct_violation_id
+        Group  by cc.name
+        order by total_visits desc
+);
+
+create view vw_office_visits_by_weekly_count
+as 
+(
+  select
+	str_to_date(concat(yearweek(office_visit_dt), ' monday'), '%X%V %W') as 'Monday',
+    count(*) as total_visits
+      
+      from office_visit 
+      group by yearweek(office_visit_dt)
 );
