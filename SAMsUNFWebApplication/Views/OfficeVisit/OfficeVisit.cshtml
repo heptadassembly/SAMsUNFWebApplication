@@ -2,26 +2,36 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "OfficeVisit";
+    Layout = "~/Views/Shared/_myTemplate.cshtml";
 }
 
-<head>
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+<div class="bg-slider-wrapper">
+    <div class="flexslider bg-slider">
+        <ul class="slides">
+            <li class="slide slide-6"></li>
+        </ul>
+    </div>
+</div><!--//bg-slider-wrapper-->
 
-</head>
-<table>
-    <tr>
-        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>        
-                <h3 style="color:#255694; font-size:x-large; ">Office Visits</h3>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <div style="width:500px; text-align:left;font-size:xx-small; ">
-                <!--https://stick2basic.wordpress.com/2013/04/10/how-to-set-webgrid-style-in-mvc/-->
-          
-                @Html.Grid(Model).Columns(columns =>
+<section class="promo section section-on-bg">
+    <div class="container text-center">
+        <h1>Office Visits</h1>
+    </div><!--//container-->
+</section><!--//promo-->
+
+<div class="sections-wrapper">
+
+    <!-- ******Why Section****** -->
+    <section id="why" class="section why">
+        <div class="container">
+            <h2 class="title text-center">Office Visits</h2>
+            <p class="intro text-center">Student history of office visits</p>
+            <div class="row item">
+           
+                            <h3 style="color:#255694; font-size:x-large; ">Office Visits</h3>
+                <div style="width:1000px; text-align:center;font-size:small; ">
+
+                    @Html.Grid(Model).Columns(columns =>
            {
                columns.Add(c => c.student_number).Titled("StudentNumber").Filterable(true);
                columns.Add(c => c.student_name).Titled("Name").Filterable(true);
@@ -38,15 +48,16 @@
                columns.Add(c => c.consequences).Titled("Consequences").Filterable(true);
                columns.Add(c => c.comments).Titled("Comment").Filterable(true);
            }).WithPaging(5).Sortable(true)
-            </div>
-           </td>
-    </tr>
-    <tr>
-        <td align="center">
-            @Html.ActionLink("Export To Excel", "ExportToExcel")
-        </td>
-        <td>
-            @Html.ActionLink("Add Office Visit", "AddOfficeVisit", "AddOfficeVisit")
-        </td>
-    </tr>
-</table>
+                </div>
+
+                    @Html.ActionLink("Export To Excel", "ExportToExcel")
+
+                    @Html.ActionLink("Add Office Visit", "AddOfficeVisit", "AddOfficeVisit")
+
+                </div><!--//item-->
+
+
+
+        </div><!--//container-->    
+    </section>
+</div><!--//section-wrapper-->

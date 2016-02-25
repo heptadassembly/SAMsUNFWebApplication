@@ -1,0 +1,48 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.CSVContacts>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "ImportContact";
+}
+<head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css") rel=" stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+</head>
+<table>
+    <tr>
+        <td>
+            <div class="jumbotron">
+                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
+                <h1 style="color:darkgoldenrod; font-size:large; ">Code Of Conduct Violation</h1>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center" style="padding-left:100px;">
+            <div style="width:500px; text-align:center;">
+
+
+
+
+                @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add()
+            .Encoded(false)
+            .Sanitized(false)
+            .SetWidth(30)
+            .RenderValueAs(d =>
+            @<b>
+                @Html.ActionLink("Edit", "Index")
+            </b>);
+               columns.Add(c => c.name).Titled("ID").SetWidth(15);
+               columns.Add(c => c.email_address).Titled("Duval Code").SetWidth(15);
+           }).WithPaging(10).Sortable(true).Filterable(true)
+            </div>
+        </td>
+    </tr>
+</table>
+

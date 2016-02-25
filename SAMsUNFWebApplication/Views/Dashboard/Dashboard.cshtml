@@ -2,24 +2,38 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_myTemplate.cshtml";
 }
-<head>
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
 
-</head>
-<table>
-    <tr>
-        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 style="color:#255694; font-size:x-large; ">Dashboard</h3>
-        </td>
-    </tr>
-    <tr>
-        <td align="left">
-            <div style="width:500px; text-align:left;font-size:xx-small; ">
+<div class="bg-slider-wrapper">
+    <div class="flexslider bg-slider">
+        <ul class="slides">
+            <li class="slide slide-5"></li>
+        </ul>
+    </div>
+</div><!--//bg-slider-wrapper-->
 
-                @Html.Grid(Model).Columns(columns =>
+<section class="promo section section-on-bg">
+    <div class="container text-center">
+        <h1>Dashboard</h1>
+    </div><!--//container-->
+</section><!--//promo-->
+
+<div class="sections-wrapper">
+
+    <!-- ******Why Section****** -->
+    <section id="why" class="section why">
+        <div class="container">
+            <h2 class="title text-center">Dashboard</h2>
+            <p class="intro text-center">Overview of the Student Management System</p>
+            <div class="row item">
+
+
+                <h3 style="color:#255694; font-size:x-large; ">Dashboard</h3>
+
+                <div style="width:1000px; text-align:center;font-size:small; ">
+
+                    @Html.Grid(Model).Columns(columns =>
            {
                columns.Add(c => c.student_id).Titled("StudentId").Filterable(true);
                columns.Add(c => c.first_name).Titled("First Name").Filterable(true);
@@ -32,13 +46,14 @@
                columns.Add(c => c.last_update_contact_id).Titled("Updated By").Filterable(true); ;
                columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
            }).WithPaging(3).Sortable(true)
-            </div>
-        </td>
-        </tr>
-    <tr>
-        <td align="center">
-            @Html.ActionLink("Export To Excel", "ExportToExcel")
-        </td>
-    </tr>
-</table>
+                </div>
 
+                @Html.ActionLink("Export To Excel", "ExportToExcel")
+
+            </div><!--//item-->
+
+
+
+        </div><!--//container-->
+    </section>
+</div><!--//section-wrapper-->

@@ -1,0 +1,39 @@
+﻿<link href="@Url.Content("~/Content/accordion.css")" type="text/css" rel="stylesheet" />
+<script src="~/Scripts/accordion.js" type="text/javascript"></script>
+
+<div id="accordian">
+    <ul>
+        <li>
+            <h3>@Html.ActionLink("Login", "Login", "Login", null, new { @style = "color:white" })</h3>
+        </li>
+        <li>
+            <h3>@Html.ActionLink("Dashboard", "Dashboard", "Dashboard", null, new { @style = "color:white" })</h3>
+        </li>
+        <li>
+            <h3>@Html.ActionLink("Office Visit", "OfficeVisit", "OfficeVisit", null, new { @style = "color:white" })</h3>
+        </li>
+        <li>
+            <h3>Admin Management</h3>
+            <ul>
+                <li>@Html.ActionLink("Student", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("School", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("School Year", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Grade", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Homeroom", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
+                <li>@Html.ActionLink("Profile", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Office Visit", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Code of Conduct", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Remedial Action", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+                <li>@Html.ActionLink("Settings", "CodeOfConductViolation", "CodeOfConductViolation")</li>
+            </ul>
+        </li>
+        <li>
+            <h3>Training</h3>
+            <ul>
+                <li>@Html.ActionLink("Administrator Training", "Training", "Training")</li>
+                <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
+            </ul>
+        </li>
+    </ul>
+</div>

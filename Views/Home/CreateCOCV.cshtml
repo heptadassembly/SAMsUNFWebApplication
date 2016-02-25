@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "CreateCOCV";
+}
+
+<h2>Create</h2>
+<a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+<h6>Insert New Records Here:</h6>  
+@using (@Html.BeginForm("CreateCodeOfConductViolation", "CodeOfConductViolation", FormMethod.Get))
+{
+    <table>
+        <tr>
+            <td>Enter ID of Conduct Violation ID</td>
+            <td>:</td>
+            <td>@Html.TextBox("TxtId")</td>
+        </tr>
+        <tr>
+            <td>Enter Code of Conduct Violation ID</td>
+            <td>:</td>
+            <td>@Html.TextBox("TxtCode")</td>
+        </tr>
+        <tr>
+            <td>Enter the name of the Violation</td>
+            <td>:</td>
+            <td>@Html.TextBox("TxtName")</td>
+        </tr>
+        <tr>
+            <td>Save Your Details</td>
+            <td>:</td>
+            <td><input type="submit" value="Submit" /></td>
+        </tr>
+    </table>
+}  

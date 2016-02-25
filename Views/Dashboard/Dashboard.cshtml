@@ -1,0 +1,44 @@
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Student>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "Dashboard";
+}
+<head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
+</head>
+<table>
+    <tr>
+        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
+            <h3 style="color:#255694; font-size:x-large; ">Dashboard</h3>
+        </td>
+    </tr>
+    <tr>
+        <td align="left">
+            <div style="width:500px; text-align:left;font-size:xx-small; ">
+
+                @Html.Grid(Model).Columns(columns =>
+           {
+               columns.Add(c => c.student_id).Titled("StudentId").Filterable(true);
+               columns.Add(c => c.first_name).Titled("First Name").Filterable(true);
+               columns.Add(c => c.last_name).Titled("Last Name").Filterable(true);
+               columns.Add(c => c.grade_id).Titled("Grade").Filterable(true);
+               columns.Add(c => c.homeroom_id).Titled("Homeroom").Filterable(true);
+               columns.Add(c => c.is_deleted).Titled("deleted?").Filterable(true); ;
+               columns.Add(c => c.school_year_id).Titled("School year").Filterable(true); ;
+               columns.Add(c => c.create_contact_id).Titled("Submitted By").Filterable(true); ;
+               columns.Add(c => c.last_update_contact_id).Titled("Updated By").Filterable(true); ;
+               columns.Add(c => c.create_dt).Titled("Created Date").Filterable(true); ;
+           }).WithPaging(3).Sortable(true)
+            </div>
+        </td>
+        </tr>
+    <tr>
+        <td align="center">
+            @Html.ActionLink("Export To Excel", "ExportToExcel")
+        </td>
+    </tr>
+</table>
+
