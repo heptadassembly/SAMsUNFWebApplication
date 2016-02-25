@@ -42,12 +42,12 @@
                                     @Html.Label("HomeRoom Class Room:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleHomeRoom.First().class_room,
+                                    @Html.TextBoxFor(z => z.singleHomeRoom.First().homeroom_name,
                                         new
                                         {
                                             @id = "HomeRoomClassRoom",
                                             @Name = "HomeRoomClassRoom",
-                                            @Value = Model.singleHomeRoom.First().class_room,
+                                            @Value = Model.singleHomeRoom.First().homeroom_name,
                                             @required = "required",
                                             @style = "width: 250px;",
                                             @class = "form-control"

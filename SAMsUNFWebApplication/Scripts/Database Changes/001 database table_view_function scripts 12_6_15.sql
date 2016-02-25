@@ -285,6 +285,10 @@ CREATE TABLE if not exists samsjacksonville.gender
 	gender varchar(20)
 );
 
+insert into gender values ('Unknown');
+insert into gender values ('M - Male');
+insert into gender values ('F - Female');
+
 CREATE TABLE if not exists etl.contact
 (
 	lastname varchar(800),
@@ -306,7 +310,7 @@ CREATE TABLE if not exists etl.student
 	grade varchar(800),
 	school varchar(800),
 	gender varchar(800)
-)
+);
 
 -- select 'creating table office visits' '';
 /* ******************BEGIN OFFICE VISIT INSERTION*************************** */
@@ -856,7 +860,7 @@ AS
 				AND `sy`.`is_deleted` = 0
 				AND `c`.`is_deleted` = 0
 				AND `u`.`is_deleted` = 0
-)
+);
 
 -- select 'creating view contact' '';
 create view samsjacksonville.vw_contact
@@ -1047,7 +1051,7 @@ as
 (
     select
         sch.name as 'school_name',
-        h.class_room as 'homeroom_name' ,
+        h.homeroom_name,
         g.grade_value as 'grade',
 		count(ov.office_visit_id) as total_visits
 		from office_visit ov
@@ -1061,7 +1065,7 @@ as
     left join contact  sentby on sentby.contact_id  = ov.sent_by_contact_id
     left join contact handledby on handledby.contact_id  = ov.handled_by_contact_id
     inner join contact updatedby on updatedby.contact_id  = ov.last_update_contact_id
-    Group by g.grade_value,Sch.name, h.class_room
+    Group by g.grade_value,Sch.name, h.homeroom_name
     order by total_visits desc
 );
 
