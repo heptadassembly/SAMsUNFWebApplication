@@ -3,22 +3,17 @@
 @{
     ViewBag.Title = "School";
 }
+
 <head>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
-    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+
 </head>
 <table>
     <tr>
         <td>
-            <div class="jumbotron">
-                <h1 style="color:darkgoldenrod; font-size:larger;">Student Action Management System (SAMs)</h1>
-                <h1 style="color:darkgoldenrod; font-size:large; ">Code Of Conduct Violation</h1>
-            </div>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">School</h1>
         </td>
     </tr>
     <tr>
@@ -29,15 +24,15 @@
             <div style="width:500px; text-align:center;">
 
 
-@Html.Grid(Model).Columns(columns =>
-           {
-           columns.Add()
-           .Encoded(false)
-           .Sanitized(false)
-           .SetWidth(30)
-           .RenderValueAs(d =>
-            @<b>
-                @Html.ActionLink("Edit", "EditSchool", "EditSchool",
+                @Html.Grid(Model).Columns(columns =>
+{
+columns.Add()
+.Encoded(false)
+.Sanitized(false)
+.SetWidth(30)
+.RenderValueAs(d =>
+                    @<b>
+                        @Html.ActionLink("Edit", "EditSchool", "EditSchool",
                new
                {
                    @id = d.school_id
@@ -46,11 +41,13 @@
                {
                    @class = "btn btn-default"
                })
-            </b>);
-               columns.Add(c => c.name).Titled("Name").SetWidth(15);
-           }).WithPaging(10).Sortable(true).Filterable(true)
+                    </b>);
+    columns.Add(c => c.name).Titled("Name").SetWidth(15);
+}).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
     </tr>
 </table>
+
+
 

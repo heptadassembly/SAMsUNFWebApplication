@@ -1,7 +1,7 @@
-﻿@model  IEnumerable<SAMsUNFWebApplication.Models.Contact>
+﻿@model  IEnumerable<SAMsUNFWebApplication.Models.ProfileModel>
 @using GridMvc.Html
 @{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "Profile";
 }
 <head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
@@ -15,14 +15,14 @@
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Contact</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Profile</h1>
         </td>
     </tr>
-     <tr>
+    <tr>
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
 
-                @Html.ActionLink("Add New Contact", "AddContact", "AddContact")
+                @Html.ActionLink("Add New Contact", "AddProfile", "AddProfile")
             </div>
             <div style="width:500px; text-align:center;">
 
@@ -34,26 +34,22 @@
            .SetWidth(30)
            .RenderValueAs(e =>
         @<b>
-            @Html.ActionLink("Edit", "EditContact", "EditContact",
+            @Html.ActionLink("Edit", "EditProfile", "EditProfile",
                new
                {
-                   @id = e.contact_id
+                   @id = e.profile_id
                },
                new
                {
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(d => d.contact_id).Titled("ID").SetWidth(15);
+               columns.Add(d => d.profile_id).Titled("ID").SetWidth(15);
+               columns.Add(d => d.user_name).Titled("User Name").SetWidth(15);
                columns.Add(d => d.first_name).Titled("First Name").SetWidth(15);
-               columns.Add(d => d.last_name).Titled("Last Name").SetWidth(5);
-               columns.Add(d => d.position).Titled("Position").SetWidth(20);
-               columns.Add(d => d.classroom).Titled("ClassRoom").SetWidth(10);
-               columns.Add(d => d.room_number).Titled("Room Number").SetWidth(10);
-               columns.Add(d => d.room_extension).Titled("Room Extension").SetWidth(10);
-               columns.Add(d => d.school_id).Titled("School ID").SetWidth(10);
-               columns.Add(d => d.email_address).Titled("Email Address").SetWidth(10);
-               columns.Add(d => d.cell_phone).Titled("Cell PHone").SetWidth(10);
+               columns.Add(d => d.last_name).Titled("Last Name").SetWidth(15);
+               columns.Add(d => d.contact_id).Titled("Contact ID").SetWidth(5);
+               columns.Add(d => d.password).Titled("Password").SetWidth(20);
 
 
            }).WithPaging(10).Sortable(true).Filterable(true)

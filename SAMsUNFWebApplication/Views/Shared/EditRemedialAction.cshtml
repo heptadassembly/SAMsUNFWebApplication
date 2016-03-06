@@ -1,6 +1,6 @@
-﻿@model  SAMsUNFWebApplication.Models.SchoolCollection  
+﻿@model  SAMsUNFWebApplication.Models.RemedialActionCollection
 @{
-    ViewBag.Title = "EditSchool";
+    ViewBag.Title = "EditRemedialAction";
 }
 
 <head>
@@ -17,7 +17,7 @@
     <tr>
         <td>
             <div>
-                @using (Html.BeginForm("EditSchool", "School", FormMethod.Get))
+                @using (Html.BeginForm("EditRemedialAction", "RemedialAction", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -26,28 +26,28 @@
                             <tr>
                                 <td></td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleSchool.First().school_id,
+                                    @Html.TextBoxFor(z => z.singleRemedialAction.First().remedial_action_id,
                                         new
                                         {
                                             @Style = "display: none; border:0px;",
-                                            @id = "SchoolID",
-                                            @Name = "SchoolID",
-                                            @Value = Model.singleSchool.First().school_id,
+                                            @id = "RemedialActionID",
+                                            @Name = "RemedialActionID",
+                                            @Value = Model.singleRemedialAction.First().remedial_action_id,
                                             @readonly = "readonly"
                                         })
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("School Name:")
+                                    @Html.Label("Remedial Action Name:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(z => z.singleSchool.First().name,
+                                    @Html.TextBoxFor(z => z.singleRemedialAction.First().name,
                                         new
                                         {
-                                            @id = "SchoolName",
-                                            @Name = "SchoolName",
-                                            @Value = Model.singleSchool.First().name,
+                                            @id = "RemedialActionName",
+                                            @Name = "RemedialActionName",
+                                            @Value = Model.singleRemedialAction.First().name,
                                             @required = "required",
                                             @style = "width: 250px;",
                                             @class = "form-control"

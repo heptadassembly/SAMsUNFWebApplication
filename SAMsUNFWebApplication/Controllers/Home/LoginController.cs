@@ -21,7 +21,7 @@ namespace SAMsUNFWebApplication.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<ActionResult> Login(Profile model, string actionRequest)
+        public async System.Threading.Tasks.Task<ActionResult> Login(ProfileModel model, string actionRequest)
         {
 
             if (model.user_name != null && model.user_name.Length > 0 && model.password != null && model.password.Length > 0)

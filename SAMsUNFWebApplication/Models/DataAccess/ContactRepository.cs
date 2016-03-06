@@ -37,6 +37,12 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
+        public async Task<IEnumerable<Contact>> GetSortedContacts(string contact_id)
+        {
+            IEnumerable<Contact> result = await this._openConnection.QueryAsync<Contact>(@" SELECT * FROM  samsjacksonville.contact order by case when contact_id = " + contact_id + " then -2 else contact_id end;");
+            return result;
+        }
+
         public bool ImportContacts(List<CSVContacts> csvContacts)
         {
             bool success = false;

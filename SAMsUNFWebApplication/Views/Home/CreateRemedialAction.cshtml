@@ -1,17 +1,17 @@
 ﻿
 @{
-    ViewBag.Title = "CreateSchool";
+    ViewBag.Title = "CreateRemedialAction";
 }
 
 <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
 <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a School</h1>
-@using (@Html.BeginForm("CreateSchool", "School", FormMethod.Get))
+@using (@Html.BeginForm("CreateRemedialAction", "RemedialAction", FormMethod.Get))
 {
     <table>
         <tr>
-            <td>Enter Name of School</td>
+            <td>Enter Name of Remedial Action</td>
             <td>:</td>
-            <td>@Html.TextBox("SchoolName")</td>
+            <td>@Html.TextBox("RemedialActionName")</td>
         </tr>
         <tr>
             <td>Save Your Details</td>

@@ -24,10 +24,10 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         }
 
 
-        public async Task<Profile> LoginValidation(string userID, string password)
+        public async Task<ProfileModel> LoginValidation(string userID, string password)
         {
             // Read the user by their username in the database. 
-            var results = await this._openConnection.QueryAsync<Profile>(@" SELECT * FROM  profile 
+            var results = await this._openConnection.QueryAsync<ProfileModel>(@" SELECT * FROM  profile 
                      WHERE user_name = @UserID AND password = @Password",
                     new { UserID  = userID, Password = password });
 

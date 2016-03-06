@@ -1,6 +1,6 @@
-﻿@model  SAMsUNFWebApplication.Models.HomeRoomCollection
+﻿@model  SAMsUNFWebApplication.Models.ProfileCollection
 @{
-    ViewBag.Title = "AddHomeRoom";
+    ViewBag.Title = "AddProfile";
 }
 
 <head>
@@ -11,14 +11,14 @@
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a Homeroom</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a Profile</h1>
         </td>
     </tr>
     <tr>
         <td>
-            <div>  
+            <div>
                 <!--AddChild, Student-->
-                @using (Html.BeginForm("AddHomeRm", "HomeRoom", FormMethod.Get))
+                @using (Html.BeginForm("AddProfl", "Profile", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
@@ -30,42 +30,42 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    @Html.Label("Add HomeRoom Name:")
+                                    @Html.Label("Add User Name:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.homeroom.homeroom_name,
+                                    @Html.TextBoxFor(m => m.profile.user_name,
                                    new
                                    {
                                        @class = "form-control",
                                        @style = "width: 250px;",
-                                       @id = "HomeRoomClassRoom",
-                                       @Name = "HomeRoomClassRoom",
+                                       @id = "ProfileUserName",
+                                       @Name = "ProfileUserName",
                                        @required = "required"
                                    })
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("Add HomeRoom Room Number:")
+                                    @Html.Label("Add Password:")
                                 </td>
                                 <td>
-                                    @Html.TextBoxFor(m => m.homeroom.room_number,
+                                    @Html.TextBoxFor(m => m.profile.password,
                                    new
                                    {
                                        @class = "form-control",
                                        @style = "width: 250px;",
-                                       @id = "HomeRoomRoomNumber",
-                                       @Name = "HomeRoomRoomNumber",
+                                       @id = "ProfilePassword",
+                                       @Name = "ProfilePassword",
                                        @required = "required"
                                    })
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    @Html.Label("Select A School:")
+                                    @Html.Label("Select Associated Contact:")
                                 </td>
                                 <td>
-                                    @Html.DropDownListFor(m => m.schoolselectlist, Model.schoolselectlist,
+                                    @Html.DropDownListFor(m => m.profilecontactselectlist, Model.profilecontactselectlist,
                                         new
                                         {
                                             @style = "width: 250px;",

@@ -39,7 +39,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
                 coll.gradeselectlist = new SelectList(result2.Result.ToList(), "grade_id", "grade_value", new { id = "TxtGrade", @required = "required" });
                 coll.schoolselectlist = new SelectList(result3.Result.ToList(), "school_id", "name", new { id = "TxtSchool", @required = "required" });
                 coll.genderselectlist = new SelectList(result4.Result.ToList(), "gender", "gender", new { id = "TxtGender", @required = "required" });
-                coll.homeroomselectlist = new SelectList(result5.Result.ToList(), "homeroom_id", "class_room", new { id = "TxtHomeroom", @required = "required" });
+                coll.homeroomselectlist = new SelectList(result5.Result.ToList(), "homeroom_id", "homeroom_name", new { id = "TxtHomeroom", @required = "required" });
 
             }
             return View(coll);

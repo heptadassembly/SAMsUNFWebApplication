@@ -27,12 +27,8 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             {
                 await connection.OpenAsync();
 
-                var result = new GradeRepository(connection).GetGrades();
                 var result2 = new SchoolRepository(connection).GetSchools();
-                var result3 = new HomeRoomRepository(connection).GetHomeRooms();
-
                 coll.allSchools = (IEnumerable<Models.School>)result2.Result.ToArray();
-
                 coll.schoolselectlist = new SelectList(result2.Result.ToList(), "school_id", "name", new { @required = "required" });
             }
 
