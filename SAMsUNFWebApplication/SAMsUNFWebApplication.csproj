@@ -324,6 +324,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Database Changes\001 database table_view_function scripts 12_6_15.sql" />
     <Content Include="Scripts\Database Changes\002 database test insert statements.sql" />
+    <Content Include="Scripts\Database Changes\MasterScript03062016.sql" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
     <Content Include="Scripts\gridmvc.js" />
