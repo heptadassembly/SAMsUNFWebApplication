@@ -38,53 +38,6 @@ namespace SAMsUNFWebApplication.Utilities
                 return pck.GetAsByteArray();
             }
         }
-
-        /// <summary>
-        /// BuildHomeroomsTable
-        /// </summary>
-        /// <param name="ws"></param>
-        /// <param name="Homerooms"></param>
-        private static void BuildHomeroomsTable(ExcelWorksheet ws, IEnumerable<OfficeVisitsByHomeroom> Homerooms)
-        {
-            ws.Cells[1, 6].Value = "School";
-            ws.Cells[3, 7].Value = "Homeroom";
-            ws.Cells[3, 8].Value = "Grade";
-            ws.Cells[3, 9].Value = "Office Visits";
-
-            for (int i = 0; i < Homerooms.Count(); i++)
-            {
-                ws.Cells[i + 4, 6].Value = Homerooms.ElementAt(i).school_name;
-                ws.Cells[i + 4, 7].Value = Homerooms.ElementAt(i).homeroom_name;
-                ws.Cells[i + 4, 8].Value = Homerooms.ElementAt(i).grade;
-                ws.Cells[i + 4, 9].Value = Homerooms.ElementAt(i).total_visits;
-            }
-
-            //Set Header style
-            using (ExcelRange rng = ws.Cells[1, 6, 4 + Homerooms.Count(), 9])
-            {
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.LightSalmon);
-
-            }
-
-            using (ExcelRange rng = ws.Cells[3, 6, 3, 9])
-            {
-                rng.Style.Font.Bold = true;
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                rng.Style.Font.Color.SetColor(Color.White);
-            }
-
-            using (ExcelRange rng = ws.Cells[1, 6])
-            {
-                rng.Style.Font.Bold = true;
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                rng.Style.Font.Color.SetColor(Color.White);
-
-            }
-
-        }
         /// <summary>
         /// BuildTeachersTable
         /// </summary>
@@ -92,43 +45,85 @@ namespace SAMsUNFWebApplication.Utilities
         /// <param name="Teachers"></param>
         private static void BuildTeachersTable(ExcelWorksheet ws, IEnumerable<OfficeVisitsByTeacher> Teachers)
         {
+
+            ws.Column(1).Width = 17.86;
+            ws.Column(2).Width = 12.43;
+
             //Set Header titles
-            ws.Cells[1, 1].Value = "Teachers";
-            ws.Cells[3, 1].Value = "Teacher Name";
-            ws.Cells[3, 2].Value = "Office Visits";
+            ws.Cells[4, 1].Value = "Teachers";
+            ws.Cells[5, 1].Value = "Teacher Name";
+            ws.Cells[5, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+           // ws.Cells[5, 1].AutoFilter = true;
+            ws.Cells[5, 2].Value = "Office Visits";
+            ws.Cells[5, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+           // ws.Cells[5, 2].AutoFilter = true;
 
             //Get Data for Teachers       
             for (int i = 0; i < Teachers.Count(); i++)
             {
-                ws.Cells[i + 4, 1].Value = Teachers.ElementAt(i).sent_by_contact_name;
-                ws.Cells[i + 4, 2].Value = Teachers.ElementAt(i).total_visits;
+                ws.Cells[i + 6, 1].Value = Teachers.ElementAt(i).sent_by_contact_name;
+                ws.Cells[i + 6, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                ws.Cells[i + 6, 2].Value = Teachers.ElementAt(i).total_visits;
+                ws.Cells[i + 6, 2].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+            }
+
+            //Set Header style
+            using (ExcelRange rng = ws.Cells[4, 1, 5 + Teachers.Count(), 2])
+            {
+                rng.Style.Font.Bold = true;
+                rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);            
+            }
+
+        }
+       
+        /// <summary>
+        /// BuildHomeroomsTable
+        /// </summary>
+        /// <param name="ws"></param>
+        /// <param name="Homerooms"></param>
+        private static void BuildHomeroomsTable(ExcelWorksheet ws, IEnumerable<OfficeVisitsByHomeroom> Homerooms)
+        {
+
+
+            ws.Column(5).Width = 12.86;
+            ws.Column(6).Width = 16;
+            ws.Column(7).Width = 6.71;
+            ws.Column(8).Width = 11.71;
+
+            ws.Cells[4, 5].Value = "Homerooms";
+            ws.Cells[5, 5].Value = "School";
+            ws.Cells[5, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+            ws.Cells[5, 6].Value = "Homeroom";
+            ws.Cells[5, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+            ws.Cells[5, 7].Value = "Grade";
+            ws.Cells[5, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+            ws.Cells[5, 8].Value = "Office Visits";
+            ws.Cells[5, 8].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+
+            for (int i = 0; i < Homerooms.Count(); i++)
+            {
+                ws.Cells[i + 6, 5].Value = Homerooms.ElementAt(i).school_name;
+                ws.Cells[i + 6, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                ws.Cells[i + 6, 6].Value = Homerooms.ElementAt(i).homeroom_name;
+                ws.Cells[i + 6, 6].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                ws.Cells[i + 6, 7].Value = Homerooms.ElementAt(i).grade.ToString();
+                ws.Cells[i + 6, 7].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+
+                ws.Cells[i + 6, 8].Value = Homerooms.ElementAt(i).total_visits;
+                ws.Cells[i + 6, 8].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
             }
 
             //Set Header style
-            using (ExcelRange rng = ws.Cells[1, 1, 4 + Teachers.Count(), 2])
-            {
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.LightSalmon);
-
-            }
-
-            using (ExcelRange rng = ws.Cells[3, 1, 3, 2])
+            using (ExcelRange rng = ws.Cells[4, 5, 5 + Homerooms.Count(), 8])
             {
                 rng.Style.Font.Bold = true;
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                rng.Style.Font.Color.SetColor(Color.White);
+                rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);
             }
-
-            using (ExcelRange rng = ws.Cells[1, 1, 1, 2])
-            {
-                rng.Style.Font.Bold = true;
-                rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                rng.Style.Font.Color.SetColor(Color.White);
-
-            }
+           
 
         }
 
@@ -139,40 +134,33 @@ namespace SAMsUNFWebApplication.Utilities
         /// <param name="OffenseTypes"></param>
         private static void BuildViolationsTable(ExcelWorksheet ws, IEnumerable<OfficeVisitsByOffenseType> OffenseTypes)
         {
-             ws.Cells[1, 11].Value = "Violations";
-                ws.Cells[3, 11].Value = "Offense Type";
-                ws.Cells[3, 12].Value = "Office Visits";
-               
-                for (int i = 0; i< OffenseTypes.Count(); i++)
-                {
-                    ws.Cells[i + 4, 11].Value = OffenseTypes.ElementAt(i).offense_type;
-                    ws.Cells[i + 4, 12].Value = OffenseTypes.ElementAt(i).total_visits;
-                   }
 
-                //Set Header style
-                using (ExcelRange rng = ws.Cells[1, 11, 4 + OffenseTypes.Count(), 12])
-                {
-                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    rng.Style.Fill.BackgroundColor.SetColor(Color.Beige);
+            ws.Column(11).Width = 50;
+            ws.Column(11).Style.WrapText = true;
+            ws.Column(12).Width = 12.14;
 
-                }
 
-                using (ExcelRange rng = ws.Cells[3, 11, 3, 12])
-                {
-                    rng.Style.Font.Bold = true;
-                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                    rng.Style.Font.Color.SetColor(Color.White);
-                }
+            ws.Cells[4, 11].Value = "Violations";
+            ws.Cells[5, 11].Value = "Offense Type";
+            ws.Cells[5, 11].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+            ws.Cells[5, 12].Value = "Office Visits";
+            ws.Cells[5, 12].Style.Border.BorderAround(ExcelBorderStyle.Thin);
 
-                using (ExcelRange rng = ws.Cells[1, 11])
-                {
-                    rng.Style.Font.Bold = true;
-                    rng.Style.Fill.PatternType = ExcelFillStyle.Solid;
-                    rng.Style.Fill.BackgroundColor.SetColor(Color.Blue);
-                    rng.Style.Font.Color.SetColor(Color.White);
-
-                }
+            for (int i = 0; i < OffenseTypes.Count(); i++)
+            {
+                ws.Cells[i + 6, 11].Value = OffenseTypes.ElementAt(i).offense_type;
+                ws.Cells[i + 6, 11].Style.Border.BorderAround(ExcelBorderStyle.Thin);
+                ws.Cells[i + 6, 12].Value = OffenseTypes.ElementAt(i).total_visits;
+                ws.Cells[i + 6, 12].Style.Border.BorderAround(ExcelBorderStyle.Thin);
             }
+
+            //Set Header style
+            using (ExcelRange rng = ws.Cells[4, 11, 5 + OffenseTypes.Count(), 12])
+            {
+                rng.Style.Font.Bold = true;
+                rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);
+            }
+        }
+
     }
 }

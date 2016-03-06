@@ -5255,9 +5255,9 @@ a.thumbnail:focus {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 5px 5px;
   margin-bottom: -1px;
-  background-color: #ffffff;
+  background-color: #60A2D7;
   border: 1px solid #dddddd;
 }
 
@@ -5308,6 +5308,7 @@ a.list-group-item:focus {
 .list-group-item.active:focus .list-group-item-heading {
   color: inherit;
 }
+
 
 .list-group-item.active .list-group-item-text,
 .list-group-item.active:hover .list-group-item-text,

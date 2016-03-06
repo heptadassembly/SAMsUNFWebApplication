@@ -14,9 +14,11 @@ using System.IO;
 using System.Net.Http.Headers;
 namespace SAMsUNFWebApplication.Utilities.Dashboard
 {
+    
     public class DashboardController : Controller
     {
         // GET: Dashboard
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -51,6 +53,9 @@ namespace SAMsUNFWebApplication.Utilities.Dashboard
             Response.BinaryWrite(fileBytes);
             Response.End();           
         }
+
+
+        [Authorize]
         public async System.Threading.Tasks.Task<ActionResult> Dashboard()
         {
             DashboardCollection coll = new DashboardCollection();
