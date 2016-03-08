@@ -6,6 +6,7 @@
 <head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
 
 </head>
 <table>
@@ -15,6 +16,7 @@
         </td>
     </tr>
     <tr>
+        <td><button class="btn btn-info" onclick="history.go(-1)">Go Back</button></td>
         <td>
             <div>
                 @using (Html.BeginForm("AddVisit", "AddOfficeVisit"))

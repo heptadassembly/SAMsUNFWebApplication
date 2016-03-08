@@ -2,21 +2,24 @@
 @{
     ViewBag.Title = "CreateSchool";
 }
-
-<a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
-<h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a School</h1>
-@using (@Html.BeginForm("CreateSchool", "School", FormMethod.Get))
-{
-    <table>
-        <tr>
-            <td>Enter Name of School</td>
-            <td>:</td>
-            <td>@Html.TextBox("SchoolName")</td>
-        </tr>
-        <tr>
-            <td>Save Your Details</td>
-            <td>:</td>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
-    </table>
-}  
+<head>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
+</head>
+<body>    
+    <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add School</h1>
+    @using (@Html.BeginForm("CreateSchool", "School", FormMethod.Get))
+    {
+        <table class="table">
+            <tr>
+                <td>@Html.Label("School Name")</td>
+                <td>@Html.TextBox("SchoolName", null, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="right">
+                    <br /><input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                    <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
+                </td>
+            </tr>
+        </table>
+    }
+</body> 
