@@ -2,31 +2,42 @@
 @{
     ViewBag.Title = "CreateCOCV";
 }
-
-<a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
-        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a Contact</h1>
-@using (@Html.BeginForm("CreateCodeOfConductViolation", "CodeOfConductViolation", FormMethod.Get))
-{
-    <table>
-        <tr>
-            <td>Enter ID of Conduct Violation ID</td>
-            <td>:</td>
-            <td>@Html.TextBox("TxtId")</td>
-        </tr>
-        <tr>
-            <td>Enter Code of Conduct Violation ID</td>
-            <td>:</td>
-            <td>@Html.TextBox("TxtCode")</td>
-        </tr>
-        <tr>
-            <td>Enter the name of the Violation</td>
-            <td>:</td>
-            <td>@Html.TextBox("TxtName")</td>
-        </tr>
-        <tr>
-            <td>Save Your Details</td>
-            <td>:</td>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
+<head>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
+</head>
+<table>
+    <tr>
+        <td>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add Contact</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (@Html.BeginForm("CreateCodeOfConductViolation", "CodeOfConductViolation", FormMethod.Get))
+                {
+                    <table class="table">
+                        <tr>
+                            <td>@Html.Label("Enter Violation Number")</td>
+                            <td>@Html.TextBox("TxtId")</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Enter Short Code")</td>
+                            <td>@Html.TextBox("TxtCode")</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("Enter Violation Name")</td>
+                            <td>@Html.TextBox("TxtName")</td>
+                        </tr>
+                        <tr>
+                            <td  colspan="2" align="right">
+                                <input type="submit" class="btn btn-primary" value="Submit" />
+                                <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
+                            </td>
+                        </tr>
+                    </table>
+                }
+                </div>
+</td>
+</tr>
     </table>
-}  

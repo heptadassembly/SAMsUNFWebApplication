@@ -15,6 +15,7 @@ namespace SAMsUNFWebApplication.Models
         public string classroom { get; set; }
         public string room_number { get; set; }
         public string room_extension { get; set; }
+        public string school_name { get; set; }
         public int school_id { get; set; }
         public string email_address { get; set; }
         public string cell_phone { get; set; }

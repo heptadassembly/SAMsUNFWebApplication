@@ -4,14 +4,21 @@
 }
 
 <head>
+    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+
+    
 
 </head>
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit a Contact</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit Contact</h1>
         </td>
     </tr>
     <tr>
@@ -21,10 +28,8 @@
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
-                        <thead><tr><td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td></tr></thead>
                         <tbody>
                             <tr>
-                                <td></td>
                                 <td>
                                     @Html.TextBoxFor(z => z.singleContact.First().contact_id,
                                         new
@@ -35,10 +40,7 @@
                                             @Value = Model.singleContact.First().contact_id,
                                             @readonly = "readonly"
                                         })
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+
                                     @Html.Label("First Name:")
                                 </td>
                                 <td>
@@ -189,6 +191,7 @@
                             <tr>
                                 <td colspan="2" align="right">
                                     <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                                    <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
                                 </td>
                             </tr>
                         </tbody>

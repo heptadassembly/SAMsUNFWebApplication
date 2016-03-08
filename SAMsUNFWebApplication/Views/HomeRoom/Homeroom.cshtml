@@ -22,7 +22,7 @@
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
 
-                @Html.ActionLink("Add New HomeRoom", "AddHomeRoom", "AddHomeRoom")
+                @Html.ActionLink("Add HomeRoom", "AddHomeRoom", "AddHomeRoom", null, new { @class = "btn btn-info" })
             </div>
             <div style="width:500px; text-align:center;">
 
@@ -44,10 +44,9 @@
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(d => d.homeroom_id).Titled("HomeRoom ID").SetWidth(15);
                columns.Add(d => d.homeroom_name).Titled("Class Room").SetWidth(15);
                columns.Add(d => d.room_number).Titled("Room Number").SetWidth(5);
-               columns.Add(d => d.school_id).Titled("School ID").SetWidth(10);
+               columns.Add(d => d.school_name).Titled("School Name").SetWidth(10);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>

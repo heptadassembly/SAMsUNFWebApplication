@@ -34,29 +34,31 @@
     </script>
 
 </head>
-<table>
-    <tr>
-        <td colspan="2" align="center" height="30px" style='padding-top:20px;padding-bottom:20px;'>
-            <h3 style="color:#255694; font-size:x-large; ">Import Data</h3>
-        </td>
-    </tr>
-    <tr>
-        <td align="left" style="padding-left:100px;">
-            <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
+<form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
 
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" />
-                <br />
-                <label>Choose File Type:</label><br />
-                <select name="recipient" id="recipient" size="1" onChange="chgAction()">
+    <table class="table">
+        <tr>
+            <td align="left" ">
+                <input type="file" name="file" id="file" class="btn btn-info" />
+            </td></tr><tr>
+            <td>
+                <label>Choose File Type:</label>
+
+
+                <select name="recipient" id="recipient" size="1" onChange="chgAction()" class="form-control">
                     <option value="" selected="selected">--Select--</option>
                     <option value="ImportStudents?file">Import Students</option>
                     <option value="ImportContacts?file">Import Contacts</option>
                 </select>
+</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" class="btn btn-primary">
+            </td>
+        </tr>
+        </table>
 
-                <input type="submit">
-            </form>
-        </td>
-    </tr>
-</table>
+</form>
+
 

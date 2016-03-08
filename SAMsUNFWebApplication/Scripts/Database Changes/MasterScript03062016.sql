@@ -1,4 +1,3 @@
-
 drop database if exists samsjacksonville;
 drop database if exists etl;
 
@@ -18,6 +17,12 @@ CREATE TABLE `student` (
 
 CREATE database SAMSJACKSONVILLE;
 USE SAMSJACKSONVILLE;
+
+/* Add SAMs User*/
+GRANT ALL PRIVILEGES 
+    ON `samsjacksonville` . * TO 'KIPPDemo'@'localhost' IDENTIFIED 
+BY 'KIPPDemo';
+
 /* remove views */
 -- select 'dropping views' views;
 DROP VIEW if exists samsjacksonville.vw_student;
@@ -70,7 +75,6 @@ DROP PROCEDURE if exists samsjacksonville.update_school_year;
 DROP PROCEDURE if exists samsjacksonville.import_contact;
 DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_contact`;
 DROP PROCEDURE IF EXISTS `samsjacksonville`.`import_homeroom`;
-
 
 -- CREATE TABLE School
 SET FOREIGN_KEY_CHECKS = 0;
@@ -767,12 +771,14 @@ as (
         sy.is_deleted = 0
 );
 
+-- drop view samsjacksonville.vw_code_of_conduct_violation
 -- select 'creating view code of conduct violation' '';
 create view samsjacksonville.vw_code_of_conduct_violation
 as 
 (
 	select
 		ccv.code_of_conduct_violation_id,
+        ccv.duval_violation_code,
 		ccv.short_code,
 		ccv.name,
 		ccv.create_contact_id,
@@ -807,6 +813,7 @@ as
 		h.homeroom_name,
         h.room_number,
 		h.school_id,
+        sl.name as school_name,
 		h.school_year_id,
 		h.create_contact_id,
         concat(c.first_name, ' ', c.last_name) as create_contact_name,
@@ -823,6 +830,8 @@ as
 		c.contact_id = h.create_contact_id
 	inner join samsjacksonville.contact u on
 		u.contact_id = h.last_update_contact_id
+	inner join samsjacksonville.school sl on
+		sl.school_id = h.school_id
 	where
 		h.is_deleted = 0 and
         sy.is_deleted = 0 and
@@ -863,6 +872,7 @@ AS
 				AND `u`.`is_deleted` = 0
 );
 
+-- drop view samsjacksonville.vw_contact
 -- select 'creating view contact' '';
 create view samsjacksonville.vw_contact
 as
@@ -878,7 +888,16 @@ as
         s.name as school_name,
 		s.school_id,
 		c.email_address,
-		c.cell_phone,
+        case when length(
+        concat("(",left(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 3),") ",
+			mid(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 4, 3), "-",
+            right(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 4))) <> 14 then ''
+            else 
+            concat("(",left(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 3),") ",
+			mid(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 4, 3), "-",
+            right(replace(replace(replace(replace(replace(c.cell_phone, '-', ''), '?', ''), '(', ''), ')', ''), ' ', ''), 4))
+            end
+            as cell_phone,
         c.school_year_id,
 		c.create_contact_id,
 		concat(cc.first_name, ' ', cc.last_name) as create_contact_name,
@@ -900,7 +919,6 @@ as
         sy.is_deleted = 0 and
         s.is_deleted = 0
 );
-
 -- select 'creating view grades' '';
 create view samsjacksonville.vw_grade
 as
