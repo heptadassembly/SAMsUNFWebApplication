@@ -35,6 +35,7 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
             }
         }
 
+        [HttpPost]
         public System.Web.Mvc.RedirectResult AddHomeRoom(string HomeRoomClassRoom, string HomeRoomRoomNumber, string schoolselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
@@ -46,12 +47,10 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
                 }
                 else
                 {
-                    //do something else here.
                     return Redirect("HomeRoom/HomeRoom");
                 }
             }
         }
-
 
         public System.Web.Mvc.RedirectResult AddHomeRm(string HomeRoomClassRoom, string HomeRoomRoomNumber, string schoolselectlist)
         {

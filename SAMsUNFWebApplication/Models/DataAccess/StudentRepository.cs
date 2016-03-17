@@ -39,6 +39,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             catch (Exception ex)
             {
                 throw (ex);
+               
             }
 
             return success;

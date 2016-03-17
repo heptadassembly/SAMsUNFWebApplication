@@ -30,6 +30,7 @@ namespace SAMsUNFWebApplication.Controllers.Contact
         public ActionResult ImportContacts(HttpPostedFileBase file)
         {
             string path = null;
+            string url = null;
             List<CSVContacts> ContactsToDisplay = new List<CSVContacts>();
 
             try
@@ -51,30 +52,28 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         ContactRepository snm = new ContactRepository(connection);
                         snm.ImportContacts(records);
 
-                        return View(records);
+                        url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                        return Redirect(url);
                     }
                 }
             }
             catch
             {
-                return View();
+                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                return Redirect(url);
             }
 
-            return View();
+            url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+            return Redirect(url);
 
         }
 
-
-        [HttpGet]
-        public ActionResult ImportStudents()
-        {
-            return View();
-        }
 
         [HttpPost]
         public ActionResult ImportStudents(HttpPostedFileBase file)
         {
             string path = null;
+            string url = null;
             List<CSVStudent> StudentsToDisplay = new List<CSVStudent>();
 
             try
@@ -82,6 +81,7 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+
                     path = AppDomain.CurrentDomain.BaseDirectory + "upload\\" + fileName;
                     file.SaveAs(path);
 
@@ -99,16 +99,19 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         StudentRepository snm = new StudentRepository(connection);
                         snm.ImportStudents(records);
 
-                        return View(records);
+                        url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                        return Redirect(url);
                     }
                 }
             }
             catch
             {
-                return View();
+                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                return Redirect(url);
             }
 
-            return View();
+            url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+            return Redirect(url);
 
         }
 
