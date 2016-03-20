@@ -21,8 +21,10 @@ namespace SAMsUNFWebApplication.Models
         public int school_year_id { get; set; }
         [Required]
         public int school_id { get; set; }
+        public string name { get; set; }
         public string gender { get; set; } 
         public int homeroom_id { get; set; }
+        public string homeroom_name { get; set; }
         [Required]
         public int grade_id { get; set; }
         public int create_contact_id { get; set; }

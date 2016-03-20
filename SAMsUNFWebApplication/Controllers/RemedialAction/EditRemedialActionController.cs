@@ -35,9 +35,5 @@ namespace SAMsUNFWebApplication.Controllers.School
 
             return View(coll);
         }
-        public ActionResult GetRemedialAction(RemedialActionCollection model, string actionRequest)
-        {
-            return RedirectToAction("RemedialAction", "RemedialAction");
-        }
     }
 }

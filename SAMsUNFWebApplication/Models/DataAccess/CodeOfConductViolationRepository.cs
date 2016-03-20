@@ -35,9 +35,17 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO samsjacksonville.code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"INSERT INTO samsjacksonville.code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                //Handle Exception;
+                return "error";
+            }
         }
     }
 }

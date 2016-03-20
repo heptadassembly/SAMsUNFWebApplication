@@ -35,12 +35,5 @@ namespace SAMsUNFWebApplication.Controllers.Student
 
             return View(coll);
         }
-
-        public ActionResult AddChild(StudentCollection model, string actionRequest)
-        {
-
-            return RedirectToAction("Student", "Student");
-        }
-        
     }
 }

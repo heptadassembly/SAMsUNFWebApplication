@@ -13,6 +13,18 @@
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
 </head>
+<div>
+    @if (Request.Params["error"] == "invalidfile")
+    {
+        <div class="bg-danger">The modifications for student did not work due to a system error.  Please try again.</div>
+
+    }
+    @if (Request.Params["error"] == "fileloaded")
+    {
+        <div class="bg-success">The student was modified successfully.</div>
+
+    }
+</div>
 <table>
     <tr>
         <td>
@@ -49,6 +61,8 @@
                columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15);
                columns.Add(c => c.first_name).Titled("First Name").SetWidth(5);
                columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true);
+               columns.Add(c => c.name).Titled("School Name").SetWidth(100).Sanitized(true);
+               columns.Add(c => c.homeroom_name).Titled("Homeroom").SetWidth(100).Sanitized(true);
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>

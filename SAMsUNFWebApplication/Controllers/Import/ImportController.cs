@@ -48,13 +48,35 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVContacts>().ToList();
 
-                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
-                        ContactRepository snm = new ContactRepository(connection);
-                        snm.ImportContacts(records);
-
-                        url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
-                        return Redirect(url);
+                        try
+                        {
+                            var result = "";
+                            var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
+                            ContactRepository snm = new ContactRepository(connection);
+                            result = snm.ImportContacts(records);
+                            if (result == "success")
+                            {
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                                return Redirect(url);
+                            }
+                            else
+                            {
+                                //do something else here.
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                                return Redirect(url);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                            return Redirect(url);
+                        }
                     }
+                }
+                else
+                {
+                    url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                    return Redirect(url);
                 }
             }
             catch
@@ -62,10 +84,6 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
                 return Redirect(url);
             }
-
-            url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
-            return Redirect(url);
-
         }
 
 
@@ -91,17 +109,37 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         reader.Configuration.Delimiter = "\t";
                         reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVStudent>().ToList();
-
-
-                        //move data to the database etl.student
-                        //then run the stored procedure that copies data from etl.student to samsjacksonville.student
-                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
-                        StudentRepository snm = new StudentRepository(connection);
-                        snm.ImportStudents(records);
-
-                        url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
-                        return Redirect(url);
+                        try
+                        {
+                            var result = "";
+                            //move data to the database etl.student
+                            //then run the stored procedure that copies data from etl.student to samsjacksonville.student
+                            var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
+                            StudentRepository snm = new StudentRepository(connection);
+                            result = snm.ImportStudents(records);
+                            if (result == "success")
+                            {
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                                return Redirect(url);
+                            }
+                            else
+                            {
+                                //do something else here.
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                                return Redirect(url);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                            return Redirect(url);
+                        }
                     }
+                }
+                else
+                {
+                    url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                    return Redirect(url);
                 }
             }
             catch
@@ -109,14 +147,6 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
                 return Redirect(url);
             }
-
-            url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
-            return Redirect(url);
-
         }
-
-
     }
-
-
 }

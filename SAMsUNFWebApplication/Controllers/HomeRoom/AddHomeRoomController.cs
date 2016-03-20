@@ -36,11 +36,5 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
 
             return View(coll);
         }
-
-        public ActionResult AddHomeRm(ContactCollection model, string actionRequest)
-        {
-
-            return RedirectToAction("HomeRoom", "HomeRoom");
-        }
     }
 }

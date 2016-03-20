@@ -3,29 +3,36 @@
     ViewBag.Title = "CreateRemedialAction";
 }
 <head>
+    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
+
 </head>
-<body>
-    <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
-    <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a School</h1>
-    @using (@Html.BeginForm("CreateRemedialAction", "RemedialAction", FormMethod.Get))
-    {
-        <table class="table">
-            <thead>
-                <tr>
-                    <td><button class="btn btn-info" onclick="history.go(-1)">Go Back</button></td>
-                </tr>
-            </thead>
-            <tr>
-                <td>Enter Name of Remedial Action</td>
-                <td>:</td>
-                <td>@Html.TextBox("RemedialActionName")</td>
-            </tr>
-            <tr>
-                <td>Save Your Details</td>
-                <td>:</td>
-                <td><input type="submit" value="Submit" /></td>
-            </tr>
-        </table>
-    }
-</body>
+<table>
+    <tr>
+        <td>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add Contact</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div>
+                @using (@Html.BeginForm("CreateRemedialAction", "RemedialAction", FormMethod.Get))
+                {
+                    <table class="table">
+                        <tr>
+                            <td>Enter Name of Remedial Action:</td>
+                            <td>@Html.TextBox("RemedialActionName")</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" align="right">
+                                <input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                                <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </td>
+    </tr>
+</table>

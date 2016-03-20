@@ -39,16 +39,30 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public string EditRemedialAction(string RemedialActionID, string RemedialActionName)
         {
-            var queryString = @"update samsjacksonville.remedial_action set name = '" + RemedialActionName + "' where remedial_action_id = " + RemedialActionID + ";";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"update samsjacksonville.remedial_action set name = '" + RemedialActionName + "' where remedial_action_id = " + RemedialActionID + ";";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public string CreateRemedialAction(string RemedialActionName)
         {
-            var queryString = @"insert into samsjacksonville.remedial_action (school_year_id, name) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + RemedialActionName + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"insert into samsjacksonville.remedial_action (school_year_id, name) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + RemedialActionName + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
     }

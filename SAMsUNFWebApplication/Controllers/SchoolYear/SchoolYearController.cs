@@ -33,13 +33,14 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 var result = new SchoolYearRepository(connection).SetSchoolYear(allSchoolYears);
-                if (result == true)
+                if (result == "success")
                 {
-                    return Redirect("SchoolYear");
+                    return Redirect("SchoolYear/?error=fileloaded");
                 }
                 else
                 {
-                    return Redirect("SchoolYear");
+                    //do something else here.
+                    return Redirect("SchoolYear/?error=invalidfile");
                 }
             }
         }

@@ -45,16 +45,30 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO samsjacksonville.school (name) VALUES ('" + SchoolName + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"INSERT INTO samsjacksonville.school (name) VALUES ('" + SchoolName + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public string EditSchool(string SchoolID, string SchoolName)
         {
-            var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "' where school_id = " + SchoolID + ";";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "' where school_id = " + SchoolID + ";";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
     }

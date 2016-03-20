@@ -43,10 +43,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-        public bool ImportContacts(List<CSVContacts> csvContacts)
+        public string ImportContacts(List<CSVContacts> csvContacts)
         {
-            bool success = false;
-
             var queryString = @"INSERT INTO etl.contact values(@lastname,@firstname,@position,@classroom,@school,@room,@roomextension,@email,@cell)";
 
             try
@@ -54,34 +52,54 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                 this._openConnection.Execute(queryString, csvContacts);
                 var newString = @"CALL samsjacksonville.import_contact();";
                 this._openConnection.Execute(newString);
-                success = true;
+                return "success";
             }
             catch (Exception ex)
             {
-                throw (ex);
+                return "error";
             }
-            return success;
         }
 
         public string EditContct(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
-            var queryString = @"update samsjacksonville.contact set first_name = '" + ContactFirstName + "', last_name = '" + ContactLastName + "', `position` = '" + ContactPosition + "', classroom = '" + ContactClassRoom + "', room_number = '" + ContactRoomNumber + "', room_extension = '" + ContactRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + ContactEmailAddress + "', cell_phone = '" + ContactCellPhone + "' where contact_id = " + ContactID + ";";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"update samsjacksonville.contact set first_name = '" + ContactFirstName + "', last_name = '" + ContactLastName + "', `position` = '" + ContactPosition + "', classroom = '" + ContactClassRoom + "', room_number = '" + ContactRoomNumber + "', room_extension = '" + ContactRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + ContactEmailAddress + "', cell_phone = '" + ContactCellPhone + "' where contact_id = " + ContactID + ";";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public string AddContct(string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomeExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
-            var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
-        public bool CreateContact(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomeExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
+        public string CreateContact(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomeExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
         {
-            var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
-            _openConnection.Execute(queryString);
-            return true;
+            try
+            {
+                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
     }

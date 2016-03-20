@@ -39,23 +39,44 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public string EditProfl(string ProfileID, string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
         {
-            var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', `password` = '" + ProfilePassword + "' where profile_id = " + ProfileID + ";";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', `password` = '" + ProfilePassword + "' where profile_id = " + ProfileID + ";";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public string AddProfl(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
         {
-            var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",'" + ProfilePassword + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",'" + ProfilePassword + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
-        public bool CreateProfile(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
+        public string CreateProfile(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
         {
-            var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",'" + ProfilePassword + "');";
-            _openConnection.Execute(queryString);
-            return true;
+            try
+            {
+                var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",'" + ProfilePassword + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
     }
