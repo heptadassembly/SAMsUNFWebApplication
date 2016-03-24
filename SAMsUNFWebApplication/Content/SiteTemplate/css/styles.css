@@ -3301,211 +3301,280 @@ select {
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .config-wrapper {
-    display: block;
-  }
-  .header {
-    height: 80px;
-  }
-  .header.navbar-fixed-top {
-    position: fixed;
-  }
-  .header.scrolled {
-    background: #fff;
-    z-index: 1000;
-    height: 80px;
-    top: 0;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-  }
-  .header.scrolled h1.logo a {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    -ms-border-radius: 0;
-    -o-border-radius: 0;
-    border-radius: 0;
-    -moz-background-clip: padding;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    color: #ec6952;
-    background: #fff;
-    padding-left: 0;
-    padding-top: 25px;
-  }
-  .header.scrolled .main-nav .nav .nav-item a {
-    color: #666666;
-    -webkit-opacity: 1;
-    -moz-opacity: 1;
-    opacity: 1;
-  }
-  .header.scrolled .main-nav .nav .nav-item.nav-item-cta a.btn-cta-secondary {
-    background: #ec6952;
-    border-color: #ec6952;
-  }
-  .header.scrolled .main-nav .nav .dropdown-menu a {
-    color: #fff;
-  }
-  .main-nav {
-    float: right !important;
-  }
-  .navbar-form .form-control {
-    width: 280px;
-  }
-  .header h1.logo {
-    float: left;
-    margin: inherit;
-  }
-  .header .main-nav .nav .nav-item {
-    margin-right: 15px;
-  }
-  .main-nav.navbar-right {
-    float: right !important;
-  }
-  .promo {
-    height: 620px;
-    padding-top: 200px;
-  }
-  .promo.section .intro {
-    margin-bottom: 45px;
-  }
-  .promo .btn-link {
-    margin-top: 15px;
-  }
-  .why .item .content {
-    margin-bottom: inherit;
-  }
-  .why .control {
-    top: 128px;
-    margin-left: -28px;
-  }
-  .modal.modal-video .modal-dialog {
-    width: 760px;
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .access-page .navbar-collapse.collapse .navbar-nav {
-    display: none;
-  }
-  .access-section .divider {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #999999;
-    text-transform: uppercase;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-  }
-  .access-section .divider span {
-    background: #fff;
-    display: inline-block;
-    padding: 10px 0;
-    position: relative;
-    top: 80px;
-    margin-left: -10px;
-  }
-  .access-section .divider:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: #e5e5e5;
-    height: 100%;
-    width: 1px;
-  }
-  .access-section .social-btns {
-    padding-left: 65px;
-  }
-  .access-section .social-btns .note {
-    text-align: left;
-  }
-  .blog-slider {
-    margin-top: 80px;
-  }
-  .why .item .title {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  .why .figure {
-    text-align: left;
-  }
-  .blog-page .header-blog {
-    position: fixed;
-  }
-  .blog-page .blog-category,
-  .blog-page .blog-archive {
-    margin-top: 80px;
-  }
-  .blog-entry-wrapper {
-    margin-top: 80px;
-  }
-  /* Only show QR code for desktop */
-  .download-area {
-    overflow: hidden;
-  }
-  .download-area .download-list {
-    float: left;
-  }
-  .download-area .qrcode-holder {
-    float: left;
-    margin-left: 45px;
-    text-align: center;
-  }
-  .download-area .qrcode-holder .qrcode {
-    max-width: 140px;
-    margin: 0 auto;
-  }
-  .download-area .qrcode-holder .qrcode .caption {
-    font-size: 12px;
-    background: #fff;
-    padding: 0 15px;
-    padding-bottom: 15px;
-    color: #253340;
-    font-family: arial, sans-serif;
-  }
-  .navbar-fixed-top .navbar-collapse {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-  .features-video {
-    padding-top: 170px;
-  }
-  .pricing {
-    padding-top: 170px;
-  }
-  .apps-section {
-    padding-top: 160px;
-  }
-  .story-section {
-    padding-top: 170px;
-  }
-  .contact-section {
-    padding-top: 125px;
-  }
-  .bg-slider-wrapper {
-  
-  border:none;
-  background-color:transparent;
+    .config-wrapper {
+        display: block;
     }
 
- 
-.navbar-fixed-top {
-    background-color:transparent; 
-    border:none;
-}
-.copyright {
- text-align:center;
-}
+    .header {
+        height: 80px;
+    }
 
-#img-action  {
-   padding:0px; 
-   padding-left:10px;
-}
-.dashbaord-grid-header {
+        .header.navbar-fixed-top {
+            position: fixed;
+        }
+
+        .header.scrolled {
+            background: #fff;
+            z-index: 1000;
+            height: 80px;
+            top: 0;
+            -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+
+            .header.scrolled h1.logo a {
+                -webkit-border-radius: 0;
+                -moz-border-radius: 0;
+                -ms-border-radius: 0;
+                -o-border-radius: 0;
+                border-radius: 0;
+                -moz-background-clip: padding;
+                -webkit-background-clip: padding-box;
+                background-clip: padding-box;
+                color: #ec6952;
+                background: #fff;
+                padding-left: 0;
+                padding-top: 25px;
+            }
+
+            .header.scrolled .main-nav .nav .nav-item a {
+                color: #666666;
+                -webkit-opacity: 1;
+                -moz-opacity: 1;
+                opacity: 1;
+            }
+
+            .header.scrolled .main-nav .nav .nav-item.nav-item-cta a.btn-cta-secondary {
+                background: #ec6952;
+                border-color: #ec6952;
+            }
+
+            .header.scrolled .main-nav .nav .dropdown-menu a {
+                color: #fff;
+            }
+
+    .main-nav {
+        float: right !important;
+    }
+
+    .navbar-form .form-control {
+        width: 280px;
+    }
+
+    .header h1.logo {
+        float: left;
+        margin: inherit;
+    }
+
+    .header .main-nav .nav .nav-item {
+        margin-right: 15px;
+    }
+
+    .main-nav.navbar-right {
+        float: right !important;
+    }
+
+    .promo {
+        height: 620px;
+        padding-top: 200px;
+    }
+
+        .promo.section .intro {
+            margin-bottom: 45px;
+        }
+
+        .promo .btn-link {
+            margin-top: 15px;
+        }
+
+    .why .item .content {
+        margin-bottom: inherit;
+    }
+
+    .why .control {
+        top: 128px;
+        margin-left: -28px;
+    }
+
+    .modal.modal-video .modal-dialog {
+        width: 760px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .access-page .navbar-collapse.collapse .navbar-nav {
+        display: none;
+    }
+
+    .access-section .divider {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #999999;
+        text-transform: uppercase;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+    }
+
+        .access-section .divider span {
+            background: #fff;
+            display: inline-block;
+            padding: 10px 0;
+            position: relative;
+            top: 80px;
+            margin-left: -10px;
+        }
+
+        .access-section .divider:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #e5e5e5;
+            height: 100%;
+            width: 1px;
+        }
+
+    .access-section .social-btns {
+        padding-left: 65px;
+    }
+
+        .access-section .social-btns .note {
+            text-align: left;
+        }
+
+    .blog-slider {
+        margin-top: 80px;
+    }
+
+    .why .item .title {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .why .figure {
+        text-align: left;
+    }
+
+    .blog-page .header-blog {
+        position: fixed;
+    }
+
+    .blog-page .blog-category,
+    .blog-page .blog-archive {
+        margin-top: 80px;
+    }
+
+    .blog-entry-wrapper {
+        margin-top: 80px;
+    }
+    /* Only show QR code for desktop */
+    .download-area {
+        overflow: hidden;
+    }
+
+        .download-area .download-list {
+            float: left;
+        }
+
+        .download-area .qrcode-holder {
+            float: left;
+            margin-left: 45px;
+            text-align: center;
+        }
+
+            .download-area .qrcode-holder .qrcode {
+                max-width: 140px;
+                margin: 0 auto;
+            }
+
+                .download-area .qrcode-holder .qrcode .caption {
+                    font-size: 12px;
+                    background: #fff;
+                    padding: 0 15px;
+                    padding-bottom: 15px;
+                    color: #253340;
+                    font-family: arial, sans-serif;
+                }
+
+    .navbar-fixed-top .navbar-collapse {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .features-video {
+        padding-top: 170px;
+    }
+
+    .pricing {
+        padding-top: 170px;
+    }
+
+    .apps-section {
+        padding-top: 160px;
+    }
+
+    .story-section {
+        padding-top: 170px;
+    }
+
+    .contact-section {
+        padding-top: 125px;
+    }
+
+    .bg-slider-wrapper {
+        border: none;
+        background-color: transparent;
+    }
+
+
+    .navbar-fixed-top {
+        background-color: transparent;
+        border: none;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+
+    #img-action {
+        padding: 0px;
+        padding-left: 10px;
+    }
+
+    .viewname-h3 {
+        color: #255694;
+        font-size: xx-large;
+        font-weight: bold;
+    }
+
+    /*Dashbaord*/
+    
+    .dashbaord-grid-header {
         color: #255694;
         font-size: large;
         vertical-align: text-top;
     }
+
+    .dashboard-grid-div {
+      float: left; 
+      width: 45%;  
+      height:250px; 
+      background-color:lightgray;  
+      border:20px white solid; 
+      overflow-y: scroll;
+    }
+
+    .dashboard-grid-h3{
+        color:#255694; 
+       font-size:large; 
+    }
+
+    .dashboard-grid-col a{
+        color:black;
+    }
+    
+    /* Large devices (large desktops, 1200px and up) */
 }
-/* Large devices (large desktops, 1200px and up) */

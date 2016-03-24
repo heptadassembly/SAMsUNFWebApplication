@@ -26,6 +26,8 @@ namespace SAMsUNFWebApplication.Utilities
                 //Create the worksheet 
                 ExcelWorksheet ws = pck.Workbook.Worksheets.Add("Dashboards");
 
+                // Build Excel title
+                BuildTitle(ws);
                 //By Teachers
                 BuildTeachersTable(ws, datasource.Teachers);
                
@@ -38,6 +40,15 @@ namespace SAMsUNFWebApplication.Utilities
                 return pck.GetAsByteArray();
             }
         }
+
+        private static void BuildTitle(ExcelWorksheet ws)
+        {
+  
+            ws.Cells[1, 5].Value = "Dashboards  To " + DateTime.Now.ToString("MM/dd/yyyy");
+            ws.Cells[1, 5].Style.Font.Bold = true;
+
+        }
+
         /// <summary>
         /// BuildTeachersTable
         /// </summary>
@@ -51,6 +62,7 @@ namespace SAMsUNFWebApplication.Utilities
 
             //Set Header titles
             ws.Cells[4, 1].Value = "Teachers";
+            ws.Cells[4, 1].Style.Font.Bold = true;
             ws.Cells[5, 1].Value = "Teacher Name";
             ws.Cells[5, 1].Style.Border.BorderAround(ExcelBorderStyle.Thin);
            // ws.Cells[5, 1].AutoFilter = true;
@@ -70,7 +82,6 @@ namespace SAMsUNFWebApplication.Utilities
             //Set Header style
             using (ExcelRange rng = ws.Cells[4, 1, 5 + Teachers.Count(), 2])
             {
-                rng.Style.Font.Bold = true;
                 rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);            
             }
 
@@ -91,6 +102,7 @@ namespace SAMsUNFWebApplication.Utilities
             ws.Column(8).Width = 11.71;
 
             ws.Cells[4, 5].Value = "Homerooms";
+            ws.Cells[4, 5].Style.Font.Bold = true;
             ws.Cells[5, 5].Value = "School";
             ws.Cells[5, 5].Style.Border.BorderAround(ExcelBorderStyle.Thin);
             ws.Cells[5, 6].Value = "Homeroom";
@@ -120,7 +132,6 @@ namespace SAMsUNFWebApplication.Utilities
             //Set Header style
             using (ExcelRange rng = ws.Cells[4, 5, 5 + Homerooms.Count(), 8])
             {
-                rng.Style.Font.Bold = true;
                 rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);
             }
            
@@ -141,6 +152,7 @@ namespace SAMsUNFWebApplication.Utilities
 
 
             ws.Cells[4, 11].Value = "Violations";
+            ws.Cells[4, 11].Style.Font.Bold = true;
             ws.Cells[5, 11].Value = "Offense Type";
             ws.Cells[5, 11].Style.Border.BorderAround(ExcelBorderStyle.Thin);
             ws.Cells[5, 12].Value = "Office Visits";
@@ -157,7 +169,6 @@ namespace SAMsUNFWebApplication.Utilities
             //Set Header style
             using (ExcelRange rng = ws.Cells[4, 11, 5 + OffenseTypes.Count(), 12])
             {
-                rng.Style.Font.Bold = true;
                 rng.Style.Border.BorderAround(ExcelBorderStyle.Medium);
             }
         }

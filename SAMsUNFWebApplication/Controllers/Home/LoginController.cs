@@ -41,6 +41,7 @@ namespace SAMsUNFWebApplication.Controllers
                 }
                 else
                 {
+                  
                     FormsAuthentication.SetAuthCookie(model.user_name,false);
                     //insert session veriable here
                     //example: List<Student> students = (List<Student>)Session["Students"];

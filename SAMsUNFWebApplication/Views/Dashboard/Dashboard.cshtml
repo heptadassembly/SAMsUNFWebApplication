@@ -5,65 +5,64 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
+<table width="900" style="font-size:small">
+    <tr>
+        <td align="center" valign="bottom">
+            <div class="container">
+                <div style="float: left; width: 50%;">
+                    <h3 class="viewname-h3">Dashboard</h3>
+                </div>
+                <div style="float: left;margin-top:20px;">
+                    @Html.ActionLink("Export To Excel", "ExportToExcel", null, new { @class = "btn btn-primary btn-large" })
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <div class="container">
+                <div class="dashboard-grid-div">
+                    <h3 class="dashboard-grid-h3">Homerooms</h3>
+                    @Html.Grid(Model.Homerooms).Columns(columns =>
+                       {
 
-        <table width="900" style="font-size:small">
-            <tr>
-                <td align="left" valign="bottom">
-                    <div class="container">
-                        <div style="float: left; width: 50%;">
-                            <h3 style="color:#255694; font-size:xx-large; font-weight:bold;">Dashboard</h3>
-                        </div>
-                        <div style="margin-top:20px;">
-                            @Html.ActionLink("Export To Excel", "ExportToExcel", null, new { @class = "btn btn-primary btn-large" })
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <div class="container">
-                        <div style="float: left; width: 45%;  height:250px; background-color:lightgray;  border:20px white solid; overflow-y: scroll;">
-                            <h3 style="color:#255694; font-size:large; ">Homerooms</h3>
-                            @Html.Grid(Model.Homerooms).Columns(columns =>
+                           columns.Add(c => c.school_name).Titled("School Name").Filterable(true).Css("dashboard-grid-col");
+                           columns.Add(c => c.homeroom_name).Titled("Home Room").Filterable(true).Css("dashboard-grid-col");
+                           columns.Add(c => c.grade).Titled("Grade").Filterable(true).Css("dashboard-grid-col");
+                           columns.Add(c => c.total_visits).Titled("Total").Filterable(true).Css("dashboard-grid-col");
+                       }).WithPaging(5).Sortable(true);
+                </div>
+                <div class="dashboard-grid-div">
+                    <h3 class="dashboard-grid-h3">Teachers</h3>
+                    @Html.Grid(Model.Teachers).Columns(columns =>
       {
-          columns.Add(c => c.school_name).Titled("School Name").Filterable(true);
-          columns.Add(c => c.homeroom_name).Titled("Home Room").Filterable(true);
-          columns.Add(c => c.grade).Titled("Grade").Filterable(true);
-          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+          columns.Add(c => c.sent_by_contact_name).Titled("Teacher").Filterable(true).Css("dashboard-grid-col");
+          columns.Add(c => c.total_visits).Titled("Total").Filterable(true).Css("dashboard-grid-col");
       }).WithPaging(5).Sortable(true)
-                        </div>
-                        <div style="float: left; width: 45%;  height:250px; background-color:lightskyblue;border: 20px solid white; overflow-y: scroll;">
-                            <h3 style="color:#255694; font-size:large; ">Teachers</h3>
-                            @Html.Grid(Model.Teachers).Columns(columns =>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td align="center">
+            <div class="container">
+                <div class="dashboard-grid-div">
+                    <h3 class="dashboard-grid-h3">Violations</h3>
+                    @Html.Grid(Model.OffenseTypes).Columns(columns =>
       {
-          columns.Add(c => c.sent_by_contact_name).Titled("Teacher").Filterable(true);
-          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+          columns.Add(c => c.offense_type).Titled("Offense Types").Filterable(true).Css("dashboard-grid-col");
+          columns.Add(c => c.total_visits).Titled("Total").Filterable(true).Css("dashboard-grid-col");
       }).WithPaging(5).Sortable(true)
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td align="center">
-                    <div class="container">
-                        <div style="float: left; width: 45%;  height:250px; background-color:lightgreen;padding:5px; border: 20px solid white; overflow-y: scroll;">
-                            <h3 class="dashbaord-grid-header">Violations</h3>
-                            @Html.Grid(Model.OffenseTypes).Columns(columns =>
-      {
-          columns.Add(c => c.offense_type).Titled("Offense Types").Filterable(true);
-          columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
-      }).WithPaging(5).Sortable(true)
-                        </div>
-                        <div style="float: left; width: 45%;  height:250px; background-color:lightgoldenrodyellow;padding:5px; border: 20px solid white; overflow-y: scroll;">
-                            <h3 style="color:#255694; font-size:large; ">By Week</h3>
-                            @Html.Grid(Model.ByWeek).Columns(columns =>
+                </div>
+                <div class="dashboard-grid-div">
+                    <h3 class="dashboard-grid-h3">By Week</h3>
+                    @Html.Grid(Model.ByWeek).Columns(columns =>
                {
-                   columns.Add(c => c.displayDate).Titled("Week Of").Filterable(true);
-                   columns.Add(c => c.total_visits).Titled("Total").Filterable(true);
+                   columns.Add(c => c.displayDate).Titled("Week Of").Filterable(true).Css("dashboard-grid-col");
+                   columns.Add(c => c.total_visits).Titled("Total").Filterable(true).Css("dashboard-grid-col");
                }).WithPaging(5).Sortable(true);
-                        </div>
-                    </div>
-
-                </td>
-            </tr>
-        </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
