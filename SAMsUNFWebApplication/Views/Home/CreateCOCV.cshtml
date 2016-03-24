@@ -18,7 +18,9 @@
                 {
                     <table class="table">
                         <tr>
-                            <td>@Html.Label("Enter Violation Number")</td>
+                            
+                            <td>@ViewBag.SQLError
+                                @Html.Label("Enter Violation Number")</td>
                             <td>@Html.TextBox("TxtId")</td>
                         </tr>
                         <tr>

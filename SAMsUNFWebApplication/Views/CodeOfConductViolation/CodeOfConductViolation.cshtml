@@ -13,6 +13,18 @@
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
 
 </head>
+<div>
+    @if (Request.Params["error"] == "invalidfile")
+    {
+        <div class="bg-danger">The modifications for code of conduct violation did not work due to a system error.  Please try again.</div>
+
+    }
+    @if (Request.Params["error"] == "fileloaded")
+    {
+        <div class="bg-success">The code of conduct violation was modified successfully.</div>
+
+    }
+</div>
 <table>
     <tr>
         <td>

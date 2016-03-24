@@ -26,20 +26,13 @@ namespace SAMsUNFWebApplication.Controllers.Student
             }
         }
 
-        public System.Web.Mvc.RedirectResult CreateStudent(string TxtId, string TxtLast, string TxtFirst, string TxtGrade, string TxtSchool, string TxtGender)
+        public async System.Threading.Tasks.Task<ActionResult> GetStudent(string id)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new StudentRepository(connection).CreateStudent(TxtId, TxtLast, TxtFirst, TxtGrade, TxtSchool, TxtGender);
-                if (result == true)
-                {
-                    return Redirect("Student/Student");
-                }
-                else
-                {
-                    //do something else here.
-                    return Redirect("Student/Student");
-                }
+                await connection.OpenAsync();
+                var result = await new StudentRepository(connection).GetStudent(id);
+                return View(result);
             }
         }
 
@@ -60,12 +53,6 @@ namespace SAMsUNFWebApplication.Controllers.Student
             }
         }
 
-        [HttpGet]
-        public ActionResult AddStudent()
-        {
-            return View("AddStudent");
-        }
-
         public System.Web.Mvc.RedirectResult EditChild(string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
@@ -81,12 +68,6 @@ namespace SAMsUNFWebApplication.Controllers.Student
                     return Redirect("Student/Student");
                 }
             }
-        }
-
-        [HttpGet]
-        public ActionResult EditStudent()
-        {
-            return View("EditStudent");
         }
     }
 }

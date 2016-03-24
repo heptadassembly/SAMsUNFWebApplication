@@ -32,11 +32,5 @@ namespace SAMsUNFWebApplication.Controllers.Profile
 
             return View(coll);
         }
-
-        public ActionResult EditProfl(ProfileCollection model, string actionRequest)
-        {
-            return RedirectToAction("Profile", "Profile");
-        }
-
     }
 }

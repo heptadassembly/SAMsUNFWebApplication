@@ -34,11 +34,5 @@ namespace SAMsUNFWebApplication.Controllers.Contact
 
             return View(coll);
         }
-
-        public ActionResult AddContct(ContactCollection model, string actionRequest)
-        {
-
-            return RedirectToAction("Contact", "Contact");
-        }
     }
 }

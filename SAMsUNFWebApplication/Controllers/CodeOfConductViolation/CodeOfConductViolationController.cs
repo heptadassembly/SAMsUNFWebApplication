@@ -30,14 +30,17 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
                 var result = new CodeOfConductViolationRepository(connection).CreateCodeOfConductViolation(TxtId, TxtCode, TxtName);
+
                 if (result == "success")
                 {
-                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                    //ViewBag.SQLEror = "Code of Conduct Violation successfully created.";
+                    return Redirect("CodeOfConductViolation/CodeOfConductViolation/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("CodeOfConductViolation/CodeOfConductViolation");
+                    //ViewBag.SQLError = "Code of Conduct Violation not inserted due to error.";
+                    return Redirect("CodeOfConductViolation/CodeOfConductViolation/?error=invalidfile");
                 }
             }
         }

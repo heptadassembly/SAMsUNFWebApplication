@@ -25,7 +25,6 @@ namespace SAMsUNFWebApplication.Controllers.School
             {
                 await connection.OpenAsync();
                 var result = await new SchoolRepository(connection).GetSchools();
-                //var result2 = await new GradeRepository(connection).GetGrades();
                 return View(result);
             }
         }
@@ -45,12 +44,12 @@ namespace SAMsUNFWebApplication.Controllers.School
                 var result = new SchoolRepository(connection).CreateSchool(SchoolName);
                 if (result == "success")
                 {
-                    return Redirect("School/School");
+                    return Redirect("School/School/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("School/School");
+                    return Redirect("School/School/?error=invalidfile");
                 }
             }
         }
@@ -62,12 +61,12 @@ namespace SAMsUNFWebApplication.Controllers.School
                 var result = new SchoolRepository(connection).EditSchool(SchoolID, SchoolName);
                 if (result == "success")
                 {
-                    return Redirect("School/School");
+                    return Redirect("School/School/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("School/School");
+                    return Redirect("School/School/?error=invalidfile");
                 }
             }
         }

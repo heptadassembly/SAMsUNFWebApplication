@@ -1672,7 +1672,7 @@ input[type="checkbox"] {
   line-height: normal;
 }
 
-input[type="file"] {
+input[type="file"] { 
   display: block;
 }
 
@@ -2366,6 +2366,7 @@ input[type="submit"].btn-block,
 input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
+
 }
 
 .fade {

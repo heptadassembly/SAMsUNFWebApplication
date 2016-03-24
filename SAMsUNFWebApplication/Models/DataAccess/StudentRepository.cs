@@ -20,10 +20,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             this._openConnection = openConnection;
         }
 
-        public bool CreateStudent(string TxtId, string TxtLast, string TxtFirst, string TxtGrade, string TxtSchool, string TxtGender)
+        public string CreateStudent(string TxtId, string TxtLast, string TxtFirst, string TxtGrade, string TxtSchool, string TxtGender)
         {
-            bool success = false;
-
             //To do Items
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
@@ -34,20 +32,19 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                 this._openConnection.Execute(queryString);
                 var newString = @"CALL samsjacksonville.import_student();";
                 this._openConnection.Execute(newString);
-                success = true;
+                return "success";
             }
             catch (Exception ex)
             {
-                throw (ex);
+                return "error";
+               
             }
-
-            return success;
         }
 
         public async Task<IEnumerable<Student>> GetStudents()
         {
             // Read the user by their username in the database. 
-            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  samsjacksonville.student where student_id > 0  order by last_name");
+            IEnumerable<Student> result = await this._openConnection.QueryAsync<Student>(@" SELECT * FROM  samsjacksonville.vw_student order by last_name");
             return result;
         }
 
@@ -58,10 +55,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-        public bool ImportStudents(List<CSVStudent> csvStudent)
+        public string ImportStudents(List<CSVStudent> csvStudent)
         {
-            bool success = false;
-
             var queryString = @"INSERT INTO etl.student values(@StudentID ,@Last,@First,@Grade,@School,@Gender)";
 
             try
@@ -69,13 +64,12 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                 this._openConnection.Execute(queryString, csvStudent);
                 var newString = @"CALL samsjacksonville.import_student();";
                 this._openConnection.Execute(newString);
-                success = true;
+                return "success";
             }
             catch (Exception ex)
             {
-                throw (ex);
+                return "error";
             }
-            return success;
         }
 
         public string AddChild (string TxtID, string TxtFirstName, string TxtLastName, string allSchools, string allGrades, string allGenders, string allHomerooms)
@@ -84,16 +78,30 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current Logged on User and put into variable.
             //Get Current Date/Time and put into variable.
             //Get Current School Year Selection and put into variable.
-            var queryString = @"INSERT INTO student (school_year_id, student_id_nk, first_name, last_name, school_id, grade_id, gender, homeroom_id) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + TxtID + "','" + TxtFirstName + "','" + TxtLastName + "','" + allSchools + "','" + allGrades + "','" + allGenders + "','" + allHomerooms + "');";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"INSERT INTO student (school_year_id, student_id_nk, first_name, last_name, school_id, grade_id, gender, homeroom_id) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + TxtID + "','" + TxtFirstName + "','" + TxtLastName + "','" + allSchools + "','" + allGrades + "','" + allGenders + "','" + allHomerooms + "');";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         public string EditChild (string STUDENTID, string TxtID, string TxtFirstName, string TxtLastName, string schoolselectlist, string gradeselectlist, string genderselectlist, string homeroomselectlist)
         {
-            var queryString = @"update student set student_id_nk = '" + TxtID + "', first_name = '" + TxtFirstName + "', last_name = '" + TxtLastName + "', school_id = " + schoolselectlist + ", grade_id = " + gradeselectlist + ", gender = '" + genderselectlist + "', homeroom_id = " + homeroomselectlist + " where student_id = " + STUDENTID + ";";
-            _openConnection.Execute(queryString);
-            return "success";
+            try
+            {
+                var queryString = @"update student set student_id_nk = '" + TxtID + "', first_name = '" + TxtFirstName + "', last_name = '" + TxtLastName + "', school_id = " + schoolselectlist + ", grade_id = " + gradeselectlist + ", gender = '" + genderselectlist + "', homeroom_id = " + homeroomselectlist + " where student_id = " + STUDENTID + ";";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
     }
 }

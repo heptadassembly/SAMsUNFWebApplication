@@ -35,12 +35,5 @@ namespace SAMsUNFWebApplication.Controllers.Student
             }
             return View(coll);
         }
-
-
-        public ActionResult EditHomeRm(HomeRoomCollection model, string actionRequest)
-        {
-
-            return RedirectToAction("HomeRoom", "HomeRoom");
-        }
     }
 }

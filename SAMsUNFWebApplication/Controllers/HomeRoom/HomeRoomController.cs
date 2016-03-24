@@ -35,24 +35,6 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
             }
         }
 
-        public System.Web.Mvc.RedirectResult AddHomeRoom(string HomeRoomClassRoom, string HomeRoomRoomNumber, string schoolselectlist)
-        {
-            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
-            {
-                var result = new HomeRoomRepository(connection).AddHomeRoom(HomeRoomClassRoom, HomeRoomRoomNumber, schoolselectlist);
-                if (result == "success")
-                {
-                    return Redirect("HomeRoom/HomeRoom");
-                }
-                else
-                {
-                    //do something else here.
-                    return Redirect("HomeRoom/HomeRoom");
-                }
-            }
-        }
-
-
         public System.Web.Mvc.RedirectResult AddHomeRm(string HomeRoomClassRoom, string HomeRoomRoomNumber, string schoolselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
@@ -60,20 +42,14 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
                 var result = new HomeRoomRepository(connection).AddHomeRm(HomeRoomClassRoom, HomeRoomRoomNumber, schoolselectlist);
                 if (result == "success")
                 {
-                    return Redirect("HomeRoom/HomeRoom");
+                    return Redirect("HomeRoom/HomeRoom/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("HomeRoom/HomeRoom");
+                    return Redirect("HomeRoom/HomeRoom/?error=invalidfile");
                 }
             }
-        }
-
-        [HttpGet]
-        public ActionResult AddHomeRoom()
-        {
-            return View("AddHomeRoom");
         }
 
         public System.Web.Mvc.RedirectResult EditHomeRm(string HomeRoomID, string HomeRoomClassRoom, string HomeRoomRoomNumber, string schoolselectlist)
@@ -83,20 +59,14 @@ namespace SAMsUNFWebApplication.Controllers.HomeRoom
                 var result = new HomeRoomRepository(connection).EditHomeRm(HomeRoomID, HomeRoomClassRoom, HomeRoomRoomNumber, schoolselectlist);
                 if (result == "success")
                 {
-                    return Redirect("HomeRoom/HomeRoom");
+                    return Redirect("HomeRoom/HomeRoom/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("HomeRoom/HomeRoom");
+                    return Redirect("HomeRoom/HomeRoom/?error=invalidfile");
                 }
             }
-        }
-
-        [HttpGet]
-        public ActionResult EditHomeRoom()
-        {
-            return View("EditHomeRoom");
         }
     }
 }

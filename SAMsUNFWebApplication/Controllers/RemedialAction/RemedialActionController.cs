@@ -45,12 +45,12 @@ namespace SAMsUNFWebApplication.Controllers.School
                 var result = new RemedialActionRepository(connection).CreateRemedialAction(RemedialActionName);
                 if (result == "success")
                 {
-                    return Redirect("RemedialAction/RemedialAction");
+                    return Redirect("RemedialAction/RemedialAction/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("RemedialAction/RemedialAction");
+                    return Redirect("RemedialAction/RemedialAction/?error=invalidfile");
                 }
             }
         }
@@ -62,12 +62,12 @@ namespace SAMsUNFWebApplication.Controllers.School
                 var result = new RemedialActionRepository(connection).EditRemedialAction(RemedialActionID, RemedialActionName);
                 if (result == "success")
                 {
-                    return Redirect("RemedialAction/RemedialAction");
+                    return Redirect("RemedialAction/RemedialAction/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("RemedialAction/RemedialAction");
+                    return Redirect("RemedialAction/RemedialAction/?error=invalidfile");
                 }
             }
         }

@@ -30,6 +30,7 @@ namespace SAMsUNFWebApplication.Controllers.Contact
         public ActionResult ImportContacts(HttpPostedFileBase file)
         {
             string path = null;
+            string url = null;
             List<CSVContacts> ContactsToDisplay = new List<CSVContacts>();
 
             try
@@ -47,34 +48,50 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVContacts>().ToList();
 
-                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
-                        ContactRepository snm = new ContactRepository(connection);
-                        snm.ImportContacts(records);
-
-                        return View(records);
+                        try
+                        {
+                            var result = "";
+                            var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
+                            ContactRepository snm = new ContactRepository(connection);
+                            result = snm.ImportContacts(records);
+                            if (result == "success")
+                            {
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                                return Redirect(url);
+                            }
+                            else
+                            {
+                                //do something else here.
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                                return Redirect(url);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                            return Redirect(url);
+                        }
                     }
+                }
+                else
+                {
+                    url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                    return Redirect(url);
                 }
             }
             catch
             {
-                return View();
+                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                return Redirect(url);
             }
-
-            return View();
-
         }
 
-
-        [HttpGet]
-        public ActionResult ImportStudents()
-        {
-            return View();
-        }
 
         [HttpPost]
         public ActionResult ImportStudents(HttpPostedFileBase file)
         {
             string path = null;
+            string url = null;
             List<CSVStudent> StudentsToDisplay = new List<CSVStudent>();
 
             try
@@ -82,6 +99,7 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
+
                     path = AppDomain.CurrentDomain.BaseDirectory + "upload\\" + fileName;
                     file.SaveAs(path);
 
@@ -91,29 +109,44 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                         reader.Configuration.Delimiter = "\t";
                         reader.Configuration.IgnoreHeaderWhiteSpace = true;
                         var records = reader.GetRecords<CSVStudent>().ToList();
-
-
-                        //move data to the database etl.student
-                        //then run the stored procedure that copies data from etl.student to samsjacksonville.student
-                        var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
-                        StudentRepository snm = new StudentRepository(connection);
-                        snm.ImportStudents(records);
-
-                        return View(records);
+                        try
+                        {
+                            var result = "";
+                            //move data to the database etl.student
+                            //then run the stored procedure that copies data from etl.student to samsjacksonville.student
+                            var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString);
+                            StudentRepository snm = new StudentRepository(connection);
+                            result = snm.ImportStudents(records);
+                            if (result == "success")
+                            {
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=fileloaded";
+                                return Redirect(url);
+                            }
+                            else
+                            {
+                                //do something else here.
+                                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                                return Redirect(url);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                            return Redirect(url);
+                        }
                     }
+                }
+                else
+                {
+                    url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                    return Redirect(url);
                 }
             }
             catch
             {
-                return View();
+                url = this.Request.UrlReferrer.AbsolutePath + "/?error=invalidfile";
+                return Redirect(url);
             }
-
-            return View();
-
         }
-
-
     }
-
-
 }

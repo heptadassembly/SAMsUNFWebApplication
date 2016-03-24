@@ -21,25 +21,17 @@ namespace SAMsUNFWebApplication.Controllers.Contact
             {
                 await connection.OpenAsync();
                 var result = await new ContactRepository(connection).GetContacts();
-                //var result2 = await new SchoolRepository(connection).GetSchools();
                 return View(result);
             }
         }
 
-        public System.Web.Mvc.RedirectResult CreateContact(string ContactID, string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
+        public async System.Threading.Tasks.Task<ActionResult> GetContact(int id)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ContactRepository(connection).CreateContact(ContactID, ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
-                if (result == true)
-                {
-                    return Redirect("Contact/Contact");
-                }
-                else
-                {
-                    //do something else here.
-                    return Redirect("Contact/Contact");
-                }
+                await connection.OpenAsync();
+                var result = await new ContactRepository(connection).GetContact(id);
+                return View(result);
             }
         }
 
@@ -50,24 +42,14 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 var result = new ContactRepository(connection).EditContct(ContactID, ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
                 if (result == "success")
                 {
-                    return Redirect("Contact/Contact");
+                    return Redirect("Contact/Contact/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Contact/Contact");
+                    return Redirect("Contact/Contact/?error=invalidfile");
                 }
             }
-        }
-
-        public ActionResult AddContact()
-        {
-            return View("AddContact");
-        }
-
-        public ActionResult EditContact()
-        {
-            return View("EditContact");
         }
 
         public System.Web.Mvc.RedirectResult AddContct(string ContactFirstName, string ContactLastName, string ContactPosition, string ContactClassRoom, string ContactRoomNumber, string ContactRoomExtension, string schoolselectlist, string ContactEmailAddress, string ContactCellPhone)
@@ -77,12 +59,12 @@ namespace SAMsUNFWebApplication.Controllers.Contact
                 var result = new ContactRepository(connection).AddContct(ContactFirstName, ContactLastName, ContactPosition, ContactClassRoom, ContactRoomNumber, ContactRoomExtension, schoolselectlist, ContactEmailAddress, ContactCellPhone);
                 if (result == "success")
                 {
-                    return Redirect("Contact/Contact");
+                    return Redirect("Contact/Contact/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Contact/Contact");
+                    return Redirect("Contact/Contact/?error=invalidfile");
                 }
             }
         }

@@ -33,12 +33,19 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             IEnumerable<SchoolYear> result = await this._openConnection.QueryAsync<SchoolYear>(@" SELECT school_year_id, is_current FROM samsjacksonville.school_year order by case when is_current = 1 then -2 else school_year_id end");
             return result;
         }
-        public bool SetSchoolYear(string allSchoolYears)
+        public string SetSchoolYear(string allSchoolYears)
         {
             //Update selected school year to current 
-            var queryString = @"Call samsjacksonville.update_school_year(" + allSchoolYears + ")";
-            _openConnection.Execute(queryString);
-            return true;
+            try
+            {
+                var queryString = @"Call samsjacksonville.update_school_year(" + allSchoolYears + ")";
+                _openConnection.Execute(queryString);
+                return "success";
+            }
+            catch (Exception e)
+            {
+                return "error";
+            }
         }
     }
 }

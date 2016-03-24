@@ -32,23 +32,6 @@ namespace SAMsUNFWebApplication.Controllers.Profile
             }
         }
 
-        public System.Web.Mvc.RedirectResult CreateProfile(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
-        {
-            using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
-            {
-                var result = new ProfileRepository(connection).CreateProfile(ProfileUserName, ProfilePassword, profilecontactselectlist);
-                if (result == true)
-                {
-                    return Redirect("Profile/Profile");
-                }
-                else
-                {
-                    //do something else here.
-                    return Redirect("Profile/Profile");
-                }
-            }
-        }
-
         public System.Web.Mvc.RedirectResult EditProfl(string ProfileID, string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
@@ -56,24 +39,14 @@ namespace SAMsUNFWebApplication.Controllers.Profile
                 var result = new ProfileRepository(connection).EditProfl(ProfileID, ProfileUserName, ProfilePassword, profilecontactselectlist);
                 if (result == "success")
                 {
-                    return Redirect("Profile/Profile");
+                    return Redirect("Profile/Profile/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Profile/Profile");
+                    return Redirect("Profile/Profile/?error=invalidfile");
                 }
             }
-        }
-
-        public ActionResult AddProfile()
-        {
-            return View("AddProfile");
-        }
-
-        public ActionResult EditProfile()
-        {
-            return View("EditProfile");
         }
 
         public System.Web.Mvc.RedirectResult AddProfl(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
@@ -83,12 +56,12 @@ namespace SAMsUNFWebApplication.Controllers.Profile
                 var result = new ProfileRepository(connection).AddProfl(ProfileUserName, ProfilePassword, profilecontactselectlist);
                 if (result == "success")
                 {
-                    return Redirect("Profile/Profile");
+                    return Redirect("Profile/Profile/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Profile/Profile");
+                    return Redirect("Profile/Profile/?error=invalidfile");
                 }
             }
         }

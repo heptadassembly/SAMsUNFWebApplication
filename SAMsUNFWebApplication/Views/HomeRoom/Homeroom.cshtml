@@ -12,6 +12,18 @@
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
 </head>
+<div>
+    @if (Request.Params["error"] == "invalidfile")
+    {
+        <div class="bg-danger">The modifications for homeroom did not work due to a system error.  Please try again.</div>
+
+    }
+    @if (Request.Params["error"] == "fileloaded")
+    {
+        <div class="bg-success">The homeroom was modified successfully.</div>
+
+    }
+</div>
 <table>
     <tr>
         <td>

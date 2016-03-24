@@ -31,17 +31,41 @@
             }
         }
 
+       
     </script>
 
 </head>
+<div>
+@if (Request.Params["error"] == "invalidfile")
+{
+    <div class="bg-danger">An invalid file was detected.  Please try again.</div>
+    
+}
+@if (Request.Params["error"] == "fileloaded")
+{
+    <div class="bg-success">The file was loaded successfully.</div>
+
+}
+</div>
+
 <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
+
 
     <table class="table">
         <tr>
             <td align="left" ">
-                <input type="file" name="file" id="file" class="btn btn-info" />
+                <span>
+                    <input type="file"
+                           style="visibility:hidden; width: 1px;"
+                           id="file" name="file"
+                           onchange="$(this).parent().find('span').html($(this).val().replace('C:\\fakepath\\', ''))" /> <!-- Chrome security returns 'C:\fakepath\'  -->
+                    <input class="btn btn-primary" type="button" value="Upload File.." onclick="$(this).parent().find('input[type=file]').click();" /> <!-- on button click fire the file click event -->
+                    &nbsp;
+                    <span class="badge badge-important"></span>
+                </span>
             </td></tr><tr>
-            <td>
+               
+        <td>
                 <label>Choose File Type:</label>
 
 
