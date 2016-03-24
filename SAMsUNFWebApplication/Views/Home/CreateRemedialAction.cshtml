@@ -2,21 +2,30 @@
 @{
     ViewBag.Title = "CreateRemedialAction";
 }
-
-<a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
-<h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a School</h1>
-@using (@Html.BeginForm("CreateRemedialAction", "RemedialAction", FormMethod.Get))
-{
-    <table>
-        <tr>
-            <td>Enter Name of Remedial Action</td>
-            <td>:</td>
-            <td>@Html.TextBox("RemedialActionName")</td>
-        </tr>
-        <tr>
-            <td>Save Your Details</td>
-            <td>:</td>
-            <td><input type="submit" value="Submit" /></td>
-        </tr>
-    </table>
-}  
+<head>
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
+</head>
+<body>
+    <a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a>
+    <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a School</h1>
+    @using (@Html.BeginForm("CreateRemedialAction", "RemedialAction", FormMethod.Get))
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td><button class="btn btn-info" onclick="history.go(-1)">Go Back</button></td>
+                </tr>
+            </thead>
+            <tr>
+                <td>Enter Name of Remedial Action</td>
+                <td>:</td>
+                <td>@Html.TextBox("RemedialActionName")</td>
+            </tr>
+            <tr>
+                <td>Save Your Details</td>
+                <td>:</td>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    }
+</body>

@@ -6,12 +6,13 @@
 <head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
 
 </head>
 <table>
     <tr>
         <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add a Homeroom</h1>
+            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add Homeroom</h1>
         </td>
     </tr>
     <tr>
@@ -22,11 +23,6 @@
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td>
-                            </tr>
-                        </thead>
                         <tbody>
                             <tr>
                                 <td>
@@ -76,6 +72,7 @@
                             <tr>
                                 <td colspan="2" align="right">
                                     <input id="submit" type="submit" value="Add" class="btn btn-primary" style="padding-left:20px;" />
+                                    <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
                                 </td>
                             </tr>
                         </tbody>

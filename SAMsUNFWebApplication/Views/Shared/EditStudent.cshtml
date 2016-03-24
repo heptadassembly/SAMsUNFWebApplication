@@ -6,25 +6,16 @@
 <head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
 
 </head>
-<table>
-    <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit a Student</h1>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div>
+
+<h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit Student</h1>
                 @using (Html.BeginForm("EditChild", "Student", FormMethod.Get))
                 {
                     //TxtFirstName, string TxtLastName, string TxtSchool, string TxtGrade, string TxtGender, string TxtHomeroom
                     <table class="table">
-                        <thead><tr><td><a href="javascript:void(0);" onclick="history.go(-1);">Go Back</a></td></tr></thead>
-                        <tbody>
                             <tr>
-                                <td></td>
                                 <td>
                                     @Html.TextBoxFor(m => m.singleStudent.First().student_id,
                                         new
@@ -35,10 +26,7 @@
                                             @Value = Model.singleStudent.First().student_id,
                                             @readonly = "readonly"
                                         })
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+
                                     @Html.Label("Student ID:")
                                 </td>
                                 <td>
@@ -143,13 +131,8 @@
 <tr>
                         <td colspan="2" align="right">
                             <input id="submit" class="btn btn-primary" type="submit" value="Add" style="padding-left:20px;" />
+                            <button class="btn btn-info" onclick="history.go(-1)">Cancel</button>
                         </td></tr>
-                                </tbody>
                     </table>
                 }
 
-            </div>
-
-        </td>
-    </tr>
-</table>

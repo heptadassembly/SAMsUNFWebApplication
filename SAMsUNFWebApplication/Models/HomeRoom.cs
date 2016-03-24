@@ -9,6 +9,7 @@ namespace SAMsUNFWebApplication.Models
     public class HomeRoom
     {
         public int homeroom_id { get; set;}
+        public string school_name { get; set; }
         public string room_number { get; set;}
         public string homeroom_name { get; set; }
         public int school_id { get; set; }

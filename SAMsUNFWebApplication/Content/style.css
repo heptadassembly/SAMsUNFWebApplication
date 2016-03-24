@@ -1,0 +1,5 @@
+﻿body {
+}
+select.form-control {
+    -webkit-appearance: menulist;
+}

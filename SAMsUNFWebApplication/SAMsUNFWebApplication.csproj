@@ -313,9 +313,9 @@
     <Content Include="Content\SiteTemplate\plugins\rrssb\media\rrssb-preview.png" />
     <Content Include="Content\SAMLayout.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\ui-grid.css" />
-    <Content Include="Content\ui-grid.min.css" />
-    <Content Include="Content\ui-grid.svg" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\accordion.css" />
@@ -331,9 +331,6 @@
     <Content Include="Scripts\gridmvc.lang.fr.js" />
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
-    <Content Include="Content\ui-grid.woff" />
-    <Content Include="Content\ui-grid.ttf" />
-    <Content Include="Content\ui-grid.eot" />
     <Content Include="Grid.mvc.readme" />
     <Content Include="Content\TrainingVideos\loginvid.webm" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -409,6 +406,8 @@
     <Content Include="Content\SiteTemplate\plugins\rrssb\README.md" />
     <Content Include="Content\SiteTemplate\plugins\rrssb\scss\demo.scss" />
     <Content Include="Content\SiteTemplate\plugins\rrssb\scss\rrssb.scss" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Properties\PublishProfiles\TestSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -419,8 +418,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\ui-grid.js" />
-    <Content Include="Scripts\ui-grid.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -543,7 +542,6 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Views\AddProfile\" />
     <Folder Include="Views\AddRemedialAction\" />
-    <Folder Include="Views\EditRemedialAction\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

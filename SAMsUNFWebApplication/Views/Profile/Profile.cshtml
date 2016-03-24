@@ -22,7 +22,7 @@
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
 
-                @Html.ActionLink("Add New Contact", "AddProfile", "AddProfile")
+                @Html.ActionLink("Add Profile", "AddProfile", "AddProfile", null, new { @class = "btn btn-info" })
             </div>
             <div style="width:500px; text-align:center;">
 
@@ -44,12 +44,9 @@
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(d => d.profile_id).Titled("ID").SetWidth(15);
                columns.Add(d => d.user_name).Titled("User Name").SetWidth(15);
                columns.Add(d => d.first_name).Titled("First Name").SetWidth(15);
                columns.Add(d => d.last_name).Titled("Last Name").SetWidth(15);
-               columns.Add(d => d.contact_id).Titled("Contact ID").SetWidth(5);
-               columns.Add(d => d.password).Titled("Password").SetWidth(20);
 
 
            }).WithPaging(10).Sortable(true).Filterable(true)

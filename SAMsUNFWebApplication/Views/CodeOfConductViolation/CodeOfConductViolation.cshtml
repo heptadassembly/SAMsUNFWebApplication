@@ -22,7 +22,7 @@
     <tr>
         <td align="center" style="padding-left:100px;">
             <div style="width:500px; text-align:left;">
-                @Html.ActionLink("Add New Code of Conduct Violation", "CreateCOCV", "Home")
+                @Html.ActionLink("Add Violation", "CreateCOCV", "Home", null, new { @class = "btn btn-info" })
             </div>
             <div style="width:500px; text-align:center;">
                
@@ -31,19 +31,18 @@
 
                 @Html.Grid(Model).Columns(columns =>
            {
-               columns.Add()
-            .Encoded(false)
-            .Sanitized(false)
-            .SetWidth(30)
-            .RenderValueAs(d =>
-            @<b>
-                @Html.ActionLink("Edit", "Index")
-            </b>);
-                    columns.Add(c => c.code_of_conduct_violation_id).Titled("ID").SetWidth(15);
-                    columns.Add(c => c.duval_violation_code).Titled("Duval Code").SetWidth(20);
-                    columns.Add(c => c.short_code).Titled("Code").SetWidth(5);
-                    columns.Add(c => c.name).Titled("Code Description").SetWidth(350).Sanitized(true);
-                }).WithPaging(10).Sortable(true).Filterable(true)
+           columns.Add()
+        .Encoded(false)
+        .Sanitized(false)
+                   .SetWidth(30)
+           .RenderValueAs(e =>
+        @<b>
+           
+        </b>);
+               columns.Add(c => c.duval_violation_code).Titled("Duval Code").SetWidth(20);
+               columns.Add(c => c.short_code).Titled("Code").SetWidth(5);
+               columns.Add(c => c.name).Titled("Code Description").SetWidth(350).Sanitized(true);
+           }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
     </tr>
