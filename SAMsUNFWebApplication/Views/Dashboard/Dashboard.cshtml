@@ -77,6 +77,13 @@
                                     <li>@Html.ActionLink("Settings", "Settings", "Settings")</li>
                                 </ul>
                             </li><!--//dropdown-->
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Training<i class="fa fa-angle-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Administrator Training", "Training", "Training")</li>
+                                    <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
+                                </ul>
+                            </li><!--//dropdown-->
                             <li class="nav-item nav-item-main-site last"><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Back to main site</a></li>
                         </ul><!--//nav-->
 
