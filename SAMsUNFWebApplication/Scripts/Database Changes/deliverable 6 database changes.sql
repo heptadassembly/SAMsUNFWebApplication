@@ -3,7 +3,7 @@
 /*Added cell phone formatting so the UI will recognize and display cell phones 
 uniformly regarless of the actual format of the cell phone in the database.*/
 
-drop view samsjacksonville.vw_contact
+drop view samsjacksonville.vw_contact;
 -- select 'creating view contact' '';
 create view samsjacksonville.vw_contact
 as
@@ -55,7 +55,7 @@ as
 /* Problem with the code of conduct view in that it was missing the duval_violation_code value.
 Added the code into the view */
 
-drop view samsjacksonville.vw_code_of_conduct_violation
+drop view samsjacksonville.vw_code_of_conduct_violation;
 -- select 'creating view code of conduct violation' '';
 create view samsjacksonville.vw_code_of_conduct_violation
 as 
