@@ -43,12 +43,12 @@ namespace SAMsUNFWebApplication.Controllers.Student
                 var result = new StudentRepository(connection).AddChild(TxtID, TxtFirstName, TxtLastName, allSchools, allGrades, allGenders, allHomerooms);
                 if (result == "success")
                 {
-                    return Redirect("Student/Student");
+                    return Redirect("Student/Student/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Student/Student");
+                    return Redirect("Student/Student/?error=invalidfile");
                 }
             }
         }
@@ -60,12 +60,12 @@ namespace SAMsUNFWebApplication.Controllers.Student
                 var result = new StudentRepository(connection).EditChild(STUDENTID, TxtID, TxtFirstName, TxtLastName, schoolselectlist, gradeselectlist, genderselectlist, homeroomselectlist);
                 if (result == "success")
                 {
-                    return Redirect("Student/Student");
+                    return Redirect("Student/Student/?error=fileloaded");
                 }
                 else
                 {
                     //do something else here.
-                    return Redirect("Student/Student");
+                    return Redirect("Student/Student/?error=invalidfile");
                 }
             }
         }

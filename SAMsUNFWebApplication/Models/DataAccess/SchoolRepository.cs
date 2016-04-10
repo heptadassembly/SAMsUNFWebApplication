@@ -47,7 +47,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             try
             {
-                var queryString = @"INSERT INTO samsjacksonville.school (name) VALUES ('" + SchoolName + "');";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"INSERT INTO samsjacksonville.school (name,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES ('" + SchoolName + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -61,7 +62,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "' where school_id = " + SchoolID + ";";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"Update samsjacksonville.school set name = '" + SchoolName + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where school_id = " + SchoolID;
                 _openConnection.Execute(queryString);
                 return "success";
             }
