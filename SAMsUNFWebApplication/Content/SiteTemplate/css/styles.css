@@ -10,6 +10,7 @@ body {
   font-family: 'Roboto', arial, sans-serif;
   color: #444444;
   font-size: 16px;
+  height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -142,7 +143,7 @@ select {
   /* for mobile safari */
   -webkit-appearance: none;
 }
-#topcontrol {
+/*#topcontrol {
   background: #5d80a1;
   color: #fff;
   text-align: center;
@@ -171,7 +172,7 @@ select {
   position: relative;
   top: 3px;
   font-size: 25px;
-}
+}*/
 .video-container iframe {
   max-width: 100%;
 }
@@ -2627,15 +2628,29 @@ select {
 .footer .contact .email .fa {
   font-size: 16px;
 }
-.footer .bottom-bar {
+.footer .bottom-bar, .push {
   background: #1e1e1e;
   color: #b3b3b3;
   font-size: 14px;
   padding: 10px 0;
+  position:fixed;
+  z-index: 999999;
+  bottom: 0;
+  width: 100%;
+  float: left;
 }
+
+.wrap {
+		position:relative;
+		margin:0 auto;
+               /*replace 900px with your width*/
+		width:900px;
+	}
+
 .footer .bottom-bar .copyright {
   line-height: 1.6;
 }
+
 /* ======= Pagination ======= */
 .pagination {
   margin-bottom: 60px;
@@ -3576,5 +3591,39 @@ select {
         color:black;
     }
     
-    /* Large devices (large desktops, 1200px and up) */
+   
+    /* Office Visit*/
+     .officevisit-grid-div { 
+      width: 100%;  
+      height:600px; 
+      background-color:lightgray;  
+      border:20px white solid; 
+      overflow-y: scroll;
+     
+    }
+   .officevisit-grid-col a{
+        color:black;
+        font:xx-small;
+    }
+    
+   /*Admin Pages*/
+
+   .admin-grid-col a{
+        color:black;
+    }
+
+   #foot {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+   padding:5px;	 
+   position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    overflow:hidden;	 
+}
+
 }

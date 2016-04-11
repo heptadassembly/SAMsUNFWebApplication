@@ -29,6 +29,28 @@
     <script type="text/javascript" src="@Url.Content("~/Content/SiteTemplate/")plugins/flexslider/jquery.flexslider-min.js"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/SiteTemplate/")js/main.js"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
+    <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+
+    <script type="text/javascript">
+        function chgAction() {
+            var form = document.form1;
+
+            console.log('chgAction()');
+            console.log(form.recipient.selectedIndex);
+
+            switch (form.recipient.selectedIndex) {
+                case 1:
+                    form.action = "/Import/ImportStudents";
+                    break;
+                case 2:
+                    form.action = "/Import/ImportContacts";
+                    break;
+            }
+        }
+
+
+    </script>
 
 </head>
 <body>
@@ -74,9 +96,14 @@
             <div class="row vertical-center-row">
                 @RenderBody()
             </div>
-            <div class="row vertical-center-row">
-                <p class="copyright">Heptad Assembly And University oF North Florida CCEC - 2016</p>
-            </div>
+        
     </div>
+    <footer class="footer">
+        <div class="bottom-bar">
+            <div class="container">
+                <small class="copyright">Heptad Assembly And University of North Florida CCEC - 2016</small>
+            </div><!--//container-->
+        </div><!--//bottom-bar-->      
+    </footer>
 </body>
 </html>

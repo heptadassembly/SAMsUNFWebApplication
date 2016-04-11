@@ -2,9 +2,10 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -12,7 +13,7 @@
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
-</head>
+</head>*@
 <div>
     @if (Request.Params["error"] == "invalidfile")
     {
@@ -25,19 +26,24 @@
 
     }
 </div>
-<table>
+<table class="table" style="width:0%">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Student</h1>
-        </td>
-    </tr>
-    <tr>
-        <td align="center" style="padding-left:100px;">
-            <div style="width:500px; text-align:left;">
-
-                @Html.ActionLink("Add Student", "AddStudent", "AddStudent", null, new { @class = "btn btn-info" })
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">Student</h3>
             </div>
+        </td>
+    
+    </tr>
+
+    <tr>
+
+
+        <td align="center" >
             <div style="width:500px; text-align:center;">
+                <div style="float: left;margin-top:20px;">
+                    @Html.ActionLink("Add Student", "AddStudent", "AddStudent", null, new { @class = "btn btn-info" })
+                </div>
 
                 @Html.Grid(Model).Columns(columns =>
            {
@@ -54,19 +60,20 @@
                },
                new
                {
-                   @class = "btn btn-default"
+                   @class = "btn btn-primary btn-large"
                })
         </b>);
-               columns.Add(c => c.student_id_nk).Titled("ID").SetWidth(15);
-               columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15);
-               columns.Add(c => c.first_name).Titled("First Name").SetWidth(5);
-               columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true);
-               columns.Add(c => c.name).Titled("School Name").SetWidth(100).Sanitized(true);
-               columns.Add(c => c.homeroom_name).Titled("Homeroom").SetWidth(100).Sanitized(true);
+               columns.Add(c => c.student_id_nk).Titled("ID").SetWidth(15).Css("admin-grid-col");
+               columns.Add(c => c.last_name).Titled("Last Name").SetWidth(15).Css("admin-grid-col");
+               columns.Add(c => c.first_name).Titled("First Name").SetWidth(5).Css("admin-grid-col");
+               columns.Add(c => c.gender).Titled("Gender").SetWidth(350).Sanitized(true).Css("admin-grid-col");
+               columns.Add(c => c.name).Titled("School Name").SetWidth(100).Sanitized(true).Css("admin-grid-col");
+               columns.Add(c => c.homeroom_name).Titled("Homeroom").SetWidth(100).Sanitized(true).Css("admin-grid-col");
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
     </tr>
+
 </table>
 
 

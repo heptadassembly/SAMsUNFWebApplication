@@ -2,10 +2,11 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "OfficeVisit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -13,44 +14,45 @@
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
-</head>
-<table>
+</head>*@
+<table class="table">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Office Visit</h1>
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">Office Visit</h3>
+            </div>
         </td>
+
     </tr>
     <tr>
         <td align="left">
             <div style="width:500px; text-align:left;font-size:xx-small; ">
+                <div style="width:500px; text-align:center;">
+                    @Html.ActionLink("Add Office Visit", "AddOfficeVisit", "AddOfficeVisit", null, new { @class = "btn btn-info" })
+                </div>
+                <div style="width:500px; text-align:left;">
+                    @Html.ActionLink("Export To Excel", "ExportToExcel", null, new { @class = "btn btn-info" })
+                </div>
                 <!--https://stick2basic.wordpress.com/2013/04/10/how-to-set-webgrid-style-in-mvc/-->
           
                 @Html.Grid(Model).Columns(columns =>
            {
-               columns.Add(c => c.student_number).Titled("StudentNumber").Filterable(true);
-               columns.Add(c => c.student_name).Titled("Name").Filterable(true);
-               columns.Add(c => c.total_visits).Titled("Visit").Filterable(true);
-               columns.Add(c => c.office_visit_dt).Titled("Date").Filterable(true);
-               columns.Add(c => c.school_name).Titled("School").Filterable(true);
-               columns.Add(c => c.grade_value).Titled("Grade").Filterable(true);
-               columns.Add(c => c.homeroom_name).Titled("Homeroom").Filterable(true);
-               columns.Add(c => c.content_course_name).Titled("Content").Filterable(true);
-               columns.Add(c => c.sent_by_contact_name).Titled("SentBy").Filterable(true);
-               columns.Add(c => c.offenses).Titled("Offenses").Filterable(true);
-               columns.Add(c => c.arrival_dt).Titled("Arrived").Filterable(true);
-               columns.Add(c => c.handled_by_contact_name).Titled("HandledBy").Filterable(true);
-               columns.Add(c => c.consequences).Titled("Consequences").Filterable(true);
-               columns.Add(c => c.comments).Titled("Comment").Filterable(true);
+               columns.Add(c => c.student_number).Titled("StudentNumber").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.student_name).Titled("Name").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.total_visits).Titled("Visit").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.office_visit_dt).Titled("Date").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.school_name).Titled("School").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.grade_value).Titled("Grade").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.homeroom_name).Titled("Homeroom").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.content_course_name).Titled("Content").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.sent_by_contact_name).Titled("SentBy").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.offenses).Titled("Offenses").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.arrival_dt).Titled("Arrived").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.handled_by_contact_name).Titled("HandledBy").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.consequences).Titled("Consequences").Filterable(true).Css("admin-grid-col");
+               columns.Add(c => c.comments).Titled("Comment").Filterable(true).Css("admin-grid-col");
            }).WithPaging(5).Sortable(true)
             </div>
            </td>
-    </tr>
-    <tr>
-        <td align="center">
-            @Html.ActionLink("Export To Excel", "ExportToExcel")
-        </td>
-        <td>
-            @Html.ActionLink("Add Office Visit", "AddOfficeVisit", "AddOfficeVisit")
-        </td>
     </tr>
 </table>

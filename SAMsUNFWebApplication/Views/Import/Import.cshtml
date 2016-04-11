@@ -2,10 +2,11 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "Import";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Import Data</h1>
+        <h3 class="viewname-h3">Import Data</h3>
 
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -34,7 +35,7 @@
        
     </script>
 
-</head>
+</head>*@
 <div>
 @if (Request.Params["error"] == "invalidfile")
 {
@@ -51,7 +52,7 @@
 <form id="form1" name="form1" action="/" method="post" enctype="multipart/form-data">
 
 
-    <table class="table">
+    <table class="table" style="width:0%">
         <tr>
             <td align="left" ">
                 <span>
