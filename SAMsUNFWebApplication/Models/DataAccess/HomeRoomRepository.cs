@@ -49,7 +49,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             try
             {
-                var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1), samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -67,7 +68,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             try
             {
-                var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1));";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"INSERT INTO samsjacksonville.homeroom (homeroom_name, room_number, school_id, school_year_id,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES ('" + HomeRoomClassRoom + "','" + HomeRoomRoomNumber + "'," + selectschoollist + ", samsjacksonville.fn_getSchoolYear(1), samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -81,7 +83,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"Update samsjacksonville.homeroom set homeroom_name = '" + HomeRoomClassRoom + "', room_number = '" + HomeRoomRoomNumber + "', school_id = " + selectschoollist + " where homeroom_id = " + HomeRoomID + ";";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"Update samsjacksonville.homeroom set homeroom_name = '" + HomeRoomClassRoom + "', room_number = '" + HomeRoomRoomNumber + "', school_id = " + selectschoollist + ", last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now()   where homeroom_id = " + HomeRoomID + ";";
                 _openConnection.Execute(queryString);
                 return "success";
             }

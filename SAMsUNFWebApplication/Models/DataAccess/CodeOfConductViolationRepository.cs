@@ -37,7 +37,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             //Get Current School Year Selection and put into variable.
             try
             {
-                var queryString = @"INSERT INTO samsjacksonville.code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "');";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"INSERT INTO samsjacksonville.code_of_conduct_violation (duval_violation_code, short_code, school_year_id, name, create_contact_id, create_dt, last_update_contact_id, last_update_dt) VALUES ('" + TxtId + "','" + TxtCode + "', samsjacksonville.fn_getSchoolYear(1), '" + TxtName + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
