@@ -45,7 +45,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
         public string ImportContacts(List<CSVContacts> csvContacts)
         {
-            var queryString = @"INSERT INTO etl.contact values(@lastname,@firstname,@position,@classroom,@school,@room,@roomextension,@email,@cell)";
+            var current_user = HttpContext.Current.User.Identity.Name;
+            var queryString = @"INSERT INTO etl.contact values(@lastname,@firstname,@position,@classroom,@school,@room,@roomextension,@email,@cell,'" + current_user + "');";
 
             try
             {
@@ -64,7 +65,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"update samsjacksonville.contact set first_name = '" + ContactFirstName + "', last_name = '" + ContactLastName + "', `position` = '" + ContactPosition + "', classroom = '" + ContactClassRoom + "', room_number = '" + ContactRoomNumber + "', room_extension = '" + ContactRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + ContactEmailAddress + "', cell_phone = '" + ContactCellPhone + "' where contact_id = " + ContactID + ";";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"update samsjacksonville.contact set first_name = '" + ContactFirstName + "', last_name = '" + ContactLastName + "', `position` = '" + ContactPosition + "', classroom = '" + ContactClassRoom + "', room_number = '" + ContactRoomNumber + "', room_extension = '" + ContactRoomExtension + "', school_id = " + schoolselectlist + ", email_address = '" + ContactEmailAddress + "', cell_phone = '" + ContactCellPhone + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now()  where contact_id = " + ContactID + ";";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -78,7 +80,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone, create_contact_id, create_dt, last_update_contact_id, last_update_dt) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -92,7 +95,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "');";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"insert into samsjacksonville.contact (school_year_id, first_name, last_name, `position`, classroom, room_number, room_extension, school_id, email_address, cell_phone) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContactFirstName + "','" + ContactLastName + "','" + ContactPosition + "','" + ContactClassRoom + "','" + ContactRoomNumber + "','" + ContactRoomeExtension + "'," + schoolselectlist + ",'" + ContactEmailAddress + "','" + ContactCellPhone + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }

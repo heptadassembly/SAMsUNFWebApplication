@@ -33,7 +33,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"update samsjacksonville.content_course set name = '" + ContentCourseName + "' where content_course_id = " + ContentCourseID + ";";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"update samsjacksonville.content_course set name = '" + ContentCourseName + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now()   where content_course_id = " + ContentCourseID + ";";
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -47,7 +48,8 @@ namespace SAMsUNFWebApplication.Models.DataAccess
         {
             try
             {
-                var queryString = @"insert into samsjacksonville.content_course (school_year_id, name) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContentCourseName + "');";
+                var current_user = HttpContext.Current.User.Identity.Name;
+                var queryString = @"insert into samsjacksonville.content_course (school_year_id, name,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ContentCourseName + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }

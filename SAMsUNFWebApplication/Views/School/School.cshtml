@@ -2,9 +2,10 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "School";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -13,7 +14,7 @@
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
 
-</head>
+</head>*@
 <div>
     @if (Request.Params["error"] == "invalidfile")
     {
@@ -26,19 +27,23 @@
 
     }
 </div>
-<table>
+<table class="table" style="width:0%">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">School</h1>
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">School</h3>
+            </div>
         </td>
+      
+           
     </tr>
     <tr>
-        <td align="center" style="padding-left:100px;">
-            <div style="width:500px; text-align:left;">
-                @Html.ActionLink("Add School", "CreateSchool", "Home", null, new { @class = "btn btn-info" })
-            </div>
-            <div style="width:500px; text-align:center;">
+        <td align="center" style="padding-left:0px;">
 
+            <div style="width:500px; text-align:center;">
+                <div style="float: left;margin-top:20px;">
+                    @Html.ActionLink("Add School", "CreateSchool", "Home", null, new { @class = "btn btn-info" })
+                </div>
 
                 @Html.Grid(Model).Columns(columns =>
 {

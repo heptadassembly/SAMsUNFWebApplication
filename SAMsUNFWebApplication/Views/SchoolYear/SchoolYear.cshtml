@@ -1,14 +1,15 @@
 ﻿@model  SAMsUNFWebApplication.Models.SchoolYearCollection
 @{
     ViewBag.Title = "SetSchoolYear";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<head>
+@*<head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
 
-</head>
+</head>*@
 <div>
     @if (Request.Params["error"] == "invalidfile")
     {
@@ -21,11 +22,15 @@
 
     }
 </div>
-<table>
+<table class="table" style="width:0%">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">School Year</h1>
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">School Year</h3>
+            </div>
         </td>
+
+
     </tr>
     <tr>
         <td>

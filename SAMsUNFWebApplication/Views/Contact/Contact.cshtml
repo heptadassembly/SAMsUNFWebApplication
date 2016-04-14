@@ -2,8 +2,9 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -13,7 +14,7 @@
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
 
 
-</head>
+</head>*@
 <div>
     @if (Request.Params["error"] == "invalidfile")
     {
@@ -26,14 +27,18 @@
 
     }
 </div>
-<table>
+<table class="table" style="width:0%">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Contact</h1>
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">Contact</h3>
+            </div>
         </td>
+
+
     </tr>
      <tr>
-        <td align="center" style="padding-left:100px;">
+        <td align="center" style="padding-left:0px;">
             <div style="width:500px; text-align:left;">
                 @Html.ActionLink("Add Contact", "AddContact", "AddContact", null, new { @class = "btn btn-info"})
             </div>
@@ -57,15 +62,15 @@
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(d => d.first_name).Titled("First Name").SetWidth(15);
-               columns.Add(d => d.last_name).Titled("Last Name").SetWidth(15);
-               columns.Add(d => d.position).Titled("Position").SetWidth(60);
-               columns.Add(d => d.classroom).Titled("Classroom").SetWidth(10);
-               columns.Add(d => d.room_number).Titled("Room </br> Number").SetWidth(5);
-               columns.Add(d => d.room_extension).Titled("Room </br> Extension").SetWidth(5);
-               columns.Add(d => d.school_name).Titled("School Name").SetWidth(10);
-               columns.Add(d => d.email_address).Titled("Email Address").SetWidth(20);
-               columns.Add(d => d.cell_phone).Titled("Cell Phone").SetWidth(15);
+               columns.Add(d => d.first_name).Titled("First Name").SetWidth(15).Css("admin-grid-col");
+               columns.Add(d => d.last_name).Titled("Last Name").SetWidth(15).Css("admin-grid-col");
+               columns.Add(d => d.position).Titled("Position").SetWidth(60).Css("admin-grid-col");
+               columns.Add(d => d.classroom).Titled("Classroom").SetWidth(10).Css("admin-grid-col");
+               columns.Add(d => d.room_number).Titled("Room </br> Number").SetWidth(5).Css("admin-grid-col");
+               columns.Add(d => d.room_extension).Titled("Room </br> Extension").SetWidth(5).Css("admin-grid-col");
+               columns.Add(d => d.school_name).Titled("School Name").SetWidth(10).Css("admin-grid-col");
+               columns.Add(d => d.email_address).Titled("Email Address").SetWidth(20).Css("admin-grid-col");
+               columns.Add(d => d.cell_phone).Titled("Cell Phone").SetWidth(15).Css("admin-grid-col");
 
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>

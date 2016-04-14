@@ -2,8 +2,9 @@
 @using GridMvc.Html
 @{
     ViewBag.Title = "HomeRoom";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
+@*<head>
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/gridmvc.datepicker.min.css")" rel="stylesheet" />
     <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
@@ -11,7 +12,7 @@
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/gridmvc.min.js")"></script>
     <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
-</head>
+</head>*@
 <div>
     @if (Request.Params["error"] == "invalidfile")
     {
@@ -24,14 +25,18 @@
 
     }
 </div>
-<table>
+<table class="table" style="width:0%">
     <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Homeroom</h1>
+        <td align="left" valign="bottom">
+            <div style="float: left;">
+                <h3 class="viewname-h3">Homeroom</h3>
+            </div>
         </td>
+
+
     </tr>
     <tr>
-        <td align="center" style="padding-left:100px;">
+        <td align="center" style="padding-left:0px;">
             <div style="width:500px; text-align:left;">
 
                 @Html.ActionLink("Add HomeRoom", "AddHomeRoom", "AddHomeRoom", null, new { @class = "btn btn-info" })
@@ -56,9 +61,9 @@
                    @class = "btn btn-default"
                })
         </b>);
-               columns.Add(d => d.homeroom_name).Titled("Class Room").SetWidth(15);
-               columns.Add(d => d.room_number).Titled("Room Number").SetWidth(5);
-               columns.Add(d => d.school_name).Titled("School Name").SetWidth(10);
+               columns.Add(d => d.homeroom_name).Titled("Class Room").SetWidth(15).Css("admin-grid-col");
+               columns.Add(d => d.room_number).Titled("Room Number").SetWidth(5).Css("admin-grid-col");
+               columns.Add(d => d.school_name).Titled("School Name").SetWidth(10).Css("admin-grid-col");
            }).WithPaging(10).Sortable(true).Filterable(true)
             </div>
         </td>
