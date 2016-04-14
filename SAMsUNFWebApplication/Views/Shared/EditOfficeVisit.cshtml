@@ -1,0 +1,269 @@
+﻿@model  SAMsUNFWebApplication.Models.OfficeVisitCollection
+@{
+    ViewBag.Title = "EditOfficeVisit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#officeVisitDate').datetimepicker({
+
+            defaultDate: '@Model.officeVisitDate',
+            format: 'L',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top'
+        });
+
+        $('#officeVisitTime').datetimepicker({
+
+            defaultDate: '@Model.officeVisitTime',
+            format: 'LT',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top',
+            stepping: 15
+        });
+        $('#officeArriveDate').datetimepicker({
+
+            defaultDate: '@Model.officeArriveDate',
+            format: 'L',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top'
+        });
+
+        $('#officeArriveTime').datetimepicker({
+
+            defaultDate: '@Model.officeArriveTime',
+            format: 'LT',
+            showClose: true,
+            showClear: true,
+            toolbarPlacement: 'top',
+            stepping: 15
+        });
+
+    });
+
+</script>
+<div style="float:left; font-size:small;">
+    <!--AddChild, Student-->
+    @using (Html.BeginForm("EditVisit", "EditOfficeVisit"))
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>
+                        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Edit an Office Visit</h1>
+                    </td>
+                    <td colspan="2">
+                        <div style="float:left;margin-top:20px;padding-left:30px;">
+                            <input id="submit" type="submit" name ="EditAction" value="Save" class="btn btn-primary  btn-large" style="width:100px;" />
+                        </div>
+                        <div style="float:left;margin-top:20px;padding-left:30px;">
+                            <input id="submit" type="submit" name="EditAction" value="Cancel" class="btn btn-primary  btn-large" style="width:100px;" />
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.Label("Student:")
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.studentSelect,
+                                   Model.StudentSelectList,
+                                   "Please select value",
+                                    new
+                                            {
+                                                @class = "office_visit-form-control",
+                                            })
+
+                    </td>
+                    <td>
+                        @Html.Label("Sent By:")
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.sentbySelect,
+                       Model.ReportersSelectList,
+                                  "Please select value",
+                                        new
+                                        {
+
+                                            @class = "office_visit-form-control",
+                                            @id = "SendbyDLL",
+                                        })
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Home Room:")
+
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.homeroomSelect,
+                                         Model.HomeRoomSelectList,
+                                        "Please select value",
+                                        new
+                                        {
+                                            @class = "office_visit-form-control"
+                                        })
+                    </td>
+                    <td>
+                        @Html.Label("Select Location:")
+
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.locationSelect,
+                    Model.LocationSelectList,
+                     "Please select value",
+                                        new
+                                        {
+                                            @class = "office_visit-form-control"
+                                        })
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Select Violation:")
+
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.violationSelect,
+                                     Model.ViolationSelectList,
+                     "Please select value",
+                                        new
+                                        {
+                                            @class = "office_visit-form-control"
+                                        })
+                    </td>
+                    <td>
+
+                        @Html.Label("Visit Date and Time:")
+                    </td>
+                    <td>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.officeVisitDate,
+                                     new
+                                     {
+                                         htmlAttributes = new
+                                         {
+                                             @Value = Model.officeVisitDate.ToString("MM/dd/yyyy"),
+                                             @class = "form-control"
+                                         },
+                                     })
+                            @Html.ValidationMessageFor(model => model.officeVisitDate, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.officeVisitTime,
+                                  new
+                                  {
+                                      htmlAttributes = new
+                                      {
+                                          @Value = Model.officeVisitTime.ToShortTimeString(),
+                                          @class = "form-control"
+                                      }
+                                  })
+
+                            @Html.ValidationMessageFor(model => model.officeVisitTime, "", new { @class = "text-danger" })
+
+
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Select Remedial Action:")
+
+                    </td>
+                    <td>
+                        @Html.DropDownListFor(m => m.remedialSelect,
+                     Model.RemedialSelectList,
+                     "Please select value",
+                                        new
+                                        {
+                                            @class = "office_visit-form-control"
+                                        })
+
+
+                    </td>
+                    <td>
+
+                        @Html.Label("Arrive Date and Time:")
+                    </td>
+                    <td>
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.officeArriveDate,
+                                     new
+                                     {
+                                         htmlAttributes = new
+                                         {
+                                             @Value = Model.officeArriveDate.ToString("MM/dd/yyyy"),
+                                             @class = "form-control"
+                                         },
+                                     })
+                            @Html.ValidationMessageFor(model => model.officeArriveDate, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.officeArriveTime,
+                                  new
+                                  {
+                                      htmlAttributes = new
+                                      {
+                                          @Value = Model.officeArriveTime.ToShortTimeString(),
+                                          @class = "form-control"
+                                      }
+                                  })
+
+                            @Html.ValidationMessageFor(model => model.officeArriveTime, "", new { @class = "text-danger" })
+
+
+                        </div>
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Nap:")
+                    </td>
+                    <td>
+                        @Html.CheckBoxFor(m => m.nap)
+                    </td>
+
+                    <td>
+
+                        @Html.Label("Handled By:")
+                    </td>
+                    <td>
+
+                        @Html.DropDownListFor(m => m.handledbySelect,
+                    Model.HandleBySelectList,
+                     "Please select value",
+                                        new
+                                        {
+                                            @class = "office_visit-form-control"
+                                        })
+
+                    </td>
+
+                </tr>
+                <tr>
+                 <td>
+                        @Html.Label("Comments:")
+                    </td>
+                    <td >
+                        @Html.TextAreaFor(m => m.comments, 2, 50, null)
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
+
+

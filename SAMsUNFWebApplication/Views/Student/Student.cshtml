@@ -26,17 +26,21 @@
     }
 </div>
 <table>
-    <tr>
-        <td>
-            <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Student</h1>
-        </td>
+<tr>
+    <td align="left" valign="bottom">
+        <div style="float: left;">
+            <h3 class="viewname-h3">Student</h3>
+        </div>
+    </td>
+    <td>
+        <div style="float: left;margin-top:20px;">
+            @Html.ActionLink("Add Student", "AddStudent", "AddStudent", null, new { @class = "btn btn-info" })
+        </div>
+    </td>
     </tr>
+   
     <tr>
         <td align="center" style="padding-left:100px;">
-            <div style="width:500px; text-align:left;">
-
-                @Html.ActionLink("Add Student", "AddStudent", "AddStudent", null, new { @class = "btn btn-info" })
-            </div>
             <div style="width:500px; text-align:center;">
 
                 @Html.Grid(Model).Columns(columns =>
@@ -54,7 +58,7 @@
                },
                new
                {
-                   @class = "btn btn-default"
+                   @class = "btn btn-primary btn-large"
                })
         </b>);
                columns.Add(c => c.student_id_nk).Titled("ID").SetWidth(15);

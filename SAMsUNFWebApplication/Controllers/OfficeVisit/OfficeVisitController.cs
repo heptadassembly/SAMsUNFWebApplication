@@ -63,6 +63,13 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
             return View("AddOfficeVisit");
             
         }
+
+        public ActionResult EditOfficeVisit()
+        {
+
+            return View("EditOfficeVisit");
+
+        }
     }
     
 

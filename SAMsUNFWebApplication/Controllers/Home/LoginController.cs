@@ -24,7 +24,12 @@ namespace SAMsUNFWebApplication.Controllers
         public async System.Threading.Tasks.Task<ActionResult> Login(ProfileModel model, string actionRequest)
         {
 
-            if (model.user_name != null && model.user_name.Length > 0 && model.password != null && model.password.Length > 0)
+            if (model.user_name == null || model.user_name.Length == 0 || model.password == null || model.password.Length == 0 )
+            {
+                FormsAuthentication.SignOut();
+                ModelState.AddModelError(string.Empty, "UserId and Password are required.");
+            }
+            else
             {
                 using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
                 {
@@ -41,10 +46,8 @@ namespace SAMsUNFWebApplication.Controllers
                 }
                 else
                 {
-                  
+                    Session["ProfileContactId"] = model.contact_id.ToString();
                     FormsAuthentication.SetAuthCookie(model.user_name,false);
-                    //insert session veriable here
-                    //example: List<Student> students = (List<Student>)Session["Students"];
                     return RedirectToAction ("Dashboard", "Dashboard");
                 }
             }
@@ -55,7 +58,6 @@ namespace SAMsUNFWebApplication.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Home", "Index");
-
         }
     }
 }
