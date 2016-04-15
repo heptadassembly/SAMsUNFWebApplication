@@ -44,13 +44,14 @@ namespace SAMsUNFWebApplication.Models.DataAccess
 
             try
             {
-                var queryString = @"INSERT INTO office_visit(school_year_id, student_id, total_visits, content_course_id, sent_by_contact_id, office_visit_dt, arrival_dt,"+ 
+                var queryString = @"INSERT INTO office_visit(school_year_id, student_id, total_visits, content_course_id, sent_by_contact_id, office_visit_dt, arrival_dt," +
                               "handled_by_contact_id, nap, comments, last_update_contact_id, last_update_dt, homeroom_id)" +
-                              "VALUES(samsjacksonville.fn_getSchoolYear(1),"+ officeVisit.student_id + ",samsjacksonville.fn_getTotalVisits(" + officeVisit.student_id + ")," + officeVisit.content_course_id +
-                              "," + officeVisit.sent_by_contact_id +",'"+officeVisit.office_visit_dt.ToString("yyyy-MM-dd hh:mm:ss")+"','"+ officeVisit.arrival_dt.ToString("yyyy-MM-dd hh:mm:ss") +"'," + officeVisit.handled_by_contact_id +
+                              "VALUES(samsjacksonville.fn_getSchoolYear(1)," + officeVisit.student_id + ",samsjacksonville.fn_getTotalVisits(" + officeVisit.student_id + ")," + officeVisit.content_course_id +
+                              "," + officeVisit.sent_by_contact_id + ",'" + officeVisit.office_visit_dt.ToString("yyyy-MM-dd hh:mm:ss") + "','" + officeVisit.arrival_dt.ToString("yyyy-MM-dd hh:mm:ss") + "'," + (officeVisit.handled_by_contact_id == 0 ? -1: officeVisit.handled_by_contact_id) +
                               "," + Convert.ToInt16(officeVisit.nap) +",'" + officeVisit.comments + "'," + officeVisit.last_update_contact_id + ",'"+ DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss") + "'," + officeVisit.homeroom_id + ");"
                               + "SELECT LAST_INSERT_ID();";
            
+
                 var id = _openConnection.Query<int>(queryString).Single();
 
                 //Add Violation
@@ -95,19 +96,19 @@ namespace SAMsUNFWebApplication.Models.DataAccess
                     student_id = officeVisit.student_id,
                     content_course_id = officeVisit.content_course_id,
                     sent_by_contact_id = officeVisit.sent_by_contact_id,
-                    office_visit_dt =  officeVisit.office_visit_dt.ToString("yyyy-MM-dd hh:mm:ss"),
+                    office_visit_dt = officeVisit.office_visit_dt.ToString("yyyy-MM-dd hh:mm:ss"),
                     arrival_dt = officeVisit.arrival_dt.ToString("yyyy-MM-dd hh:mm:ss"),
-                    handled_by_contact_id = officeVisit.handled_by_contact_id,
+                    handled_by_contact_id = officeVisit.handled_by_contact_id == 0 ? -1: officeVisit.handled_by_contact_id,
                     nap = Convert.ToInt16(officeVisit.nap),
                     comments = officeVisit.comments,
-                    last_update_contact_id =officeVisit.last_update_contact_id,
+                    last_update_contact_id = officeVisit.last_update_contact_id,
                     homeroom_id = officeVisit.homeroom_id,
                     last_update_dt = officeVisit.last_update_dt.ToString("yyyy-MM-dd hh:mm:ss")
                 });
                 if(!String.IsNullOrEmpty(officeVisit.remedialSelect))
                     UpdatetOfficeVisitRemedyAction(officeVisit.office_visit_id, officeVisit.remedialSelect);
                 if (!String.IsNullOrEmpty(officeVisit.violationSelect))
-                    UpdatetOfficeVisitRemedyAction(officeVisit.office_visit_id, officeVisit.violationSelect);
+                    UpdateOfficeVisitCodeViolation(officeVisit.office_visit_id, officeVisit.violationSelect);
 
 
             }
