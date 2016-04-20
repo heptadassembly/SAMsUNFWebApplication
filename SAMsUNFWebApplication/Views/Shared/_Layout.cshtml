@@ -90,7 +90,14 @@
                                         <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
                                     </ul>
                                 </li><!--//dropdown-->
-                                <li class="nav-item">@Html.ActionLink("Login", "Login", "Login")</li>
+                                @if (@HttpContext.Current.Session["ProfileUserId"] != null)
+                                {
+                                    <li class="nav-item">@Html.ActionLink("Logout " + "(Welcome " + @HttpContext.Current.Session["ProfileUserId"].ToString() + ")", "Logout", "Login")</li>
+                                 }
+                                else
+                                {
+                                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Login")</li>
+                                }
                             </ul><!--//nav-->
                         </div>
                    </nav>

@@ -27,6 +27,8 @@ namespace SAMsUNFWebApplication.Controllers
             if (model.user_name == null || model.user_name.Length == 0 || model.password == null || model.password.Length == 0 )
             {
                 FormsAuthentication.SignOut();
+                Session["ProfileContactId"] = null;
+                Session["ProfileUserId"] = model.user_name;
                 ModelState.AddModelError(string.Empty, "UserId and Password are required.");
             }
             else
@@ -48,6 +50,7 @@ namespace SAMsUNFWebApplication.Controllers
                 {
                     Session["ProfileContactId"] = model.contact_id.ToString();
                     FormsAuthentication.SetAuthCookie(model.user_name,false);
+                    Session["ProfileUserId"] = model.user_name;
                     return RedirectToAction ("Dashboard", "Dashboard");
                 }
             }
@@ -57,7 +60,11 @@ namespace SAMsUNFWebApplication.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Home", "Index");
+            Session["ProfileContactId"] = null;
+            Session["ProfileUserId"] = null;
+
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

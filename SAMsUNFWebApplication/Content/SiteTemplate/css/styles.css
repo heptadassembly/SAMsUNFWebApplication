@@ -3595,21 +3595,26 @@ select {
     /* Office Visit*/
      .officevisit-grid-div { 
       width: 100%;  
-      height:600px; 
+      height:400px;
       background-color:lightgray;  
-      border:20px white solid; 
+      border:0px black solid; 
       overflow-y: scroll;
      
     }
    .officevisit-grid-col a{
         color:black;
         font:xx-small;
+        width:30px;
+      
+    }
+    .office_visit-form-control {
+        width: 175px;
+        height: 35px;
+        
     }
 
-    .office_visit-form-control {
-        width: 200px;
-        height: 35px;
-        border: none;
+    select.office_visit-form-control {
+    -webkit-appearance: menulist;
     }
    /*Admin Pages*/
 

@@ -28,11 +28,9 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
         public void ExportToExcel()
         {
 
-            //Get the Session data  
-            List<Models.OfficeVisit> officevisits = (List<Models.OfficeVisit>)Session["OfficeVisits"];
-
+         
             //Genarate the excel data
-            Byte[] fileBytes = Utilities.OfficeVisitExcelGenerator.GenerateXLS(officevisits);
+            Byte[] fileBytes = Utilities.OfficeVisitExcelGenerator.GenerateXLS((List<Models.OfficeVisit>)Session["OfficeVisits"]);
 
             //Clear the response
             Response.Clear();

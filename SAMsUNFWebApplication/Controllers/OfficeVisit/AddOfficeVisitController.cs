@@ -98,7 +98,8 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
         {
             bool successful = false;
 
-            if (!String.IsNullOrEmpty(studentSelect) && !String.IsNullOrEmpty(homeroomSelect) && !String.IsNullOrEmpty(sentbySelect) &&
+            
+            if (ModelState.IsValid && !String.IsNullOrEmpty(studentSelect) && !String.IsNullOrEmpty(homeroomSelect) && !String.IsNullOrEmpty(sentbySelect) &&
                 !String.IsNullOrEmpty(violationSelect) && !String.IsNullOrEmpty(locationSelect))
             {
                 if (Session["ProfileContactId"] != null)

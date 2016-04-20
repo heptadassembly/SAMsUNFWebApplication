@@ -18,35 +18,35 @@
         </td>
     </tr>
     <tr>
-        <td colspan="2" align="left" style="font-size:x-small;">
+        <td colspan="2"  style="font-size:x-small;">
                 <div class="officevisit-grid-div">
 
                     @Html.Grid(Model).Columns(columns =>
                {
-         columns.Add()
-        .Encoded(false)
-        .Sanitized(false)
-        .SetWidth(30)
-        .RenderValueAs(e =>
+               columns.Add()
+                                            .Encoded(false)
+                                            .Sanitized(false)
+                                            .SetWidth(30)
+                                            .RenderValueAs(e =>
         @<b>
             @Html.ActionLink("Edit", "EditOfficeVisit", "EditOfficeVisit",
-               new {@id = e.office_visit_id},
-               new {@class = "btn btn-primary"})
-        </b>).Css("officevisit-grid-col");
-                   columns.Add(c => c.student_name).Titled("Name").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.total_visits).Titled("Visit").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.office_visit_dt).Titled("Date").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.school_name).Titled("School").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.grade_value).Titled("Grade").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.homeroom_name).Titled("Homeroom").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.content_course_name).Titled("Content").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.sent_by_contact_name).Titled("SentBy").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.offenses).Titled("Offenses").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.arrival_dt).Titled("Arrived").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.handled_by_contact_name).Titled("HandledBy").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.consequences).Titled("Consequences").Filterable(true).Css("officevisit-grid-col");
-                   columns.Add(c => c.comments).Titled("Comment").Filterable(true).Css("officevisit-grid-col");
-               }).WithPaging(5).Sortable(true)
+                         new { @id = e.office_visit_id },
+                         new { @class = "btn btn-primary" })
+        </b>);
+    columns.Add(c => c.student_name).Titled("Name").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.total_visits).Titled("Visit").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.office_visit_dt).Titled("Date").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.school_name).Titled("School").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.grade_value).Titled("Grade").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.homeroom_name).Titled("Homeroom").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.content_course_name).Titled("Content").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.sent_by_contact_name).Titled("SentBy").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.offenses).Titled("Offenses").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.arrival_dt).Titled("Arrived").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.handled_by_contact_name).Titled("HandledBy").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.consequences).Titled("Consequences").Filterable(true).Css("officevisit-grid-col");
+    columns.Add(c => c.comments).Titled("Comment").Filterable(true).Css("officevisit-grid-col");
+}).WithPaging(6).Sortable(true).Filterable(true);
                 </div>
         </td>
     </tr>

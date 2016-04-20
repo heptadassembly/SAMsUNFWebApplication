@@ -3,7 +3,6 @@
     ViewBag.Title = "AddOfficeVisit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <script type="text/javascript">
 
     $(function () {
@@ -47,25 +46,21 @@
     });
 
 </script>
-<div style="float:left; font-size:small;">
-    <!--AddChild, Student-->
+<div style="float:left;  font-size:small;">
     @using (Html.BeginForm("AddVisit", "AddOfficeVisit"))
     {
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <table class="table">
             <thead>
                 <tr>
-                    <td>
-                        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add an Office Visit</h1>
+                    <td colspan="2">
+                        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">Add An Office Visit</h1>
                     </td>
-                    <td>
-                        <div style="float:right;margin-top:20px;">
+                    <td colspan="2">
+                        <div style="float:left;margin-top:20px;">
                             <input id="submit" type="submit" value="Add" class="btn btn-primary  btn-large" style="width:100px;" />
                         </div>
                     </td>
                 </tr>
-               
             </thead>
             <tbody>
                 <tr>
@@ -73,20 +68,24 @@
                         @Html.Label("Student:")
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.studentSelect,
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.studentSelect,
                                    Model.StudentSelectList,
                                    "Please select value",
                                     new
-                                            {
-                                                @class = "office_visit-form-control",
-                                            })
-
+                                    {
+                                        @class = "office_visit-form-control",
+                                   })
+                        </div>
                     </td>
                     <td>
                         @Html.Label("Sent By:")
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.sentbySelect,
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.sentbySelect,
                                       new SelectList(Model.allReporters, "contact_id", "contact_name"),
                                   "Please select value",
                                         new
@@ -95,7 +94,7 @@
                                             @class = "office_visit-form-control",
                                             @id = "SendbyDLL",
                                         })
-
+                        </div>
                     </td>
 
                 </tr>
@@ -105,37 +104,44 @@
 
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.homeroomSelect,
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.homeroomSelect,
                                         Model.HomeRoomSelectList,
                                         "Please select value",
                                         new
                                         {
                                             @class = "office_visit-form-control"
                                         })
+                        </div>
                     </td>
                     <td>
-                        @Html.Label("Select Location:")
+                        @Html.Label("Location:")
 
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.locationSelect,
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.locationSelect,
                     Model.LocationSelectList,
                      "Please select value",
                                         new
                                         {
                                             @class = "office_visit-form-control"
                                         })
-
+                        </div>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
-                        @Html.Label("Select Violation:")
+                        @Html.Label("Violation:")
 
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.violationSelect,
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.violationSelect,
                                     Model.ViolationSelectList,
 
                      "Please select value",
@@ -143,6 +149,8 @@
                                         {
                                             @class = "office_visit-form-control"
                                         })
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        </div>
                     </td>
                     <td>
 
@@ -156,7 +164,7 @@
                                          htmlAttributes = new
                                          {
                                              @Value = Model.officeVisitDate.ToString("MM/dd/yyyy"),
-                                             @class = "form-control"
+                                             @class = "office_visit-form-control"
                                          },
                                      })
                             @Html.ValidationMessageFor(model => model.officeVisitDate, "", new { @class = "text-danger" })
@@ -166,13 +174,9 @@
                                       htmlAttributes = new
                                       {
                                           @Value = Model.officeVisitTime.ToShortTimeString(),
-                                          @class = "form-control"
+                                          @class = "office_visit-form-control"
                                       }
                                   })
-
-                            @Html.ValidationMessageFor(model => model.officeVisitTime, "", new { @class = "text-danger" })
-
-
                         </div>
                     </td>
 
@@ -183,15 +187,17 @@
 
                     </td>
                     <td>
-                        @Html.DropDownListFor(m => m.remedialSelect,
-                    Model.RemedialSelectList, 
+                        <div class="col-md-8">
+
+                            @Html.DropDownListFor(m => m.remedialSelect,
+                    Model.RemedialSelectList,
                      "Please select value",
                                         new
                                         {
                                             @class = "office_visit-form-control"
                                         })
 
-
+                        </div>
                     </td>
                     <td>
 
@@ -205,23 +211,19 @@
                                          htmlAttributes = new
                                          {
                                              @Value = Model.officeVisitDate.ToString("MM/dd/yyyy"),
-                                             @class = "form-control"
+                                             @class = "office_visit-form-control"
                                          },
                                      })
-                            @Html.ValidationMessageFor(model => model.officeArriveDate, "", new { @class = "text-danger" })
                             @Html.EditorFor(model => model.officeArriveTime,
                                   new
                                   {
                                       htmlAttributes = new
                                       {
                                           @Value = Model.officeArriveTime.ToShortTimeString(),
-                                          @class = "form-control"
+                                          @class = "office_visit-form-control"
+
                                       }
                                   })
-
-                            @Html.ValidationMessageFor(model => model.officeArriveTime, "", new { @class = "text-danger" })
-
-
                         </div>
                     </td>
                 </tr>
@@ -230,7 +232,10 @@
                         @Html.Label("Nap:")
                     </td>
                     <td>
-                        @Html.CheckBoxFor(m => m.nap)
+                        <div class="col-md-8">
+
+                            @Html.CheckBoxFor(m => m.nap)
+                        </div>
                     </td>
 
                     <td>
@@ -238,8 +243,9 @@
                         @Html.Label("Handled By:")
                     </td>
                     <td>
+                        <div class="col-md-8">
 
-                        @Html.DropDownListFor(m => m.handledbySelect,
+                            @Html.DropDownListFor(m => m.handledbySelect,
                   Model.HandleBySelectList,
                      "Please select value",
                                         new
@@ -247,21 +253,22 @@
                                             @class = "office_visit-form-control"
                                         })
 
+                        </div>
                     </td>
 
                 </tr>
                 <tr>
-                 <td>
+                    <td>
                         @Html.Label("Comments:")
                     </td>
-                    <td>
-                        @Html.TextAreaFor(m => m.comments, 2, 50, null)
+                    <td colspan="3">
+                        <div class="col-md-8">
 
-
+                            @Html.TextAreaFor(m => m.comments, 1, 75, null)
+                        </div>
                     </td>
-
                 </tr>
-            </tbody>    
+            </tbody>
         </table>
     }
 </div>
