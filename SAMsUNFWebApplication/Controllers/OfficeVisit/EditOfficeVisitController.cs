@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.OfficeVisit
 {
+    [Authorize]
     public class EditOfficeVisitController : Controller
     {
         // GET: AddOfficeVisit

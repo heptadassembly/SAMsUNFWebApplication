@@ -46,6 +46,21 @@
     });
 
 </script>
+
+@if (ViewBag.Message != null)
+{
+    <script>
+
+$(document).ready(function(){
+
+alert('@ViewBag.Message');
+
+});
+
+    </script>
+
+}
+
 <div style="float:left;  font-size:small;">
     @using (Html.BeginForm("AddVisit", "AddOfficeVisit"))
     {
@@ -100,7 +115,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.Label("Home Room:")
+                        @Html.Label("Homeroom:")
 
                     </td>
                     <td>
