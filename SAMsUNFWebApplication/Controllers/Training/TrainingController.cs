@@ -14,6 +14,7 @@ using System.Text;
 
 namespace SAMsUNFWebApplication.Controllers.Training
 {
+    [Authorize]
     public class TrainingController : Controller
     {
         // GET: Training

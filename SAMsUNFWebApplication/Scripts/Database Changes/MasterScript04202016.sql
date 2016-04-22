@@ -1284,7 +1284,7 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (40, '2.29', 'ZZZ'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (41, '2.3', 'ZZZ','Extortion',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (42, '2.31', 'ZZZ','Unjustified Activation of Bus Emergency System while the bus is not moving',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (43, '2.32', 'ZZZ','Gang Activity or Expression',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (44, '3.01', 'ALC','Alcohol',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (44, '3.01', 'ALC','3.01-Alcohol',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (45, '3.02', 'DRU','Drugs',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (46, '3.03', 'PHA','Striking a School Distric Employee or Agent',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (47, '3.04', 'ROB','Robbery (using force to take something from another)',-1,now(), -1, now(), 0, 20152016);
@@ -1310,7 +1310,7 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (66, '3.23', 'TRS'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (67, '3.24', 'ZZZ','Teen Dating Violence or Abuse',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (68, '3.25', 'HAR','Harassment',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (69, '3.27', 'OMC','Drug/Alcohol Paraphernalia',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (70, '4.01', 'ALC','Alcohol',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (70, '4.01', 'ALC','4.01- Alcohol',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (71, '4.02', 'DRD','Drugs',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (72, '4.03', 'ARS','Arson',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (73, '4.04', 'ROB','Armed Robbery',-1,now(), -1, now(), 0, 20152016);
@@ -1330,9 +1330,8 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (85, '4.16', 'VAN'
 /* INSERT STATEMENTS FOR REMEDIAL ACTIONS */
 -- Insert Statement for Remedial Action
 ALTER TABLE samsjacksonville.remedial_action AUTO_INCREMENT = 0;
-INSERT INTO samsjacksonville.remedial_action values (-1, 'Other',20152016,-1,now(),-1,now(),0);
-INSERT INTO samsjacksonville.remedial_action values (1, 'Office Visit',20152016,-1,now(), -1, now(),0);
-INSERT INTO samsjacksonville.remedial_action values (2, 'Detention',20152016,-1,now(), -1, now(),0);
+INSERT INTO samsjacksonville.remedial_action values (1, 'Other',20152016,-1,now(),-1,now(),0);
+INSERT INTO samsjacksonville.remedial_action values (2, 'Office Visit',20152016,-1,now(), -1, now(),0);
 INSERT INTO samsjacksonville.remedial_action values (3, 'Office Visit w/ Parent',20152016,-1,now(), -1, now(),0);
 INSERT INTO samsjacksonville.remedial_action values (4, 'Work Detail',20152016,-1,now(), -1, now(),0);
 INSERT INTO samsjacksonville.remedial_action values (5, 'Teacher/Student/Administrator Conference',20152016,-1,now(), -1, now(),0);
