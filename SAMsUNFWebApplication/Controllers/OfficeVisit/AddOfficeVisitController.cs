@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.OfficeVisit
 {
+    [Authorize]
     public class AddOfficeVisitController : Controller
     {
         // GET: AddOfficeVisit
@@ -73,8 +74,8 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
             }
             else
             {
-                ModelState.AddModelError(string.Empty, "Student, Homeroom, Violation Code, Content Course and Sent by are required.");
-
+                ViewBag.Message = "Student, Homeroom, Violation, Location and Sent By \\n are required to save an Office Visit.";
+            
                 coll.arrival_dt = model.arrival_dt;
                 coll.office_visit_dt = model.office_visit_dt;
                 coll.comments = model.comments;

@@ -361,6 +361,7 @@
     <Content Include="Scripts\Database Changes\deliverable 7 database changes.sql" />
     <Content Include="Scripts\Database Changes\MasterScript03062016.sql" />
     <Content Include="Scripts\Database Changes\MasterScript04132016.sql" />
+    <Content Include="Scripts\Database Changes\MasterScript04202016.sql" />
     <Content Include="Scripts\Database Script.txt" />
     <Content Include="Scripts\gridmvc.customwidgets.js" />
     <Content Include="Scripts\gridmvc.js" />

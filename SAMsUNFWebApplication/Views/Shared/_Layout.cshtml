@@ -19,7 +19,7 @@
     <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/Content/SAMLayout.css")" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/Content/bootstrap-datetimepicker.css" type="text/css" />
-    
+
     <script type="text/javascript" src="@Url.Content("~/Content/SiteTemplate/")plugins/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/SiteTemplate/")plugins/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="@Url.Content("~/Content/SiteTemplate/")plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -56,12 +56,14 @@
 <body>
     <!-- ******HEADER****** -->
     <div class="container container-table">
-            <div class="row vertical-center-row">
-                    <nav class="navbar  navbar-fixed-top navbar-custom">
-                        <div id="navbar" class="navbar">
-                            <ul class="nav navbar-nav">
-                                <li class="nav-item" ><a id="img-action" href="@Url.Action("Index", "Home")"><img src="~/Content/SiteTemplate/images/background/JaxLogo.jpg" /></a></li>
-                                <li class="nav-item">@Html.ActionLink("Dashboard", "Dashboard", "Dashboard")</li>
+        <div class="row vertical-center-row">
+            <nav class="navbar  navbar-fixed-top navbar-custom">
+                <div id="navbar" class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a id="img-action" href="@Url.Action("Index", "Home")"><img src="~/Content/SiteTemplate/images/background/JaxLogo.jpg" /></a></li>
+                        @if (@HttpContext.Current.Session["ProfileUserId"] != null)
+                        {
+                            <li class="nav-item">@Html.ActionLink("Dashboard", "Dashboard", "Dashboard")</li>
                                 <li class="nav-item">@Html.ActionLink("Office Visit", "OfficeVisit", "OfficeVisit")</li>
                                 <li class="nav-item">@Html.ActionLink("Add Visit", "AddOfficeVisit", "AddOfficeVisit")</li>
                                 <li class="nav-item dropdown">
@@ -71,7 +73,7 @@
                                         <li>@Html.ActionLink("School", "School", "School")</li>
                                         <li>@Html.ActionLink("Homeroom", "Homeroom", "Homeroom")</li>
                                         <li>@Html.ActionLink("Contact", "Contact", "Contact")</li>
-										<li>@Html.ActionLink("Profile", "Profile", "Profile")</li>
+                                        <li>@Html.ActionLink("Profile", "Profile", "Profile")</li>
                                         <li>@Html.ActionLink("Code of Conduct", "CodeOfConductViolation", "CodeOfConductViolation")</li>
                                         <li>@Html.ActionLink("Remedial Action", "RemedialAction", "RemedialAction")</li>
                                         <li class="nav-divider"></li>
@@ -90,29 +92,28 @@
                                         <li>@Html.ActionLink("Technical Training", "Training", "Training")</li>
                                     </ul>
                                 </li><!--//dropdown-->
-                                @if (@HttpContext.Current.Session["ProfileUserId"] != null)
-                                {
-                                    <li class="nav-item">@Html.ActionLink("Logout " + "(Welcome " + @HttpContext.Current.Session["ProfileUserId"].ToString() + ")", "Logout", "Login")</li>
-                                 }
-                                else
-                                {
-                                    <li class="nav-item">@Html.ActionLink("Login", "Login", "Login")</li>
-                                }
-                            </ul><!--//nav-->
-                        </div>
-                   </nav>
-</div>
-            <div class="row vertical-center-row">
-                @RenderBody()
-            </div>
-        
+
+                                <li class="nav-item">@Html.ActionLink("Logout " + "(Welcome back " + @HttpContext.Current.Session["ProfileUserId"].ToString() + ")", "Logout", "Login")</li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">@Html.ActionLink("Login", "Login", "Login")</li>
+                        }
+                    </ul><!--//nav-->
+                </div>
+            </nav>
+        </div>
+        <div class="row vertical-center-row">
+            @RenderBody()
+        </div>
+
     </div>
     <footer class="footer">
         <div class="bottom-bar">
             <div class="container">
                 <small class="copyright">Heptad Assembly And University of North Florida CCEC - 2016</small>
             </div><!--//container-->
-        </div><!--//bottom-bar-->      
+        </div><!--//bottom-bar-->
     </footer>
 </body>
 </html>
