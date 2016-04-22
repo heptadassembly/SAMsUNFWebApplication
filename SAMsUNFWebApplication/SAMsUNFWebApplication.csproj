@@ -368,7 +368,7 @@
     <Content Include="Scripts\gridmvc.lang.ru.js" />
     <Content Include="Scripts\gridmvc.min.js" />
     <Content Include="Grid.mvc.readme" />
-    <Content Include="Content\TrainingVideos\loginvid.webm" />
+    <Content Include="Content\Training\loginvid.webm" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -521,6 +521,7 @@
     <Content Include="Content\bootstrap\alerts.less" />
     <Content Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\bootstrap-datetimepicker-build.less" />
+    <Content Include="Content\Training\Work Instructions.pdf" />
     <None Include="Properties\PublishProfiles\TestSite.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -570,6 +571,7 @@
     <Compile Include="Controllers\Student\AddStudentController.cs" />
     <Compile Include="Controllers\Student\EditStudentController.cs" />
     <Compile Include="Controllers\Student\StudentController.cs" />
+    <Compile Include="Controllers\Training\TechTrainingController.cs" />
     <Compile Include="Controllers\Training\TrainingController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -649,6 +651,7 @@
     <Content Include="Views\Home\CreateRemedialAction.cshtml" />
     <Content Include="Views\Shared\AddOfficeVisit.cshtml" />
     <Content Include="Views\Shared\EditOfficeVisit.cshtml" />
+    <Content Include="Views\TechTraining\TechTraining.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

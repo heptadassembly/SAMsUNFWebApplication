@@ -5,7 +5,18 @@
 <head>
     <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
     <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-
+    <script>
+            function PlayFromBookmark(label) {
+            var video_player = document.getElementById("movie");
+            switch (label) {
+            case "bm1": video_player.currentTime = 10; break;
+            case "bm2": video_player.currentTime = 20; break;
+            case "bm3": video_player.currentTime = 30; break;
+            default: video_player.currentTime = 0;
+            }
+            video_player.play();
+            }
+    </script>
 </head>
 <table class="table">
     <tr>
@@ -14,12 +25,20 @@
         </td>
     </tr>
     <tr>
-        <td align="left">
-            <video width="320" height="240" controls>
-                <source src="~/Content/TrainingVideos/loginvid.webm" type="video/webm">
+        <td align="center">
+            <video width="520" height="440" id="movie" controls>
+                <source src="~/Content/Training/loginvid.webm" type="video/webm">
             </video>
-                 
+            </td>
+            <td>
+            <section id="bookmarks" align="left">
+                <ul>
+                    <li><a href="#" onclick="PlayFromBookmark('bm1');">jump to 10 sec</a></li>
+                    <li><a href="#" onclick="PlayFromBookmark('bm2');">jump to 20 sec</a></li>
+                    <li><a href="#" onclick="PlayFromBookmark('bm3');">jump to 30 sec</a></li>
+                </ul>
+            </section>       
         </td>
-    </tr>
+   </tr>
 </table>
 
