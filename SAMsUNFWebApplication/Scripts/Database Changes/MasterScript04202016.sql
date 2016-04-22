@@ -1266,11 +1266,11 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (22, '2.11', 'FIT'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (23, '2.12', 'ZZZ','Response to Physical Attack (ZZZ) Response to Physical Attack â€“',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (24, '2.13', 'ZZZ','USE of a Device to Record a Fight or School Board Employee',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (25, '2.14', 'ZZZ','Premeditated USE of a Device to Record a Fight â€“',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (26, '2.15', 'ZZZ','Vandalism',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (26, '2.15', 'ZZZ','Vandalism-2.15',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (27, '2.16', 'ZZZ','Stealing or USE of Counterfeit Bill',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (28, '2.17', 'ZZZ','Possession of Stolen Property',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (29, '2.18', 'ZZZ','Teasing/Intimidation/Ridicule',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (30, '2.19', 'TRS','Trespassing',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (30, '2.19', 'TRS','Trespassing-2.19',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (31, '2.2', 'ZZZ','Possession of Fireworks, Firecrackers, Smoke Bombs, or Flammable Materials',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (32, '2.21', 'ZZZ','Verbal Sexual Harassment ',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (33, '2.22', 'ZZZ','Directing Obscene, Profane, or Offensive Language or Gestures to a School District Employee or Agent',-1,now(), -1, now(), 0, 20152016);
@@ -1284,13 +1284,13 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (40, '2.29', 'ZZZ'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (41, '2.3', 'ZZZ','Extortion',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (42, '2.31', 'ZZZ','Unjustified Activation of Bus Emergency System while the bus is not moving',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (43, '2.32', 'ZZZ','Gang Activity or Expression',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (44, '3.01', 'ALC','3.01-Alcohol',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (45, '3.02', 'DRU','Drugs',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (44, '3.01', 'ALC','Alcohol-3.01',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (45, '3.02', 'DRU','Drugs-3.02',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (46, '3.03', 'PHA','Striking a School Distric Employee or Agent',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (47, '3.04', 'ROB','Robbery (using force to take something from another)',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (48, '3.05', 'STL','Stealing/Larcency/Theft',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (49, '3.06', 'BRK','Burglary of School Structure',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (50, '3.07', 'ZZZ','Vandalism',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (50, '3.07', 'ZZZ','Vandalism-3.07',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (51, '3.08', 'ZZZ','Possession of Prohibited Substance or Objects',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (52, '3.09', 'ZZZ','Lewd, Indecent, or Offensive Behavior',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (53, '3.1', 'SXH','Physical Sexual Harassment',-1,now(), -1, now(), 0, 20152016);
@@ -1306,12 +1306,12 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (62, '3.19', 'OMC'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (63, '3.2', 'TRE','Repeated Threats Upon a School District Employee, Student, or Agent',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (64, '3.21', 'BUL','Bullying/Cyberbullying',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (65, '3.22', 'SXA','Sexual Assault',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (66, '3.23', 'TRS','Trespassing',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (66, '3.23', 'TRS','Trespassing-3.23',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (67, '3.24', 'ZZZ','Teen Dating Violence or Abuse',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (68, '3.25', 'HAR','Harassment',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (69, '3.27', 'OMC','Drug/Alcohol Paraphernalia',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (70, '4.01', 'ALC','4.01- Alcohol',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (71, '4.02', 'DRD','Drugs',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (70, '4.01', 'ALC', 'Alcohol-4.01',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (71, '4.02', 'DRD','Drugs-4.02',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (72, '4.03', 'ARS','Arson',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (73, '4.04', 'ROB','Armed Robbery',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (74, '4.05', 'WPO','Possession of a Firearm',-1,now(), -1, now(), 0, 20152016);
@@ -1325,7 +1325,7 @@ INSERT INTO samsjacksonville.code_of_conduct_violation values (81, '4.12', 'TRE'
 INSERT INTO samsjacksonville.code_of_conduct_violation values (82, '4.13', 'OMC','Any Major Offense Which Is Reasonably Likely to CaUSE Great Bodily Harm or Serious Disruption of the Educational Process',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (83, '4.14', 'KID','Kidnapping/Abduction',-1,now(), -1, now(), 0, 20152016);
 INSERT INTO samsjacksonville.code_of_conduct_violation values (84, '4.15', 'HOM','Homicide/Murder/Manslaughter',-1,now(), -1, now(), 0, 20152016);
-INSERT INTO samsjacksonville.code_of_conduct_violation values (85, '4.16', 'VAN','Vandalism',-1,now(), -1, now(), 0, 20152016);
+INSERT INTO samsjacksonville.code_of_conduct_violation values (85, '4.16', 'VAN','Vandalism-4.16',-1,now(), -1, now(), 0, 20152016);
 
 /* INSERT STATEMENTS FOR REMEDIAL ACTIONS */
 -- Insert Statement for Remedial Action
