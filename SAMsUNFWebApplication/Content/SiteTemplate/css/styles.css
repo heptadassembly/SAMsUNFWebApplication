@@ -26,12 +26,34 @@ a {
   -o-transition: all 0.4s ease-in-out;
 }
 a:hover {
-  text-decoration: underline;
-  color: #e74124;
+   color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }
 a:focus {
-  text-decoration: none;
+   color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
 }
+
+.btn-default {
+    color: #fff;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-default:focus,
+.btn-default.focus {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
+}
+.btn-default:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
 .btn,
 a.btn {
   -webkit-transition: all 0.4s ease-in-out;
@@ -39,6 +61,8 @@ a.btn {
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
   font-weight: bold;
+  background-color: #337ab7;
+  border-color: #2E6DA4;
 }
 .btn .fa,
 a.btn .fa {
@@ -383,9 +407,9 @@ select {
 .bg-slider-wrapper {
   content: "";
   width: 100%;
-  top: 0;
-  left: 0;
-  height: 600px;
+  align-self:center;
+  height: 100px;
+  width: 800px;
   background: #373737;
 }
 .bg-slider-wrapper .flexslider {
@@ -407,6 +431,7 @@ select {
 .bg-slider-wrapper .flexslider .slide {
   display: block;
   height: 600px; 
+  width: 30px;
 }
 .bg-slider-wrapper .flexslider .slide.slide-1 {
   background: #253340 url('../images/background/TMP_4075.jpg') no-repeat 50% top;
@@ -2629,7 +2654,7 @@ select {
   font-size: 16px;
 }
 .footer .bottom-bar, .push {
-  background: #1e1e1e;
+  background: #CFCCC1;
   color: #b3b3b3;
   font-size: 14px;
   padding: 10px 0;
@@ -2978,6 +3003,9 @@ select {
   .header.navbar-fixed-top {
     position: relative;
   }
+
+
+
   .navbar-collapse {
     border-top: none;
     -webkit-box-shadow: none;
@@ -2987,7 +3015,7 @@ select {
     left: 0;
     top: 90px;
     position: absolute;
-    background: #253340;
+    background: #1E1E1E;
     z-index: 45;
   }
   .navbar-collapse .nav {
@@ -3218,6 +3246,7 @@ select {
   }
   .header.navbar-fixed-top {
     position: relative;
+  
   }
   .blog-slider {
     margin-top: 0;
