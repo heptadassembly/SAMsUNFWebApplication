@@ -1012,6 +1012,7 @@ as
         sch.name as school_name,
         homeroom.homeroom_name,
         homeroom.room_number,
+		homeroom.homeroom_id,
         ov.last_update_contact_id,
         concat(lastupdate.first_name , ' ' , lastupdate.last_name) as last_update_contact_name,
         ov.last_update_dt,

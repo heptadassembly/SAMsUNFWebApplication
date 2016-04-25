@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.OfficeVisit
 {
+    [Authorize]
     public class OfficeVisitController : Controller
     {
         // GET: OfficeVisit
@@ -28,11 +29,9 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
         public void ExportToExcel()
         {
 
-            //Get the Session data  
-            List<Models.OfficeVisit> officevisits = (List<Models.OfficeVisit>)Session["OfficeVisits"];
-
+         
             //Genarate the excel data
-            Byte[] fileBytes = Utilities.OfficeVisitExcelGenerator.GenerateXLS(officevisits);
+            Byte[] fileBytes = Utilities.OfficeVisitExcelGenerator.GenerateXLS((List<Models.OfficeVisit>)Session["OfficeVisits"]);
 
             //Clear the response
             Response.Clear();
@@ -62,6 +61,13 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
 
             return View("AddOfficeVisit");
             
+        }
+
+        public ActionResult EditOfficeVisit()
+        {
+
+            return View("EditOfficeVisit");
+
         }
     }
     

@@ -24,7 +24,7 @@ namespace SAMsUNFWebApplication.Models
         public string content_course_name { get; set; }
         public string grade_value { get; set; }
         public string school_name { get; set; }
-        public string homeroom_id { get; set; }
+        public int homeroom_id { get; set; }
         public string room_number { get; set; }
         public string homeroom_name { get; set; }
         public int last_update_contact_id { get; set; }
@@ -32,6 +32,7 @@ namespace SAMsUNFWebApplication.Models
         public DateTime last_update_dt { get; set; }
         public string offenses { get; set; }
         public string consequences { get; set; }
-
+        public int remedialAction { get; set; }
+        public int CodeViolation { get; set; }
     }
 }
