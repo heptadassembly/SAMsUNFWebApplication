@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.Student
 {
+    [Authorize]
     public class EditHomeRoomController : Controller
     {
         // GET: AddOfficeVisit

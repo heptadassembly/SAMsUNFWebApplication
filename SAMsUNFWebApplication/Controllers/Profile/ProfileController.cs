@@ -14,6 +14,7 @@ namespace SAMsUNFWebApplication.Controllers.Profile
 {
     public class ProfileController : Controller
     {
+        [Authorize]
         // GET: School
         public ActionResult Index()
         {

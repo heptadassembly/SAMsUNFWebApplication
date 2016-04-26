@@ -12,6 +12,7 @@ using Dapper;
 
 namespace SAMsUNFWebApplication.Controllers.HomeRoom
 {
+    [Authorize]
     public class HomeRoomController : Controller
     {
         // GET: Student

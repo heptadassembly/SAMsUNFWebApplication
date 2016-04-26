@@ -12,6 +12,7 @@ namespace SAMsUNFWebApplication.Controllers.Profile
 {
     public class AddProfileController : Controller
     {
+        [Authorize]
         // GET: AddContact
         public ActionResult Index()
         {

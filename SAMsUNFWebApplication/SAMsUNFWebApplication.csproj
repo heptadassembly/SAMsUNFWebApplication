@@ -360,6 +360,7 @@
     <Content Include="Scripts\Database Changes\002 database test insert statements.sql" />
     <Content Include="Scripts\Database Changes\deliverable 6 database changes.sql" />
     <Content Include="Scripts\Database Changes\deliverable 7 database changes.sql" />
+    <Content Include="Scripts\Database Changes\MasterScript.sql" />
     <Content Include="Scripts\Database Changes\MasterScript03062016.sql" />
     <Content Include="Scripts\Database Changes\MasterScript04132016.sql" />
     <Content Include="Scripts\Database Changes\MasterScript04202016.sql" />

@@ -14,6 +14,7 @@ namespace SAMsUNFWebApplication.Controllers.CodeOfConductViolation
 {
     public class SchoolYearController : Controller
     {
+        [Authorize]
         // GET: SchoolYear
         public async System.Threading.Tasks.Task<ActionResult> SchoolYear()
         {

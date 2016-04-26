@@ -12,6 +12,7 @@ namespace SAMsUNFWebApplication.Controllers.Student
 {
     public class AddStudentController : Controller
     {
+        [Authorize]
         // GET: AddOfficeVisit
         public async System.Threading.Tasks.Task<ActionResult> AddStudent()
         {

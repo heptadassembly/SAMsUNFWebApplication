@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace SAMsUNFWebApplication.Controllers.HomeRoom
 {
+    [Authorize]
     public class AddHomeRoomController : Controller
     {
         // GET: AddContact

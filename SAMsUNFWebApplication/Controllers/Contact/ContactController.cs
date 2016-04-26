@@ -12,6 +12,7 @@ using Dapper;
 
 namespace SAMsUNFWebApplication.Controllers.Contact
 {
+    [Authorize]
     public class ContactController : Controller
     {
         // GET: Student

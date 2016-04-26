@@ -14,6 +14,7 @@ namespace SAMsUNFWebApplication.Controllers.Grade
 {
     public class GradeController : Controller
     {
+        [Authorize]
         // GET: Student
         public async System.Threading.Tasks.Task<ActionResult> Grade()
         {

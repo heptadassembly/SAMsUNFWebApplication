@@ -10,6 +10,7 @@ using System.IO;
 
 namespace SAMsUNFWebApplication.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         // GET: Home

@@ -12,6 +12,7 @@ namespace SAMsUNFWebApplication.Controllers.School
 {
     public class EditSchoolController : Controller
     {
+        [Authorize]
         // GET: EditSchool
         public ActionResult Index()
         {

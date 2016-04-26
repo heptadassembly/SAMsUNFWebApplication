@@ -12,6 +12,7 @@ using CsvHelper;
 
 namespace SAMsUNFWebApplication.Controllers.Contact
 {
+    [Authorize]
     public class ImportController : Controller
     {
         // GET: Contact

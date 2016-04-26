@@ -12,6 +12,7 @@ namespace SAMsUNFWebApplication.Controllers.Profile
 {
     public class EditProfileController : Controller
     {
+        [Authorize]
         // GET: AddOfficeVisit
         public async System.Threading.Tasks.Task<ActionResult> EditProfile(int id)
         {
