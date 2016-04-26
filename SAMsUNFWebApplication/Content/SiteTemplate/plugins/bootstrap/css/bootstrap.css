@@ -3060,7 +3060,6 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
   background-color: #fff;
   border-color: #ccc;
 }
@@ -4174,7 +4173,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
+    background-color: #1E1E1E;
   }
 }
 @media (min-width: 768px) {
