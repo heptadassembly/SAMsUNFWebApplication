@@ -42,7 +42,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             try
             {
                 var current_user = HttpContext.Current.User.Identity.Name;
-                var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', `password` = '" + ProfilePassword + ", last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where profile_id = " + ProfileID;
+                var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', `password` = '" + ProfilePassword + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where profile_id = " + ProfileID;
                 _openConnection.Execute(queryString);
                 return "success";
             }

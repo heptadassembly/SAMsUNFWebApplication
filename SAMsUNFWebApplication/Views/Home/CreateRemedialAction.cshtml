@@ -22,7 +22,8 @@
                     <table class="table">
                         <tr>
                             <td>Enter Name of Remedial Action:</td>
-                            <td>@Html.TextBox("RemedialActionName")</td>
+                            <td>@Html.TextBox("RemedialActionName", null, new {@class = "form-control", @required = "required"})</td>
+
                         </tr>
                         <tr>
                             <td colspan="2" align="right">

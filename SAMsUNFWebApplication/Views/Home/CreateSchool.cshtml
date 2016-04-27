@@ -12,7 +12,10 @@
         <table class="table">
             <tr>
                 <td>@Html.Label("School Name")</td>
-                <td>@Html.TextBox("SchoolName", null, new { @class = "form-control" })</td>
+                <td>@Html.TextBox("SchoolName", null, new {
+                   @class = "form-control",
+                   @required = "required"
+               })</td>
             </tr>
             <tr>
                 <td colspan="3" align="right">

@@ -21,15 +21,15 @@
                             
                             <td>@ViewBag.SQLError
                                 @Html.Label("Enter Violation Number")</td>
-                            <td>@Html.TextBox("TxtId")</td>
+                            <td>@Html.TextBox("TxtId", null, new { @class = "form-control", @required = "required" })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Enter Short Code")</td>
-                            <td>@Html.TextBox("TxtCode")</td>
+                            <td>@Html.TextBox("TxtCode", null, new { @class = "form-control", @required = "required", @maxlength = 3 })</td>
                         </tr>
                         <tr>
                             <td>@Html.Label("Enter Violation Name")</td>
-                            <td>@Html.TextBox("TxtName")</td>
+                            <td>@Html.TextBox("TxtName", null, new { @class = "form-control", @required = "required" })</td>
                         </tr>
                         <tr>
                             <td  colspan="2" align="right">

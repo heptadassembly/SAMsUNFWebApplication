@@ -1619,6 +1619,7 @@ DELIMITER ;
 
 -- updating contacts.
 drop procedure `import_homeroom`;
+
 DELIMITER $$
 CREATE PROCEDURE `import_homeroom`()
 BEGIN

@@ -42,7 +42,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             try
             {
                 var current_user = HttpContext.Current.User.Identity.Name;
-                var queryString = @"update samsjacksonville.remedial_action set name = '" + RemedialActionName + ", last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where remedial_action_id = " + RemedialActionID;
+                var queryString = @"update samsjacksonville.remedial_action set name = '" + RemedialActionName + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where remedial_action_id = " + RemedialActionID;
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -57,7 +57,7 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             try
             {
                 var current_user = HttpContext.Current.User.Identity.Name;
-                var queryString = @"insert into samsjacksonville.remedial_action (school_year_id, name) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + RemedialActionName + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
+                var queryString = @"insert into samsjacksonville.remedial_action (school_year_id, name,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + RemedialActionName + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }
