@@ -33,11 +33,12 @@ namespace SAMsUNFWebApplication.Controllers.Profile
             }
         }
 
-        public System.Web.Mvc.RedirectResult EditProfl(string ProfileID, string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
+        public System.Web.Mvc.RedirectResult EditProfl(string ProfileID, string ProfileUserName, bool ResetPassword, string profilecontactselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ProfileRepository(connection).EditProfl(ProfileID, ProfileUserName, ProfilePassword, profilecontactselectlist);
+                
+                var result = new ProfileRepository(connection).EditProfl(ProfileID, ProfileUserName, ResetPassword, profilecontactselectlist);
                 if (result == "success")
                 {
                     return Redirect("Profile/Profile/?error=fileloaded");
@@ -50,11 +51,11 @@ namespace SAMsUNFWebApplication.Controllers.Profile
             }
         }
 
-        public System.Web.Mvc.RedirectResult AddProfl(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
+        public System.Web.Mvc.RedirectResult AddProfl(string ProfileUserName, string profilecontactselectlist)
         {
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                var result = new ProfileRepository(connection).AddProfl(ProfileUserName, ProfilePassword, profilecontactselectlist);
+                var result = new ProfileRepository(connection).AddProfl(ProfileUserName, profilecontactselectlist);
                 if (result == "success")
                 {
                     return Redirect("Profile/Profile/?error=fileloaded");

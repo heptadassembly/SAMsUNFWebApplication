@@ -1,14 +1,11 @@
 ﻿@model  SAMsUNFWebApplication.Models.ProfileCollection
 @{
     ViewBag.Title = "AddProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<head>
-    <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")"></script>
-    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" />
 
-</head>
 <table class="table">
     <tr>
         <td>
@@ -41,22 +38,6 @@
                                        @style = "width: 250px;",
                                        @id = "ProfileUserName",
                                        @Name = "ProfileUserName",
-                                       @required = "required"
-                                   })
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    @Html.Label("Add Password:")
-                                </td>
-                                <td>
-                                    @Html.TextBoxFor(m => m.profile.password,
-                                   new
-                                   {
-                                       @class = "form-control",
-                                       @style = "width: 250px;",
-                                       @id = "ProfilePassword",
-                                       @Name = "ProfilePassword",
                                        @required = "required"
                                    })
                                 </td>

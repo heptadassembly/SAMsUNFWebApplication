@@ -15,14 +15,22 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
     {
         // GET: AddOfficeVisit
         [HttpGet]
-        public async System.Threading.Tasks.Task<ActionResult> AddOfficeVisit()
+        public ActionResult AddOfficeVisit()
         {
 
+            OfficeVisitCollection ovcoll = new OfficeVisitCollection();
+
+            ovcoll = PopulateAddOfficeVisit();
+
+            return View(ovcoll);
+        }
+
+        OfficeVisitCollection PopulateAddOfficeVisit()
+        {
             OfficeVisitCollection coll = new OfficeVisitCollection();
 
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {
-                await connection.OpenAsync();
 
                 var result = new StudentRepository(connection).GetStudents();
                 var result2 = new ContactRepository(connection).GetContacts();
@@ -49,12 +57,9 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
 
                 Session["AddVisitModel"] = coll;
             }
-
-            return View(coll);
+            return coll;
         }
-
-
-        [HttpPost]
+[HttpPost]
         public ActionResult AddVisit(OfficeVisitCollection model, string studentSelect, string sentbySelect, string homeroomSelect, string remedialSelect,
             string violationSelect, string handledbySelect, string locationSelect)
         {
@@ -68,14 +73,30 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
                       bool sucessful = new OfficeVisitRepository(connection).InsertOfficeVisit(model);
                 }
 
-                /* Add message . clear and  retun back to add page */
-                Session["AddVisitModel"] = null;
-                return RedirectToAction("OfficeVisit", "OfficeVisit");
+                /* Add message . clear and  return back to add page */
+                ModelState.Clear();
+                ViewBag.Success = true;
+                ModelState.AddModelError(string.Empty,"Office Visit has successully been added");
+                coll.arrival_dt = DateTime.Now;
+                coll.office_visit_dt = DateTime.Now;
+                coll.comments = null;
+                coll.nap = false;
+                coll.StudentSelectList = new SelectList(coll.allStudents, "student_id", "student_name", null );
+                coll.ReportersSelectList = new SelectList(coll.allReporters, "contact_id", "contact_name", null);
+                coll.HomeRoomSelectList = new SelectList(coll.allHomeRooms, "homeroom_id", "homeroom_name", null);
+                coll.HandleBySelectList = new SelectList(coll.allHandledBys, "contact_id", "contact_name", null);
+                coll.LocationSelectList = new SelectList(coll.allLocations, "content_course_id", "name", null);
+                coll.RemedialSelectList = new SelectList(coll.allRemedials, "remedial_action_id", "name", null);
+                coll.ViolationSelectList = new SelectList(coll.allCodeViolations, "code_of_conduct_violation_id", "name", null);
+
             }
             else
             {
-                ViewBag.Message = "Student, Homeroom, Violation, Location and Sent By \\n are required to save an Office Visit.";
-            
+
+               
+                ViewBag.Success = false;
+                ModelState.AddModelError(string.Empty, "Student, Homeroom, Violation, Location and SentBy are required to save an Office Visit.");
+       
                 coll.arrival_dt = model.arrival_dt;
                 coll.office_visit_dt = model.office_visit_dt;
                 coll.comments = model.comments;

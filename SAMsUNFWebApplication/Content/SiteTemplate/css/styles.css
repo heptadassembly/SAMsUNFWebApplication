@@ -3665,4 +3665,13 @@ select {
     overflow:hidden;	 
 }
 
+ .AddOfficeVisitSuccess {
+      color: #468847;
+      font:bold;
 }
+ .AddOfficeVisitError {
+       color: #b94a48;
+       font:bold;
+      
+}
+ }

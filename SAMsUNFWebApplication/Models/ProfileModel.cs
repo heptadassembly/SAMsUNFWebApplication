@@ -21,7 +21,10 @@ namespace SAMsUNFWebApplication.Models
         public int last_update_contact_id { get; set; }
         public DateTime last_update_dt { get; set; }
         public Boolean is_deleted { get; set; }
-
+        public string secretanswer { get; set; }
+        public Boolean resetpassword { get; set; }
+        public string reenterpassword { get; set; }
+        public string newsecretanswer { get; set; }
     }
 
     public class ProfileCollection

@@ -160,6 +160,7 @@ CREATE TABLE if not exists samsjacksonville.profile
     contact_id int not null,
     user_name varchar(20),
     password varchar(100),
+    secretanswer varchar(100),
 	school_year_id int,
     create_contact_id int default -1,
     create_dt datetime default now(),
@@ -850,6 +851,7 @@ AS
 			`cc`.`first_name`,
 			`cc`.`last_name`,
 			`p`.`password` AS `password`,
+             p.secretanswer AS secretanswer,
 			`p`.`school_year_id` AS `school_year_id`,
 			`p`.`create_contact_id` AS `create_contact_id`,
 			CONCAT(`c`.`first_name`, ' ', `c`.`last_name`) AS `create_contact_name`,
@@ -1220,7 +1222,7 @@ INSERT INTO samsjacksonville.grade (grade_value, grade_text, create_contact_id, 
 
 ALTER TABLE samsjacksonville.profile AUTO_INCREMENT = 0;
 /* INSERT STATEMENT FOR PROFILE */
-INSERT INTO samsjacksonville.profile values (1, 3, 'wbuck', 'password', 20152016, -1, now(), -1, now(), 0);
+INSERT INTO samsjacksonville.profile values (1, 3, 'wbuck', 'password','', 20152016, -1, now(), -1, now(), 0);
 
 
 ALTER TABLE samsjacksonville.homeroom AUTO_INCREMENT = 0;

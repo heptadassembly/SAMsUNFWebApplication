@@ -35,6 +35,23 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
+        public async Task<bool> LoginUpdate(string userID, string password, string secretAnswer)
+        {
+            // Read the user by their username in the database. 
+            var queryString = @"update samsjacksonville.profile set password = '" + password + "', secretanswer = '" + secretAnswer + "',last_update_dt = now() where user_name = '" + userID + "';";
+            int updated =  await this._openConnection.ExecuteAsync(queryString);
+            return (updated > 0) ? true:false;
+        }
 
+        public ProfileModel LoginGetbyUserId(string userID)
+        {
+            // Read the user by their username in the database. 
+            var results = this._openConnection.Query<ProfileModel>(@" SELECT * FROM  profile 
+                     WHERE user_name = @UserID",
+                    new { UserID = userID });
+
+            var result = results.FirstOrDefault();
+            return result;
+        }
     }
 }

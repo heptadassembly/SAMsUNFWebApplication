@@ -37,12 +37,20 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             return result;
         }
 
-        public string EditProfl(string ProfileID, string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
+        public string EditProfl(string ProfileID, string ProfileUserName, bool ResetPassword, string profilecontactselectlist)
         {
             try
             {
                 var current_user = HttpContext.Current.User.Identity.Name;
-                var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', `password` = '" + ProfilePassword + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() where profile_id = " + ProfileID;
+
+                var queryString = @"update samsjacksonville.profile set contact_id = " + profilecontactselectlist + ", user_name = '" + ProfileUserName + "', last_update_contact_id = samsjacksonville.fn_getContactID('" + current_user + "'), last_update_dt = now() ";
+                
+                   if(ResetPassword)
+                {
+                     queryString += ", password = password, secretanswer = '' ";
+                }                             
+                   queryString += "where profile_id = " + ProfileID;
+
                 _openConnection.Execute(queryString);
                 return "success";
             }
@@ -52,12 +60,12 @@ namespace SAMsUNFWebApplication.Models.DataAccess
             }
         }
 
-        public string AddProfl(string ProfileUserName, string ProfilePassword, string profilecontactselectlist)
+        public string AddProfl(string ProfileUserName, string profilecontactselectlist)
         {
             try
             {
                 var current_user = HttpContext.Current.User.Identity.Name;
-                var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",'" + ProfilePassword + "', samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
+                var queryString = @"insert into samsjacksonville.profile (school_year_id, user_name, contact_id, password,create_contact_id,create_dt,last_update_contact_id,last_update_dt) VALUES (samsjacksonville.fn_getSchoolYear(1), '" + ProfileUserName + "'," + profilecontactselectlist + ",password , samsjacksonville.fn_getContactID('" + current_user + "'), now(), samsjacksonville.fn_getContactID('" + current_user + "'), now());";
                 _openConnection.Execute(queryString);
                 return "success";
             }

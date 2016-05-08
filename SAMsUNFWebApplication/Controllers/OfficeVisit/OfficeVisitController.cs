@@ -16,6 +16,13 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
         // GET: OfficeVisit
         public async System.Threading.Tasks.Task<ActionResult> OfficeVisit()
         {
+            ViewBag.SuccessAdd = (Session["SuccessAdd"] == null)?false:true;
+
+            if (ViewBag.SuccessAdd)
+            {
+                ModelState.AddModelError(string.Empty, "Office Visit has been successully been updated.");
+                Session["SuccessAdd"] = null;
+            }
             Session["OfficeVisits"] = null;
             using (var connection = new MySqlConnection(ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString))
             {

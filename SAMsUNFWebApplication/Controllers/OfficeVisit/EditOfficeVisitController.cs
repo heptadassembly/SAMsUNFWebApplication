@@ -76,7 +76,7 @@ namespace SAMsUNFWebApplication.Controllers.OfficeVisit
                 case "Save":
                     ValidateData(model, studentSelect, sentbySelect, homeroomSelect, remedialSelect, violationSelect, handledbySelect, locationSelect);
                     SaveOfficeVisit(model);
-                    //Message
+                    Session["SuccessAdd"] = true;
                     break;
                   case "Cancel":
                     Session["OfficeVisitId"] = null;

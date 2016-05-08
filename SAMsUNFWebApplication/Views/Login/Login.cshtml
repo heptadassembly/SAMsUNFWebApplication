@@ -1,36 +1,99 @@
 ﻿@model  SAMsUNFWebApplication.Models.ProfileModel
 
-@{
-    ViewBag.Title = "Login";
-}
-<div>
-    <table>
-        <tr>
-            <td>
-                <div style="text-align:left;">
-                <h1 class="viewname_h3">Login</h1>
-        @using (Html.BeginForm("Login", "Login"))
-            {
-            <div style="text-align:right;">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <label>User Id:</label> @Html.TextBoxFor(m => m.user_name)
-                @Html.ValidationMessageFor(m => m.user_name, "", new { @class = "text-danger" })
-                <br />
-                <label>Password:</label> @Html.PasswordFor(m => m.password)
-                @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
-                <br />
-                <input id="submit" type="submit" value="Login" />
-            </div>
+<div style="float:left; font-size:small;">
 
-        }
-</div>
-            </td>
-            <td style="padding-left:50px;">
-                <div>
-                    <img src="~/Content/Images/JaxLogo-1.jpg" />
-                </div>
-            </td>
-        </tr>
-    </table>
-</div>
+    @using (Html.BeginForm("Login", "Login"))
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <td colspan="2">
+                        <h1 style="color:#255694; font-size:x-large; font-weight:bold; ">@ViewBag.Title</h1>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="right" >
+                        @Html.Label("User Id:")
+                    </td>
+                    <td>
+                        <div class="col-md-8">
 
+                            @Html.TextBoxFor(m => m.user_name)
+                        </div>
+                    </td>
+                    <td style="padding-left:50px;" rowspan="3">
+                        <div>
+                            <img src="~/Content/Images/JaxLogo-1.jpg" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right">
+                        @Html.Label("Password:")
+
+                    </td>
+                    <td>
+                        <div class="col-md-8">
+
+                            @Html.PasswordFor(m => m.password)
+                        </div>
+                    </td>
+                </tr>
+                @if (ViewBag.ChangePassword)
+                {
+                    <tr>
+                        <td align="right" >
+                            @Html.Label("Re-enter Password:")
+
+
+                        </td>
+                        <td>
+                        <div class="col-md-8">
+                            @Html.PasswordFor(m => m.reenterpassword)
+                            </div>
+                      </td>
+</tr>
+                    <tr>
+                        <td>
+                            @Html.Label("Who was your favorite teacher in school?")
+                        </td>
+                        <td>
+                        <div class="col-md-8">
+                            @Html.HiddenFor(m => m.secretanswer)
+                            @Html.PasswordFor(m => m.newsecretanswer)
+                            </div>
+                        </td>
+</tr>
+                    <tr>
+                        <td colspan="2">
+                            <div style="float:left;margin-top:20px;">
+
+                                <input id="submi" type="submit" name="actionRequest" value="Save" class="btn btn-primary  btn-large" style="width:100px;" />
+                            </div>
+                            <div style="float:left;margin-top:20px;padding-left:30px; padding-left:20px;">
+                                <input id="submit" name="actionRequest" type="submit" value="Cancel" class="btn btn-primary  btn-large" style="width:100px;" />
+                            </div>
+
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">
+                            <div style="float:left;margin-top:20px;">
+
+                                <input id="submit" name="actionRequest" type="submit" value="Login" class="btn btn-primary  btn-large" style="width:75px;" />
+                            </div>
+                            <div style="float:left;margin-top:20px; padding-left:20px;">
+                                <input id="submit" name="actionRequest" type="submit" value="Change Password" class="btn btn-primary  btn-large" style="width:150px;" />
+                            </div>
+                        </td>
+                    </tr>
+                }
+        </table>
+    }
+</div>
